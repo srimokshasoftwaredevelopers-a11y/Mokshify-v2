@@ -1,3 +1,5 @@
+export type Frame = ImageBitmap | HTMLImageElement;
+
 /**
  * ImageCache — decoded-frame memory manager.
  *
@@ -15,8 +17,8 @@ export interface CacheOptions {
 }
 
 export class ImageCache {
-  private bitmaps = new Map<number, ImageBitmap>();
-  private inflight = new Map<number, Promise<ImageBitmap | null>>();
+  private bitmaps = new Map<number, Frame>();
+  private inflight = new Map<number, Promise<Frame | null>>();
   private opts: CacheOptions;
   private playhead = 0;
   private static active = 0;
@@ -36,12 +38,12 @@ export class ImageCache {
     return this.bitmaps.has(index);
   }
 
-  get(index: number): ImageBitmap | undefined {
+  get(index: number): Frame | undefined {
     return this.bitmaps.get(index);
   }
 
   /** nearest decoded frame to `index` — the no-flicker fallback */
-  nearest(index: number): { index: number; bitmap: ImageBitmap } | null {
+  nearest(index: number): { index: number; bitmap: Frame } | null {
     let best: number | null = null;
     let bestDist = Infinity;
     for (const k of this.bitmaps.keys()) {
@@ -52,7 +54,7 @@ export class ImageCache {
   }
 
   /** fetch + decode one frame; deduped; budget-evicted */
-  load(index: number, url: string): Promise<ImageBitmap | null> {
+  load(index: number, url: string): Promise<Frame | null> {
     if (this.bitmaps.has(index)) return Promise.resolve(this.bitmaps.get(index)!);
     const pending = this.inflight.get(index);
     if (pending) return pending;
@@ -73,19 +75,39 @@ export class ImageCache {
     return p;
   }
 
-  private async fetchDecode(url: string): Promise<ImageBitmap | null> {
+  private async fetchDecode(url: string): Promise<Frame | null> {
     await ImageCache.gate();
     try {
       const res = await fetch(url, { cache: "force-cache" });
       if (!res.ok) return null;
       const blob = await res.blob();
-      if (this.opts.resizeWidth && "createImageBitmap" in window) {
-        return await createImageBitmap(blob, {
-          resizeWidth: this.opts.resizeWidth,
-          resizeQuality: "high",
-        });
+      // decode ladder: some browsers (older Safari notably) throw on the
+      // createImageBitmap options form, or lack the API — every rung falls
+      // through so a decode failure can never take the whole film down
+      if ("createImageBitmap" in window) {
+        if (this.opts.resizeWidth) {
+          try {
+            return await createImageBitmap(blob, {
+              resizeWidth: this.opts.resizeWidth,
+              resizeQuality: "high",
+            });
+          } catch { /* options unsupported — plain form next */ }
+        }
+        try {
+          return await createImageBitmap(blob);
+        } catch { /* fall through to the universal path */ }
       }
-      return await createImageBitmap(blob);
+      // universal fallback: HTMLImageElement decodes everywhere
+      const objUrl = URL.createObjectURL(blob);
+      try {
+        const img = new Image();
+        img.src = objUrl;
+        if (img.decode) await img.decode();
+        else await new Promise<void>((ok, bad) => { img.onload = () => ok(); img.onerror = () => bad(new Error("img")); });
+        return img;
+      } finally {
+        URL.revokeObjectURL(objUrl);
+      }
     } finally {
       ImageCache.release();
     }
@@ -98,13 +120,14 @@ export class ImageCache {
       .sort((a, b) => Math.abs(b - this.playhead) - Math.abs(a - this.playhead));
     while (this.bitmaps.size > this.opts.budget && keys.length) {
       const k = keys.shift()!;
-      this.bitmaps.get(k)?.close();
+      const f = this.bitmaps.get(k);
+      if (f instanceof ImageBitmap) f.close();
       this.bitmaps.delete(k);
     }
   }
 
   clear(): void {
-    for (const b of this.bitmaps.values()) b.close();
+    for (const b of this.bitmaps.values()) if (b instanceof ImageBitmap) b.close();
     this.bitmaps.clear();
   }
 

@@ -12,6 +12,7 @@
 
 import { FrameLoader } from "./FrameLoader";
 import { ImageCache } from "./ImageCache";
+import type { Frame } from "./ImageCache";
 
 export interface SequenceOptions {
   dir: string;
@@ -132,7 +133,7 @@ export class FrameSequence {
   }
 
   /** object-fit: cover */
-  private drawCover(bmp: ImageBitmap, alpha: number): void {
+  private drawCover(bmp: Frame, alpha: number): void {
     const { width: cw, height: ch } = this.canvas;
     const s = Math.max(cw / bmp.width, ch / bmp.height);
     const dw = bmp.width * s;
