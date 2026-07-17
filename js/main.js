@@ -457,7 +457,8 @@ function ch4(t) {
 /* CH5 — the software breathes */
 function ch5(t, time) {
   const exit = E.i(seg(t, .88, 1));
-  pose(sc5, { s: 1 + exit * .9, y: -exit * vh * .1 });
+  // the scene fades as it zooms, so ch6 never stacks on top of it
+  pose(sc5, { s: 1 + exit * .9, y: -exit * vh * .1, o: 1 - exit });
 
   const bob = reduced ? 0 : Math.sin(time / 900) * 5;
 
@@ -648,7 +649,8 @@ function ch6(t, time) {
 
   inOut(el.cap6, t, .01, .05, .95, .99, 26);
   // on the phone the browser sits mid-frame, so it may not pre-roll into ch5
-  sc6.style.opacity = (MOB ? E.o(seg(t, .001, .02)) : 1) * (1 - E.i(seg(t, .97, 1)));
+  // every viewport: the case stage fades in only once ch5 has fully left
+  sc6.style.opacity = E.o(seg(t, .001, .02)) * (1 - E.i(seg(t, .97, 1)));
   sc6.style.transform = `scale(${1 + E.i(seg(t, .95, 1)) * .3})`;
 }
 
