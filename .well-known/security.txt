@@ -1,0 +1,5 @@
+Contact: mailto:hello@mokshify.io
+Expires: 2027-07-17T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://mokshify.io/.well-known/security.txt
+Policy: https://mokshify.io/legal/disclosure/

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAG Explained - Retrieval-Augmented Generation in Production | Mokshify</title>
+<meta name="description" content="The RAG pipeline as we ship it: chunking that decides quality, pgvector in the product database, hybrid retrieval, citations as auditability - and when you should skip RAG entirely.">
+<link rel="canonical" href="https://mokshify.io/library/rag-explained/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:title" content="RAG Explained - Retrieval-Augmented Generation in Production | Mokshify">
+<meta property="og:description" content="The RAG pipeline as we ship it: chunking that decides quality, pgvector in the product database, hybrid retrieval, citations as auditability - and when you should skip RAG entirely.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://mokshify.io/library/rag-explained/">
+<meta property="og:image" content="https://mokshify.io/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F7F2EC">
+<link rel="icon" type="image/png" href="/assets/icon-192.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<link rel="alternate" type="application/rss+xml" title="Mokshify Engineering" href="/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/pages.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"BreadcrumbList","itemListElement":[
+ {"@type":"ListItem","position":1,"name":"Home","item":"https://mokshify.io/"},
+ {"@type":"ListItem","position":2,"name":"Library","item":"https://mokshify.io/library/"},
+ {"@type":"ListItem","position":3,"name":"RAG, Explained Like We Build It","item":"https://mokshify.io/library/rag-explained/"}]},
+{"@type":"TechArticle","author":{"@id":"https://mokshify.io/#org"},"publisher":{"@id":"https://mokshify.io/#org"},"datePublished":"2026-07-17","dateModified":"2026-07-17","@id":"https://mokshify.io/library/rag-explained/#article","headline":"RAG, Explained Like We Build It","url":"https://mokshify.io/library/rag-explained/","description":"The RAG pipeline as we ship it: chunking that decides quality, pgvector in the product database, hybrid retrieval, citations as auditability - and when you should skip RAG entirely.","isPartOf":{"@id":"https://mokshify.io/#website"},"inLanguage":"en-IN","mainEntityOfPage":"https://mokshify.io/library/rag-explained/"}]}
+</script>
+</head>
+<body><nav class="pnav" aria-label="Site">
+  <a class="pnav-brand" href="/"><img src="/assets/icon-192.png" alt="" width="32" height="32">Mokshify</a>
+  <div class="pnav-links">
+    <div class="grp"><a href="/services/" aria-haspopup="true">Services</a>
+      <div class="panel">
+        <a href="/services/ai-product-development/">AI Product Development</a>
+        <a href="/services/ai-transformation/">AI Transformation</a>
+        <a href="/services/custom-software-development/">Custom Software</a>
+        <a href="/services/saas-development/">SaaS Development</a>
+        <a href="/services/web-application-development/">Web Applications</a>
+        <a href="/services/mobile-app-development/">Mobile Apps</a>
+        <a href="/services/cloud-engineering/">Cloud &amp; DevOps</a>
+        <a href="/services/api-development/">API Development</a>
+        <a href="/services/product-design/">Product Design</a>
+        <a href="/services/legacy-modernization/">Legacy Modernization</a>
+        <a class="all" href="/services/">View all services</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/industries/" aria-haspopup="true">Solutions</a>
+      <div class="panel">
+        <a href="/industries/healthcare/">Healthcare</a>
+        <a href="/industries/fintech/">FinTech</a>
+        <a href="/industries/real-estate/">Real Estate</a>
+        <a href="/industries/education/">Education</a>
+        <a class="all" href="/industries/">All industries</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/engineering/" aria-haspopup="true">Engineering</a>
+      <div class="panel">
+        <a href="/library/">Architecture Library</a>
+        <a href="/journal/">Engineering Journal</a>
+        <a href="/decisions/">Decision Records</a>
+        <a href="/benchmarks/">Benchmarks</a>
+        <a href="/architecture/">Architecture Gallery</a>
+        <a href="/stack/">Technology Stack</a>
+        <i>Tools</i>
+        <a href="/estimate/">Project Estimator</a>
+        <a href="/tools/database-selector/">Database Selector</a>
+        <a href="/tools/json-formatter/">JSON Formatter</a>
+        <a class="all" href="/engineering/">Engineering home</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/work/" aria-haspopup="true">Work</a>
+      <div class="panel">
+        <a href="/work/fincalix/">FinCalix</a>
+        <a href="/work/medico-diagnostics/">Medico Diagnostics</a>
+        <a href="/work/terravion-properties/">Terravion Properties</a>
+        <a href="/work/skillforcehub/">SkillForceHub</a>
+        <a href="/work/mokshify-website/">This Website</a>
+        <i>How we deliver</i>
+        <a href="/process/">Process</a>
+        <a href="/enterprise/">Enterprise Readiness</a>
+        <a class="all" href="/work/">All case studies</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/about/" aria-haspopup="true">Company</a>
+      <div class="panel">
+        <a href="/about/">About</a>
+        <a href="/careers/">Careers</a>
+        <a href="/brand/">Brand Assets</a>
+        <a href="/contact/">Contact</a>
+        <i>Resources</i>
+        <a href="/resources/">Guides &amp; Checklists</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/search/">Search</a>
+      </div>
+    </div>
+    <a class="cta" href="/consult/">Book a strategy call</a>
+  </div>
+</nav><main class="pwrap">
+  <p class="pkicker"><a href="/library/">Library</a> &middot; AI</p>
+  <h1>RAG, explained like we <em>build it.</em></h1>
+  <p class="pmeta">By <strong>Mokshify Engineering</strong> &middot; Reviewed by the team &middot; Updated 17 Jul 2026 &middot; 7 min read</p>
+  <h2>The problem</h2>
+  <p>A language model knows what it was trained on - not your price list, your policies, or what changed last Tuesday. Ask it anyway and it answers confidently from nothing. Retrieval-Augmented Generation fixes the knowledge problem without retraining: fetch the relevant truth first, then have the model answer <em>from</em> it, citing where it looked.</p>
+  <h2>The pipeline, honestly</h2>
+  <p>The <a href="/architecture/">diagrammed version</a> lives in our gallery; here is what each stage actually decides:</p>
+  <ol>
+    <li><strong>Ingestion &amp; chunking.</strong> Documents split into retrievable pieces. The unglamorous truth: chunking strategy (size, overlap, respecting structure like headings and tables) moves answer quality more than model choice. Bad chunks cannot be prompted away.</li>
+    <li><strong>Embedding &amp; storage.</strong> Chunks become vectors. We store them in <strong>pgvector inside the product&rsquo;s existing PostgreSQL</strong> (<a href="/decisions/#postgresql">ADR-003</a>) - one database to operate, transactions with your product data, and no second store until scale genuinely demands one.</li>
+    <li><strong>Retrieval.</strong> The query finds its passages. Pure vector similarity misses exact identifiers (invoice numbers, drug names, statute references) - hybrid retrieval (vector + keyword) is our default for anything operational, with metadata filters (tenant, date, document type) applied <em>before</em> similarity, which is also where <a href="/library/multi-tenant-saas/">tenancy isolation</a> gets enforced.</li>
+    <li><strong>Synthesis with citations.</strong> The model answers from the retrieved passages, each claim traceable to its source. Citations are not decoration - they are the difference between an answer a professional can act on and one they must re-verify.</li>
+    <li><strong>Evaluation.</strong> The stage that separates products from demos - big enough to be <a href="/library/llm-evaluation/">its own article</a>.</li>
+  </ol>
+  <h2>Advantages &amp; disadvantages</h2>
+  <p><strong>Advantages:</strong> current knowledge without retraining; answers grounded in your documents; per-tenant knowledge isolation; auditability via citations. <strong>Disadvantages:</strong> retrieval quality caps answer quality (garbage retrieved, garbage generated); latency adds up across stages - <a href="/library/background-jobs/">async patterns</a> matter; the index must be kept in sync with source documents, which is an ordinary data-engineering job people forget to budget.</p>
+  <h2>When you do not need RAG</h2>
+  <p>If answers rely on general knowledge, or the whole corpus fits comfortably in a context window and rarely changes - skip the pipeline and pass the documents directly. RAG earns its complexity at real corpus scale, real change rates, or real access-control needs. We say this in week-one <a href="/services/ai-product-development/">feasibility spikes</a>, sometimes to our own commercial disadvantage.</p>
+  <h2>Technology selection</h2>
+  <p>Python/FastAPI close to the models (<a href="/decisions/#fastapi">ADR-002</a>), pgvector for storage, provider-agnostic model access (<a href="/decisions/#ai">ADR-008</a>), Redis for caching frequent queries - the same boring platform, deliberately.</p>
+  <hr>
+  <p><strong>Related:</strong> <a href="/library/llm-evaluation/">LLM evaluation</a> &middot; <a href="/services/ai-product-development/">AI Product Development</a> &middot; <a href="/services/ai-transformation/">AI Transformation</a> &middot; <a href="/guides/ai-readiness/">AI readiness guide</a></p>
+</main><footer class="pfoot">
+  <div><i>Services</i>
+    <a href="/services/ai-product-development/">AI Product Development</a>
+    <a href="/services/ai-transformation/">AI Transformation</a>
+    <a href="/services/custom-software-development/">Custom Software</a>
+    <a href="/services/saas-development/">SaaS Development</a>
+    <a href="/services/mobile-app-development/">Mobile Apps</a>
+    <a href="/services/cloud-engineering/">Cloud &amp; DevOps</a>
+    <a href="/services/">All services</a></div>
+  <div><i>Industries</i>
+    <a href="/industries/healthcare/">Healthcare</a>
+    <a href="/industries/fintech/">FinTech</a>
+    <a href="/industries/real-estate/">Real Estate</a>
+    <a href="/industries/education/">Education</a>
+    <a href="/work/">Case studies</a></div>
+  <div><i>Engineering</i>
+    <a href="/engineering/">Engineering home</a>
+    <a href="/library/">Architecture library</a>
+    <a href="/journal/">Journal</a>
+    <a href="/decisions/">Decision records</a>
+    <a href="/benchmarks/">Benchmarks</a>
+    <a href="/architecture/">Diagrams</a>
+    <a href="/stack/">Stack</a>
+    <a href="/resources/">Guides</a>
+    <a href="/estimate/">Estimator</a>
+    <a href="/search/">Search</a></div>
+  <div><i>Company</i>
+    <a href="/about/">About</a>
+    <a href="/process/">Process</a>
+    <a href="/enterprise/">Enterprise readiness</a>
+    <a href="/security/">Security</a>
+    <a href="/careers/">Careers</a>
+    <a href="/brand/">Brand</a>
+    <a href="/legal/privacy/">Privacy</a>
+    <a href="/legal/terms/">Terms</a>
+    <a href="/legal/accessibility/">Accessibility</a>
+    <a href="/sitemap/">All pages</a></div>
+  <div><i>Connect</i>
+    <a href="/consult/">Book a strategy call</a>
+    <a href="mailto:hello@mokshify.io">hello@mokshify.io</a>
+    <a href="tel:+919391248520">+91 93912 48520</a>
+    <a href="https://wa.me/919391248520" rel="noopener">WhatsApp</a>
+    <a href="/feed.xml">RSS feed</a>
+    <p>Mokshify &middot; Hyderabad, Telangana, India<br>&copy; 2026 Mokshify</p></div>
+</footer>
+<script src="/js/analytics.js" defer></script>
+</body>
+</html>

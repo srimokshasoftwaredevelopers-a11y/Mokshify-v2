@@ -1,0 +1,15 @@
+# ── 4K frame masters (~2.5 GB) — local source only, never pushed.
+# The site streams frames/1/web/*.webp (~55 MB), which IS committed.
+# Regenerate web/ from the masters with: npm run optimize
+frames/*/frame_*.png
+
+# dependencies
+node_modules/
+
+# local experiments / scratch
+assets-test/
+shots/
+
+# OS noise
+Thumbs.db
+.DS_Store

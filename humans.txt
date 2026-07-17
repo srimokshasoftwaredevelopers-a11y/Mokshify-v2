@@ -1,0 +1,10 @@
+/* TEAM */
+Studio: Mokshify
+Location: Hyderabad, India
+Contact: hello@mokshify.io
+
+/* SITE */
+Standards: HTML5, CSS3, ES2022, Canvas 2D
+Doctrine: a film you scroll — no autoplay, no frameworks
+Typography: Playfair Display, Inter, IBM Plex Mono
+Palette: warm architectural white #F7F2EC, deep maroon #5A1423, rose gold #C9917B

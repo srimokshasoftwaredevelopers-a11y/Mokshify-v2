@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLM Evaluation - Tests for Non-Deterministic Software | Mokshify</title>
+<meta name="description" content="How to test AI features like software: real-case test sets, fact-level assertions, defensible scoring, and eval gates in CI - with per-use-case metrics for RAG, extraction and agents.">
+<link rel="canonical" href="https://mokshify.io/library/llm-evaluation/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:title" content="LLM Evaluation - Tests for Non-Deterministic Software | Mokshify">
+<meta property="og:description" content="How to test AI features like software: real-case test sets, fact-level assertions, defensible scoring, and eval gates in CI - with per-use-case metrics for RAG, extraction and agents.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://mokshify.io/library/llm-evaluation/">
+<meta property="og:image" content="https://mokshify.io/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F7F2EC">
+<link rel="icon" type="image/png" href="/assets/icon-192.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<link rel="alternate" type="application/rss+xml" title="Mokshify Engineering" href="/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/pages.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"BreadcrumbList","itemListElement":[
+ {"@type":"ListItem","position":1,"name":"Home","item":"https://mokshify.io/"},
+ {"@type":"ListItem","position":2,"name":"Library","item":"https://mokshify.io/library/"},
+ {"@type":"ListItem","position":3,"name":"LLM Evaluation","item":"https://mokshify.io/library/llm-evaluation/"}]},
+{"@type":"TechArticle","author":{"@id":"https://mokshify.io/#org"},"publisher":{"@id":"https://mokshify.io/#org"},"datePublished":"2026-07-17","dateModified":"2026-07-17","@id":"https://mokshify.io/library/llm-evaluation/#article","headline":"LLM Evaluation","url":"https://mokshify.io/library/llm-evaluation/","description":"How to test AI features like software: real-case test sets, fact-level assertions, defensible scoring, and eval gates in CI - with per-use-case metrics for RAG, extraction and agents.","isPartOf":{"@id":"https://mokshify.io/#website"},"inLanguage":"en-IN","mainEntityOfPage":"https://mokshify.io/library/llm-evaluation/"}]}
+</script>
+</head>
+<body><nav class="pnav" aria-label="Site">
+  <a class="pnav-brand" href="/"><img src="/assets/icon-192.png" alt="" width="32" height="32">Mokshify</a>
+  <div class="pnav-links">
+    <div class="grp"><a href="/services/" aria-haspopup="true">Services</a>
+      <div class="panel">
+        <a href="/services/ai-product-development/">AI Product Development</a>
+        <a href="/services/ai-transformation/">AI Transformation</a>
+        <a href="/services/custom-software-development/">Custom Software</a>
+        <a href="/services/saas-development/">SaaS Development</a>
+        <a href="/services/web-application-development/">Web Applications</a>
+        <a href="/services/mobile-app-development/">Mobile Apps</a>
+        <a href="/services/cloud-engineering/">Cloud &amp; DevOps</a>
+        <a href="/services/api-development/">API Development</a>
+        <a href="/services/product-design/">Product Design</a>
+        <a href="/services/legacy-modernization/">Legacy Modernization</a>
+        <a class="all" href="/services/">View all services</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/industries/" aria-haspopup="true">Solutions</a>
+      <div class="panel">
+        <a href="/industries/healthcare/">Healthcare</a>
+        <a href="/industries/fintech/">FinTech</a>
+        <a href="/industries/real-estate/">Real Estate</a>
+        <a href="/industries/education/">Education</a>
+        <a class="all" href="/industries/">All industries</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/engineering/" aria-haspopup="true">Engineering</a>
+      <div class="panel">
+        <a href="/library/">Architecture Library</a>
+        <a href="/journal/">Engineering Journal</a>
+        <a href="/decisions/">Decision Records</a>
+        <a href="/benchmarks/">Benchmarks</a>
+        <a href="/architecture/">Architecture Gallery</a>
+        <a href="/stack/">Technology Stack</a>
+        <i>Tools</i>
+        <a href="/estimate/">Project Estimator</a>
+        <a href="/tools/database-selector/">Database Selector</a>
+        <a href="/tools/json-formatter/">JSON Formatter</a>
+        <a class="all" href="/engineering/">Engineering home</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/work/" aria-haspopup="true">Work</a>
+      <div class="panel">
+        <a href="/work/fincalix/">FinCalix</a>
+        <a href="/work/medico-diagnostics/">Medico Diagnostics</a>
+        <a href="/work/terravion-properties/">Terravion Properties</a>
+        <a href="/work/skillforcehub/">SkillForceHub</a>
+        <a href="/work/mokshify-website/">This Website</a>
+        <i>How we deliver</i>
+        <a href="/process/">Process</a>
+        <a href="/enterprise/">Enterprise Readiness</a>
+        <a class="all" href="/work/">All case studies</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/about/" aria-haspopup="true">Company</a>
+      <div class="panel">
+        <a href="/about/">About</a>
+        <a href="/careers/">Careers</a>
+        <a href="/brand/">Brand Assets</a>
+        <a href="/contact/">Contact</a>
+        <i>Resources</i>
+        <a href="/resources/">Guides &amp; Checklists</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/search/">Search</a>
+      </div>
+    </div>
+    <a class="cta" href="/consult/">Book a strategy call</a>
+  </div>
+</nav><main class="pwrap">
+  <p class="pkicker"><a href="/library/">Library</a> &middot; AI</p>
+  <h1>LLM evaluation: tests for the <em>non-deterministic.</em></h1>
+  <p class="pmeta">By <strong>Mokshify Engineering</strong> &middot; Reviewed by the team &middot; Updated 17 Jul 2026 &middot; 6 min read</p>
+  <h2>The problem</h2>
+  <p>Code has tests; AI features usually have vibes. A prompt change that improves one answer silently ruins twelve others, a model upgrade shifts behaviour overnight, and nobody can say whether the feature got better or worse - because nobody defined what better means. Evaluation is how AI features earn the release discipline the rest of the codebase already has.</p>
+  <h2>The eval suite, concretely</h2>
+  <ol>
+    <li><strong>A test set of real cases.</strong> Ten to fifty genuine inputs from the actual workflow - real documents, real questions, including the awkward ones that made someone escalate. Synthetic test cases test your imagination, not your product.</li>
+    <li><strong>Expected outcomes, not expected strings.</strong> For extraction: the correct fields. For answers: the facts that must appear, the claims that must not, the citation that must ground it. Exact-match assertions break on phrasing; fact-level checks survive it.</li>
+    <li><strong>Scoring you can defend.</strong> Deterministic checks first (schema validity, required fields, forbidden content, citation presence) - they are free and unarguable. Model-graded scoring on top for fluency and correctness, calibrated against a sample of human judgments so the grader itself is validated, not just trusted.</li>
+    <li><strong>A gate, not a dashboard.</strong> Evals run in CI like unit tests; a release that regresses the score does not ship. This is the same principle as <a href="/quality/">the rest of our QA</a> - quality is gated, not hoped.</li>
+  </ol>
+  <h2>What to measure per use case</h2>
+  <ul>
+    <li><strong>RAG:</strong> retrieval hit rate (did the right passage arrive?) separately from answer faithfulness (did the model stick to it?) - conflating them hides which stage failed. See <a href="/library/rag-explained/">the RAG pipeline</a>.</li>
+    <li><strong>Extraction:</strong> per-field precision and recall; a 98% overall score can hide a 60% failure on the one field finance cares about.</li>
+    <li><strong>Agents:</strong> task completion, unnecessary-action count, and refusal correctness - an agent that never refuses is more dangerous than one that sometimes fails.</li>
+  </ul>
+  <h2>Advantages &amp; disadvantages</h2>
+  <p><strong>Advantages:</strong> prompt and model changes become safe, comparable engineering decisions; provider switches (<a href="/decisions/#ai">ADR-008</a>) become measurable; drift gets caught by the suite, not by customers. <strong>Disadvantages:</strong> building the first test set takes real domain time - it is the honest cost of AI in production; model-graded scores need periodic human recalibration; evals measure what you encoded, so unencoded failure modes still need <a href="/quality/">human QA passes</a>.</p>
+  <h2>Technology selection</h2>
+  <p>Plain pytest-style harnesses in the product repo - eval cases are versioned fixtures, scores are CI artifacts, and the whole thing runs in <a href="/devops/">the same pipeline</a> as everything else. No exotic eval platform until scale demands one; the discipline matters more than the tooling.</p>
+  <hr>
+  <p><strong>Related:</strong> <a href="/library/rag-explained/">RAG explained</a> &middot; <a href="/services/ai-product-development/">AI Product Development</a> &middot; <a href="/quality/">Quality assurance</a> &middot; <a href="/guides/ai-readiness/">AI readiness</a></p>
+</main><footer class="pfoot">
+  <div><i>Services</i>
+    <a href="/services/ai-product-development/">AI Product Development</a>
+    <a href="/services/ai-transformation/">AI Transformation</a>
+    <a href="/services/custom-software-development/">Custom Software</a>
+    <a href="/services/saas-development/">SaaS Development</a>
+    <a href="/services/mobile-app-development/">Mobile Apps</a>
+    <a href="/services/cloud-engineering/">Cloud &amp; DevOps</a>
+    <a href="/services/">All services</a></div>
+  <div><i>Industries</i>
+    <a href="/industries/healthcare/">Healthcare</a>
+    <a href="/industries/fintech/">FinTech</a>
+    <a href="/industries/real-estate/">Real Estate</a>
+    <a href="/industries/education/">Education</a>
+    <a href="/work/">Case studies</a></div>
+  <div><i>Engineering</i>
+    <a href="/engineering/">Engineering home</a>
+    <a href="/library/">Architecture library</a>
+    <a href="/journal/">Journal</a>
+    <a href="/decisions/">Decision records</a>
+    <a href="/benchmarks/">Benchmarks</a>
+    <a href="/architecture/">Diagrams</a>
+    <a href="/stack/">Stack</a>
+    <a href="/resources/">Guides</a>
+    <a href="/estimate/">Estimator</a>
+    <a href="/search/">Search</a></div>
+  <div><i>Company</i>
+    <a href="/about/">About</a>
+    <a href="/process/">Process</a>
+    <a href="/enterprise/">Enterprise readiness</a>
+    <a href="/security/">Security</a>
+    <a href="/careers/">Careers</a>
+    <a href="/brand/">Brand</a>
+    <a href="/legal/privacy/">Privacy</a>
+    <a href="/legal/terms/">Terms</a>
+    <a href="/legal/accessibility/">Accessibility</a>
+    <a href="/sitemap/">All pages</a></div>
+  <div><i>Connect</i>
+    <a href="/consult/">Book a strategy call</a>
+    <a href="mailto:hello@mokshify.io">hello@mokshify.io</a>
+    <a href="tel:+919391248520">+91 93912 48520</a>
+    <a href="https://wa.me/919391248520" rel="noopener">WhatsApp</a>
+    <a href="/feed.xml">RSS feed</a>
+    <p>Mokshify &middot; Hyderabad, Telangana, India<br>&copy; 2026 Mokshify</p></div>
+</footer>
+<script src="/js/analytics.js" defer></script>
+</body>
+</html>

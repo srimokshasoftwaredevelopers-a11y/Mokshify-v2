@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(git -C d:\\\\Mokshify log --oneline -5)",
+      "PowerShell(git -C d:\\\\Mokshify branch -a)",
+      "PowerShell(Get-ChildItem d:\\\\Mokshify\\\\scripts; Get-ChildItem d:\\\\Mokshify\\\\frames | ForEach-Object { \"$\\($_.Name\\): $\\(\\(Get-ChildItem $_.FullName\\).Count\\) files\" }; Get-ChildItem -Force d:\\\\Mokshify\\\\.git)",
+      "PowerShell($edge = \"C:\\\\Program Files \\(x86\\)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\"; if \\(-not \\(Test-Path $edge\\)\\) { $edge = \"C:\\\\Program Files\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\" }; Test-Path $edge; $edge)",
+      "Read(//c/Users/venki/AppData/Local/Temp/claude/d--Mokshify/118da8d9-74dd-4f30-9b82-bc21dc7ff908/scratchpad/**)",
+      "PowerShell(python --version 2>$null)",
+      "PowerShell(node --version 2>$null)",
+      "PowerShell(python -m http.server 8123 --directory d:\\\\Mokshify)",
+      "PowerShell(\\(Invoke-WebRequest -UseBasicParsing \"http://localhost:8123/js/main.js\"\\).Content -match \"frozen\"; $out = \"C:\\\\Users\\\\venki\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--Mokshify\\\\118da8d9-74dd-4f30-9b82-bc21dc7ff908\\\\scratchpad\"; Remove-Item \\(Join-Path $out \"edge-profile\"\\) -Recurse -Force -ErrorAction SilentlyContinue; \"profile cleared\")",
+      "PowerShell($edge = \"C:\\\\Program Files \\(x86\\)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\"; $out = \"C:\\\\Users\\\\venki\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--Mokshify\\\\118da8d9-74dd-4f30-9b82-bc21dc7ff908\\\\scratchpad\"; $udd = Join-Path $out \"ep-dom\"; $dom = Join-Path $out \"dom.html\"; $proc = Start-Process -FilePath $edge -ArgumentList @\\(\"--headless=new\",\"--disable-gpu\",\"--no-first-run\",\"--user-data-dir=`\"$udd`\"\",\"--window-size=1600,900\",\"--virtual-time-budget=9000\",\"--dump-dom\",\"http://localhost:8123/index.html?f=0.44\"\\) -PassThru -Wait -RedirectStandardOutput $dom; Remove-Item $udd -Recurse -Force -ErrorAction SilentlyContinue; Select-String -Path $dom -Pattern 'class=\"pod ' | ForEach-Object { $_.Line.Trim\\(\\).Substring\\(0, [Math]::Min\\(220, $_.Line.Trim\\(\\).Length\\)\\) })"
+    ]
+  }
+}

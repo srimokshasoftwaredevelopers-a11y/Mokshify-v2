@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevOps Practices | Mokshify</title>
+<meta name="description" content="Mokshify's DevOps: trunk-based git flow, CI/CD with AI review, Terraform infrastructure as code, Docker and Kubernetes, staged and blue-green deployments, monitoring, logging and one-command rollback.">
+<link rel="canonical" href="https://mokshify.io/devops/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:title" content="DevOps Practices | Mokshify">
+<meta property="og:description" content="Mokshify's DevOps: trunk-based git flow, CI/CD with AI review, Terraform infrastructure as code, Docker and Kubernetes, staged and blue-green deployments, monitoring, logging and one-command rollback.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mokshify.io/devops/">
+<meta property="og:image" content="https://mokshify.io/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F7F2EC">
+<link rel="icon" type="image/png" href="/assets/icon-192.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/pages.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"BreadcrumbList","itemListElement":[
+ {"@type":"ListItem","position":1,"name":"Home","item":"https://mokshify.io/"},
+ {"@type":"ListItem","position":2,"name":"DevOps Practices","item":"https://mokshify.io/devops/"}]},
+{"@type":"WebPage","@id":"https://mokshify.io/devops/#page","url":"https://mokshify.io/devops/","name":"DevOps Practices","description":"Mokshify's DevOps: trunk-based git flow, CI/CD with AI review, Terraform infrastructure as code, Docker and Kubernetes, staged and blue-green deployments, monitoring, logging and one-command rollback.","isPartOf":{"@id":"https://mokshify.io/#website"},"about":{"@id":"https://mokshify.io/#org"},"inLanguage":"en-IN"}]}
+</script>
+</head>
+<body><nav class="pnav" aria-label="Site">
+  <a class="pnav-brand" href="/"><img src="/assets/icon-192.png" alt="" width="32" height="32">Mokshify</a>
+  <div class="pnav-links">
+    <div class="grp"><a href="/services/" aria-haspopup="true">Services</a>
+      <div class="panel">
+        <a href="/services/ai-product-development/">AI Product Development</a>
+        <a href="/services/ai-transformation/">AI Transformation</a>
+        <a href="/services/custom-software-development/">Custom Software</a>
+        <a href="/services/saas-development/">SaaS Development</a>
+        <a href="/services/web-application-development/">Web Applications</a>
+        <a href="/services/mobile-app-development/">Mobile Apps</a>
+        <a href="/services/cloud-engineering/">Cloud &amp; DevOps</a>
+        <a href="/services/api-development/">API Development</a>
+        <a href="/services/product-design/">Product Design</a>
+        <a href="/services/legacy-modernization/">Legacy Modernization</a>
+        <a class="all" href="/services/">View all services</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/industries/" aria-haspopup="true">Solutions</a>
+      <div class="panel">
+        <a href="/industries/healthcare/">Healthcare</a>
+        <a href="/industries/fintech/">FinTech</a>
+        <a href="/industries/real-estate/">Real Estate</a>
+        <a href="/industries/education/">Education</a>
+        <a class="all" href="/industries/">All industries</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/engineering/" aria-haspopup="true">Engineering</a>
+      <div class="panel">
+        <a href="/library/">Architecture Library</a>
+        <a href="/journal/">Engineering Journal</a>
+        <a href="/decisions/">Decision Records</a>
+        <a href="/benchmarks/">Benchmarks</a>
+        <a href="/architecture/">Architecture Gallery</a>
+        <a href="/stack/">Technology Stack</a>
+        <i>Tools</i>
+        <a href="/estimate/">Project Estimator</a>
+        <a href="/tools/database-selector/">Database Selector</a>
+        <a href="/tools/json-formatter/">JSON Formatter</a>
+        <a class="all" href="/engineering/">Engineering home</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/work/" aria-haspopup="true">Work</a>
+      <div class="panel">
+        <a href="/work/fincalix/">FinCalix</a>
+        <a href="/work/medico-diagnostics/">Medico Diagnostics</a>
+        <a href="/work/terravion-properties/">Terravion Properties</a>
+        <a href="/work/skillforcehub/">SkillForceHub</a>
+        <a href="/work/mokshify-website/">This Website</a>
+        <i>How we deliver</i>
+        <a href="/process/">Process</a>
+        <a href="/enterprise/">Enterprise Readiness</a>
+        <a class="all" href="/work/">All case studies</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/about/" aria-haspopup="true">Company</a>
+      <div class="panel">
+        <a href="/about/">About</a>
+        <a href="/careers/">Careers</a>
+        <a href="/brand/">Brand Assets</a>
+        <a href="/contact/">Contact</a>
+        <i>Resources</i>
+        <a href="/resources/">Guides &amp; Checklists</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/search/">Search</a>
+      </div>
+    </div>
+    <a class="cta" href="/consult/">Book a strategy call</a>
+  </div>
+</nav><main class="pwrap">
+  <p class="pkicker">Trust &middot; DevOps</p>
+  <h1>Releases without <em>ceremony or fear.</em></h1>
+  <p class="plede">Deployment is the moment most agencies get quiet. Ours is documented, drawn and demonstrated - the same pipeline runs this website, our tools and every client product.</p>
+
+  <h2>The flow</h2>
+  <ul>
+    <li><strong>Git flow.</strong> Trunk-based development, short-lived branches, small merges. Main is always releasable; anything that lives longer than a few days gets questioned in review.</li>
+    <li><strong>CI/CD.</strong> GitHub Actions runs tests, static checks and the AI review pass on every merge, then ships through staged rollouts with health checks. The full sequence is diagrammed on <a href="/architecture/">the architecture page</a>.</li>
+    <li><strong>Infrastructure as code.</strong> Terraform declares every environment - reviewable, reproducible, destroyable. Staging is production-parity by construction, not by folklore.</li>
+    <li><strong>Containers.</strong> Docker for every workload; Kubernetes when service count and scaling genuinely justify it - and we will tell you when it does not.</li>
+  </ul>
+
+  <h2>Release strategies</h2>
+  <ul>
+    <li><strong>Staged (canary-style) rollouts</strong> are our default: a release reaches a slice of traffic behind health checks before it reaches everyone, with automatic halt on degradation.</li>
+    <li><strong>Blue-green deployments</strong> where the domain demands an instant, atomic switch - two identical environments, one flip, immediate revert. Chosen per product, not per fashion.</li>
+    <li><strong>Rollback in one command</strong>, always - and reversible-by-default database migrations so the escape hatch is real.</li>
+  </ul>
+
+  <h2>Observability</h2>
+  <p><strong>Monitoring</strong>: uptime, latency and error-rate dashboards per service, live before launch. <strong>Logging</strong>: structured, centralised, queryable - and scrubbed of secrets by policy. <strong>Alerting</strong>: thresholds that page a human who can act. This is how 99.98% uptime is a measurement, not a slogan.</p>
+
+  <section class="pcta">
+    <h2>Want your pipeline to look like this?</h2>
+    <p>We set this up inside client teams too - audit, stabilise, automate. Ask on the call.</p>
+    <div class="row">
+      <a class="btn" href="/consult/">Book a strategy call</a>
+      <a class="btn ghost" href="https://wa.me/919391248520" rel="noopener">WhatsApp us</a>
+    </div>
+  </section>
+  <hr>
+  <p><strong>Related:</strong> <a href="/services/cloud-engineering/">Cloud Engineering service</a> &middot; <a href="/architecture/">Architecture diagrams</a> &middot; <a href="/quality/">Quality assurance</a> &middot; <a href="/enterprise/">Enterprise readiness</a></p>
+</main><footer class="pfoot">
+  <div><i>Services</i>
+    <a href="/services/ai-product-development/">AI Product Development</a>
+    <a href="/services/ai-transformation/">AI Transformation</a>
+    <a href="/services/custom-software-development/">Custom Software</a>
+    <a href="/services/saas-development/">SaaS Development</a>
+    <a href="/services/mobile-app-development/">Mobile Apps</a>
+    <a href="/services/cloud-engineering/">Cloud &amp; DevOps</a>
+    <a href="/services/">All services</a></div>
+  <div><i>Industries</i>
+    <a href="/industries/healthcare/">Healthcare</a>
+    <a href="/industries/fintech/">FinTech</a>
+    <a href="/industries/real-estate/">Real Estate</a>
+    <a href="/industries/education/">Education</a>
+    <a href="/work/">Case studies</a></div>
+  <div><i>Engineering</i>
+    <a href="/engineering/">Engineering home</a>
+    <a href="/library/">Architecture library</a>
+    <a href="/journal/">Journal</a>
+    <a href="/decisions/">Decision records</a>
+    <a href="/benchmarks/">Benchmarks</a>
+    <a href="/architecture/">Diagrams</a>
+    <a href="/stack/">Stack</a>
+    <a href="/resources/">Guides</a>
+    <a href="/estimate/">Estimator</a>
+    <a href="/search/">Search</a></div>
+  <div><i>Company</i>
+    <a href="/about/">About</a>
+    <a href="/process/">Process</a>
+    <a href="/enterprise/">Enterprise readiness</a>
+    <a href="/security/">Security</a>
+    <a href="/careers/">Careers</a>
+    <a href="/brand/">Brand</a>
+    <a href="/legal/privacy/">Privacy</a>
+    <a href="/legal/terms/">Terms</a>
+    <a href="/legal/accessibility/">Accessibility</a>
+    <a href="/sitemap/">All pages</a></div>
+  <div><i>Connect</i>
+    <a href="/consult/">Book a strategy call</a>
+    <a href="mailto:hello@mokshify.io">hello@mokshify.io</a>
+    <a href="tel:+919391248520">+91 93912 48520</a>
+    <a href="https://wa.me/919391248520" rel="noopener">WhatsApp</a>
+    <a href="/feed.xml">RSS feed</a>
+    <p>Mokshify &middot; Hyderabad, Telangana, India<br>&copy; 2026 Mokshify</p></div>
+</footer>
+<script src="/js/analytics.js" defer></script>
+</body>
+</html>

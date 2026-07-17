@@ -1,0 +1,22 @@
+{
+  "name": "mokshify",
+  "version": "1.0.0",
+  "description": "Mokshify — a film you scroll. Gemini Flow frame cinema + scroll-camera site.",
+  "private": true,
+  "scripts": {
+    "build": "esbuild src/index.ts --bundle --minify --format=iife --target=es2020 --outfile=js/cinema.js",
+    "optimize": "node scripts/optimize-frames.mjs",
+    "typecheck": "tsc --noEmit",
+    "serve": "python -m http.server 8123"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "gsap": "^3.15.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.1",
+    "puppeteer-core": "^25.3.0",
+    "sharp": "^0.35.3",
+    "typescript": "^7.0.2"
+  }
+}

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Database Selector | Mokshify - Which Database Should You Use?</title>
+<meta name="description" content="An honest interactive database selector: answer three questions, get a recommendation with the reasoning - built on Mokshify's published architecture decision records.">
+<link rel="canonical" href="https://mokshify.io/tools/database-selector/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:title" content="Database Selector | Mokshify">
+<meta property="og:description" content="Three questions, one recommendation, full reasoning. Spoiler: it is usually PostgreSQL.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mokshify.io/tools/database-selector/">
+<meta property="og:image" content="https://mokshify.io/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F7F2EC">
+<link rel="icon" type="image/png" href="/assets/icon-192.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/pages.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"BreadcrumbList","itemListElement":[
+ {"@type":"ListItem","position":1,"name":"Home","item":"https://mokshify.io/"},
+ {"@type":"ListItem","position":2,"name":"Database Selector","item":"https://mokshify.io/tools/database-selector/"}]},
+{"@type":"WebPage","@id":"https://mokshify.io/tools/database-selector/#page","url":"https://mokshify.io/tools/database-selector/","name":"Database Selector","description":"Interactive database recommendation with published reasoning.","isPartOf":{"@id":"https://mokshify.io/#website"},"inLanguage":"en-IN"}]}
+</script>
+</head>
+<body><nav class="pnav" aria-label="Site">
+  <a class="pnav-brand" href="/"><img src="/assets/icon-192.png" alt="" width="32" height="32">Mokshify</a>
+  <div class="pnav-links">
+    <div class="grp"><a href="/services/" aria-haspopup="true">Services</a>
+      <div class="panel">
+        <a href="/services/ai-product-development/">AI Product Development</a>
+        <a href="/services/ai-transformation/">AI Transformation</a>
+        <a href="/services/custom-software-development/">Custom Software</a>
+        <a href="/services/saas-development/">SaaS Development</a>
+        <a href="/services/web-application-development/">Web Applications</a>
+        <a href="/services/mobile-app-development/">Mobile Apps</a>
+        <a href="/services/cloud-engineering/">Cloud &amp; DevOps</a>
+        <a href="/services/api-development/">API Development</a>
+        <a href="/services/product-design/">Product Design</a>
+        <a href="/services/legacy-modernization/">Legacy Modernization</a>
+        <a class="all" href="/services/">View all services</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/industries/" aria-haspopup="true">Solutions</a>
+      <div class="panel">
+        <a href="/industries/healthcare/">Healthcare</a>
+        <a href="/industries/fintech/">FinTech</a>
+        <a href="/industries/real-estate/">Real Estate</a>
+        <a href="/industries/education/">Education</a>
+        <a class="all" href="/industries/">All industries</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/engineering/" aria-haspopup="true">Engineering</a>
+      <div class="panel">
+        <a href="/library/">Architecture Library</a>
+        <a href="/journal/">Engineering Journal</a>
+        <a href="/decisions/">Decision Records</a>
+        <a href="/benchmarks/">Benchmarks</a>
+        <a href="/architecture/">Architecture Gallery</a>
+        <a href="/stack/">Technology Stack</a>
+        <i>Tools</i>
+        <a href="/estimate/">Project Estimator</a>
+        <a href="/tools/database-selector/">Database Selector</a>
+        <a href="/tools/json-formatter/">JSON Formatter</a>
+        <a class="all" href="/engineering/">Engineering home</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/work/" aria-haspopup="true">Work</a>
+      <div class="panel">
+        <a href="/work/fincalix/">FinCalix</a>
+        <a href="/work/medico-diagnostics/">Medico Diagnostics</a>
+        <a href="/work/terravion-properties/">Terravion Properties</a>
+        <a href="/work/skillforcehub/">SkillForceHub</a>
+        <a href="/work/mokshify-website/">This Website</a>
+        <i>How we deliver</i>
+        <a href="/process/">Process</a>
+        <a href="/enterprise/">Enterprise Readiness</a>
+        <a class="all" href="/work/">All case studies</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/about/" aria-haspopup="true">Company</a>
+      <div class="panel">
+        <a href="/about/">About</a>
+        <a href="/careers/">Careers</a>
+        <a href="/brand/">Brand Assets</a>
+        <a href="/contact/">Contact</a>
+        <i>Resources</i>
+        <a href="/resources/">Guides &amp; Checklists</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/search/">Search</a>
+      </div>
+    </div>
+    <a class="cta" href="/consult/">Book a strategy call</a>
+  </div>
+</nav><main class="pwrap">
+  <p class="pkicker">Tools &middot; Database selector</p>
+  <h1>Which database? <em>Probably Postgres.</em></h1>
+  <p class="plede">The industry&rsquo;s worst-kept secret, as an interactive tool. Answer three questions; the recommendation updates with its full reasoning, which mirrors our published <a href="/decisions/">architecture decision records</a>. When your case genuinely isn&rsquo;t Postgres, it says so.</p>
+
+  <form class="est" aria-label="Database selector">
+    <fieldset>
+      <legend>Data shape</legend>
+      <div class="opts">
+        <label><input type="radio" name="shape" value="relational" checked><span>Records &amp; relationships</span></label>
+        <label><input type="radio" name="shape" value="documents"><span>Fluid documents</span></label>
+        <label><input type="radio" name="shape" value="analytics"><span>Analytics-heavy</span></label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Write volume</legend>
+      <div class="opts">
+        <label><input type="radio" name="scale" value="normal" checked><span>Product-normal</span></label>
+        <label><input type="radio" name="scale" value="high"><span>Very high / streaming</span></label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Special needs</legend>
+      <div class="opts">
+        <label><input type="radio" name="extra" value="none" checked><span>None</span></label>
+        <label><input type="radio" name="extra" value="cache"><span>Hot-path caching</span></label>
+        <label><input type="radio" name="extra" value="vector"><span>AI / vector search</span></label>
+      </div>
+    </fieldset>
+    <div class="est-out" aria-live="polite">
+      <h3>Recommendation</h3>
+      <ul class="facts"><li><b id="db-name">PostgreSQL</b><i>our recommendation</i></li></ul>
+      <p id="db-why"></p>
+      <p>Disagree? Good - <a href="mailto:hello@mokshify.io?subject=Database%20argument">argue with us</a>. The best conversations start there.</p>
+    </div>
+  </form>
+
+  <h2>Why a selector this opinionated?</h2>
+  <p>Because database sprawl is one of the quietest project killers: every extra engine is another thing to secure, back up, monitor and staff. Our production systems run on PostgreSQL and Redis (<a href="/decisions/#postgresql">ADR-003</a>, <a href="/decisions/#redis">ADR-004</a>) - the tool encodes the same judgment, including its honest exceptions.</p>
+
+  <hr>
+  <p><strong>Related:</strong> <a href="/estimate/">Project estimator</a> &middot; <a href="/tools/json-formatter/">JSON formatter</a> &middot; <a href="/library/multi-tenant-saas/">Multi-tenant SaaS architecture</a> &middot; <a href="/library/caching-strategy/">Caching strategy</a></p>
+</main><footer class="pfoot">
+  <div><i>Services</i>
+    <a href="/services/ai-product-development/">AI Product Development</a>
+    <a href="/services/ai-transformation/">AI Transformation</a>
+    <a href="/services/custom-software-development/">Custom Software</a>
+    <a href="/services/saas-development/">SaaS Development</a>
+    <a href="/services/mobile-app-development/">Mobile Apps</a>
+    <a href="/services/cloud-engineering/">Cloud &amp; DevOps</a>
+    <a href="/services/">All services</a></div>
+  <div><i>Industries</i>
+    <a href="/industries/healthcare/">Healthcare</a>
+    <a href="/industries/fintech/">FinTech</a>
+    <a href="/industries/real-estate/">Real Estate</a>
+    <a href="/industries/education/">Education</a>
+    <a href="/work/">Case studies</a></div>
+  <div><i>Engineering</i>
+    <a href="/engineering/">Engineering home</a>
+    <a href="/library/">Architecture library</a>
+    <a href="/journal/">Journal</a>
+    <a href="/decisions/">Decision records</a>
+    <a href="/benchmarks/">Benchmarks</a>
+    <a href="/architecture/">Diagrams</a>
+    <a href="/stack/">Stack</a>
+    <a href="/resources/">Guides</a>
+    <a href="/estimate/">Estimator</a>
+    <a href="/search/">Search</a></div>
+  <div><i>Company</i>
+    <a href="/about/">About</a>
+    <a href="/process/">Process</a>
+    <a href="/enterprise/">Enterprise readiness</a>
+    <a href="/security/">Security</a>
+    <a href="/careers/">Careers</a>
+    <a href="/brand/">Brand</a>
+    <a href="/legal/privacy/">Privacy</a>
+    <a href="/legal/terms/">Terms</a>
+    <a href="/legal/accessibility/">Accessibility</a>
+    <a href="/sitemap/">All pages</a></div>
+  <div><i>Connect</i>
+    <a href="/consult/">Book a strategy call</a>
+    <a href="mailto:hello@mokshify.io">hello@mokshify.io</a>
+    <a href="tel:+919391248520">+91 93912 48520</a>
+    <a href="https://wa.me/919391248520" rel="noopener">WhatsApp</a>
+    <a href="/feed.xml">RSS feed</a>
+    <p>Mokshify &middot; Hyderabad, Telangana, India<br>&copy; 2026 Mokshify</p></div>
+</footer>
+<script src="/js/analytics.js" defer></script>
+<script src="/js/dbselect.js" defer></script>
+</body>
+</html>

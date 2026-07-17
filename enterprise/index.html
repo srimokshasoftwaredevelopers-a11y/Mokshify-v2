@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enterprise Readiness | Mokshify</title>
+<meta name="description" content="Mokshify's engineering operations, published: code review, branch strategy, testing, deployment and rollback, monitoring, incident response, documentation, knowledge transfer and post-launch support.">
+<link rel="canonical" href="https://mokshify.io/enterprise/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:title" content="Enterprise Readiness | Mokshify">
+<meta property="og:description" content="Mokshify's engineering operations, published: code review, branch strategy, testing, deployment and rollback, monitoring, incident response, documentation, knowledge transfer and post-launch support.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mokshify.io/enterprise/">
+<meta property="og:image" content="https://mokshify.io/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F7F2EC">
+<link rel="icon" type="image/png" href="/assets/icon-192.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/pages.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"BreadcrumbList","itemListElement":[
+ {"@type":"ListItem","position":1,"name":"Home","item":"https://mokshify.io/"},
+ {"@type":"ListItem","position":2,"name":"Enterprise Readiness","item":"https://mokshify.io/enterprise/"}]},
+{"@type":"WebPage","@id":"https://mokshify.io/enterprise/#page","url":"https://mokshify.io/enterprise/","name":"Enterprise Readiness","description":"Mokshify's engineering operations, published: code review, branch strategy, testing, deployment and rollback, monitoring, incident response, documentation, knowledge transfer and post-launch support.","isPartOf":{"@id":"https://mokshify.io/#website"},"about":{"@id":"https://mokshify.io/#org"},"inLanguage":"en-IN"}]}
+</script>
+</head>
+<body><nav class="pnav" aria-label="Site">
+  <a class="pnav-brand" href="/"><img src="/assets/icon-192.png" alt="" width="32" height="32">Mokshify</a>
+  <div class="pnav-links">
+    <div class="grp"><a href="/services/" aria-haspopup="true">Services</a>
+      <div class="panel">
+        <a href="/services/ai-product-development/">AI Product Development</a>
+        <a href="/services/ai-transformation/">AI Transformation</a>
+        <a href="/services/custom-software-development/">Custom Software</a>
+        <a href="/services/saas-development/">SaaS Development</a>
+        <a href="/services/web-application-development/">Web Applications</a>
+        <a href="/services/mobile-app-development/">Mobile Apps</a>
+        <a href="/services/cloud-engineering/">Cloud &amp; DevOps</a>
+        <a href="/services/api-development/">API Development</a>
+        <a href="/services/product-design/">Product Design</a>
+        <a href="/services/legacy-modernization/">Legacy Modernization</a>
+        <a class="all" href="/services/">View all services</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/industries/" aria-haspopup="true">Solutions</a>
+      <div class="panel">
+        <a href="/industries/healthcare/">Healthcare</a>
+        <a href="/industries/fintech/">FinTech</a>
+        <a href="/industries/real-estate/">Real Estate</a>
+        <a href="/industries/education/">Education</a>
+        <a class="all" href="/industries/">All industries</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/engineering/" aria-haspopup="true">Engineering</a>
+      <div class="panel">
+        <a href="/library/">Architecture Library</a>
+        <a href="/journal/">Engineering Journal</a>
+        <a href="/decisions/">Decision Records</a>
+        <a href="/benchmarks/">Benchmarks</a>
+        <a href="/architecture/">Architecture Gallery</a>
+        <a href="/stack/">Technology Stack</a>
+        <i>Tools</i>
+        <a href="/estimate/">Project Estimator</a>
+        <a href="/tools/database-selector/">Database Selector</a>
+        <a href="/tools/json-formatter/">JSON Formatter</a>
+        <a class="all" href="/engineering/">Engineering home</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/work/" aria-haspopup="true">Work</a>
+      <div class="panel">
+        <a href="/work/fincalix/">FinCalix</a>
+        <a href="/work/medico-diagnostics/">Medico Diagnostics</a>
+        <a href="/work/terravion-properties/">Terravion Properties</a>
+        <a href="/work/skillforcehub/">SkillForceHub</a>
+        <a href="/work/mokshify-website/">This Website</a>
+        <i>How we deliver</i>
+        <a href="/process/">Process</a>
+        <a href="/enterprise/">Enterprise Readiness</a>
+        <a class="all" href="/work/">All case studies</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/about/" aria-haspopup="true">Company</a>
+      <div class="panel">
+        <a href="/about/">About</a>
+        <a href="/careers/">Careers</a>
+        <a href="/brand/">Brand Assets</a>
+        <a href="/contact/">Contact</a>
+        <i>Resources</i>
+        <a href="/resources/">Guides &amp; Checklists</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/search/">Search</a>
+      </div>
+    </div>
+    <a class="cta" href="/consult/">Book a strategy call</a>
+  </div>
+</nav><main class="pwrap">
+  <p class="pkicker">Trust &middot; Enterprise readiness</p>
+  <h1>Built like an <em>enterprise team.</em></h1>
+  <p class="plede">This page is our engineering operations manual, published. It exists so a CTO can audit how we work before the first call - branch strategy to incident response, in plain language.</p>
+
+  <h2>Engineering standards</h2>
+  <ul>
+    <li><strong>Code review, twice.</strong> Every merge gets a human review and an AI review pass. Nothing lands on a main branch unreviewed - including our own founders&rsquo; code.</li>
+    <li><strong>Branch strategy.</strong> Trunk-based with short-lived feature branches. Main is always deployable; long-running branches are treated as a smell, not a workflow.</li>
+    <li><strong>Testing as definition-of-done.</strong> Unit tests where logic lives, integration tests where systems meet, end-to-end coverage of customer-visible flows. Details on the <a href="/quality/">QA page</a>.</li>
+    <li><strong>Documentation that ships.</strong> A README a new engineer can deploy from in under an hour, an architecture doc per system, and a written decision log - so knowledge lives in the repo, not in heads.</li>
+  </ul>
+
+  <h2>Deployment &amp; rollback</h2>
+  <p>Releases go through GitHub Actions: tests, static checks, AI review, then a staged rollout behind health checks. Every release is reversible with one command; database migrations are written to be reversible by default. Full pipeline on the <a href="/devops/">DevOps page</a> and <a href="/architecture/">architecture diagrams</a>.</p>
+
+  <h2>Monitoring &amp; incident response</h2>
+  <ul>
+    <li><strong>Monitoring before users.</strong> Uptime, latency and error dashboards exist before launch; the systems we operate report 99.98% uptime.</li>
+    <li><strong>Alerts that page a human who can act</strong> - not a channel nobody reads.</li>
+    <li><strong>Incidents.</strong> Stabilise first, communicate early, write a blameless post-incident note with the fix and the prevention. Clients see the note, not a silence.</li>
+  </ul>
+
+  <h2>Knowledge transfer &amp; support</h2>
+  <p>From week one, work happens in <strong>your repositories and your cloud accounts</strong> - handoff is a permission change, not a project. After launch: monitoring, dependency updates, bug fixes with severity-based response, performance and cost reviews, and a feature roadmap - through the Dedicated Team model, or a clean transfer to your in-house engineers with pairing sessions until they are confident.</p>
+
+  <h2>How you see progress</h2>
+  <p>No black box, no client portal theatre - working software and written records: a <strong>demo of running software every week</strong>, a staging environment you can open any day, the decision log, and a shared channel with the engineers actually building your product. Invoices and scope live in writing. If a week produced nothing demonstrable, you will hear that from us first.</p>
+
+  <h2>The client journey</h2>
+  <ul class="timeline">
+    <li><b>Idea</b><span>One paragraph from you - whatever shape it is in.</span></li>
+    <li><b>Discovery call</b><span>30 minutes with an engineer; honest feasibility and a first step. <a href="/consult/">How it works</a>.</span></li>
+    <li><b>Proposal</b><span>Written scope, timeline, engagement model and price - no surprises designed in.</span></li>
+    <li><b>Architecture</b><span>The data model, service boundaries and cloud plan, documented before code.</span></li>
+    <li><b>Design</b><span>Workflows before screens; prototypes where the risk lives.</span></li>
+    <li><b>Development</b><span>Weekly demos of working software; tests and dual review on every merge.</span></li>
+    <li><b>Testing</b><span>Release-gating QA across the flows your customers would notice breaking.</span></li>
+    <li><b>Launch</b><span>Staged rollout, health checks, rollback ready - a non-event by design.</span></li>
+    <li><b>Support</b><span>Monitoring, maintenance and a team that still answers. See above.</span></li>
+  </ul>
+
+  <h2>What we will never do</h2>
+  <ul>
+    <li><strong>Never disappear.</strong> 24-hour reply standard, before and after you pay us.</li>
+    <li><strong>Never lock your source code.</strong> Your repos, your cloud, your data - from week one.</li>
+    <li><strong>Never hide documentation.</strong> If it isn&rsquo;t written down where you can read it, it isn&rsquo;t done.</li>
+    <li><strong>Never use fake metrics.</strong> Every number we publish is verifiable - on this site or in a live product.</li>
+    <li><strong>Never outsource without disclosure.</strong> You know who is building your product, always.</li>
+    <li><strong>Never compromise security for a deadline.</strong> The <a href="/security/">security page</a> is the floor, not the aspiration.</li>
+  </ul>
+
+  <section class="pcta">
+    <h2>Audit us properly.</h2>
+    <p>Bring your hardest due-diligence questions to a call - the engineers answer, not a sales script.</p>
+    <div class="row">
+      <a class="btn" href="/consult/">Book a strategy call</a>
+      <a class="btn ghost" href="https://wa.me/919391248520" rel="noopener">WhatsApp us</a>
+    </div>
+  </section>
+  <hr>
+  <p><strong>Related:</strong> <a href="/security/">Security</a> &middot; <a href="/quality/">Quality assurance</a> &middot; <a href="/devops/">DevOps</a> &middot; <a href="/process/">Process</a></p>
+</main><footer class="pfoot">
+  <div><i>Services</i>
+    <a href="/services/ai-product-development/">AI Product Development</a>
+    <a href="/services/ai-transformation/">AI Transformation</a>
+    <a href="/services/custom-software-development/">Custom Software</a>
+    <a href="/services/saas-development/">SaaS Development</a>
+    <a href="/services/mobile-app-development/">Mobile Apps</a>
+    <a href="/services/cloud-engineering/">Cloud &amp; DevOps</a>
+    <a href="/services/">All services</a></div>
+  <div><i>Industries</i>
+    <a href="/industries/healthcare/">Healthcare</a>
+    <a href="/industries/fintech/">FinTech</a>
+    <a href="/industries/real-estate/">Real Estate</a>
+    <a href="/industries/education/">Education</a>
+    <a href="/work/">Case studies</a></div>
+  <div><i>Engineering</i>
+    <a href="/engineering/">Engineering home</a>
+    <a href="/library/">Architecture library</a>
+    <a href="/journal/">Journal</a>
+    <a href="/decisions/">Decision records</a>
+    <a href="/benchmarks/">Benchmarks</a>
+    <a href="/architecture/">Diagrams</a>
+    <a href="/stack/">Stack</a>
+    <a href="/resources/">Guides</a>
+    <a href="/estimate/">Estimator</a>
+    <a href="/search/">Search</a></div>
+  <div><i>Company</i>
+    <a href="/about/">About</a>
+    <a href="/process/">Process</a>
+    <a href="/enterprise/">Enterprise readiness</a>
+    <a href="/security/">Security</a>
+    <a href="/careers/">Careers</a>
+    <a href="/brand/">Brand</a>
+    <a href="/legal/privacy/">Privacy</a>
+    <a href="/legal/terms/">Terms</a>
+    <a href="/legal/accessibility/">Accessibility</a>
+    <a href="/sitemap/">All pages</a></div>
+  <div><i>Connect</i>
+    <a href="/consult/">Book a strategy call</a>
+    <a href="mailto:hello@mokshify.io">hello@mokshify.io</a>
+    <a href="tel:+919391248520">+91 93912 48520</a>
+    <a href="https://wa.me/919391248520" rel="noopener">WhatsApp</a>
+    <a href="/feed.xml">RSS feed</a>
+    <p>Mokshify &middot; Hyderabad, Telangana, India<br>&copy; 2026 Mokshify</p></div>
+</footer>
+<script src="/js/analytics.js" defer></script>
+</body>
+</html>

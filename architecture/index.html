@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Engineering Architecture Gallery | Mokshify</title>
+<meta name="description" content="How Mokshify systems are actually built: production reference architecture, CI/CD with AI review, RAG pipeline, multi-tenant data design and security layers - with diagrams and explanations.">
+<link rel="canonical" href="https://mokshify.io/architecture/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:title" content="Engineering Architecture Gallery | Mokshify">
+<meta property="og:description" content="Reference architectures, CI/CD, RAG, multi-tenancy and security layers - drawn and explained.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mokshify.io/architecture/">
+<meta property="og:image" content="https://mokshify.io/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F7F2EC">
+<link rel="icon" href="/assets/icon-192.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/pages.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"BreadcrumbList","itemListElement":[
+ {"@type":"ListItem","position":1,"name":"Home","item":"https://mokshify.io/"},
+ {"@type":"ListItem","position":2,"name":"Architecture","item":"https://mokshify.io/architecture/"}]},
+{"@type":"TechArticle","@id":"https://mokshify.io/architecture/#article","headline":"How Mokshify systems are built","description":"Reference architectures with diagrams: production platform, CI/CD with AI review, RAG, multi-tenancy, security layers.","author":{"@id":"https://mokshify.io/#org"},"publisher":{"@id":"https://mokshify.io/#org"},"datePublished":"2026-07-17","mainEntityOfPage":"https://mokshify.io/architecture/","inLanguage":"en-IN"}]}
+</script>
+</head>
+<body>
+<nav class="pnav" aria-label="Site">
+  <a class="pnav-brand" href="/"><img src="/assets/icon-192.png" alt="" width="32" height="32">Mokshify</a>
+  <div class="pnav-links">
+    <div class="grp"><a href="/services/" aria-haspopup="true">Services</a>
+      <div class="panel">
+        <a href="/services/ai-product-development/">AI Product Development</a>
+        <a href="/services/ai-transformation/">AI Transformation</a>
+        <a href="/services/custom-software-development/">Custom Software</a>
+        <a href="/services/saas-development/">SaaS Development</a>
+        <a href="/services/web-application-development/">Web Applications</a>
+        <a href="/services/mobile-app-development/">Mobile Apps</a>
+        <a href="/services/cloud-engineering/">Cloud &amp; DevOps</a>
+        <a href="/services/api-development/">API Development</a>
+        <a href="/services/product-design/">Product Design</a>
+        <a href="/services/legacy-modernization/">Legacy Modernization</a>
+        <a class="all" href="/services/">View all services</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/industries/" aria-haspopup="true">Solutions</a>
+      <div class="panel">
+        <a href="/industries/healthcare/">Healthcare</a>
+        <a href="/industries/fintech/">FinTech</a>
+        <a href="/industries/real-estate/">Real Estate</a>
+        <a href="/industries/education/">Education</a>
+        <a class="all" href="/industries/">All industries</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/engineering/" aria-haspopup="true">Engineering</a>
+      <div class="panel">
+        <a href="/library/">Architecture Library</a>
+        <a href="/journal/">Engineering Journal</a>
+        <a href="/decisions/">Decision Records</a>
+        <a href="/benchmarks/">Benchmarks</a>
+        <a href="/architecture/">Architecture Gallery</a>
+        <a href="/stack/">Technology Stack</a>
+        <i>Tools</i>
+        <a href="/estimate/">Project Estimator</a>
+        <a href="/tools/database-selector/">Database Selector</a>
+        <a href="/tools/json-formatter/">JSON Formatter</a>
+        <a class="all" href="/engineering/">Engineering home</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/work/" aria-haspopup="true">Work</a>
+      <div class="panel">
+        <a href="/work/fincalix/">FinCalix</a>
+        <a href="/work/medico-diagnostics/">Medico Diagnostics</a>
+        <a href="/work/terravion-properties/">Terravion Properties</a>
+        <a href="/work/skillforcehub/">SkillForceHub</a>
+        <a href="/work/mokshify-website/">This Website</a>
+        <i>How we deliver</i>
+        <a href="/process/">Process</a>
+        <a href="/enterprise/">Enterprise Readiness</a>
+        <a class="all" href="/work/">All case studies</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/about/" aria-haspopup="true">Company</a>
+      <div class="panel">
+        <a href="/about/">About</a>
+        <a href="/careers/">Careers</a>
+        <a href="/brand/">Brand Assets</a>
+        <a href="/contact/">Contact</a>
+        <i>Resources</i>
+        <a href="/resources/">Guides &amp; Checklists</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/search/">Search</a>
+      </div>
+    </div>
+    <a class="cta" href="/consult/">Book a strategy call</a>
+  </div>
+</nav>
+<main class="pwrap">
+  <p class="pkicker">Engineering &middot; Architecture</p>
+  <h1>How our systems are <em>actually built.</em></h1>
+  <p class="plede">Most agencies show screenshots; here are the diagrams. These are the reference architectures behind the products in <a href="/work/">our portfolio</a> - drawn plainly, explained honestly, including the trade-offs.</p>
+
+  <h2>1 &middot; The production platform</h2>
+  <div class="diagram" role="img" aria-label="Diagram: clients connect through Nginx gateway to application services, which use PostgreSQL and Redis; GitHub Actions deploys via Terraform to the cloud">
+  <svg viewBox="0 0 760 240" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono,monospace" font-size="13">
+    <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#C9917B"/></marker></defs>
+    <rect x="10" y="90" width="110" height="52" rx="10" fill="#F1EAE1" stroke="#D9CBBB"/><text x="65" y="112" text-anchor="middle" fill="#25180F">web &middot; mobile</text><text x="65" y="130" text-anchor="middle" fill="#8A7060" font-size="11">clients</text>
+    <rect x="180" y="90" width="100" height="52" rx="10" fill="#5A1423"/><text x="230" y="120" text-anchor="middle" fill="#F6E3D4">Nginx</text>
+    <rect x="340" y="40" width="130" height="52" rx="10" fill="#FDFBF7" stroke="#D9CBBB"/><text x="405" y="62" text-anchor="middle" fill="#25180F">Node.js</text><text x="405" y="80" text-anchor="middle" fill="#8A7060" font-size="11">services</text>
+    <rect x="340" y="140" width="130" height="52" rx="10" fill="#FDFBF7" stroke="#D9CBBB"/><text x="405" y="162" text-anchor="middle" fill="#25180F">Python/FastAPI</text><text x="405" y="180" text-anchor="middle" fill="#8A7060" font-size="11">services &middot; AI</text>
+    <rect x="540" y="40" width="110" height="52" rx="10" fill="#F1EAE1" stroke="#D9CBBB"/><text x="595" y="70" text-anchor="middle" fill="#25180F">PostgreSQL</text>
+    <rect x="540" y="140" width="110" height="52" rx="10" fill="#F1EAE1" stroke="#D9CBBB"/><text x="595" y="170" text-anchor="middle" fill="#25180F">Redis</text>
+    <line x1="120" y1="116" x2="176" y2="116" stroke="#C9917B" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="280" y1="106" x2="336" y2="72" stroke="#C9917B" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="280" y1="126" x2="336" y2="160" stroke="#C9917B" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="470" y1="66" x2="536" y2="66" stroke="#C9917B" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="470" y1="166" x2="536" y2="166" stroke="#C9917B" stroke-width="2" marker-end="url(#a)"/>
+    <text x="380" y="225" text-anchor="middle" fill="#8A7060" font-size="11">deployed by GitHub Actions + Terraform &middot; Docker/Kubernetes &middot; AWS / Azure / OCI / GCP</text>
+  </svg>
+  </div>
+  <p>Every Mokshify product starts from this shape. <strong>Nginx</strong> terminates TLS and routes; <strong>Node.js</strong> or <strong>Python/FastAPI</strong> services own bounded domains; <strong>PostgreSQL</strong> is the source of truth and <strong>Redis</strong> the hot path. Workloads are containerised and provisioned by <strong>Terraform</strong>, so any of the four clouds can run them. The trade-off is deliberate boredom: fewer moving parts, well understood, cheap to operate - novelty budget is spent on the product, not the plumbing.</p>
+
+  <h2>2 &middot; The deployment pipeline</h2>
+  <div class="diagram" role="img" aria-label="Diagram: commit flows through tests, AI review, staged rollout, monitoring, with rollback arrow">
+  <svg viewBox="0 0 760 130" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono,monospace" font-size="13">
+    <defs><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#C9917B"/></marker></defs>
+    <rect x="10" y="35" width="100" height="48" rx="10" fill="#F1EAE1" stroke="#D9CBBB"/><text x="60" y="63" text-anchor="middle" fill="#25180F">commit</text>
+    <rect x="150" y="35" width="100" height="48" rx="10" fill="#FDFBF7" stroke="#D9CBBB"/><text x="200" y="63" text-anchor="middle" fill="#25180F">tests</text>
+    <rect x="290" y="35" width="110" height="48" rx="10" fill="#5A1423"/><text x="345" y="63" text-anchor="middle" fill="#F6E3D4">AI review</text>
+    <rect x="440" y="35" width="130" height="48" rx="10" fill="#FDFBF7" stroke="#D9CBBB"/><text x="505" y="57" text-anchor="middle" fill="#25180F">staged rollout</text><text x="505" y="74" text-anchor="middle" fill="#8A7060" font-size="11">health checks</text>
+    <rect x="610" y="35" width="120" height="48" rx="10" fill="#F1EAE1" stroke="#D9CBBB"/><text x="670" y="63" text-anchor="middle" fill="#25180F">monitoring</text>
+    <line x1="110" y1="59" x2="146" y2="59" stroke="#C9917B" stroke-width="2" marker-end="url(#b)"/>
+    <line x1="250" y1="59" x2="286" y2="59" stroke="#C9917B" stroke-width="2" marker-end="url(#b)"/>
+    <line x1="400" y1="59" x2="436" y2="59" stroke="#C9917B" stroke-width="2" marker-end="url(#b)"/>
+    <line x1="570" y1="59" x2="606" y2="59" stroke="#C9917B" stroke-width="2" marker-end="url(#b)"/>
+    <path d="M660 88 Q560 125 505 90" fill="none" stroke="#8A7060" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#b)"/>
+    <text x="585" y="118" text-anchor="middle" fill="#8A7060" font-size="11">instant rollback</text>
+  </svg>
+  </div>
+  <p>The sequence shown in our homepage film&rsquo;s terminal is this pipeline: every merge runs the test suite and static checks, then an <strong>AI review pass</strong> reads the change for what tired humans miss, then a <strong>staged rollout</strong> ships behind health checks with one-command rollback. Nothing reaches production by hand. This is why we can publish an uptime figure (99.98%) without flinching.</p>
+
+  <h2>3 &middot; The RAG pipeline</h2>
+  <div class="diagram" role="img" aria-label="Diagram: documents are chunked and embedded into pgvector; a query retrieves passages which the LLM answers with citations; an evaluation suite gates releases">
+  <svg viewBox="0 0 760 190" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono,monospace" font-size="13">
+    <defs><marker id="c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#C9917B"/></marker></defs>
+    <rect x="10" y="20" width="110" height="48" rx="10" fill="#F1EAE1" stroke="#D9CBBB"/><text x="65" y="48" text-anchor="middle" fill="#25180F">documents</text>
+    <rect x="160" y="20" width="120" height="48" rx="10" fill="#FDFBF7" stroke="#D9CBBB"/><text x="220" y="42" text-anchor="middle" fill="#25180F">chunk +</text><text x="220" y="59" text-anchor="middle" fill="#25180F">embed</text>
+    <rect x="320" y="20" width="120" height="48" rx="10" fill="#F1EAE1" stroke="#D9CBBB"/><text x="380" y="42" text-anchor="middle" fill="#25180F">pgvector</text><text x="380" y="59" text-anchor="middle" fill="#8A7060" font-size="11">PostgreSQL</text>
+    <rect x="160" y="110" width="120" height="48" rx="10" fill="#F1EAE1" stroke="#D9CBBB"/><text x="220" y="138" text-anchor="middle" fill="#25180F">user query</text>
+    <rect x="320" y="110" width="120" height="48" rx="10" fill="#FDFBF7" stroke="#D9CBBB"/><text x="380" y="138" text-anchor="middle" fill="#25180F">retrieve</text>
+    <rect x="480" y="110" width="120" height="48" rx="10" fill="#5A1423"/><text x="540" y="132" text-anchor="middle" fill="#F6E3D4">LLM</text><text x="540" y="149" text-anchor="middle" fill="#E8C4AE" font-size="11">GPT/Claude/Gemini</text>
+    <rect x="630" y="110" width="120" height="48" rx="10" fill="#F1EAE1" stroke="#D9CBBB"/><text x="690" y="132" text-anchor="middle" fill="#25180F">answer</text><text x="690" y="149" text-anchor="middle" fill="#8A7060" font-size="11">with citations</text>
+    <line x1="120" y1="44" x2="156" y2="44" stroke="#C9917B" stroke-width="2" marker-end="url(#c)"/>
+    <line x1="280" y1="44" x2="316" y2="44" stroke="#C9917B" stroke-width="2" marker-end="url(#c)"/>
+    <line x1="280" y1="134" x2="316" y2="134" stroke="#C9917B" stroke-width="2" marker-end="url(#c)"/>
+    <line x1="380" y1="68" x2="380" y2="106" stroke="#C9917B" stroke-width="2" marker-end="url(#c)"/>
+    <line x1="440" y1="134" x2="476" y2="134" stroke="#C9917B" stroke-width="2" marker-end="url(#c)"/>
+    <line x1="600" y1="134" x2="626" y2="134" stroke="#C9917B" stroke-width="2" marker-end="url(#c)"/>
+    <text x="540" y="182" text-anchor="middle" fill="#8A7060" font-size="11">evaluation suite scores answers &middot; releases gated on results</text>
+  </svg>
+  </div>
+  <p>Retrieval-Augmented Generation as we ship it: documents are chunked and embedded into <strong>pgvector</strong> (inside the same PostgreSQL that runs the product - one database to operate, not two), queries retrieve the relevant passages, and the model answers <em>from</em> them with citations. The unglamorous part is the <strong>evaluation suite</strong>: a scored test set of real questions that runs before every release. Details on <a href="/services/ai-product-development/">the AI service page</a>.</p>
+
+  <h2>4 &middot; Multi-tenant data design</h2>
+  <p>SaaS tenancy is decided at the data layer on day one. Our default is <strong>row-level tenancy</strong>: every table carries a tenant key, enforced by PostgreSQL row-level security and query-layer guards, with connection pooling shared across tenants. Schema-per-tenant is reserved for cases that genuinely need it (regulatory isolation, per-tenant customisation) because its migration cost compounds. Billing, quotas and metering hang off the same tenant spine - which is why pricing changes stay configuration, not surgery. The full reasoning lives on <a href="/services/saas-development/">the SaaS page</a>.</p>
+
+  <h2>5 &middot; Security layers</h2>
+  <div class="diagram" role="img" aria-label="Diagram: security layers from edge TLS through gateway auth, service authorization, to encrypted data and audit logs">
+  <svg viewBox="0 0 760 110" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono,monospace" font-size="13">
+    <defs><marker id="d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#C9917B"/></marker></defs>
+    <rect x="10" y="30" width="150" height="52" rx="10" fill="#F1EAE1" stroke="#D9CBBB"/><text x="85" y="52" text-anchor="middle" fill="#25180F">edge</text><text x="85" y="70" text-anchor="middle" fill="#8A7060" font-size="11">TLS &middot; rate limits</text>
+    <rect x="200" y="30" width="150" height="52" rx="10" fill="#FDFBF7" stroke="#D9CBBB"/><text x="275" y="52" text-anchor="middle" fill="#25180F">gateway</text><text x="275" y="70" text-anchor="middle" fill="#8A7060" font-size="11">authn &middot; headers</text>
+    <rect x="390" y="30" width="150" height="52" rx="10" fill="#5A1423"/><text x="465" y="52" text-anchor="middle" fill="#F6E3D4">services</text><text x="465" y="70" text-anchor="middle" fill="#E8C4AE" font-size="11">authz &middot; validation</text>
+    <rect x="580" y="30" width="170" height="52" rx="10" fill="#F1EAE1" stroke="#D9CBBB"/><text x="665" y="52" text-anchor="middle" fill="#25180F">data</text><text x="665" y="70" text-anchor="middle" fill="#8A7060" font-size="11">encryption &middot; audit logs</text>
+    <line x1="160" y1="56" x2="196" y2="56" stroke="#C9917B" stroke-width="2" marker-end="url(#d)"/>
+    <line x1="350" y1="56" x2="386" y2="56" stroke="#C9917B" stroke-width="2" marker-end="url(#d)"/>
+    <line x1="540" y1="56" x2="576" y2="56" stroke="#C9917B" stroke-width="2" marker-end="url(#d)"/>
+  </svg>
+  </div>
+  <p>Defence in layers, each assuming the one before it failed: TLS and rate limiting at the edge; authentication, security headers and request shaping at the gateway; authorization and input validation inside every service (never trusting the gateway alone); encryption at rest, least-privilege database roles and audit trails at the data layer. Secrets live in managed vaults, never in code - the same standards listed on <a href="/process/">our process page</a>, applied to this website too.</p>
+
+  <section class="pcta">
+    <h2>Want this architecture under your product?</h2>
+    <p>Send one paragraph about what you are building. We reply within 24 hours.</p>
+    <div class="row">
+      <a class="btn" href="/consult/">Book a strategy call</a>
+      <a class="btn ghost" href="https://wa.me/919391248520" rel="noopener">WhatsApp us</a>
+    </div>
+  </section>
+  <hr>
+  <p><strong>Related:</strong> <a href="/stack/">Technology stack</a> &middot; <a href="/process/">Process &amp; standards</a> &middot; <a href="/services/cloud-engineering/">Cloud Engineering</a> &middot; <a href="/work/">Client work</a></p>
+</main>
+<footer class="pfoot">
+  <div><i>Services</i>
+    <a href="/services/ai-product-development/">AI Product Development</a>
+    <a href="/services/ai-transformation/">AI Transformation</a>
+    <a href="/services/custom-software-development/">Custom Software</a>
+    <a href="/services/saas-development/">SaaS Development</a>
+    <a href="/services/mobile-app-development/">Mobile Apps</a>
+    <a href="/services/cloud-engineering/">Cloud &amp; DevOps</a>
+    <a href="/services/">All services</a></div>
+  <div><i>Industries</i>
+    <a href="/industries/healthcare/">Healthcare</a>
+    <a href="/industries/fintech/">FinTech</a>
+    <a href="/industries/real-estate/">Real Estate</a>
+    <a href="/industries/education/">Education</a>
+    <a href="/work/">Case studies</a></div>
+  <div><i>Engineering</i>
+    <a href="/engineering/">Engineering home</a>
+    <a href="/library/">Architecture library</a>
+    <a href="/journal/">Journal</a>
+    <a href="/decisions/">Decision records</a>
+    <a href="/benchmarks/">Benchmarks</a>
+    <a href="/architecture/">Diagrams</a>
+    <a href="/stack/">Stack</a>
+    <a href="/resources/">Guides</a>
+    <a href="/estimate/">Estimator</a>
+    <a href="/search/">Search</a></div>
+  <div><i>Company</i>
+    <a href="/about/">About</a>
+    <a href="/process/">Process</a>
+    <a href="/enterprise/">Enterprise readiness</a>
+    <a href="/security/">Security</a>
+    <a href="/careers/">Careers</a>
+    <a href="/brand/">Brand</a>
+    <a href="/legal/privacy/">Privacy</a>
+    <a href="/legal/terms/">Terms</a>
+    <a href="/legal/accessibility/">Accessibility</a>
+    <a href="/sitemap/">All pages</a></div>
+  <div><i>Connect</i>
+    <a href="/consult/">Book a strategy call</a>
+    <a href="mailto:hello@mokshify.io">hello@mokshify.io</a>
+    <a href="tel:+919391248520">+91 93912 48520</a>
+    <a href="https://wa.me/919391248520" rel="noopener">WhatsApp</a>
+    <a href="/feed.xml">RSS feed</a>
+    <p>Mokshify &middot; Hyderabad, Telangana, India<br>&copy; 2026 Mokshify</p></div>
+</footer>
+<script src="/js/analytics.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Mokshify Engineering</title>
+  <link>https://mokshify.io/library/</link>
+  <description>Architecture writing, decision records and build-in-public notes from Mokshify, an AI-first software studio in Hyderabad.</description>
+  <language>en-in</language>
+  <lastBuildDate>Thu, 17 Jul 2026 12:00:00 +0530</lastBuildDate>
+  <atom:link href="https://mokshify.io/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>RAG, explained like we build it</title>
+    <link>https://mokshify.io/library/rag-explained/</link>
+    <guid>https://mokshify.io/library/rag-explained/</guid>
+    <pubDate>Thu, 17 Jul 2026 16:00:00 +0530</pubDate>
+    <description>Chunking decides quality, pgvector in the product database, and when to skip RAG entirely.</description>
+  </item>
+  <item>
+    <title>LLM evaluation: tests for the non-deterministic</title>
+    <link>https://mokshify.io/library/llm-evaluation/</link>
+    <guid>https://mokshify.io/library/llm-evaluation/</guid>
+    <pubDate>Thu, 17 Jul 2026 15:00:00 +0530</pubDate>
+    <description>Real-case test sets, fact-level assertions, and eval gates in CI.</description>
+  </item>
+  <item>
+    <title>AWS vs Azure vs OCI vs GCP - an honest matrix</title>
+    <link>https://mokshify.io/library/choosing-a-cloud/</link>
+    <guid>https://mokshify.io/library/choosing-a-cloud/</guid>
+    <pubDate>Thu, 17 Jul 2026 14:00:00 +0530</pubDate>
+    <description>What actually differs, what does not, and the five-step decision procedure.</description>
+  </item>
+  <item>
+    <title>Observability: knowing before the customer does</title>
+    <link>https://mokshify.io/library/observability/</link>
+    <guid>https://mokshify.io/library/observability/</guid>
+    <pubDate>Thu, 17 Jul 2026 13:00:00 +0530</pubDate>
+    <description>Logs first, metrics that gate, traces when earned, alerts that respect humans.</description>
+  </item>
+  <item>
+    <title>Monolith vs microservices - the honest decision</title>
+    <link>https://mokshify.io/library/monolith-vs-microservices/</link>
+    <guid>https://mokshify.io/library/monolith-vs-microservices/</guid>
+    <pubDate>Thu, 17 Jul 2026 12:00:00 +0530</pubDate>
+    <description>When a modular monolith wins, when services earn their operational cost, and the migration path between them.</description>
+  </item>
+  <item>
+    <title>Authentication architecture</title>
+    <link>https://mokshify.io/library/authentication-architecture/</link>
+    <guid>https://mokshify.io/library/authentication-architecture/</guid>
+    <pubDate>Thu, 17 Jul 2026 11:00:00 +0530</pubDate>
+    <description>Tokens, sessions, rotation and audit - the front door done properly, plus the honest MVP shortcut.</description>
+  </item>
+  <item>
+    <title>Multi-tenant SaaS architecture</title>
+    <link>https://mokshify.io/library/multi-tenant-saas/</link>
+    <guid>https://mokshify.io/library/multi-tenant-saas/</guid>
+    <pubDate>Thu, 17 Jul 2026 10:00:00 +0530</pubDate>
+    <description>Row-level vs schema vs database-per-tenant, with the promotion escape hatch.</description>
+  </item>
+  <item>
+    <title>Caching strategy, layer by layer</title>
+    <link>https://mokshify.io/library/caching-strategy/</link>
+    <guid>https://mokshify.io/library/caching-strategy/</guid>
+    <pubDate>Thu, 17 Jul 2026 09:00:00 +0530</pubDate>
+    <description>Browser to CDN to Redis to Postgres - and the rules that keep invalidation sane.</description>
+  </item>
+  <item>
+    <title>Background jobs and queues</title>
+    <link>https://mokshify.io/library/background-jobs/</link>
+    <guid>https://mokshify.io/library/background-jobs/</guid>
+    <pubDate>Thu, 17 Jul 2026 08:00:00 +0530</pubDate>
+    <description>Idempotency, retries, dead letters - and when Redis queues beat a real broker.</description>
+  </item>
+  <item>
+    <title>Journal 001: streaming 914 frames without a framework</title>
+    <link>https://mokshify.io/journal/#001</link>
+    <guid>https://mokshify.io/journal/#001</guid>
+    <pubDate>Thu, 17 Jul 2026 07:00:00 +0530</pubDate>
+    <description>A 97.7% payload reduction and the lessons of a scroll-scrubbed film.</description>
+  </item>
+  <item>
+    <title>Journal 002: five bugs worth writing down</title>
+    <link>https://mokshify.io/journal/#002</link>
+    <guid>https://mokshify.io/journal/#002</guid>
+    <pubDate>Thu, 17 Jul 2026 06:00:00 +0530</pubDate>
+    <description>Real defects from building this site, each generalised into a lesson.</description>
+  </item>
+</channel>
+</rss>

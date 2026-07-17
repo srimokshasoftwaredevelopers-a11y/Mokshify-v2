@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Engineering at Mokshify - Library, Journal, Decisions, Benchmarks, Tools</title>
+<meta name="description" content="The engineering homepage: ten published articles across AI, cloud, backend and architecture, plus decision records, build-in-public journal, measured benchmarks, diagrams and free tools.">
+<link rel="canonical" href="https://mokshify.io/engineering/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:title" content="Engineering at Mokshify">
+<meta property="og:description" content="Articles, ADRs, journal, benchmarks, diagrams and tools - the whole engineering surface, one page.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mokshify.io/engineering/">
+<meta property="og:image" content="https://mokshify.io/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F7F2EC">
+<link rel="icon" type="image/png" href="/assets/icon-192.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<link rel="alternate" type="application/rss+xml" title="Mokshify Engineering" href="/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/pages.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"BreadcrumbList","itemListElement":[
+ {"@type":"ListItem","position":1,"name":"Home","item":"https://mokshify.io/"},
+ {"@type":"ListItem","position":2,"name":"Engineering","item":"https://mokshify.io/engineering/"}]},
+{"@type":"CollectionPage","@id":"https://mokshify.io/engineering/#page","url":"https://mokshify.io/engineering/","name":"Engineering at Mokshify","description":"The engineering hub: articles, ADRs, journal, benchmarks, diagrams and tools.","isPartOf":{"@id":"https://mokshify.io/#website"},"about":{"@id":"https://mokshify.io/#org"},"inLanguage":"en-IN"}]}
+</script>
+</head>
+<body><nav class="pnav" aria-label="Site">
+  <a class="pnav-brand" href="/"><img src="/assets/icon-192.png" alt="" width="32" height="32">Mokshify</a>
+  <div class="pnav-links">
+    <div class="grp"><a href="/services/" aria-haspopup="true">Services</a>
+      <div class="panel">
+        <a href="/services/ai-product-development/">AI Product Development</a>
+        <a href="/services/ai-transformation/">AI Transformation</a>
+        <a href="/services/custom-software-development/">Custom Software</a>
+        <a href="/services/saas-development/">SaaS Development</a>
+        <a href="/services/web-application-development/">Web Applications</a>
+        <a href="/services/mobile-app-development/">Mobile Apps</a>
+        <a href="/services/cloud-engineering/">Cloud &amp; DevOps</a>
+        <a href="/services/api-development/">API Development</a>
+        <a href="/services/product-design/">Product Design</a>
+        <a href="/services/legacy-modernization/">Legacy Modernization</a>
+        <a class="all" href="/services/">View all services</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/industries/" aria-haspopup="true">Solutions</a>
+      <div class="panel">
+        <a href="/industries/healthcare/">Healthcare</a>
+        <a href="/industries/fintech/">FinTech</a>
+        <a href="/industries/real-estate/">Real Estate</a>
+        <a href="/industries/education/">Education</a>
+        <a class="all" href="/industries/">All industries</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/engineering/" aria-haspopup="true">Engineering</a>
+      <div class="panel">
+        <a href="/library/">Architecture Library</a>
+        <a href="/journal/">Engineering Journal</a>
+        <a href="/decisions/">Decision Records</a>
+        <a href="/benchmarks/">Benchmarks</a>
+        <a href="/architecture/">Architecture Gallery</a>
+        <a href="/stack/">Technology Stack</a>
+        <i>Tools</i>
+        <a href="/estimate/">Project Estimator</a>
+        <a href="/tools/database-selector/">Database Selector</a>
+        <a href="/tools/json-formatter/">JSON Formatter</a>
+        <a class="all" href="/engineering/">Engineering home</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/work/" aria-haspopup="true">Work</a>
+      <div class="panel">
+        <a href="/work/fincalix/">FinCalix</a>
+        <a href="/work/medico-diagnostics/">Medico Diagnostics</a>
+        <a href="/work/terravion-properties/">Terravion Properties</a>
+        <a href="/work/skillforcehub/">SkillForceHub</a>
+        <a href="/work/mokshify-website/">This Website</a>
+        <i>How we deliver</i>
+        <a href="/process/">Process</a>
+        <a href="/enterprise/">Enterprise Readiness</a>
+        <a class="all" href="/work/">All case studies</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/about/" aria-haspopup="true">Company</a>
+      <div class="panel">
+        <a href="/about/">About</a>
+        <a href="/careers/">Careers</a>
+        <a href="/brand/">Brand Assets</a>
+        <a href="/contact/">Contact</a>
+        <i>Resources</i>
+        <a href="/resources/">Guides &amp; Checklists</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/search/">Search</a>
+      </div>
+    </div>
+    <a class="cta" href="/consult/">Book a strategy call</a>
+  </div>
+</nav><main class="pwrap">
+  <p class="pkicker">Engineering</p>
+  <h1>The engineering <em>homepage.</em></h1>
+  <p class="plede">Everything Mokshify publishes about how software should be built - ten articles, ten decision records, a build-in-public journal, measured benchmarks, drawn architectures and working tools. Written by the team that ships <a href="/work/">the products</a>, held to <a href="/enterprise/">the published pledge</a>: nothing invented, everything verifiable.</p>
+
+  <h2>Latest from the library</h2>
+  <div class="grid">
+    <a class="card" href="/library/rag-explained/"><b>RAG, explained like we build it</b><span>AI &middot; chunking decides quality, pgvector in the product DB, and when to skip RAG entirely.</span><i>17 Jul 2026 &middot; 7 min &rarr;</i></a>
+    <a class="card" href="/library/llm-evaluation/"><b>LLM evaluation</b><span>AI &middot; tests for non-deterministic software: real-case suites, fact-level assertions, CI gates.</span><i>17 Jul 2026 &middot; 6 min &rarr;</i></a>
+    <a class="card" href="/library/choosing-a-cloud/"><b>AWS vs Azure vs OCI vs GCP</b><span>Cloud &middot; an honest matrix from a team that deploys to all four.</span><i>17 Jul 2026 &middot; 6 min &rarr;</i></a>
+    <a class="card" href="/library/observability/"><b>Observability</b><span>Operations &middot; logs first, metrics that gate, traces when earned, alerts that respect humans.</span><i>17 Jul 2026 &middot; 6 min &rarr;</i></a>
+    <a class="card" href="/library/monolith-vs-microservices/"><b>Monolith vs microservices</b><span>Architecture &middot; the modular monolith, the fashion trap, and the migration path.</span><i>17 Jul 2026 &middot; 6 min &rarr;</i></a>
+    <a class="card" href="/library/authentication-architecture/"><b>Authentication architecture</b><span>Security &middot; tokens, rotation, audit - and the honest MVP shortcut.</span><i>17 Jul 2026 &middot; 6 min &rarr;</i></a>
+  </div>
+  <p><a href="/library/">All ten articles &rarr;</a> &middot; subscribe via <a href="/feed.xml">RSS</a></p>
+
+  <h2>By category</h2>
+  <ul>
+    <li><strong>AI</strong> - <a href="/library/rag-explained/">RAG</a>, <a href="/library/llm-evaluation/">evaluation</a>, <a href="/architecture/">the pipeline diagram</a>, <a href="/decisions/#ai">the multi-provider ADR</a></li>
+    <li><strong>Cloud &amp; DevOps</strong> - <a href="/library/choosing-a-cloud/">choosing a cloud</a>, <a href="/library/observability/">observability</a>, <a href="/devops/">practices</a>, <a href="/guides/cloud-migration-checklist/">migration</a></li>
+    <li><strong>Backend &amp; data</strong> - <a href="/library/multi-tenant-saas/">multi-tenancy</a>, <a href="/library/caching-strategy/">caching</a>, <a href="/library/background-jobs/">queues</a>, <a href="/tools/database-selector/">the database selector</a></li>
+    <li><strong>Architecture</strong> - <a href="/library/monolith-vs-microservices/">monolith vs microservices</a>, <a href="/library/authentication-architecture/">authentication</a>, <a href="/architecture/">the gallery</a></li>
+    <li><strong>Culture &amp; process</strong> - <a href="/journal/">the journal</a>, <a href="/process/">the pipeline</a>, <a href="/enterprise/">the ops manual</a></li>
+  </ul>
+
+  <h2>The standing collections</h2>
+  <div class="grid">
+    <a class="card" href="/decisions/"><b>Decision records</b><span>Ten ADRs: the why behind every technology, with revisit conditions.</span><i>Read &rarr;</i></a>
+    <a class="card" href="/journal/"><b>Engineering journal</b><span>Build-in-public: real numbers, real mistakes, generalised lessons.</span><i>Read &rarr;</i></a>
+    <a class="card" href="/benchmarks/"><b>Benchmarks</b><span>Only measured numbers - starting with this website itself.</span><i>Read &rarr;</i></a>
+    <a class="card" href="/architecture/"><b>Architecture gallery</b><span>The reference diagrams behind production systems, explained.</span><i>Read &rarr;</i></a>
+    <a class="card" href="/stack/"><b>The stack, with reasons</b><span>18 technologies and the honest reason each is here.</span><i>Read &rarr;</i></a>
+    <a class="card" href="/resources/"><b>Guides &amp; checklists</b><span>Seven working guides, free, no email wall.</span><i>Read &rarr;</i></a>
+  </div>
+
+  <h2>Working tools</h2>
+  <p><a href="/estimate/">Project estimator</a> &middot; <a href="/tools/database-selector/">Database selector</a> &middot; <a href="/tools/json-formatter/">JSON formatter</a> - all client-side, all with readable source. Future tools (cloud cost, AI readiness interactive) ship when they can be honest.</p>
+
+  <section class="pcta">
+    <h2>This is how we&rsquo;d think about your system.</h2>
+    <p>The library is the free version. The strategy call applies it to your product.</p>
+    <div class="row">
+      <a class="btn" href="/consult/">Book a strategy call</a>
+      <a class="btn ghost" href="/search/">Search everything</a>
+    </div>
+  </section>
+</main><footer class="pfoot">
+  <div><i>Services</i>
+    <a href="/services/ai-product-development/">AI Product Development</a>
+    <a href="/services/ai-transformation/">AI Transformation</a>
+    <a href="/services/custom-software-development/">Custom Software</a>
+    <a href="/services/saas-development/">SaaS Development</a>
+    <a href="/services/mobile-app-development/">Mobile Apps</a>
+    <a href="/services/cloud-engineering/">Cloud &amp; DevOps</a>
+    <a href="/services/">All services</a></div>
+  <div><i>Industries</i>
+    <a href="/industries/healthcare/">Healthcare</a>
+    <a href="/industries/fintech/">FinTech</a>
+    <a href="/industries/real-estate/">Real Estate</a>
+    <a href="/industries/education/">Education</a>
+    <a href="/work/">Case studies</a></div>
+  <div><i>Engineering</i>
+    <a href="/engineering/">Engineering home</a>
+    <a href="/library/">Architecture library</a>
+    <a href="/journal/">Journal</a>
+    <a href="/decisions/">Decision records</a>
+    <a href="/benchmarks/">Benchmarks</a>
+    <a href="/architecture/">Diagrams</a>
+    <a href="/stack/">Stack</a>
+    <a href="/resources/">Guides</a>
+    <a href="/estimate/">Estimator</a>
+    <a href="/search/">Search</a></div>
+  <div><i>Company</i>
+    <a href="/about/">About</a>
+    <a href="/process/">Process</a>
+    <a href="/enterprise/">Enterprise readiness</a>
+    <a href="/security/">Security</a>
+    <a href="/careers/">Careers</a>
+    <a href="/brand/">Brand</a>
+    <a href="/legal/privacy/">Privacy</a>
+    <a href="/legal/terms/">Terms</a>
+    <a href="/legal/accessibility/">Accessibility</a>
+    <a href="/sitemap/">All pages</a></div>
+  <div><i>Connect</i>
+    <a href="/consult/">Book a strategy call</a>
+    <a href="mailto:hello@mokshify.io">hello@mokshify.io</a>
+    <a href="tel:+919391248520">+91 93912 48520</a>
+    <a href="https://wa.me/919391248520" rel="noopener">WhatsApp</a>
+    <a href="/feed.xml">RSS feed</a>
+    <p>Mokshify &middot; Hyderabad, Telangana, India<br>&copy; 2026 Mokshify</p></div>
+</footer>
+<script src="/js/analytics.js" defer></script>
+</body>
+</html>

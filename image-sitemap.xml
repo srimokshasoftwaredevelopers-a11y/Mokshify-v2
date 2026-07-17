@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://mokshify.io/</loc>
+    <lastmod>2026-07-17</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/og.jpg</image:loc>
+      <image:title>Mokshify — AI-first software engineering studio, Hyderabad</image:title>
+      <image:caption>Engineering ideas into scalable software — the Mokshify studio.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/sites/fincalix.png</image:loc>
+      <image:title>FinCalix — financial calculator platform built by Mokshify</image:title>
+      <image:caption>fincalix.com: 30+ free financial calculators for real decisions.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/sites/medico.png</image:loc>
+      <image:title>Medico Diagnostics — healthcare diagnostics platform built by Mokshify</image:title>
+      <image:caption>medicodiagnostics.in: 3,291+ tests published with 4–6 hour reporting.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/sites/terravion.png</image:loc>
+      <image:title>Terravion Properties — real estate platform built by Mokshify</image:title>
+      <image:caption>terravionproperties.com: HMDA-approved plots, discovered online.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/sites/skillforce.png</image:loc>
+      <image:title>SkillForceHub — Salesforce training platform built by Mokshify</image:title>
+      <image:caption>skillforcehub.com: Salesforce careers launched from Warangal.</image:caption>
+    </image:image>
+  </url>
+</urlset>

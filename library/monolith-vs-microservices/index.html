@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monolith vs Microservices - The Honest Decision | Mokshify</title>
+<meta name="description" content="When a modular monolith wins, when services earn their operational cost, the migration path between them, and the fashion trap - with diagram and defaults.">
+<link rel="canonical" href="https://mokshify.io/library/monolith-vs-microservices/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:title" content="Monolith vs Microservices - The Honest Decision | Mokshify">
+<meta property="og:description" content="When a modular monolith wins, when services earn their operational cost, the migration path between them, and the fashion trap - with diagram and defaults.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://mokshify.io/library/monolith-vs-microservices/">
+<meta property="og:image" content="https://mokshify.io/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F7F2EC">
+<link rel="icon" type="image/png" href="/assets/icon-192.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/pages.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"BreadcrumbList","itemListElement":[
+ {"@type":"ListItem","position":1,"name":"Home","item":"https://mokshify.io/"},
+ {"@type":"ListItem","position":2,"name":"Library","item":"https://mokshify.io/library/"},
+ {"@type":"ListItem","position":3,"name":"Monolith vs Microservices","item":"https://mokshify.io/library/monolith-vs-microservices/"}]},
+{"@type":"TechArticle","@id":"https://mokshify.io/library/monolith-vs-microservices/#article","headline":"Monolith vs microservices - the honest decision","description":"When a modular monolith wins, when services earn their operational cost, and the migration path between them - with a diagram and our defaults.","author":{"@id":"https://mokshify.io/#org"},"publisher":{"@id":"https://mokshify.io/#org"},"datePublished":"2026-07-17","dateModified":"2026-07-17","mainEntityOfPage":"https://mokshify.io/library/monolith-vs-microservices/"}]}
+</script>
+</head>
+<body><nav class="pnav" aria-label="Site">
+  <a class="pnav-brand" href="/"><img src="/assets/icon-192.png" alt="" width="32" height="32">Mokshify</a>
+  <div class="pnav-links">
+    <div class="grp"><a href="/services/" aria-haspopup="true">Services</a>
+      <div class="panel">
+        <a href="/services/ai-product-development/">AI Product Development</a>
+        <a href="/services/ai-transformation/">AI Transformation</a>
+        <a href="/services/custom-software-development/">Custom Software</a>
+        <a href="/services/saas-development/">SaaS Development</a>
+        <a href="/services/web-application-development/">Web Applications</a>
+        <a href="/services/mobile-app-development/">Mobile Apps</a>
+        <a href="/services/cloud-engineering/">Cloud &amp; DevOps</a>
+        <a href="/services/api-development/">API Development</a>
+        <a href="/services/product-design/">Product Design</a>
+        <a href="/services/legacy-modernization/">Legacy Modernization</a>
+        <a class="all" href="/services/">View all services</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/industries/" aria-haspopup="true">Solutions</a>
+      <div class="panel">
+        <a href="/industries/healthcare/">Healthcare</a>
+        <a href="/industries/fintech/">FinTech</a>
+        <a href="/industries/real-estate/">Real Estate</a>
+        <a href="/industries/education/">Education</a>
+        <a class="all" href="/industries/">All industries</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/engineering/" aria-haspopup="true">Engineering</a>
+      <div class="panel">
+        <a href="/library/">Architecture Library</a>
+        <a href="/journal/">Engineering Journal</a>
+        <a href="/decisions/">Decision Records</a>
+        <a href="/benchmarks/">Benchmarks</a>
+        <a href="/architecture/">Architecture Gallery</a>
+        <a href="/stack/">Technology Stack</a>
+        <i>Tools</i>
+        <a href="/estimate/">Project Estimator</a>
+        <a href="/tools/database-selector/">Database Selector</a>
+        <a href="/tools/json-formatter/">JSON Formatter</a>
+        <a class="all" href="/engineering/">Engineering home</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/work/" aria-haspopup="true">Work</a>
+      <div class="panel">
+        <a href="/work/fincalix/">FinCalix</a>
+        <a href="/work/medico-diagnostics/">Medico Diagnostics</a>
+        <a href="/work/terravion-properties/">Terravion Properties</a>
+        <a href="/work/skillforcehub/">SkillForceHub</a>
+        <a href="/work/mokshify-website/">This Website</a>
+        <i>How we deliver</i>
+        <a href="/process/">Process</a>
+        <a href="/enterprise/">Enterprise Readiness</a>
+        <a class="all" href="/work/">All case studies</a>
+      </div>
+    </div>
+    <div class="grp"><a href="/about/" aria-haspopup="true">Company</a>
+      <div class="panel">
+        <a href="/about/">About</a>
+        <a href="/careers/">Careers</a>
+        <a href="/brand/">Brand Assets</a>
+        <a href="/contact/">Contact</a>
+        <i>Resources</i>
+        <a href="/resources/">Guides &amp; Checklists</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/search/">Search</a>
+      </div>
+    </div>
+    <a class="cta" href="/consult/">Book a strategy call</a>
+  </div>
+</nav><main class="pwrap">
+  <p class="pkicker"><a href="/library/">Library</a> &middot; Architecture</p>
+  <h1>Monolith vs microservices, <em>honestly.</em></h1>
+  <p class="pmeta">By <strong>Mokshify Engineering</strong> &middot; Reviewed by the team &middot; Updated 17 Jul 2026 &middot; 6 min read</p>
+  <h2>The problem</h2>
+  <p>Teams adopt microservices for reasons that are usually organisational (many teams shipping independently) while paying costs that are always operational (distributed everything). Startups copying Netflix&rsquo;s architecture without Netflix&rsquo;s problems buy the costs without the reasons - the most expensive fashion decision in software.</p>
+  <h2>Our default: the modular monolith</h2>
+  <div class="diagram" role="img" aria-label="Diagram: one deployable containing well-bounded modules sharing a database, with one module later extracted as a service when justified">
+  <svg viewBox="0 0 760 160" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono,monospace" font-size="13">
+    <defs><marker id="mv" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#C9917B"/></marker></defs>
+    <rect x="10" y="25" width="420" height="110" rx="14" fill="#FDFBF7" stroke="#D9CBBB"/>
+    <text x="220" y="50" text-anchor="middle" fill="#8A7060" font-size="11">one deployable &middot; one database &middot; one pipeline</text>
+    <rect x="30" y="65" width="110" height="48" rx="10" fill="#F1EAE1" stroke="#D9CBBB"/><text x="85" y="93" text-anchor="middle" fill="#25180F">billing</text>
+    <rect x="160" y="65" width="110" height="48" rx="10" fill="#F1EAE1" stroke="#D9CBBB"/><text x="215" y="93" text-anchor="middle" fill="#25180F">catalogue</text>
+    <rect x="290" y="65" width="110" height="48" rx="10" fill="#F1EAE1" stroke="#D9CBBB"/><text x="345" y="93" text-anchor="middle" fill="#25180F">accounts</text>
+    <rect x="560" y="55" width="180" height="60" rx="12" fill="#5A1423"/><text x="650" y="80" text-anchor="middle" fill="#F6E3D4">extracted service</text><text x="650" y="98" text-anchor="middle" fill="#E8C4AE" font-size="11">when load or teams demand</text>
+    <line x1="430" y1="85" x2="556" y2="85" stroke="#C9917B" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#mv)"/>
+  </svg>
+  </div>
+  <p>One deployable, containing modules with real boundaries: separate packages, explicit interfaces, no reaching across. You get monolith operations (one pipeline, one database, transactions that just work) with service-shaped code - and, crucially, <strong>a migration path</strong>: a module with clean boundaries extracts into a service in weeks; spaghetti extracts never.</p>
+  <h2>When services genuinely win</h2>
+  <ul>
+    <li><strong>Independent team cadence</strong> - multiple teams whose deploys block each other; Conway&rsquo;s law is real.</li>
+    <li><strong>Divergent scaling or runtime</strong> - the AI inference workload needs GPUs and Python while the API needs neither (<a href="/architecture/">our RAG pipeline</a> is exactly this split).</li>
+    <li><strong>Genuine isolation requirements</strong> - a component whose failure or compliance profile must not share a blast radius.</li>
+  </ul>
+  <h2>Advantages, disadvantages, tradeoffs</h2>
+  <p><strong>Monolith-first advantages:</strong> operational simplicity, real transactions, refactoring across boundaries while they are still wrong (they always start wrong). <strong>Disadvantages:</strong> discipline must be cultural - nothing stops a lazy import except review; one bad deploy touches everything (mitigated by <a href="/devops/">staged rollouts</a>). <strong>Microservices advantages:</strong> independent deploys, per-service scaling and stacks. <strong>Disadvantages:</strong> distributed transactions, network failure modes everywhere, observability as a prerequisite, and an ops bill measured in engineers. The tradeoff we accept: occasional extraction work later, in exchange for not paying distributed costs before distributed benefits.</p>
+  <h2>Technology selection</h2>
+  <p>Boundaries enforced in code review (<a href="/enterprise/">dual review</a>), modules on the standard platform - <a href="/decisions/#postgresql">PostgreSQL</a>, <a href="/decisions/#docker">Docker, Kubernetes when earned</a> - and extraction, when it comes, along the <a href="/services/legacy-modernization/">strangler pattern</a> we use for modernization.</p>
+  <hr>
+  <p><strong>Related:</strong> <a href="/library/multi-tenant-saas/">Multi-tenant SaaS</a> &middot; <a href="/library/background-jobs/">Background jobs</a> &middot; <a href="/decisions/">Engineering decisions</a> &middot; <a href="/architecture/">Architecture gallery</a></p>
+</main><footer class="pfoot">
+  <div><i>Services</i>
+    <a href="/services/ai-product-development/">AI Product Development</a>
+    <a href="/services/ai-transformation/">AI Transformation</a>
+    <a href="/services/custom-software-development/">Custom Software</a>
+    <a href="/services/saas-development/">SaaS Development</a>
+    <a href="/services/mobile-app-development/">Mobile Apps</a>
+    <a href="/services/cloud-engineering/">Cloud &amp; DevOps</a>
+    <a href="/services/">All services</a></div>
+  <div><i>Industries</i>
+    <a href="/industries/healthcare/">Healthcare</a>
+    <a href="/industries/fintech/">FinTech</a>
+    <a href="/industries/real-estate/">Real Estate</a>
+    <a href="/industries/education/">Education</a>
+    <a href="/work/">Case studies</a></div>
+  <div><i>Engineering</i>
+    <a href="/engineering/">Engineering home</a>
+    <a href="/library/">Architecture library</a>
+    <a href="/journal/">Journal</a>
+    <a href="/decisions/">Decision records</a>
+    <a href="/benchmarks/">Benchmarks</a>
+    <a href="/architecture/">Diagrams</a>
+    <a href="/stack/">Stack</a>
+    <a href="/resources/">Guides</a>
+    <a href="/estimate/">Estimator</a>
+    <a href="/search/">Search</a></div>
+  <div><i>Company</i>
+    <a href="/about/">About</a>
+    <a href="/process/">Process</a>
+    <a href="/enterprise/">Enterprise readiness</a>
+    <a href="/security/">Security</a>
+    <a href="/careers/">Careers</a>
+    <a href="/brand/">Brand</a>
+    <a href="/legal/privacy/">Privacy</a>
+    <a href="/legal/terms/">Terms</a>
+    <a href="/legal/accessibility/">Accessibility</a>
+    <a href="/sitemap/">All pages</a></div>
+  <div><i>Connect</i>
+    <a href="/consult/">Book a strategy call</a>
+    <a href="mailto:hello@mokshify.io">hello@mokshify.io</a>
+    <a href="tel:+919391248520">+91 93912 48520</a>
+    <a href="https://wa.me/919391248520" rel="noopener">WhatsApp</a>
+    <a href="/feed.xml">RSS feed</a>
+    <p>Mokshify &middot; Hyderabad, Telangana, India<br>&copy; 2026 Mokshify</p></div>
+</footer>
+<script src="/js/analytics.js" defer></script>
+</body>
+</html>

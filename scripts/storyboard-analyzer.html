@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Storyboard Analyzer</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: Georgia, "Times New Roman", serif;
+      background: #0e1116;
+      color: #e8edf3;
+    }
+    body {
+      margin: 0;
+      padding: 24px;
+      background:
+        radial-gradient(circle at top left, rgba(110, 162, 255, 0.2), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(255, 194, 120, 0.16), transparent 25%),
+        #0e1116;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      font-weight: 600;
+    }
+    p {
+      margin: 0 0 18px;
+      max-width: 70ch;
+      color: #b7c2cf;
+    }
+    .status {
+      white-space: pre-wrap;
+      font-size: 14px;
+      line-height: 1.5;
+      padding: 16px;
+      border: 1px solid rgba(232, 237, 243, 0.15);
+      border-radius: 12px;
+      background: rgba(14, 17, 22, 0.66);
+      backdrop-filter: blur(10px);
+    }
+  </style>
+</head>
+<body>
+  <h1>Storyboard Analyzer</h1>
+  <p>
+    This local tool samples MP4s at cinematic beats and distills them into
+    scroll-ready scene assets for GSAP and Three.js.
+  </p>
+  <div id="status" class="status">Idle.</div>
+  <script>
+    (() => {
+      const statusEl = document.getElementById("status");
+      const writeStatus = (message) => {
+        statusEl.textContent = message;
+      };
+
+      const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+      const lerp = (a, b, t) => a + (b - a) * t;
+
+      function waitForEvent(target, eventName) {
+        return new Promise((resolve) => {
+          const onEvent = () => {
+            target.removeEventListener(eventName, onEvent);
+            resolve();
+          };
+          target.addEventListener(eventName, onEvent, { once: true });
+        });
+      }
+
+      function createVideo(url) {
+        const video = document.createElement("video");
+        video.muted = true;
+        video.playsInline = true;
+        video.preload = "auto";
+        video.src = url;
+        return video;
+      }
+
+      function createCanvas(width, height) {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        return canvas;
+      }
+
+      function getFrameAt(video, canvas, ctx, time) {
+        return new Promise(async (resolve, reject) => {
+          const safeTime = clamp(time, 0, Math.max(0, video.duration - 0.001));
+          const onError = () => {
+            video.removeEventListener("error", onError);
+            reject(new Error(`Failed to decode frame at ${safeTime}`));
+          };
+          video.addEventListener("error", onError, { once: true });
+          if (Math.abs(video.currentTime - safeTime) > 0.001) {
+            video.currentTime = safeTime;
+            await waitForEvent(video, "seeked");
+          }
+          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+          video.removeEventListener("error", onError);
+          resolve(ctx.getImageData(0, 0, canvas.width, canvas.height));
+        });
+      }
+
+      async function renderExportFrame(videoUrl, width, height, time) {
+        const video = createVideo(videoUrl);
+        await waitForEvent(video, "loadedmetadata");
+        if (video.readyState < 2) {
+          await waitForEvent(video, "loadeddata");
+        }
+        const canvas = createCanvas(width, height);
+        const ctx = canvas.getContext("2d", { willReadFrequently: true });
+        await getFrameAt(video, canvas, ctx, time);
+        await new Promise((resolve) => requestAnimationFrame(resolve));
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        return canvas.toDataURL("image/png");
+      }
+
+      function frameMetrics(imageData) {
+        const { data, width, height } = imageData;
+        const pixelCount = width * height;
+        const gray = new Float32Array(pixelCount);
+        let brightness = 0;
+        let contrastAccumulator = 0;
+        let edgeEnergy = 0;
+        let colorR = 0;
+        let colorG = 0;
+        let colorB = 0;
+
+        for (let i = 0, p = 0; i < data.length; i += 4, p += 1) {
+          const r = data[i];
+          const g = data[i + 1];
+          const b = data[i + 2];
+          const value = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+          gray[p] = value;
+          brightness += value;
+          colorR += r;
+          colorG += g;
+          colorB += b;
+        }
+
+        brightness /= pixelCount;
+        colorR /= pixelCount;
+        colorG /= pixelCount;
+        colorB /= pixelCount;
+
+        for (let y = 1; y < height - 1; y += 1) {
+          for (let x = 1; x < width - 1; x += 1) {
+            const i = y * width + x;
+            const value = gray[i];
+            contrastAccumulator += (value - brightness) ** 2;
+            const dx = gray[i + 1] - gray[i - 1];
+            const dy = gray[i + width] - gray[i - width];
+            edgeEnergy += Math.abs(dx) + Math.abs(dy);
+          }
+        }
+
+        const contrast = Math.sqrt(contrastAccumulator / pixelCount);
+        const sharpness = edgeEnergy / pixelCount;
+
+        return {
+          gray,
+          brightness,
+          contrast,
+          sharpness,
+          palette: [Math.round(colorR), Math.round(colorG), Math.round(colorB)],
+        };
+      }
+
+      function diffMetrics(current, previous, width, height) {
+        if (!previous) {
+          return {
+            diffMean: 0,
+            activeRatio: 0,
+            motionX: 0,
+            motionY: 0,
+            spreadX: 0,
+            spreadY: 0,
+            zoomHint: 0,
+            rotationHint: 0,
+            saliency: new Float32Array(width * height),
+          };
+        }
+
+        const size = width * height;
+        const saliency = new Float32Array(size);
+        let total = 0;
+        let active = 0;
+        let sumX = 0;
+        let sumY = 0;
+        let sumDistX = 0;
+        let sumDistY = 0;
+        let centerWeight = 0;
+        let edgeWeight = 0;
+        const centerX = (width - 1) / 2;
+        const centerY = (height - 1) / 2;
+
+        for (let y = 0; y < height; y += 1) {
+          for (let x = 0; x < width; x += 1) {
+            const i = y * width + x;
+            const delta = Math.abs(current[i] - previous[i]);
+            saliency[i] = delta;
+            total += delta;
+            if (delta > 12) {
+              active += 1;
+              sumX += x * delta;
+              sumY += y * delta;
+              sumDistX += Math.abs(x - centerX) * delta;
+              sumDistY += Math.abs(y - centerY) * delta;
+              const distCenter = Math.hypot(x - centerX, y - centerY);
+              const distEdge = Math.min(x, y, width - 1 - x, height - 1 - y);
+              centerWeight += (1 - distCenter / Math.hypot(centerX, centerY)) * delta;
+              edgeWeight += (1 - distEdge / Math.max(1, Math.min(width, height) / 2)) * delta;
+            }
+          }
+        }
+
+        const diffMean = total / size;
+        const activeRatio = active / size;
+        const centroidX = total > 0 ? sumX / total : centerX;
+        const centroidY = total > 0 ? sumY / total : centerY;
+        const spreadX = total > 0 ? sumDistX / total : 0;
+        const spreadY = total > 0 ? sumDistY / total : 0;
+        const motionX = (centroidX - centerX) / width;
+        const motionY = (centroidY - centerY) / height;
+        const zoomHint = clamp((edgeWeight - centerWeight) / Math.max(total, 1), -1, 1);
+        const rotationHint = clamp((spreadX - spreadY) / Math.max(spreadX + spreadY, 1), -1, 1);
+
+        return {
+          diffMean,
+          activeRatio,
+          motionX,
+          motionY,
+          spreadX,
+          spreadY,
+          zoomHint,
+          rotationHint,
+          saliency,
+        };
+      }
+
+      function buildDepthAndMask(width, height, metrics, diffInfo) {
+        const size = width * height;
+        const depth = new Uint8ClampedArray(size);
+        const mask = new Uint8ClampedArray(size);
+        const centerX = (width - 1) / 2;
+        const centerY = (height - 1) / 2;
+        const maxRadius = Math.hypot(centerX, centerY);
+        let maxSaliency = 1;
+
+        for (let i = 0; i < size; i += 1) {
+          maxSaliency = Math.max(maxSaliency, diffInfo.saliency[i]);
+        }
+
+        for (let y = 0; y < height; y += 1) {
+          for (let x = 0; x < width; x += 1) {
+            const i = y * width + x;
+            const value = metrics.gray[i];
+            const localContrast = Math.abs(value - metrics.brightness) / 255;
+            const saliency = diffInfo.saliency[i] / maxSaliency;
+            const radial = 1 - Math.hypot(x - centerX, y - centerY) / maxRadius;
+            const near = clamp(radial * 0.45 + saliency * 0.4 + localContrast * 0.15, 0, 1);
+            depth[i] = Math.round(near * 255);
+            mask[i] = near > 0.54 ? 255 : 0;
+          }
+        }
+
+        return { depth, mask };
+      }
+
+      function classifyCamera(frames) {
+        const motionX = frames.reduce((sum, frame) => sum + frame.diff.motionX, 0) / Math.max(frames.length, 1);
+        const motionY = frames.reduce((sum, frame) => sum + frame.diff.motionY, 0) / Math.max(frames.length, 1);
+        const zoom = frames.reduce((sum, frame) => sum + frame.diff.zoomHint, 0) / Math.max(frames.length, 1);
+        const rotation = frames.reduce((sum, frame) => sum + frame.diff.rotationHint, 0) / Math.max(frames.length, 1);
+        const energy = frames.reduce((sum, frame) => sum + frame.diff.activeRatio, 0) / Math.max(frames.length, 1);
+
+        let cameraType = "locked";
+        if (Math.abs(zoom) > 0.09) {
+          cameraType = zoom > 0 ? "dolly_in" : "dolly_out";
+        } else if (Math.abs(rotation) > 0.12 && Math.abs(motionX) > 0.02) {
+          cameraType = "orbit";
+        } else if (Math.abs(motionX) > Math.abs(motionY) && Math.abs(motionX) > 0.025) {
+          cameraType = "pan";
+        } else if (Math.abs(motionY) > 0.025) {
+          cameraType = "tilt";
+        } else if (energy > 0.18) {
+          cameraType = "handheld_drift";
+        }
+
+        return {
+          cameraType,
+          translateZ: Math.round(zoom * 2200),
+          translateX: Math.round(motionX * 900),
+          translateY: Math.round(motionY * 900),
+          rotateY: Number((rotation * 18).toFixed(2)),
+          rotateX: Number((-motionY * 10).toFixed(2)),
+        };
+      }
+
+      function selectKeyframes(samples, targetCount) {
+        const candidates = [];
+        const peakWindow = 2;
+        for (let i = 0; i < samples.length; i += 1) {
+          const sample = samples[i];
+          const score =
+            sample.diff.diffMean * 0.45 +
+            Math.abs(sample.metrics.brightness - (samples[i - 1]?.metrics.brightness ?? sample.metrics.brightness)) * 0.15 +
+            Math.abs(sample.metrics.sharpness - (samples[i - 1]?.metrics.sharpness ?? sample.metrics.sharpness)) * 0.15 +
+            sample.diff.activeRatio * 100 * 0.25;
+          let isPeak = true;
+          for (let j = Math.max(0, i - peakWindow); j <= Math.min(samples.length - 1, i + peakWindow); j += 1) {
+            if (j !== i) {
+              const other = samples[j];
+              const otherScore =
+                other.diff.diffMean * 0.45 +
+                Math.abs(other.metrics.brightness - (samples[j - 1]?.metrics.brightness ?? other.metrics.brightness)) * 0.15 +
+                Math.abs(other.metrics.sharpness - (samples[j - 1]?.metrics.sharpness ?? other.metrics.sharpness)) * 0.15 +
+                other.diff.activeRatio * 100 * 0.25;
+              if (otherScore > score) {
+                isPeak = false;
+                break;
+              }
+            }
+          }
+          if (i === 0 || i === samples.length - 1 || isPeak) {
+            candidates.push({ index: i, score });
+          }
+        }
+
+        const coverageIndexes = new Set([0, samples.length - 1]);
+        const slots = Math.max(2, targetCount);
+        for (let i = 0; i < slots; i += 1) {
+          coverageIndexes.add(Math.round((i / Math.max(1, slots - 1)) * (samples.length - 1)));
+        }
+
+        candidates.sort((a, b) => b.score - a.score);
+        const selected = [];
+        const minIndexGap = Math.max(1, Math.floor(samples.length / Math.max(targetCount, 1) / 2));
+
+        for (const candidate of candidates) {
+          if (selected.length >= targetCount) {
+            break;
+          }
+          if (selected.every((value) => Math.abs(value - candidate.index) >= minIndexGap)) {
+            selected.push(candidate.index);
+          }
+        }
+
+        for (const index of coverageIndexes) {
+          if (selected.length >= targetCount) {
+            break;
+          }
+          if (selected.every((value) => Math.abs(value - index) >= minIndexGap)) {
+            selected.push(index);
+          }
+        }
+
+        selected.sort((a, b) => a - b);
+
+        if (selected.length > targetCount) {
+          const stride = selected.length / targetCount;
+          const trimmed = [];
+          for (let i = 0; i < targetCount; i += 1) {
+            trimmed.push(selected[Math.min(selected.length - 1, Math.floor(i * stride))]);
+          }
+          return [...new Set(trimmed)];
+        }
+
+        return [...new Set(selected)];
+      }
+
+      function shotBoundaries(samples) {
+        const scores = samples.map((sample, index) => {
+          if (index <= 1) {
+            return 0;
+          }
+          const previous = samples[index - 1];
+          const brightnessDelta = Math.abs(sample.metrics.brightness - previous.metrics.brightness);
+          const contrastDelta = Math.abs(sample.metrics.contrast - previous.metrics.contrast);
+          return sample.diff.diffMean * 0.7 + brightnessDelta * 0.2 + contrastDelta * 0.1;
+        });
+        const mean = scores.reduce((sum, value) => sum + value, 0) / Math.max(scores.length, 1);
+        const variance = scores.reduce((sum, value) => sum + (value - mean) ** 2, 0) / Math.max(scores.length, 1);
+        const threshold = mean + Math.sqrt(variance) * 1.6;
+        const boundaries = [0];
+
+        for (let i = 1; i < scores.length - 1; i += 1) {
+          if (scores[i] > threshold && scores[i] >= scores[i - 1] && scores[i] >= scores[i + 1]) {
+            boundaries.push(i);
+          }
+        }
+
+        boundaries.push(samples.length - 1);
+        return [...new Set(boundaries)].sort((a, b) => a - b);
+      }
+
+      function summarizeObjects(samples) {
+        const objects = [];
+        const avgActive = samples.reduce((sum, frame) => sum + frame.diff.activeRatio, 0) / Math.max(samples.length, 1);
+        const avgSharpness = samples.reduce((sum, frame) => sum + frame.metrics.sharpness, 0) / Math.max(samples.length, 1);
+
+        objects.push({
+          name: "foreground_subject_01",
+          layer: 1,
+          animation: avgActive > 0.14 ? "enters_and_transforms" : "holds_pose",
+        });
+        objects.push({
+          name: "midground_structure_01",
+          layer: 2,
+          animation: avgSharpness > 22 ? "parallax_reveal" : "steady_presence",
+        });
+        objects.push({
+          name: "background_plane_01",
+          layer: 3,
+          animation: "lighting_shift",
+        });
+
+        return objects;
+      }
+
+      function timelineFromFrames(frames, duration) {
+        return frames.map((frame, index) => {
+          const prev = frames[Math.max(0, index - 1)];
+          const brightDelta = frame.metrics.brightness - prev.metrics.brightness;
+          const sharpDelta = frame.metrics.sharpness - prev.metrics.sharpness;
+          let event = "composition_hold";
+          if (index === 0) {
+            event = "scene_establishes";
+          } else if (frame.diff.diffMean > 24) {
+            event = "major_transition";
+          } else if (Math.abs(brightDelta) > 8) {
+            event = brightDelta > 0 ? "lighting_rise" : "lighting_fall";
+          } else if (Math.abs(sharpDelta) > 10) {
+            event = sharpDelta > 0 ? "focus_pull_to_foreground" : "focus_softens";
+          } else if (Math.abs(frame.diff.zoomHint) > 0.12) {
+            event = frame.diff.zoomHint > 0 ? "camera_push_in" : "camera_pull_back";
+          } else if (Math.abs(frame.diff.motionX) > 0.03) {
+            event = frame.diff.motionX > 0 ? "pan_right" : "pan_left";
+          }
+
+          return {
+            progress: Number((frame.time / Math.max(duration, 0.001)).toFixed(4)),
+            event,
+          };
+        });
+      }
+
+      async function analyzeVideo(videoUrl, options = {}) {
+        const targetKeyframes = clamp(options.targetKeyframes ?? 12, 8, 16);
+        const sampleRate = clamp(options.sampleRate ?? 4, 3, 6);
+        const previewWidth = options.previewWidth ?? 160;
+
+        const video = createVideo(videoUrl);
+        await waitForEvent(video, "loadedmetadata");
+
+        const aspect = video.videoWidth / Math.max(video.videoHeight, 1);
+        const previewHeight = Math.max(90, Math.round(previewWidth / Math.max(aspect, 0.001)));
+        const previewCanvas = createCanvas(previewWidth, previewHeight);
+        const previewCtx = previewCanvas.getContext("2d", { willReadFrequently: true });
+
+        const sampleCount = clamp(Math.round(video.duration * sampleRate), 32, 160);
+        const samples = [];
+        let previousGray = null;
+
+        writeStatus(`Analyzing ${videoUrl}\nSampling ${sampleCount} candidate beats...`);
+
+        for (let index = 0; index < sampleCount; index += 1) {
+          const time = (index / Math.max(sampleCount - 1, 1)) * Math.max(video.duration - 0.001, 0);
+          const frame = await getFrameAt(video, previewCanvas, previewCtx, time);
+          const metrics = frameMetrics(frame);
+          const diff = diffMetrics(metrics.gray, previousGray, frame.width, frame.height);
+          samples.push({
+            index,
+            time,
+            metrics,
+            diff,
+            frameSize: { width: frame.width, height: frame.height },
+          });
+          previousGray = metrics.gray;
+        }
+
+        const selectedIndexes = selectKeyframes(samples, targetKeyframes);
+        const selectedFrames = selectedIndexes.map((index) => samples[index]);
+        const boundaries = shotBoundaries(samples);
+
+        const exportWidth = clamp(video.videoWidth, 960, 1600);
+        const exportHeight = Math.round(exportWidth / Math.max(aspect, 0.001));
+        const matteCanvas = createCanvas(selectedFrames[0].frameSize.width, selectedFrames[0].frameSize.height);
+        const matteCtx = matteCanvas.getContext("2d");
+
+        const keyframes = [];
+        const depthMaps = [];
+        const masks = [];
+
+        for (let i = 0; i < selectedFrames.length; i += 1) {
+          const frame = selectedFrames[i];
+          writeStatus(`Analyzing ${videoUrl}\nRendering keyframe ${i + 1} of ${selectedFrames.length}...`);
+          const fullDataUrl = await renderExportFrame(videoUrl, exportWidth, exportHeight, frame.time);
+          keyframes.push({
+            index: i + 1,
+            time: frame.time,
+            palette: frame.metrics.palette,
+            metrics: {
+              brightness: Number(frame.metrics.brightness.toFixed(2)),
+              contrast: Number(frame.metrics.contrast.toFixed(2)),
+              sharpness: Number(frame.metrics.sharpness.toFixed(2)),
+            },
+            diff: {
+              diffMean: Number(frame.diff.diffMean.toFixed(2)),
+              activeRatio: Number(frame.diff.activeRatio.toFixed(4)),
+              motionX: Number(frame.diff.motionX.toFixed(4)),
+              motionY: Number(frame.diff.motionY.toFixed(4)),
+              zoomHint: Number(frame.diff.zoomHint.toFixed(4)),
+              rotationHint: Number(frame.diff.rotationHint.toFixed(4)),
+            },
+            dataUrl: fullDataUrl,
+          });
+
+          const { depth, mask } = buildDepthAndMask(
+            frame.frameSize.width,
+            frame.frameSize.height,
+            frame.metrics,
+            frame.diff
+          );
+
+          const matteImage = matteCtx.createImageData(frame.frameSize.width, frame.frameSize.height);
+          for (let pixel = 0; pixel < depth.length; pixel += 1) {
+            const offset = pixel * 4;
+            matteImage.data[offset] = depth[pixel];
+            matteImage.data[offset + 1] = depth[pixel];
+            matteImage.data[offset + 2] = depth[pixel];
+            matteImage.data[offset + 3] = 255;
+          }
+          matteCtx.putImageData(matteImage, 0, 0);
+          depthMaps.push(matteCanvas.toDataURL("image/png"));
+
+          for (let pixel = 0; pixel < mask.length; pixel += 1) {
+            const offset = pixel * 4;
+            matteImage.data[offset] = 255;
+            matteImage.data[offset + 1] = 255;
+            matteImage.data[offset + 2] = 255;
+            matteImage.data[offset + 3] = mask[pixel];
+          }
+          matteCtx.putImageData(matteImage, 0, 0);
+          masks.push(matteCanvas.toDataURL("image/png"));
+        }
+
+        const cameraSummary = classifyCamera(samples);
+        const timeline = timelineFromFrames(selectedFrames, video.duration);
+        const transitions = boundaries.slice(1, -1).map((sampleIndex, transitionIndex) => ({
+          at: Number((samples[sampleIndex].time / Math.max(video.duration, 0.001)).toFixed(4)),
+          transition: transitionIndex === 0 ? "hard_cut" : "compositional_shift",
+        }));
+        const layerHints = [
+          { name: "foreground", depth: 0.8 },
+          { name: "midground", depth: 0.5 },
+          { name: "background", depth: 0.2 },
+        ];
+
+        return {
+          duration: video.duration,
+          videoWidth: video.videoWidth,
+          videoHeight: video.videoHeight,
+          sampleCount,
+          shotBoundaries: boundaries.map((index) => Number((samples[index].time / Math.max(video.duration, 0.001)).toFixed(4))),
+          keyframes,
+          depthMaps,
+          masks,
+          camera: {
+            ...cameraSummary,
+            fov: clamp(Math.round(42 - cameraSummary.translateZ / 180), 30, 58),
+          },
+          objects: summarizeObjects(samples),
+          animation: {
+            timeline,
+            transitions,
+            layers: layerHints,
+          },
+        };
+      }
+
+      window.storyboardAnalyzer = {
+        analyzeVideo,
+        writeStatus,
+      };
+
+      writeStatus("Analyzer ready.");
+    })();
+  </script>
+</body>
+</html>
