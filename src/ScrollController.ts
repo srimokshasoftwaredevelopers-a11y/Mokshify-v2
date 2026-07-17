@@ -37,7 +37,9 @@ export class ScrollController {
     const st = ScrollTrigger.create({
       start: () => ScrollController.trackLength() * range.a,
       end: () => ScrollController.trackLength() * range.b,
-      scrub: true,
+      // touch flicks carry momentum that teleports an instant scrub —
+      // a ~0.9s smoothed scrub turns them into cinematic glides
+      scrub: matchMedia("(hover: none)").matches ? 0.9 : true,
       invalidateOnRefresh: true,
       onUpdate: self => seq.setProgress(self.progress),
       onRefresh: self => seq.setProgress(self.progress),

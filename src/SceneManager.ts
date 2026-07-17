@@ -120,7 +120,13 @@ export class SceneManager {
     }
 
     this.fitAll();
+    // mobile URL bars fire height-only resizes on every scroll — refitting
+    // mid-swipe makes the film jump, so touch devices refit only on width change
+    let lastW = innerWidth;
+    const coarse = matchMedia("(hover: none)").matches;
     addEventListener("resize", () => {
+      if (coarse && innerWidth === lastW) return;
+      lastW = innerWidth;
       this.fitAll();
       this.controller.refresh();
     }, { passive: true });

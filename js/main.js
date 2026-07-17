@@ -237,6 +237,9 @@ let mx = 0, my = 0, cmx = 0, cmy = 0;    // pointer raw / lerped
 let lx = -600, ly = -600, clx = -600, cly = -600; // cursor light
 
 function measure() {
+  // touch: URL-bar show/hide fires height-only resizes mid-scroll — keep the
+  // film geometry locked unless the width (orientation) actually changes
+  if (touch && vw === innerWidth && maxScroll > 1) return;
   vw = innerWidth; vh = innerHeight;
   // the film owns exactly its track; the credits ending after it never remaps timing
   const track = $(".scroll-space");
@@ -828,7 +831,9 @@ document.addEventListener("visibilitychange", () => {
 function frame(time) {
   if (!running) return;
 
-  const k = reduced ? 1 : (Math.abs(target - cur) > .12 ? .14 : .085);
+  const k = reduced ? 1 : touch
+    ? (Math.abs(target - cur) > .12 ? .07 : .045)   // flicks glide, never jump
+    : (Math.abs(target - cur) > .12 ? .14 : .085);
   cur += (target - cur) * k;
   if (Math.abs(target - cur) < 5e-6) cur = target;
 

@@ -1449,7 +1449,7 @@ body.on-film .brand-word{color:#F6EFE6;text-shadow:0 1px 12px rgba(15,8,6,.7)}
   .close-form{max-width:640px;width:100%}
 }
 @media (max-width:1023px){
-  :root{--track:2400vh}
+  :root{--track:1500vh} /* fewer swipes; heavier damping keeps control */
   .tilt{transform:none}
   .case-stage{grid-template-columns:1fr;align-content:start;padding-top:11vh;row-gap:2vh}
   .case-left{height:auto;padding-right:0;order:1}
