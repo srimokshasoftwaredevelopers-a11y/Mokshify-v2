@@ -856,7 +856,9 @@ function frame(time) {
   // the progress rail holds back through the opening beat — and bows out with the film
   el.railBox.style.opacity = filmdone ? "0" :
     Math.max(seg(time, 2600, 4000), seg(cur, .01, .018)).toFixed(3);
-  el.contactCard.classList.toggle("show", !filmdone && (time > 3800 || cur > .02));
+  // the card yields to the case chapter — its browser owns the upper right
+  const inCases = cur > CH[5].a - PAD && cur < CH[5].b;
+  el.contactCard.classList.toggle("show", !filmdone && !inCases && (time > 3800 || cur > .02));
   chapterUi(cur);
 
   requestAnimationFrame(frame);
