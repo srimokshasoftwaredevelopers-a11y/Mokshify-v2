@@ -27,6 +27,7 @@ for (const [tpl, route] of jobs) {
     await page.evaluate(async () => {                       // let reveals and lazy images settle
       for (let y = 0; y < document.documentElement.scrollHeight; y += 600) { scrollTo(0, y); await new Promise(r => setTimeout(r, 60)); }
       scrollTo(0, 0); document.querySelectorAll(".will-reveal").forEach(e => e.classList.add("is-in"));
+      await Promise.all([...document.images].filter(i => i.offsetParent).map(i => { i.loading = "eager"; return i.decode().catch(() => {}); }));
       await new Promise(r => setTimeout(r, 900));
     });
     const over = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);

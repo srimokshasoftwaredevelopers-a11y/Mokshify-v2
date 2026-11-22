@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="/css/site.css?v=f31f8dc33c">
+<link rel="stylesheet" href="/css/site.css?v=0bf3db7a08">
 <!-- /include:head -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -242,13 +242,13 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">01 / 03</p>
+      <p class="label on-spine">01 / 06 &middot; The problems</p>
       <h2>What we build for education</h2>
     </header>
-    <div class="section-body">
+    <div class="section-body wide">
       <table class="spec">
         <tbody>
-          <tr><th scope="row">Institute platforms</th><td>courses, batches, instructors and enrolment in one system. Live example: <a href="/work/skillforcehub/">SkillForceHub</a>, a Salesforce training institute in Warangal.</td></tr>
+          <tr><th scope="row">Institute platforms</th><td>courses, batches, instructors and enrolment in one system.</td></tr>
           <tr><th scope="row">Course catalogues as data</th><td>tracks and schedules that are searchable, comparable and <a href="/services/web-application-development/">findable</a> - because students search for exactly what institutes teach.</td></tr>
           <tr><th scope="row">Enrolment flows</th><td>from interested to enrolled-in-a-batch in minimal steps, with human follow-up where it converts.</td></tr>
           <tr><th scope="row">Mobile-first delivery</th><td>students research between classes and shifts, on modest phones; the platform respects that reality.</td></tr>
@@ -261,11 +261,23 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">02 / 03</p>
-      <h2>The lesson our work proved</h2>
+      <p class="label on-spine">02 / 06 &middot; The system</p>
+      <h2>How it fits together</h2>
     </header>
-    <div class="section-body">
-      <p>Information density beats brochure-ware: treating course content as structured data with real details outperformed pretty vagueness on every measure that mattered. The full story is in <a href="/work/skillforcehub/">the case study</a>.</p>
+    <div class="section-body wide">
+      <figure class="diagram system">
+        <svg viewBox="0 0 1120 200" role="img" aria-label="Education system: Your customers → Institute platforms → Course catalogues as data → Enrolment flows → Mobile-first delivery → Your team">
+          <line x1="20" y1="116" x2="1100" y2="116" stroke="#B08D57"/>
+          <text x="20" y="40" class="dg-n">ONE SYSTEM, END TO END</text>
+          <rect x="20.0" y="70" width="166.7" height="92" fill="#E4E2DC" stroke="rgb(20 16 18 / .3)"/><text x="103.3" y="121" text-anchor="middle" class="dg-i">Your customers</text>
+          <rect x="202.7" y="70" width="166.7" height="92" fill="#F6F5F1" stroke="#B08D57"/><text x="286.0" y="111" text-anchor="middle" class="dg-s">Institute</text><text x="286.0" y="131" text-anchor="middle" class="dg-s">platforms</text>
+          <rect x="385.3" y="70" width="166.7" height="92" fill="#F6F5F1" stroke="#B08D57"/><text x="468.7" y="111" text-anchor="middle" class="dg-s">Course catalogues</text><text x="468.7" y="131" text-anchor="middle" class="dg-s">as data</text>
+          <rect x="568.0" y="70" width="166.7" height="92" fill="#F6F5F1" stroke="#B08D57"/><text x="651.3" y="121" text-anchor="middle" class="dg-s">Enrolment flows</text>
+          <rect x="750.7" y="70" width="166.7" height="92" fill="#F6F5F1" stroke="#B08D57"/><text x="834.0" y="111" text-anchor="middle" class="dg-s">Mobile-first</text><text x="834.0" y="131" text-anchor="middle" class="dg-s">delivery</text>
+          <rect x="933.3" y="70" width="166.7" height="92" fill="#E4E2DC" stroke="rgb(20 16 18 / .3)"/><text x="1016.7" y="121" text-anchor="middle" class="dg-i">Your team</text>
+        </svg>
+        <figcaption>What we build for education, as one connected system — from the people you serve to the team that runs it.</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -273,11 +285,55 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">03 / 03</p>
+      <p class="label on-spine">03 / 06</p>
+      <h2>What we would build first</h2>
+    </header>
+    <div class="section-body">
+      <!-- TODO(proof): add an education case study when one exists; this section is capabilities only -->
+      <p>A course catalogue with the details that decide enrolment — duration, syllabus, schedule, fees — published as structured data so search engines and parents can read it.</p>
+      <p>Enrolment that works on a phone, batch and instructor management behind it, and an admin the institute runs itself.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="label on-spine">04 / 06 &middot; Live work</p>
+      <h2>Our live work, elsewhere</h2>
+    </header>
+    <div class="section-body wide">
+      <!-- TODO(proof): no education case study yet -->
+      <p>No education project to show yet. Every project we have shipped is live and open to inspect on <a href="/work/">the work page</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="label on-spine">05 / 06 &middot; Services</p>
+      <h2>Services that fit</h2>
+    </header>
+    <div class="section-body wide">
+      <div class="grid">
+        <a class="card" href="/services/web-application-development/"><b>Web Applications</b><span>We build the websites and web apps your customers and staff use every day — catalogues, bookings, dashboards and admin panels.</span></a>
+        <a class="card" href="/services/mobile-app-development/"><b>Mobile Apps</b><span>We build Android and iPhone apps from one codebase, connected to the same system as your website.</span></a>
+        <a class="card" href="/services/saas-development/"><b>SaaS Development</b><span>We build online software that many customers can sign up for and use, ready to grow from the first customer.</span></a>
+        <a class="card" href="/services/product-design/"><b>Product Design</b><span>We design how your website or app looks and works before we build it, so customers find what they need without help.</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="label on-spine">06 / 06</p>
       <h2>Common questions</h2>
     </header>
     <div class="section-body">
-      <details><summary>What have you actually shipped in education?</summary><p><a href="/work/skillforcehub/">SkillForceHub</a> - live at skillforcehub.com. Open it and browse a course track.</p></details>
+      <details><summary>What have you actually shipped in education?</summary><p>No live education platform we can show you yet. Our shipped work is in real estate, healthcare, agriculture and finance — open it on <a href="/work/">the work page</a>. The engineering underneath is the same.</p></details>
       <details><summary>Do you build LMS platforms too?</summary><p>Where an existing LMS fits, we integrate rather than rebuild - custom work goes where your teaching genuinely differs. That honesty is cheaper for you.</p></details>
     </div>
   </div>
@@ -304,7 +360,7 @@
 
 <section class="related">
   <div class="wrap">
-    <p><strong>Related:</strong> <a href="/work/skillforcehub/">SkillForceHub case study</a> &middot; <a href="/industries/">All industries</a> &middot; <a href="/services/mobile-app-development/">Mobile apps</a></p>
+    <p><strong>Related:</strong> <a href="/work/">All case studies</a> &middot; <a href="/industries/">All industries</a> &middot; <a href="/services/mobile-app-development/">Mobile apps</a></p>
   </div>
 </section>
 </main>
