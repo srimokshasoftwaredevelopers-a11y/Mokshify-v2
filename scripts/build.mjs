@@ -34,8 +34,21 @@ const hash = s => createHash("sha256").update(s).digest("hex").slice(0, 10);
 
 /* 1 · CSS */
 const cssDir = join(ROOT, "css", "src");
-const css = readdirSync(cssDir).filter(f => f.endsWith(".css")).sort()
-  .map(f => readFileSync(join(cssDir, f), "utf8").trim()).join("\n\n") + "\n";
+const cssFiles = readdirSync(cssDir).filter(f => f.endsWith(".css")).sort();
+/* one unclosed ( or { silently swallows every rule after it — fail the build instead */
+for (const f of cssFiles) {
+  const src = readFileSync(join(cssDir, f), "utf8").replace(/\/\*[\s\S]*?\*\//g, "").replace(/"(?:\\.|[^"\\])*"/g, '""');
+  let depth = { "(": 0, "{": 0 }, line = 1;
+  for (const ch of src) {
+    if (ch === "\n") line++;
+    if (ch === "(" || ch === "{") depth[ch]++;
+    if (ch === ")") depth["("]--;
+    if (ch === "}") { depth["{"]--; if (depth["("] !== 0) throw new Error(`css/src/${f}:${line}: unbalanced ( before }`); }
+    if (depth["("] < 0 || depth["{"] < 0) throw new Error(`css/src/${f}:${line}: unexpected closing bracket`);
+  }
+  if (depth["("] || depth["{"]) throw new Error(`css/src/${f}: unclosed bracket at end of file`);
+}
+const css = cssFiles.map(f => readFileSync(join(cssDir, f), "utf8").trim()).join("\n\n") + "\n";
 write(join(ROOT, "css", "site.css"), css);
 const jsSrc = readFileSync(join(ROOT, "js", "site.js"), "utf8");
 const vars = { cssv: hash(css), jsv: hash(jsSrc) };
