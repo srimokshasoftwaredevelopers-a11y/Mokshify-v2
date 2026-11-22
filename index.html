@@ -44,19 +44,21 @@
 
 <!-- include:head -->
 <meta name="theme-color" content="#2A0A12">
-<link rel="icon" type="image/png" href="/assets/icon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <link rel="preload" href="/assets/fonts/switzer-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="/css/site.css?v=73beda9af2">
+<link rel="stylesheet" href="/css/site.css?v=ababdcc136">
 <!-- /include:head -->
 <link rel="preload" as="image" href="/assets/home-plate.webp" media="(min-width: 48.0625rem)" fetchpriority="high">
 <link rel="preload" as="image" href="/assets/home-plate-960.webp" media="(max-width: 48rem)" fetchpriority="high">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
-{"@type":"Organization","@id":"https://mokshify.io/#org","url":"https://mokshify.io/","name":"Mokshify","legalName":"Mokshify","slogan":"Build What Competitors Can't.","description":"AI-first software engineering studio transforming startup ideas into world-class digital products.","email":"hello@mokshify.io","telephone":"+91-93912-48520","logo":{"@type":"ImageObject","@id":"https://mokshify.io/#logo","url":"https://mokshify.io/assets/icon-512.png","width":512,"height":512},"image":"https://mokshify.io/assets/og.jpg","address":{"@type":"PostalAddress","addressLocality":"Hyderabad","addressRegion":"Telangana","addressCountry":"IN"},"contactPoint":[{"@type":"ContactPoint","contactType":"sales","telephone":"+91-93912-48520","email":"hello@mokshify.io","availableLanguage":["English","Hindi","Telugu"],"areaServed":"Worldwide"}],"knowsAbout":["AI Products","SaaS Platforms","Mobile Apps","Enterprise Software","Healthcare Systems","Fintech Platforms","Real Estate Platforms","Cloud Infrastructure","Automation Platforms","LLM Applications","DevOps"]},
+{"@type":"Organization","@id":"https://mokshify.io/#org","url":"https://mokshify.io/","name":"Mokshify","legalName":"Mokshify","slogan":"Build What Competitors Can't.","description":"AI-first software engineering studio transforming startup ideas into world-class digital products.","email":"hello@mokshify.io","telephone":"+91-93912-48520","logo":{"@type":"ImageObject","@id":"https://mokshify.io/#logo","url":"https://mokshify.io/assets/brand/mokshify-logo.png","width":1200,"height":350},"image":"https://mokshify.io/assets/og.jpg","address":{"@type":"PostalAddress","addressLocality":"Hyderabad","addressRegion":"Telangana","addressCountry":"IN"},"contactPoint":[{"@type":"ContactPoint","contactType":"sales","telephone":"+91-93912-48520","email":"hello@mokshify.io","availableLanguage":["English","Hindi","Telugu"],"areaServed":"Worldwide"}],"knowsAbout":["AI Products","SaaS Platforms","Mobile Apps","Enterprise Software","Healthcare Systems","Fintech Platforms","Real Estate Platforms","Cloud Infrastructure","Automation Platforms","LLM Applications","DevOps"]},
 {"@type":"ProfessionalService","@id":"https://mokshify.io/#business","name":"Mokshify","url":"https://mokshify.io/","image":"https://mokshify.io/assets/og.jpg","telephone":"+91-93912-48520","email":"hello@mokshify.io","priceRange":"₹₹₹","address":{"@type":"PostalAddress","addressLocality":"Hyderabad","addressRegion":"Telangana","addressCountry":"IN"},"geo":{"@type":"GeoCoordinates","latitude":17.385,"longitude":78.4867},"areaServed":[{"@type":"Country","name":"India"},{"@type":"AdministrativeArea","name":"Worldwide (remote)"}],"parentOrganization":{"@id":"https://mokshify.io/#org"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"Engagement models","itemListElement":[
 {"@type":"Offer","itemOffered":{"@type":"Service","name":"MVP Sprint","description":"A fundable product in 4–6 weeks, for founders who need to ship fast.","provider":{"@id":"https://mokshify.io/#org"}}},
 {"@type":"Offer","itemOffered":{"@type":"Service","name":"Product Engineering","description":"A product partner, not an agency — end-to-end builds over 3–6 months.","provider":{"@id":"https://mokshify.io/#org"}}},
@@ -87,7 +89,10 @@
 <div class="spine" aria-hidden="true"></div>
 <header class="site-nav" id="site-nav">
   <div class="nav-bar">
-    <a class="nav-brand" href="/" aria-current="page" aria-label="Mokshify home"><img src="/assets/mark-64.png" alt="" width="28" height="28"><span>Mokshify</span></a>
+    <a class="nav-brand" href="/" aria-current="page" aria-label="Mokshify home">
+      <picture class="logo-light"><source type="image/webp" srcset="/assets/brand/lockup-36.webp 1x, /assets/brand/lockup-72.webp 2x"><img src="/assets/brand/lockup-72.png" alt="" width="125" height="36"></picture>
+      <span class="logo-dark"><picture><source type="image/webp" srcset="/assets/brand/mark-56.webp"><img src="/assets/brand/mark-56.png" alt="" width="28" height="28"></picture><span class="logo-word">Mokshify</span></span>
+    </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-main"><span class="nav-toggle-box" aria-hidden="true"></span><span class="sr">Menu</span></button>
     <nav class="nav-main" id="nav-main" aria-label="Site">
       <ul class="nav-list">
@@ -580,7 +585,10 @@
 <footer class="site-footer dark" id="site-footer">
   <div class="wrap">
     <div class="foot-top">
-      <a class="foot-brand on-spine" href="/" aria-label="Mokshify home"><img src="/assets/mark-64.png" alt="" width="36" height="36" loading="lazy"><span>Mokshify</span></a>
+      <div class="foot-id">
+        <a class="foot-brand on-spine" href="/" aria-label="Mokshify home"><picture><source type="image/webp" srcset="/assets/brand/mark-72.webp"><img src="/assets/brand/mark-72.png" alt="" width="36" height="36" loading="lazy"></picture><span>Mokshify</span></a>
+        <p class="label foot-tag">Digital solutions. Limitless impact.</p>
+      </div>
       <p class="foot-pos">Mokshify builds websites, apps and software for businesses — from the first sketch to a live product your customers use.</p>
     </div>
     <nav class="foot-cols" aria-label="Footer">

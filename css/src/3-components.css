@@ -128,7 +128,7 @@ html:not(.js) .nav-item:focus-within .nav-panel{display:block;animation:panel .2
   .nav-sheet-contact{display:flex;flex-wrap:wrap;gap:1.25rem;margin:2rem 0 0;max-width:none}
   .nav-sheet-contact a{font:500 1rem/1 var(--mono);color:var(--fg)}
 }
-@media (max-width:26rem){.nav-brand span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}}
+
 
 /* contact bar — one tap to call or WhatsApp, on every page, phones and tablets */
 .contact-bar{display:none}

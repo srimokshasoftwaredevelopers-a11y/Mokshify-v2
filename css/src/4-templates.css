@@ -165,3 +165,17 @@ p,li{text-wrap:pretty}
   .work-row .frame-view img{transform-origin:50% 0}
   .work-row:hover .frame-view img,.js .work-row:hover .zoom-in.is-in img{transform:scale(1.03);transition:transform .7s var(--ease)}
 }
+
+/* ─────────────── 10 · LOGO ───────────────
+   light surfaces: full-colour lockup (no tagline) at 36px; oxblood surfaces: the M mark + "Mokshify" in paper */
+.nav-brand{gap:0}
+.nav-brand img{display:block;border-radius:0}
+.logo-light img{height:36px;width:auto}
+.logo-dark{display:none;align-items:center;gap:.6rem}
+.logo-word{font:500 1.125rem/1 var(--sans);letter-spacing:-.02em;color:var(--fg)}
+.site-nav.over .logo-light,.nav-open .site-nav .logo-light{display:none}
+.site-nav.over .logo-dark,.nav-open .site-nav .logo-dark{display:inline-flex}
+.foot-id{display:grid;gap:.9rem;justify-items:start}
+.foot-brand picture img{border-radius:0}
+.foot-tag{margin:0}
+@media (max-width:26rem){.nav-cta{padding:.5rem .75rem;font-size:.75rem}}

@@ -15,13 +15,15 @@
 <meta name="twitter:card" content="summary_large_image">
 <!-- include:head -->
 <meta name="theme-color" content="#2A0A12">
-<link rel="icon" type="image/png" href="/assets/icon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <link rel="preload" href="/assets/fonts/switzer-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="/css/site.css?v=73beda9af2">
+<link rel="stylesheet" href="/css/site.css?v=ababdcc136">
 <!-- /include:head -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mokshify.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://mokshify.io/guides/"}]},{"@type":"CollectionPage","@id":"https://mokshify.io/guides/#page","url":"https://mokshify.io/guides/","name":"Guides","description":"Free guides for planning a software project.","isPartOf":{"@id":"https://mokshify.io/#website"},"about":{"@id":"https://mokshify.io/#org"},"inLanguage":"en-IN"}]}
@@ -33,7 +35,10 @@
 <div class="spine" aria-hidden="true"></div>
 <header class="site-nav" id="site-nav">
   <div class="nav-bar">
-    <a class="nav-brand" href="/" aria-label="Mokshify home"><img src="/assets/mark-64.png" alt="" width="28" height="28"><span>Mokshify</span></a>
+    <a class="nav-brand" href="/" aria-label="Mokshify home">
+      <picture class="logo-light"><source type="image/webp" srcset="/assets/brand/lockup-36.webp 1x, /assets/brand/lockup-72.webp 2x"><img src="/assets/brand/lockup-72.png" alt="" width="125" height="36"></picture>
+      <span class="logo-dark"><picture><source type="image/webp" srcset="/assets/brand/mark-56.webp"><img src="/assets/brand/mark-56.png" alt="" width="28" height="28"></picture><span class="logo-word">Mokshify</span></span>
+    </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-main"><span class="nav-toggle-box" aria-hidden="true"></span><span class="sr">Menu</span></button>
     <nav class="nav-main" id="nav-main" aria-label="Site">
       <ul class="nav-list">
@@ -270,7 +275,10 @@
 <footer class="site-footer dark" id="site-footer">
   <div class="wrap">
     <div class="foot-top">
-      <a class="foot-brand on-spine" href="/" aria-label="Mokshify home"><img src="/assets/mark-64.png" alt="" width="36" height="36" loading="lazy"><span>Mokshify</span></a>
+      <div class="foot-id">
+        <a class="foot-brand on-spine" href="/" aria-label="Mokshify home"><picture><source type="image/webp" srcset="/assets/brand/mark-72.webp"><img src="/assets/brand/mark-72.png" alt="" width="36" height="36" loading="lazy"></picture><span>Mokshify</span></a>
+        <p class="label foot-tag">Digital solutions. Limitless impact.</p>
+      </div>
       <p class="foot-pos">Mokshify builds websites, apps and software for businesses — from the first sketch to a live product your customers use.</p>
     </div>
     <nav class="foot-cols" aria-label="Footer">

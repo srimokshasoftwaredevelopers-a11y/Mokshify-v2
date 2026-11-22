@@ -16,13 +16,15 @@
 <link rel="alternate" type="application/rss+xml" title="Mokshify Engineering" href="/feed.xml">
 <!-- include:head -->
 <meta name="theme-color" content="#2A0A12">
-<link rel="icon" type="image/png" href="/assets/icon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <link rel="preload" href="/assets/fonts/switzer-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="/css/site.css?v=73beda9af2">
+<link rel="stylesheet" href="/css/site.css?v=ababdcc136">
 <!-- /include:head -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -37,7 +39,10 @@
 <div class="spine" aria-hidden="true"></div>
 <header class="site-nav" id="site-nav">
   <div class="nav-bar">
-    <a class="nav-brand" href="/" aria-label="Mokshify home"><img src="/assets/mark-64.png" alt="" width="28" height="28"><span>Mokshify</span></a>
+    <a class="nav-brand" href="/" aria-label="Mokshify home">
+      <picture class="logo-light"><source type="image/webp" srcset="/assets/brand/lockup-36.webp 1x, /assets/brand/lockup-72.webp 2x"><img src="/assets/brand/lockup-72.png" alt="" width="125" height="36"></picture>
+      <span class="logo-dark"><picture><source type="image/webp" srcset="/assets/brand/mark-56.webp"><img src="/assets/brand/mark-56.png" alt="" width="28" height="28"></picture><span class="logo-word">Mokshify</span></span>
+    </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-main"><span class="nav-toggle-box" aria-hidden="true"></span><span class="sr">Menu</span></button>
     <nav class="nav-main" id="nav-main" aria-label="Site">
       <ul class="nav-list">
@@ -242,15 +247,17 @@
 <section class="section dark">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">01 / 05</p>
+      <p class="label on-spine">01 / 06</p>
       <h2>The mark</h2>
     </header>
     <div class="section-body">
       <div class="grid">
-          <a class="card" href="/assets/mark.png" download><b>M emblem (PNG, 1024&times;1024)</b><span>The maroon M with the pixel dissolve and gold mandala, on warm white.</span><i>Download &rarr;</i></a>
-          <a class="card" href="/assets/Mokshify_Logo.png" download><b>Full brand sheet (PNG)</b><span>Emblem, wordmark and tagline - the complete lockup, high resolution.</span><i>Download &rarr;</i></a>
-          <a class="card" href="/assets/icon-512.png" download><b>App icon (512&times;512)</b><span>Square icon derived from the emblem, as used across this site.</span><i>Download &rarr;</i></a>
-        </div>
+        <a class="card" href="/assets/brand/mokshify-logo-original.png" download><b>Full logo, original (PNG, 2172&times;724)</b><span>The M mark, wordmark and tagline on the original light cream background, exactly as supplied.</span><i>Download &rarr;</i></a>
+        <a class="card" href="/assets/brand/mokshify-logo-transparent.png" download><b>Full logo, transparent (PNG)</b><span>The same artwork with the cream background removed, for light surfaces.</span><i>Download &rarr;</i></a>
+        <a class="card" href="/assets/brand/lockup-72.png" download><b>Logo without tagline (PNG)</b><span>Mark and wordmark only, as used in the site header on light surfaces.</span><i>Download &rarr;</i></a>
+        <a class="card" href="/assets/brand/mokshify-mark.png" download><b>M mark, square (PNG, transparent)</b><span>The mark alone, used for favicons, the app icon and on dark surfaces.</span><i>Download &rarr;</i></a>
+        <a class="card" href="/assets/icon-512.png" download><b>App icon (512&times;512)</b><span>The square M mark at app-icon size, as used in the web manifest.</span><i>Download &rarr;</i></a>
+      </div>
     </div>
   </div>
 </section>
@@ -258,7 +265,27 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">02 / 05</p>
+      <p class="label on-spine">02 / 06 &middot; Logo usage</p>
+      <h2>Using the logo</h2>
+    </header>
+    <div class="section-body wide">
+      <table class="spec">
+        <tbody>
+          <tr><th scope="row">Light surfaces</th><td>The full-colour mark and wordmark, without the tagline, 36px tall: the scrolled header and paper pages.</td></tr>
+          <tr><th scope="row">Oxblood surfaces</th><td>The M mark only, followed by &ldquo;Mokshify&rdquo; set in Switzer in the paper colour: the hero header, menus and footer. The maroon and teal wordmark is unreadable on oxblood.</td></tr>
+          <tr><th scope="row">Tagline</th><td>&ldquo;Digital solutions. Limitless impact.&rdquo; appears under the footer logo only, in the mono label style.</td></tr>
+          <tr><th scope="row">Artwork</th><td>Never redrawn, recoloured or altered. Only the background is removed and the file cropped or resized.</td></tr>
+          <tr><th scope="row">Files on the web</th><td>WebP with a PNG fallback, width and height always set, so nothing shifts while it loads.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="label on-spine">03 / 06</p>
       <h2>Palette</h2>
     </header>
     <div class="section-body">
@@ -279,7 +306,7 @@
 <section class="section dark">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">03 / 05</p>
+      <p class="label on-spine">04 / 06</p>
       <h2>Typography</h2>
     </header>
     <div class="section-body">
@@ -291,7 +318,7 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">04 / 05</p>
+      <p class="label on-spine">05 / 06</p>
       <h2>The two rules</h2>
     </header>
     <div class="section-body">
@@ -307,7 +334,7 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">05 / 05 &middot; Design system</p>
+      <p class="label on-spine">06 / 06 &middot; Design system</p>
       <h2>Components</h2>
     </header>
     <div class="section-body wide">
@@ -367,7 +394,10 @@
 <footer class="site-footer dark" id="site-footer">
   <div class="wrap">
     <div class="foot-top">
-      <a class="foot-brand on-spine" href="/" aria-label="Mokshify home"><img src="/assets/mark-64.png" alt="" width="36" height="36" loading="lazy"><span>Mokshify</span></a>
+      <div class="foot-id">
+        <a class="foot-brand on-spine" href="/" aria-label="Mokshify home"><picture><source type="image/webp" srcset="/assets/brand/mark-72.webp"><img src="/assets/brand/mark-72.png" alt="" width="36" height="36" loading="lazy"></picture><span>Mokshify</span></a>
+        <p class="label foot-tag">Digital solutions. Limitless impact.</p>
+      </div>
       <p class="foot-pos">Mokshify builds websites, apps and software for businesses — from the first sketch to a live product your customers use.</p>
     </div>
     <nav class="foot-cols" aria-label="Footer">
