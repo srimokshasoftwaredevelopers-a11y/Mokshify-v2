@@ -9,9 +9,11 @@ Resume from here. Spec: `REDESIGN_SPEC.md`. Decisions: `DECISIONS.md`.
 | 0 Audit | Done (`REDESIGN_AUDIT.md`) |
 | 1 Structure + tokens | Done |
 | 2 Shell components | Done (nav, mega menu, mobile sheet, contact bar, hero variants, CTA band, footer, component CSS) |
-| 3 One page per template + review | Home, Hub, Service, Industry, Case study done + reviewed. Long-form, Reference, Tools, Company, Conversion, Utility pending |
-| 4 Rollout | Shell + generic template applied to all pages; template-specific work pending |
-| 5 Fixes + checks + report | Fix 1 (CTAs → /consult/) done. Others pending |
+| 3 One page per template + review | Done — all 11 templates reviewed at 375/768/1440 (review/) |
+| 4 Rollout | Done — 73/73 routes |
+| 5 Fixes + checks + report | Done — all 8 fixes, npm run verify passes, Lighthouse 100s desktop, REDESIGN_REPORT.md written |
+
+**RUN COMPLETE (23 Nov 2026).** Remaining items are owner actions, listed in REDESIGN_REPORT.md → "Needs you".
 
 ## How the site is built now (read this after a compaction)
 
