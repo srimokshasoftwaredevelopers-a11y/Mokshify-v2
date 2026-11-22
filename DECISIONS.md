@@ -32,6 +32,25 @@ One line of reasoning each. Newest at the bottom of each list.
 - **Focus indicator: brass outline over a 3px ink ring (paper on dark).** Brass alone is 2.39:1 on limestone, below the 3:1 non-text minimum.
 - **`npm run build` is now the partial build** (no dev dependencies needed on Vercel). The film bundle moved to `npm run build:film`, kept only until the film files are deleted.
 
+## Motion, logo and answers (MOTION_SPEC.md, 23 Nov 2026)
+
+- **Hero video switches on by itself.** The build stamps `data-hero-video="ready"` only when `assets/hero/hero.webm`, `hero.mp4` and `hero-poster.webp` all exist, so desktop visitors get no 404s before then. Vercel runs `npm run build` on deploy, so dropping the files in is enough. Verified with a throwaway test clip (deleted): 0.6× playback, pause button, and no video request at 375px.
+- **No CSP change for the video.** It is same-origin, which `default-src 'self'` already covers.
+- **The slow zoom runs on the `<picture>`**, not the `<img>`, so it doesn't fight the existing 6% scroll parallax on the image.
+- **Lenis is injected by `site.js` with `defer`**, only for `(pointer: fine) and (min-width: 900px)` and never with reduced motion. A static `<script defer>` tag would download it on phones too.
+- **`site.js` now ships minified** (`js/site.min.js`, built by esbuild in `scripts/build.mjs`; a verbatim copy if esbuild is missing). Without it, 12 KB of source + 18.8 KB of Lenis would break the 30 KB budget.
+- **"Section content" reveals exclude tools, forms and long-form**, per the motion rules ("body text, tables, forms, tools and long-form articles stay still"). Inside ordinary sections, the body block fades and rises once as a whole; nothing inside it animates on its own.
+- **Headline line-splitting happens just before the headline enters view, and the original markup is restored after the reveal**, so resizing later never breaks the lines. Headlines containing links or markup are left still.
+- **Counting up starts from 0 only for figures below the first screen**; anything already visible keeps its final value. Ranges ("4–6 wks") and words ("HMDA") are never animated. The final text is always restored verbatim from the HTML.
+- **The pipeline line follows the brief's easing.** That curve is front-loaded, so the line reaches the last step at about 0.6 s and spends the rest of the 2 s settling.
+- **Gallery frames also get the slow zoom**, read as "section plates". Placeholder plates (`.plate.todo`) do not.
+- **The logo cut-out is clean on light surfaces, so the transparent copy is used.** On oxblood, the lens flare under the ring breaks into small yellow-green specks at 2× zoom (`review/logo/edges-2x.png`); at the 28px header size that is about 2px. Falling back to the cream original would put a cream box on oxblood, so the transparent mark stays and this is reported.
+- **The apple-touch icon (180) sits on paper**, because iOS paints transparent touch icons black. All other icons are transparent. The manifest icons are `purpose: any` (the transparent mark isn't maskable-safe).
+- **The JSON-LD logo is the full transparent logo with the tagline** (`/assets/brand/mokshify-logo.png`, 1200×350). `og.jpg` keeps its path and now shows the full logo on paper.
+- **Old logo files stay on disk** (`assets/mark.png`, `mark-64.png`, `Mokshify_Logo.png`), but nothing references them now. `scripts/seo-assets.mjs`, which crops the old logo sheet, is superseded by `scripts/brand-logo.mjs`.
+- **On phones of 416px and narrower, the header CTA is slightly smaller** (0.75rem), so the 125px logo lockup, the CTA and the menu button fit without horizontal scroll. Verified: 0 overflow at 375px.
+- **Answers (part 8): all six were blank.** Nothing applied; every TODO(confirm) stays as it was.
+
 ## Unresolved
 
 - **`film-v1` tag not on the remote.** The tag exists locally on `974d9a2` (main), but `git push origin film-v1` returned 403: the credential on this machine (`ajagritecha-hub`) has no write access to `srimokshasoftwaredevelopers-a11y/Mokshify-v2`, and the `gh` account (`qflow-token`) has pull-only access. Following your rule, the frames, film engine, `js/main.js`, `css/styles.css`, `css/pages.css` and GSAP are **not deleted**. The new pages no longer load any of them. Morning action: push the tag, then run the deletion listed in `REDESIGN_REPORT.md`.
