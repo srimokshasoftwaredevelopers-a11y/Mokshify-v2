@@ -238,7 +238,7 @@
       <li><a href="#the-problem">The problem</a></li>
       <li><a href="#the-architecture">The architecture</a></li>
       <li><a href="#advantages-disadvantages">Advantages & disadvantages</a></li>
-      <li><a href="#tradeoffs-the-honest-shortcut">Tradeoffs & the honest shortcut</a></li>
+      <li><a href="#tradeoffs-the-honest-shortcut">Tradeoffs & the MVP shortcut</a></li>
       <li><a href="#technology-selection">Technology selection</a></li>
     </ol>
   </nav>
@@ -263,7 +263,7 @@
     <p>The shape we ship: an identity service speaking OpenID Connect issues a <strong>short-lived access token</strong> (verified by every service on every call) and a <strong>rotating, revocable refresh token</strong>. Authorization is separate from authentication - every privileged action is checked at the point of execution and written to an <a href="/security/">audit log</a>, because knowing who someone is says nothing about what they may do.</p>
     <h2 id="advantages-disadvantages">Advantages &amp; disadvantages</h2>
     <p><strong>Advantages:</strong> stolen access tokens expire in minutes; refresh rotation turns token theft into a detectable event; per-service verification means no service trusts the network; SSO and MFA bolt onto the identity service without touching products. <strong>Disadvantages:</strong> more moving parts than a session cookie on one server; token lifetime tuning is a real product decision (too short annoys users, too long comforts attackers); clock skew and revocation lists are operational details that must actually be operated.</p>
-    <h2 id="tradeoffs-the-honest-shortcut">Tradeoffs &amp; the honest shortcut</h2>
+    <h2 id="tradeoffs-the-honest-shortcut">Tradeoffs &amp; the MVP shortcut</h2>
     <p>For a single-server MVP, a well-configured session cookie (HttpOnly, Secure, SameSite) is simpler and safer than a badly built token system - the token architecture earns its complexity when multiple services and client surfaces arrive. We often start MVPs on sessions and migrate on schedule, an escape hatch planned like <a href="/library/multi-tenant-saas/">tenancy promotion</a>.</p>
     <h2 id="technology-selection">Technology selection</h2>
     <p>Managed identity providers where they fit (fewer credentials to defend), FastAPI/Node middleware for verification (<a href="/decisions/#fastapi">ADR-002</a>), PostgreSQL for the authorization model and audit trail (<a href="/decisions/#postgresql">ADR-003</a>), Redis for rate-limiting login attempts (<a href="/decisions/#redis">ADR-004</a>). Never build password hashing yourself; never store what a vault should hold.</p>

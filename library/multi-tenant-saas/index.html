@@ -237,7 +237,7 @@
     <ol>
       <li><a href="#the-problem">The problem</a></li>
       <li><a href="#the-architecture">The architecture</a></li>
-      <li><a href="#the-three-options-honestly">The three options, honestly</a></li>
+      <li><a href="#the-three-options-honestly">The three options, compared</a></li>
       <li><a href="#tradeoffs-we-accept">Tradeoffs we accept</a></li>
       <li><a href="#technology-selection">Technology selection</a></li>
     </ol>
@@ -261,7 +261,7 @@
       </svg>
       </div>
     <p>Our default: <strong>row-level tenancy</strong>. Every table carries a <code>tenant_id</code>; PostgreSQL row-level security policies enforce isolation at the database - not only in application code - and the query layer adds a second guard. Redis keys are namespaced per tenant. Billing, quotas and metering hang off the same tenant spine.</p>
-    <h2 id="the-three-options-honestly">The three options, honestly</h2>
+    <h2 id="the-three-options-honestly">The three options, compared</h2>
     <h3>Row-level (shared schema)</h3>
     <p><strong>Advantages:</strong> lowest unit cost; one schema to migrate; pooled connections; trivial cross-tenant analytics for you as the operator. <strong>Disadvantages:</strong> isolation depends on discipline - RLS policies and reviews must be airtight; noisy-neighbour risk shows at the query level; per-tenant restore is surgery, not a click.</p>
     <h3>Schema-per-tenant</h3>

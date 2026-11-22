@@ -237,7 +237,7 @@
     <p class="label on-spine">On this page</p>
     <ol>
       <li><a href="#the-problem">The problem</a></li>
-      <li><a href="#the-pipeline-honestly">The pipeline, honestly</a></li>
+      <li><a href="#the-pipeline-honestly">The pipeline, step by step</a></li>
       <li><a href="#advantages-disadvantages">Advantages & disadvantages</a></li>
       <li><a href="#when-you-do-not-need-rag">When you do not need RAG</a></li>
       <li><a href="#technology-selection">Technology selection</a></li>
@@ -246,7 +246,7 @@
   <article class="prose">
     <h2 id="the-problem">The problem</h2>
     <p>A language model knows what it was trained on - not your price list, your policies, or what changed last Tuesday. Ask it anyway and it answers confidently from nothing. Retrieval-Augmented Generation fixes the knowledge problem without retraining: fetch the relevant truth first, then have the model answer <em>from</em> it, citing where it looked.</p>
-    <h2 id="the-pipeline-honestly">The pipeline, honestly</h2>
+    <h2 id="the-pipeline-honestly">The pipeline, step by step</h2>
     <p>The <a href="/architecture/">diagrammed version</a> lives in our gallery; here is what each stage actually decides:</p>
     <ol>
         <li><strong>Ingestion &amp; chunking.</strong> Documents split into retrievable pieces. The unglamorous truth: chunking strategy (size, overlap, respecting structure like headings and tables) moves answer quality more than model choice. Bad chunks cannot be prompted away.</li>

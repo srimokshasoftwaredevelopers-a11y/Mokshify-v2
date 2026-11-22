@@ -114,7 +114,12 @@ for (const file of pages) {
       const indented = html.split("\n").map(l => (l ? pad + l : l)).join("\n");
       return `${pad}<!-- include:${name} -->\n${indented}\n${pad}<!-- /include:${name} -->`;
     });
-  write(file, out);
+  // section labels on the spine count themselves: "01 / 05", in document order
+  const total = (out.match(/<p class="label on-spine">\d\d \/ \d\d/g) || []).length;
+  let n = 0;
+  const numbered = out.replace(/(<p class="label on-spine">)\d\d \/ \d\d/g,
+    (_, open) => `${open}${String(++n).padStart(2, "0")} / ${String(total).padStart(2, "0")}`);
+  write(file, numbered);
 }
 
 console.log(`css ${(css.length / 1024).toFixed(1)} KB (${vars.cssv}) · js ${(jsSrc.length / 1024).toFixed(1)} KB (${vars.jsv})`);

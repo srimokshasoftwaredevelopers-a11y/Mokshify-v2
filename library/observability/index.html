@@ -237,7 +237,7 @@
     <p class="label on-spine">On this page</p>
     <ol>
       <li><a href="#the-problem">The problem</a></li>
-      <li><a href="#the-three-signals-prioritised-honestly">The three signals, prioritised honestly</a></li>
+      <li><a href="#the-three-signals-prioritised-honestly">The three signals, prioritised</a></li>
       <li><a href="#alerting-that-respects-humans">Alerting that respects humans</a></li>
       <li><a href="#advantages-disadvantages">Advantages & disadvantages</a></li>
       <li><a href="#technology-selection">Technology selection</a></li>
@@ -247,7 +247,7 @@
     <p class="note"><span class="label">Updated 23 Nov 2026</span> The scroll film this page describes was retired from the homepage in the November 2026 redesign. The text below is kept as the record of how it was built.</p>
     <h2 id="the-problem">The problem</h2>
     <p>Monitoring tells you a thing you predicted might break, broke. Observability is being able to ask questions you did not predict - why is checkout slow for one tenant, on one endpoint, since one deploy? The 99.98% uptime we publish is a monitoring number; the ability to keep it is observability.</p>
-    <h2 id="the-three-signals-prioritised-honestly">The three signals, prioritised honestly</h2>
+    <h2 id="the-three-signals-prioritised-honestly">The three signals, prioritised</h2>
     <ol>
         <li><strong>Structured logs first.</strong> JSON lines with request id, tenant id, route, duration, outcome - centralised and queryable. For a product-scale system this answers 80% of unpredicted questions, at the lowest cost. Policy: secrets and personal data are scrubbed at the emitter, never at the viewer (<a href="/security/">security practices</a>).</li>
         <li><strong>Metrics for the dashboards that gate.</strong> Rate, errors, duration per service; queue depth and job failures (<a href="/library/background-jobs/">the async half</a>); cache hit rates (<a href="/library/caching-strategy/">the caching half</a>); cost per service so bills cannot drift silently.</li>
