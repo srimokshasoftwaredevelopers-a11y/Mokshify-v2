@@ -119,7 +119,9 @@ for (const file of pages) {
   let n = 0;
   const numbered = out.replace(/(<p class="label on-spine">)\d\d \/ \d\d/g,
     (_, open) => `${open}${String(++n).padStart(2, "0")} / ${String(total).padStart(2, "0")}`);
-  write(file, numbered);
+  // home hero video: on only once all three files exist (no 404s before then)
+  const heroReady = ["hero.webm", "hero.mp4", "hero-poster.webp"].every(f => existsSync(join(ROOT, "assets", "hero", f)));
+  write(file, numbered.replace(/data-hero-video="(?:pending|ready)"/, `data-hero-video="${heroReady ? "ready" : "pending"}"`));
 }
 
 console.log(`css ${(css.length / 1024).toFixed(1)} KB (${vars.cssv}) · js ${(jsSrc.length / 1024).toFixed(1)} KB (${vars.jsv})`);

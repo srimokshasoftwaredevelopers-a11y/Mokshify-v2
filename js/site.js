@@ -47,6 +47,41 @@
     wide.addEventListener("change", () => setSheet(false));
   }
 
+  /* ── home hero: slow-motion video (wide screens, decent connections) or the still's slow zoom ── */
+  const heroFig = document.querySelector(".hero.home .hero-img");
+  const heroBtn = document.querySelector(".hero-pause");
+  if (heroFig && heroBtn && !reduced) {
+    const video = heroFig.querySelector(".hero-video");
+    const conn = navigator.connection || {};
+    const goodNet = !conn.saveData && !/(^|-)(2g|3g)$/.test(conn.effectiveType || "");
+    const wideEnough = matchMedia("(min-width: 56.25rem)").matches;
+    const ready = heroFig.dataset.heroVideo === "ready";
+    let playing = true;
+    if (ready && video && wideEnough && goodNet) {
+      video.poster = video.dataset.poster;
+      for (const [type, key] of [["video/webm", "webm"], ["video/mp4", "mp4"]]) {
+        const s = document.createElement("source");
+        s.src = video.dataset[key]; s.type = type; video.append(s);
+      }
+      video.addEventListener("loadedmetadata", () => { video.playbackRate = 0.6; });
+      video.addEventListener("playing", () => heroFig.classList.add("has-video"), { once: true });
+      video.load();
+      video.play().catch(() => {});
+    } else if (ready) {
+      // narrow screens and Save-Data / 2g / 3g: the poster, never the video
+      heroFig.querySelectorAll("source[srcset]").forEach(s => s.remove());
+      heroFig.querySelector("img").src = video.dataset.poster;
+    }
+    heroBtn.hidden = false;
+    heroBtn.addEventListener("click", () => {
+      playing = !playing;
+      if (heroFig.classList.contains("has-video")) { if (playing) video.play().catch(() => {}); else video.pause(); }
+      heroFig.classList.toggle("is-paused", !playing);
+      heroBtn.setAttribute("aria-pressed", String(!playing));
+      heroBtn.querySelector(".sr").textContent = playing ? "Pause background motion" : "Play background motion";
+    });
+  }
+
   /* ── tabs (home: work by industry). All panels are in the HTML; without JS they all show ── */
   for (const list of $$("[role=tablist]")) {
     const tabs = $$("[role=tab]", list);
