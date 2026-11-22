@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="/css/site.css?v=0bf3db7a08">
+<link rel="stylesheet" href="/css/site.css?v=5196e09770">
 <!-- /include:head -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -225,26 +225,35 @@
 <!-- /include:nav -->
 
 <main id="main">
-<header class="hero dark">
+<header class="hero plate hero-case">
+  <figure class="hero-img"><img src="/assets/sites/terravion-plate.webp" alt="" width="1600" height="1000" fetchpriority="high" decoding="async"></figure>
   <div class="wrap">
     <p class="pkicker on-spine">Case study &middot; Real estate &middot; <a href="https://terravionproperties.com" rel="noopener">terravionproperties.com</a></p>
     <h1><span class="ln"><span>Terravion Properties &mdash; land,</span></span> <span class="ln"><span>discovered online.</span></span></h1>
     <p class="plede">Plot buying near Hyderabad runs on trust: approvals, boundaries, paperwork. Terravion&rsquo;s platform puts HMDA-approved projects near Shankarpally online with the details that actually decide a purchase &mdash; location, approval status, layout &mdash; so site visits start with informed buyers.</p>
-    <ul class="facts">
-        <li><b>HMDA</b><i>approved projects</i></li>
-        <li><b>Shankarpally</b><i>growth corridor</i></li>
-        <li><b>Online</b><i>discovery to booking</i></li>
-      </ul>
+    <div class="hero-actions"><a class="btn" href="https://terravionproperties.com/" rel="noopener">Open terravionproperties.com ↗</a></div>
   </div>
 </header>
 
 <section class="section">
   <div class="wrap">
-    <div class="section-body">
-      <figure>
-          <img src="/assets/sites/terravion.png" alt="Terravion Properties homepage - HMDA-approved plots near Shankarpally" width="1200" height="750" loading="lazy">
-          <figcaption>The live platform &mdash; <a href="https://terravionproperties.com" rel="noopener">terravionproperties.com</a>.</figcaption>
-        </figure>
+    <header class="section-head">
+      <p class="label on-spine">Fact strip</p>
+      
+    </header>
+    <div class="section-body wide">
+      <table class="spec strip-table">
+        <tbody>
+          <tr><th scope="row">Industry</th><td>Real estate</td></tr>
+          <tr><th scope="row">Type</th><td>Client website</td></tr>
+          <tr><th scope="row">Live at</th><td><a href="https://terravionproperties.com/" rel="noopener">terravionproperties.com</a></td></tr>
+        </tbody>
+      </table>
+      <ul class="facts">
+              <li><b>HMDA</b><i>approved projects</i></li>
+              <li><b>Shankarpally</b><i>growth corridor</i></li>
+              <li><b>Online</b><i>discovery to booking</i></li>
+            </ul>
     </div>
   </div>
 </section>
@@ -252,7 +261,7 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">01 / 05</p>
+      <p class="label on-spine">01 / 06</p>
       <h2>The problem</h2>
     </header>
     <div class="section-body">
@@ -264,7 +273,7 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">02 / 05</p>
+      <p class="label on-spine">02 / 06</p>
       <h2>Challenges</h2>
     </header>
     <div class="section-body">
@@ -282,10 +291,19 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">03 / 05</p>
+      <p class="label on-spine">03 / 06</p>
       <h2>Architecture &amp; stack</h2>
     </header>
-    <div class="section-body">
+    <div class="section-body wide">
+      <table class="spec">
+        <tbody>
+          <tr><th scope="row">Front end</th><td>Content-forward React, fully crawlable</td></tr>
+          <tr><th scope="row">Services</th><td>Node.js</td></tr>
+          <tr><th scope="row">Data</th><td>PostgreSQL for project and enquiry data, Redis for caching</td></tr>
+          <tr><th scope="row">Gateway</th><td>Nginx</td></tr>
+          <tr><th scope="row">Pipeline</th><td>GitHub Actions — tested and AI-reviewed</td></tr>
+        </tbody>
+      </table>
       <p>A content-forward React web platform on our standard production base: Node.js services, PostgreSQL for project and enquiry data, Redis for caching, Nginx at the gateway, deployed through the same tested, AI-reviewed GitHub Actions pipeline as everything we ship. Project pages are fully crawlable and structured, because in this market a project page that ranks is a sales channel.</p>
     </div>
   </div>
@@ -294,7 +312,7 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">04 / 05</p>
+      <p class="label on-spine">04 / 06</p>
       <h2>Results</h2>
     </header>
     <div class="section-body">
@@ -310,7 +328,22 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">05 / 05</p>
+      <p class="label on-spine">05 / 06 &middot; Gallery</p>
+      <h2>Gallery</h2>
+    </header>
+    <div class="section-body wide">
+      <div class="gallery">
+        <figure><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>terravionproperties.com</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/terravion-m.webp" width="600" height="1350"><img src="/assets/sites/terravion.webp" alt=" homepage, captured from the live site" width="1200" height="2000" loading="lazy" decoding="async"></picture></div></div><figcaption>Desktop, 1440 px — captured from the live site on 23 Nov 2026.</figcaption></figure>
+        <figure><div class="frame phone"><div class="frame-view"><img src="/assets/sites/terravion-m.webp" alt="terravionproperties.com on a phone" width="600" height="1350" loading="lazy" decoding="async"></div></div><figcaption>Phone, 390 px.</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="label on-spine">06 / 06</p>
       <h2>Lessons learned</h2>
     </header>
     <div class="section-body">
@@ -337,6 +370,29 @@
   </div>
 </section>
 <!-- /include:cta-band -->
+
+<section class="section next-case">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="label on-spine">Next case study</p>
+      
+    </header>
+    <div class="section-body wide">
+      <!-- include:work-medico-diagnostics -->
+      <article class="work-row">
+        <a class="work-shot" href="/work/medico-diagnostics/" tabindex="-1" aria-hidden="true"><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>medicodiagnostics.in</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/medico-m.webp" width="600" height="1350"><img src="/assets/sites/medico.webp" alt="Medico Diagnostics homepage, captured from the live site" width="1200" height="2000" loading="lazy" decoding="async"></picture></div></div></a>
+        <div class="work-text">
+          <p class="label">Healthcare &middot; Client website</p>
+          <h3><a href="/work/medico-diagnostics/">Medico Diagnostics</a></h3>
+          <p>A diagnostics website where patients find a test, see the price, book a home collection and download reports.</p>
+          <ul class="facts"><li><b>3,291+</b><i>tests published</i></li><li><b>4–6h</b><i>reporting</i></li></ul>
+          <p class="work-links"><a href="/work/medico-diagnostics/">Read the case study</a> <a href="https://medicodiagnostics.in/" rel="noopener">medicodiagnostics.in ↗</a></p>
+        </div>
+      </article>
+      <!-- /include:work-medico-diagnostics -->
+    </div>
+  </div>
+</section>
 
 <section class="related">
   <div class="wrap">

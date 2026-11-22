@@ -20,6 +20,7 @@ const SITES = {
   "fincalix": "https://fincalix.com/",
   "medico": "https://medicodiagnostics.in/",
   "terravion": "https://terravionproperties.com/",
+  "mokshify-website": process.env.SELF_URL || "http://localhost:8123/",   // this site, from the local server
 };
 const only = process.argv.slice(2);
 const wait = ms => new Promise(r => setTimeout(r, ms));

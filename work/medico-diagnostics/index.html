@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="/css/site.css?v=0bf3db7a08">
+<link rel="stylesheet" href="/css/site.css?v=5196e09770">
 <!-- /include:head -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -225,26 +225,35 @@
 <!-- /include:nav -->
 
 <main id="main">
-<header class="hero dark">
+<header class="hero plate hero-case">
+  <figure class="hero-img"><img src="/assets/sites/medico-plate.webp" alt="" width="1600" height="1000" fetchpriority="high" decoding="async"></figure>
   <div class="wrap">
     <p class="pkicker on-spine">Case study &middot; Healthcare &middot; <a href="https://medicodiagnostics.in" rel="noopener">medicodiagnostics.in</a></p>
     <h1><span class="ln"><span>Medico Diagnostics &mdash; healthcare that</span></span> <span class="ln"><span>reports in hours.</span></span></h1>
     <p class="plede">A diagnostics laboratory&rsquo;s entire catalogue and booking flow, moved online: 3,291+ tests published with transparent pricing, 4&ndash;6 hour reporting and 99% accuracy &mdash; for patients who used to learn all of this at a front desk.</p>
-    <ul class="facts">
-        <li><b>3,291+</b><i>tests published</i></li>
-        <li><b>4&ndash;6h</b><i>reporting</i></li>
-        <li><b>99%</b><i>accuracy</i></li>
-      </ul>
+    <div class="hero-actions"><a class="btn" href="https://medicodiagnostics.in/" rel="noopener">Open medicodiagnostics.in ↗</a></div>
   </div>
 </header>
 
 <section class="section">
   <div class="wrap">
-    <div class="section-body">
-      <figure>
-          <img src="/assets/sites/medico.png" alt="Medico Diagnostics homepage - tests, packages and booking online" width="1200" height="750" loading="lazy">
-          <figcaption>The live platform &mdash; <a href="https://medicodiagnostics.in" rel="noopener">medicodiagnostics.in</a>.</figcaption>
-        </figure>
+    <header class="section-head">
+      <p class="label on-spine">Fact strip</p>
+      
+    </header>
+    <div class="section-body wide">
+      <table class="spec strip-table">
+        <tbody>
+          <tr><th scope="row">Industry</th><td>Healthcare</td></tr>
+          <tr><th scope="row">Type</th><td>Client website</td></tr>
+          <tr><th scope="row">Live at</th><td><a href="https://medicodiagnostics.in/" rel="noopener">medicodiagnostics.in</a></td></tr>
+        </tbody>
+      </table>
+      <ul class="facts">
+              <li><b>3,291+</b><i>tests published</i></li>
+              <li><b>4&ndash;6h</b><i>reporting</i></li>
+              <li><b>99%</b><i>accuracy</i></li>
+            </ul>
     </div>
   </div>
 </section>
@@ -252,7 +261,7 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">01 / 05</p>
+      <p class="label on-spine">01 / 06</p>
       <h2>The problem</h2>
     </header>
     <div class="section-body">
@@ -264,7 +273,7 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">02 / 05</p>
+      <p class="label on-spine">02 / 06</p>
       <h2>Challenges</h2>
     </header>
     <div class="section-body">
@@ -282,10 +291,19 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">03 / 05</p>
+      <p class="label on-spine">03 / 06</p>
       <h2>Architecture &amp; stack</h2>
     </header>
-    <div class="section-body">
+    <div class="section-body wide">
+      <table class="spec">
+        <tbody>
+          <tr><th scope="row">Front end</th><td>Mobile-first React, fully server-rendered</td></tr>
+          <tr><th scope="row">Services</th><td>Node.js</td></tr>
+          <tr><th scope="row">Data</th><td>PostgreSQL for the test catalogue — tests, panels, packages, preparation rules, pricing — with Redis caching hot queries</td></tr>
+          <tr><th scope="row">Gateway</th><td>Nginx</td></tr>
+          <tr><th scope="row">Pipeline</th><td>GitHub Actions — tests and AI review on every release</td></tr>
+        </tbody>
+      </table>
       <p>The platform runs on our standard production architecture: a mobile-first React front end over Node.js services, PostgreSQL modelling the test catalogue (tests, panels, packages, preparation rules, pricing) with Redis caching the hot catalogue queries, Nginx at the gateway, and a GitHub Actions pipeline gating every release with tests and AI review. The catalogue is fully server-rendered and structured for search engines &mdash; a diagnostics catalogue is exactly the content patients search for.</p>
     </div>
   </div>
@@ -294,7 +312,7 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">04 / 05</p>
+      <p class="label on-spine">04 / 06</p>
       <h2>Results</h2>
     </header>
     <div class="section-body">
@@ -310,7 +328,22 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">05 / 05</p>
+      <p class="label on-spine">05 / 06 &middot; Gallery</p>
+      <h2>Gallery</h2>
+    </header>
+    <div class="section-body wide">
+      <div class="gallery">
+        <figure><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>medicodiagnostics.in</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/medico-m.webp" width="600" height="1350"><img src="/assets/sites/medico.webp" alt=" homepage, captured from the live site" width="1200" height="2000" loading="lazy" decoding="async"></picture></div></div><figcaption>Desktop, 1440 px — captured from the live site on 23 Nov 2026.</figcaption></figure>
+        <figure><div class="frame phone"><div class="frame-view"><img src="/assets/sites/medico-m.webp" alt="medicodiagnostics.in on a phone" width="600" height="1350" loading="lazy" decoding="async"></div></div><figcaption>Phone, 390 px.</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="label on-spine">06 / 06</p>
       <h2>Lessons learned</h2>
     </header>
     <div class="section-body">
@@ -337,6 +370,29 @@
   </div>
 </section>
 <!-- /include:cta-band -->
+
+<section class="section next-case">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="label on-spine">Next case study</p>
+      
+    </header>
+    <div class="section-body wide">
+      <!-- include:work-aj-agritech -->
+      <article class="work-row">
+        <a class="work-shot" href="/work/aj-agritech/" tabindex="-1" aria-hidden="true"><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>ajagritech.com</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/aj-agritech-m.webp" width="600" height="1350"><img src="/assets/sites/aj-agritech.webp" alt="AJ Agritech homepage, captured from the live site" width="1200" height="2000" loading="lazy" decoding="async"></picture></div></div></a>
+        <div class="work-text">
+          <p class="label">Agriculture &middot; Client website</p>
+          <h3><a href="/work/aj-agritech/">AJ Agritech</a></h3>
+          <p>A Telugu-first brand and product catalogue for an agri-inputs company in Andhra Pradesh and Telangana.</p>
+          <ul class="facts"><li><b>3</b><i>languages</i></li><li><b>3</b><i>product ranges</i></li></ul>
+          <p class="work-links"><a href="/work/aj-agritech/">Read the case study</a> <a href="https://ajagritech.com/" rel="noopener">ajagritech.com ↗</a></p>
+        </div>
+      </article>
+      <!-- /include:work-aj-agritech -->
+    </div>
+  </div>
+</section>
 
 <section class="related">
   <div class="wrap">

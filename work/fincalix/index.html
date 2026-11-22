@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="/css/site.css?v=0bf3db7a08">
+<link rel="stylesheet" href="/css/site.css?v=5196e09770">
 <!-- /include:head -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -227,26 +227,35 @@
 
 
 <main id="main">
-<header class="hero dark">
+<header class="hero plate hero-case">
+  <figure class="hero-img"><img src="/assets/sites/fincalix-plate.webp" alt="" width="1600" height="1000" fetchpriority="high" decoding="async"></figure>
   <div class="wrap">
     <p class="pkicker on-spine">Case study · Fintech · <a href="https://fincalix.com" rel="noopener">fincalix.com</a></p>
     <h1><span class="ln"><span>FinCalix — every rupee,</span></span> <span class="ln"><span>calculated.</span></span></h1>
-    <p class="plede">A financial decision platform for real people: EMI, SIP, tax, retirement and 30+ other calculators — free, fast, and honest, with no paywall between a user and their own numbers.</p>
-    <ul class="facts">
-        <li><b>30+</b><i>calculators</i></li>
-        <li><b>100%</b><i>free, no paywall</i></li>
-        <li><b>2</b><i>surfaces: web + Android</i></li>
-      </ul>
+    <p class="plede">A financial decision platform for real people: EMI, SIP, tax, retirement and 40+ other calculators — free, fast, and honest, with no paywall between a user and their own numbers.</p>
+    <div class="hero-actions"><a class="btn" href="https://fincalix.com/" rel="noopener">Open fincalix.com ↗</a></div>
   </div>
 </header>
 
 <section class="section">
   <div class="wrap">
-    <div class="section-body">
-      <figure>
-          <img src="/assets/sites/fincalix.png" alt="FinCalix homepage — Built for Real People, Real Financial Decisions" width="1200" height="750" loading="lazy">
-          <figcaption>The live FinCalix homepage — open it at <a href="https://fincalix.com" rel="noopener">fincalix.com</a>.</figcaption>
-        </figure>
+    <header class="section-head">
+      <p class="label on-spine">Fact strip</p>
+      
+    </header>
+    <div class="section-body wide">
+      <table class="spec strip-table">
+        <tbody>
+          <tr><th scope="row">Industry</th><td>Finance</td></tr>
+          <tr><th scope="row">Type</th><td>Our product</td></tr>
+          <tr><th scope="row">Live at</th><td><a href="https://fincalix.com/" rel="noopener">fincalix.com</a></td></tr>
+        </tbody>
+      </table>
+      <ul class="facts">
+              <li><b>47</b><i>calculators</i></li><li><b>6</b><i>Indian languages</i></li>
+              <li><b>100%</b><i>free, no paywall</i></li>
+              <li><b>2</b><i>surfaces: web + Android</i></li>
+            </ul>
     </div>
   </div>
 </section>
@@ -254,7 +263,7 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">01 / 05</p>
+      <p class="label on-spine">01 / 06</p>
       <h2>The problem</h2>
     </header>
     <div class="section-body">
@@ -266,7 +275,7 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">02 / 05</p>
+      <p class="label on-spine">02 / 06</p>
       <h2>Challenges</h2>
     </header>
     <div class="section-body">
@@ -284,10 +293,20 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">03 / 05</p>
+      <p class="label on-spine">03 / 06</p>
       <h2>Architecture &amp; stack</h2>
     </header>
-    <div class="section-body">
+    <div class="section-body wide">
+      <table class="spec">
+        <tbody>
+          <tr><th scope="row">Front end</th><td>React</td></tr>
+          <tr><th scope="row">Shared logic</th><td>One calculation library used by the web app and the Android app, so results agree to the last paisa</td></tr>
+          <tr><th scope="row">Services</th><td>Node.js APIs</td></tr>
+          <tr><th scope="row">Data</th><td>PostgreSQL and Redis</td></tr>
+          <tr><th scope="row">Pipeline</th><td>GitHub Actions — tests and an AI review before staged rollout</td></tr>
+          <tr><th scope="row">Delivery</th><td>Static, cache-first pages for low-end devices and slow networks</td></tr>
+        </tbody>
+      </table>
       <p>FinCalix runs on Mokshify's standard production platform: a React front end, calculation logic packaged as a single shared library consumed by both the web app and the Android app (so results agree to the last paisa), service APIs on Node.js, PostgreSQL and Redis at the data layer, and a GitHub Actions pipeline where every release passes tests and an AI review before staged rollout. Static delivery and cache-first design keep calculator pages fast on low-end devices and slow networks — the audience this product exists for.</p>
     </div>
   </div>
@@ -296,12 +315,14 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">04 / 05</p>
+      <p class="label on-spine">04 / 06</p>
       <h2>Results</h2>
     </header>
     <div class="section-body">
       <ul>
-          <li>30+ calculators live, spanning loans, savings, tax and retirement.</li>
+          <li>47 calculators live, spanning loans, savings, tax and retirement, plus 7 trackers and planners.</li>
+<li>Works offline in the Android app, in six Indian languages, with no ads.</li>
+<!-- TODO(confirm): iOS availability — the owner's brief says live on Google Play and iOS; fincalix.com links only to Google Play on 23 Nov 2026 -->
           <li>Free end to end — the no-paywall promise is a product feature, stated on the homepage and kept.</li>
           <li>One codebase of financial logic serving web and the Play Store Android app.</li>
         </ul>
@@ -312,7 +333,22 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">05 / 05</p>
+      <p class="label on-spine">05 / 06 &middot; Gallery</p>
+      <h2>Gallery</h2>
+    </header>
+    <div class="section-body wide">
+      <div class="gallery">
+        <figure><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>fincalix.com</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/fincalix-m.webp" width="600" height="1350"><img src="/assets/sites/fincalix.webp" alt=" homepage, captured from the live site" width="1200" height="2000" loading="lazy" decoding="async"></picture></div></div><figcaption>Desktop, 1440 px — captured from the live site on 23 Nov 2026.</figcaption></figure>
+        <figure><div class="frame phone"><div class="frame-view"><img src="/assets/sites/fincalix-m.webp" alt="fincalix.com on a phone" width="600" height="1350" loading="lazy" decoding="async"></div></div><figcaption>Phone, 390 px.</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="label on-spine">06 / 06</p>
       <h2>Lessons learned</h2>
     </header>
     <div class="section-body">
@@ -339,6 +375,29 @@
   </div>
 </section>
 <!-- /include:cta-band -->
+
+<section class="section next-case">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="label on-spine">Next case study</p>
+      
+    </header>
+    <div class="section-body wide">
+      <!-- include:work-qflow -->
+      <article class="work-row">
+        <a class="work-shot" href="/work/qflow/" tabindex="-1" aria-hidden="true"><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>qflow.in</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/qflow-m.webp" width="600" height="1350"><img src="/assets/sites/qflow.webp" alt="Qflow homepage, captured from the live site" width="1200" height="2000" loading="lazy" decoding="async"></picture></div></div></a>
+        <div class="work-text">
+          <p class="label">Product &middot; Our product</p>
+          <h3><a href="/work/qflow/">Qflow</a></h3>
+          <p>Queue and token management for any business with a queue — salons, clinics, temples, banks and offices.</p>
+          <ul class="facts"><li><b>3</b><i>portals: business, customer, admin</i></li></ul>
+          <p class="work-links"><a href="/work/qflow/">Read the case study</a> <a href="https://qflow.in/" rel="noopener">qflow.in ↗</a></p>
+        </div>
+      </article>
+      <!-- /include:work-qflow -->
+    </div>
+  </div>
+</section>
 
 <section class="related">
   <div class="wrap">

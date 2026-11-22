@@ -9,7 +9,7 @@ Resume from here. Spec: `REDESIGN_SPEC.md`. Decisions: `DECISIONS.md`.
 | 0 Audit | Done (`REDESIGN_AUDIT.md`) |
 | 1 Structure + tokens | Done |
 | 2 Shell components | Done (nav, mega menu, mobile sheet, contact bar, hero variants, CTA band, footer, component CSS) |
-| 3 One page per template + review | Home done + reviewed. Hub partly. Others pending |
+| 3 One page per template + review | Home, Hub, Service, Industry, Case study done + reviewed. Long-form, Reference, Tools, Company, Conversion, Utility pending |
 | 4 Rollout | Shell + generic template applied to all pages; template-specific work pending |
 | 5 Fixes + checks + report | Fix 1 (CTAs → /consult/) done. Others pending |
 
@@ -29,9 +29,11 @@ Resume from here. Spec: `REDESIGN_SPEC.md`. Decisions: `DECISIONS.md`.
 
 ## Next (in order)
 
-1. Hubs: /work/ (work rows + new meta), /industries/ (+ new /industries/agriculture/), /services/ tables, /engineering/ "honest" fix, /library/, /resources/, new /guides/ hub.
-2. Service detail ×10: what-you-get spec, delivery diagram, case study row, engagement options.
-3. Industry detail ×5 (real-estate shows Next Edge + Terravion; education without case + TODO(proof)).
-4. Case study ×3 existing (fincalix 47 calculators/6 languages/iOS TODO(confirm); medico; terravion) to plate+strip+gallery+stack+next.
-5. Long-form check, reference (/stack/ table + filters), tools panel, company (spec tables on enterprise/security/quality), conversion forms, utility (404.html, FAQ, search, sitemap).
-6. Film notes (done via migration on FILM_PAGES), /process/ engagement anchors, sitemap/feed/llms/search-index/image-sitemap, review screenshots, checks, REDESIGN_REPORT.md.
+1. Long-form check (paper hero, TOC on spine) — /library/caching-strategy/.
+2. Reference: /stack/ as a filterable table (filters UI + data-cat rows), /decisions/, /benchmarks/, /architecture/, /devops/.
+3. Tools: wrap .est forms in .panel; one CTA after result.
+4. Company: /enterprise/, /security/, /quality/ spec tables (bold-led lists already converted by migration) + oxblood statement plates.
+5. Conversion: real form on /consult/ + /contact/ (form.enquiry, FORM_ENDPOINT in js/site.js).
+6. Utility: 404.html, /guides/ hub (new), /sitemap/ as index list incl. new pages, FAQ ok, search ok.
+7. SEO files: sitemap.xml (+ guides, agriculture, 4 new case studies; − skillforcehub), image-sitemap.xml, llms.txt, search-index (node scripts/build-search-index.mjs), feed.xml unchanged.
+8. /brand/ component documentation. Checks (crawl, audit-site, contrast, keyboard, 375 overflow, CSS/JS size, Lighthouse via npx). REDESIGN_REPORT.md.
