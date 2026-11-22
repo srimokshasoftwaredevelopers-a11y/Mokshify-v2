@@ -187,6 +187,56 @@
     }
   }
 
+  /* ── the one easing, cubic-bezier(.16,1,.3,1), for motion driven from JS ── */
+  const bez = (s, a, b) => 3 * a * s * (1 - s) ** 2 + 3 * b * s * s * (1 - s) + s ** 3;
+  const ease = x => { let lo = 0, hi = 1; for (let k = 0; k < 24; k++) { const m = (lo + hi) / 2; bez(m, .16, .3) < x ? lo = m : hi = m; } return bez((lo + hi) / 2, 1, 1); };
+  const easeInv = y => { let lo = 0, hi = 1; for (let k = 0; k < 24; k++) { const m = (lo + hi) / 2; bez(m, 1, 1) < y ? lo = m : hi = m; } return bez((lo + hi) / 2, .16, .3); };
+
+  if (!reduced && "IntersectionObserver" in window) {
+    /* metrics count up over 1.6s on entry; the final value is what the HTML says */
+    const parse = t => {
+      const m = /^(\D*?)(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?)(\D*)$/.exec(t.trim());
+      return m && !/\d/.test(m[1] + m[3]) ? { pre: m[1], n: parseFloat(m[2].replace(/,/g, "")), dec: (m[2].split(".")[1] || "").length, comma: m[2].includes(","), suf: m[3] } : null;
+    };
+    const fmt = (v, p) => p.pre + (p.comma ? v.toLocaleString("en-US", { minimumFractionDigits: p.dec, maximumFractionDigits: p.dec }) : v.toFixed(p.dec)) + p.suf;
+    const cio = new IntersectionObserver(entries => {
+      for (const en of entries) {
+        if (!en.isIntersecting) continue;
+        const el = en.target, p = parse(el.dataset.final), t0 = performance.now();
+        cio.unobserve(el);
+        const step = now => {
+          const x = Math.min(1, (now - t0) / 1600);
+          el.textContent = x < 1 ? fmt(p.n * ease(x), p) : el.dataset.final;
+          if (x < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      }
+    }, { rootMargin: "0px 0px -10% 0px" });
+    for (const el of $$("main .facts b")) {
+      const p = parse(el.textContent);
+      if (!p || p.n === 0 || el.getBoundingClientRect().top <= innerHeight || el.closest(".hidden, [hidden]")) continue;
+      el.dataset.final = el.textContent;
+      el.textContent = fmt(0, p);
+      cio.observe(el);
+    }
+
+    /* the pipeline line draws left to right over 2s; each step fades in as the line reaches it */
+    const pio = new IntersectionObserver(entries => {
+      for (const en of entries) if (en.isIntersecting) { en.target.classList.add("is-in"); pio.unobserve(en.target); }
+    }, { rootMargin: "0px 0px -15% 0px" });
+    for (const ol of $$("main .pipeline")) {
+      if (ol.getBoundingClientRect().top <= innerHeight) continue;
+      const steps = [...ol.children], n = steps.length;
+      steps.forEach((li, i) => {
+        const a = easeInv(i / n) * 2000, b = easeInv((i + 1) / n) * 2000;
+        li.style.setProperty("--d", `${Math.round(a)}ms`);
+        li.style.setProperty("--len", `${Math.max(1, Math.round(b - a))}ms`);
+      });
+      ol.classList.add("will-draw");
+      pio.observe(ol);
+    }
+  }
+
   /* ── filters for reference tables: <div class="filters" data-target="#id"> + rows with data-cat ── */
   for (const bar of $$(".filters[data-target]")) {
     const target = document.querySelector(bar.dataset.target);

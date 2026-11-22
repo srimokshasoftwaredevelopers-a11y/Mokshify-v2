@@ -151,3 +151,11 @@ p,li{text-wrap:pretty}
     @keyframes hero-recede{to{transform:scale(.96);opacity:.6}}
   }
 }
+
+/* pipeline: one brass line drawn left to right (segments timed to the easing), steps fade in as it arrives */
+@media (prefers-reduced-motion:no-preference){
+  .js .pipeline.will-draw li::before{transform:scaleX(0);transform-origin:0 50%}
+  .js .pipeline.will-draw li::after,.js .pipeline.will-draw li > *{opacity:0}
+  .js .pipeline.will-draw.is-in li::before{transform:scaleX(1);transition:transform var(--len) linear var(--d)}
+  .js .pipeline.will-draw.is-in li::after,.js .pipeline.will-draw.is-in li > *{opacity:1;transition:opacity .9s var(--ease) var(--d)}
+}
