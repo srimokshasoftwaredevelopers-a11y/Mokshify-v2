@@ -1,5 +1,22 @@
 # Mokshify — a film you scroll
 
+## Current state (redesign, 23 Nov 2026)
+
+The scroll film has been retired from the homepage. The site is plain static HTML,
+assembled from partials at build time — no framework:
+
+```sh
+npm run build     # node scripts/build.mjs — stamps partials/*.html into every page, css/src/* → css/site.css
+npm run check     # fails if any page is out of date with its partials
+npm run serve     # node scripts/serve.mjs — local server on :8123 (redirects + 404.html)
+npm run audit     # links, orphans, metadata, schema
+```
+
+Design system: tokens in `css/src/1-tokens.css`, components documented on `/brand/`.
+Projects (work rows + new case studies) are generated from `scripts/redesign/projects.mjs`.
+Everything below this section describes the retired film and is kept as history; the film
+code is still in the repo until the `film-v1` tag is pushed (see `DECISIONS.md`).
+
 One continuous cinematic experience driven entirely by scroll. Chapters 1–4
 play **one Gemini Flow master shot** — 914 extracted 4K frames in `frames/1/`
 scrubbed like an Apple product film (pencil → studio → engineering → street).

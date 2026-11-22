@@ -8,6 +8,11 @@ typography or colours without explicit owner approval.
 1. DESIGN SYSTEM
 ═══════════════════════════════════════════════════════════
 
+> SUPERSEDED 23 Nov 2026 by the Monograph redesign. Tokens: css/src/1-tokens.css.
+> Components: /brand/ (Components table). Partials: partials/*.html, built by
+> scripts/build.mjs. The homepage film is retired, so "homepage LOCKED" no longer
+> applies. Content governance (section 2) still applies in full.
+
 ## Tokens (source of truth: css/pages.css :root, css/styles.css :root)
 | Token | Value | Use |
 |---|---|---|

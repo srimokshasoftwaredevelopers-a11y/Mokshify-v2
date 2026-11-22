@@ -237,12 +237,12 @@
       <form class="est" aria-label="JSON formatter" onsubmit="return false">
           <fieldset>
             <legend>Input</legend>
-            <textarea id="jf-in" rows="8" style="width:100%;font:500 .85rem/1.5 var(--mono);padding:14px;border-radius:14px;border:1.5px solid var(--line);background:#F6F5F1;color:var(--ink)" placeholder='{"paste":"your JSON here"}' aria-label="JSON input"></textarea>
+            <textarea id="jf-in" rows="8" placeholder='{"paste":"your JSON here"}' aria-label="JSON input"></textarea>
           </fieldset>
           <div class="est-out" aria-live="polite">
-            <h3>Output <button id="jf-copy" class="btn" type="button" style="float:right;min-height:36px;padding:8px 16px">Copy</button></h3>
-            <p id="jf-err" style="font:500 .8rem/1.5 var(--mono)"></p>
-            <pre id="jf-out" style="font:500 .82rem/1.55 var(--mono);white-space:pre-wrap;word-break:break-word;max-height:50vh;overflow:auto"></pre>
+            <h3>Output <button id="jf-copy" class="btn" type="button">Copy</button></h3>
+            <p id="jf-err"></p>
+            <pre id="jf-out"></pre>
           </div>
         </form>
     </div>

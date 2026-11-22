@@ -242,7 +242,7 @@
 <section class="section dark">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">01 / 04</p>
+      <p class="label on-spine">01 / 05</p>
       <h2>The mark</h2>
     </header>
     <div class="section-body">
@@ -258,16 +258,18 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">02 / 04</p>
+      <p class="label on-spine">02 / 05</p>
       <h2>Palette</h2>
     </header>
     <div class="section-body">
       <table class="spec">
         <tbody>
-          <tr><th scope="row">Deep maroon</th><td><code>#4A1422</code> - the primary brand colour</td></tr>
-          <tr><th scope="row">Warm architectural white</th><td><code>#F6F5F1</code> - the ground everything sits on</td></tr>
-          <tr><th scope="row">Rose gold</th><td><code>#B08D57</code> / highlight <code>#B08D57</code> - accents and lines</td></tr>
-          <tr><th scope="row">Ink</th><td><code>#141012</code> - text</td></tr>
+          <tr><th scope="row">Oxblood 900</th><td><code>#2A0A12</code> - the deepest surface: heroes, menus, footer</td></tr>
+          <tr><th scope="row">Oxblood 700</th><td><code>#4A1422</code> - the brand colour; primary buttons on light</td></tr>
+          <tr><th scope="row">Limestone</th><td><code>#E4E2DC</code> - the main light surface</td></tr>
+          <tr><th scope="row">Paper</th><td><code>#F6F5F1</code> - the reading surface for long-form pages</td></tr>
+          <tr><th scope="row">Ink</th><td><code>#141012</code> - text on light</td></tr>
+          <tr><th scope="row">Brass</th><td><code>#B08D57</code> - hairlines, markers and focus rings only; never a fill, never text</td></tr>
         </tbody>
       </table>
     </div>
@@ -277,11 +279,11 @@
 <section class="section dark">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">03 / 04</p>
+      <p class="label on-spine">03 / 05</p>
       <h2>Typography</h2>
     </header>
     <div class="section-body">
-      <p>Playfair Display (headlines), Inter (interface and body), JetBrains Mono (technical labels) - all open fonts via Google Fonts.</p>
+      <p>Switzer (headlines and interface, self-hosted variable font), Newsreader (long-form reading), JetBrains Mono (labels, metadata and code). Emphasis comes from size and weight, never from italic accent words.</p>
     </div>
   </div>
 </section>
@@ -289,7 +291,7 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">04 / 04</p>
+      <p class="label on-spine">04 / 05</p>
       <h2>The two rules</h2>
     </header>
     <div class="section-body">
@@ -298,6 +300,39 @@
           <li><strong>Do not imply endorsement.</strong> Referencing our work truthfully is welcome; suggesting partnership or approval we have not given is not - see the <a href="/legal/terms/">terms</a>.</li>
         </ol>
       <p>Press or media enquiry? <a href="mailto:hello@mokshify.io?subject=Press">hello@mokshify.io</a> - a human replies within 24 hours with anything else you need.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="label on-spine">05 / 05 &middot; Design system</p>
+      <h2>Components</h2>
+    </header>
+    <div class="section-body wide">
+      <p>Every page on this site is assembled from these parts, built once in <code>css/src/</code> and <code>partials/</code>. This page uses most of them.</p>
+      <table class="spec ref-table">
+        <thead><tr><th scope="col">Component</th><th scope="col">Class or file</th><th scope="col">What it is for</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">The spine</th><td data-th="Class"><code>.spine, .on-spine</code></td><td data-th="Use">One brass hairline from under the nav to the footer mark; every section label sits on it with a tick.</td></tr>
+          <tr><th scope="row">Nav</th><td data-th="Class"><code>#site-nav, .nav-bar</code></td><td data-th="Use">64px bar, transparent over oxblood heroes, solid limestone after scroll. Logo, five items, phone, one pill CTA.</td></tr>
+          <tr><th scope="row">Mega menu</th><td data-th="Class"><code>.nav-panel</code></td><td data-th="Use">Full-width oxblood panel per item: mono column headings, each destination once, a featured case study.</td></tr>
+          <tr><th scope="row">Mobile menu</th><td data-th="Class"><code>.nav-main (900px and below)</code></td><td data-th="Use">Full-screen oxblood sheet with accordion groups; Escape closes it.</td></tr>
+          <tr><th scope="row">Contact bar</th><td data-th="Class"><code>.contact-bar</code></td><td data-th="Use">Phones and tablets: a fixed Call and WhatsApp bar on every page.</td></tr>
+          <tr><th scope="row">Hero</th><td data-th="Class"><code>.hero.plate / .hero.dark / .hero.paper</code></td><td data-th="Use">Plate (graded image), field (oxblood, type only), paper (long-form). Mono breadcrumb, headline, one sentence, up to two actions.</td></tr>
+          <tr><th scope="row">Spec table</th><td data-th="Class"><code>table.spec</code></td><td data-th="Use">Label in mono, value in Switzer, hairline rows. What-you-get lists, checklists, fact strips.</td></tr>
+          <tr><th scope="row">Index list</th><td data-th="Class"><code>.grid > a.card</code></td><td data-th="Use">Numbered rows: title, one line, arrow. Every hub uses it instead of bullet lists.</td></tr>
+          <tr><th scope="row">Work row</th><td data-th="Class"><code>.work-row</code></td><td data-th="Use">A real screenshot in a browser frame, industry in mono, what was built, one real number, two links.</td></tr>
+          <tr><th scope="row">Metric</th><td data-th="Class"><code>ul.facts</code></td><td data-th="Use">A large figure with a mono caption. Only numbers already published.</td></tr>
+          <tr><th scope="row">Pipeline</th><td data-th="Class"><code>ol.pipeline</code></td><td data-th="Use">Idea to Scale on one brass line; scrolls sideways on phones.</td></tr>
+          <tr><th scope="row">Diagram frame</th><td data-th="Class"><code>figure.diagram</code></td><td data-th="Use">SVG in token colours, 1px strokes, mono labels, always with an aria-label.</td></tr>
+          <tr><th scope="row">Article kit</th><td data-th="Class"><code>.prose, .toc</code></td><td data-th="Use">Newsreader body at a 68-character measure; contents hang from the spine; code blocks get a copy button.</td></tr>
+          <tr><th scope="row">Form kit</th><td data-th="Class"><code>form.enquiry, .field</code></td><td data-th="Use">Labelled fields, hairline boxes, brass focus ring, inline validation, a honeypot and a success state.</td></tr>
+          <tr><th scope="row">CTA band</th><td data-th="Class"><code>partials/cta-band.html</code></td><td data-th="Use">Oxblood field, one headline, one sentence, Book a strategy call and WhatsApp us.</td></tr>
+          <tr><th scope="row">Footer</th><td data-th="Class"><code>partials/footer.html</code></td><td data-th="Use">Oxblood field, five link columns, address line; the spine ends at the mark.</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
