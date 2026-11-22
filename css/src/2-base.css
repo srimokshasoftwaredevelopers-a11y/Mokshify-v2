@@ -155,8 +155,8 @@ button{cursor:pointer}
   .hero .wrap > :not(h1){animation:fade-in .6s var(--ease) .35s both}
   @keyframes clip-up{from{transform:translateY(105%)}to{transform:none}}
   @keyframes fade-in{from{opacity:0}to{opacity:1}}
-  .js .will-reveal{opacity:0;transform:translateY(16px)}
-  .js .will-reveal.is-in{opacity:1;transform:none;transition:opacity .6s var(--ease),transform .6s var(--ease)}
+  .js .will-reveal{opacity:0;transform:translateY(24px)}
+  .js .will-reveal.is-in{opacity:1;transform:none;transition:opacity .9s var(--ease),transform .9s var(--ease)}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}

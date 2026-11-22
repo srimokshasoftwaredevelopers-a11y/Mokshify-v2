@@ -218,8 +218,8 @@ button{cursor:pointer}
   .hero .wrap > :not(h1){animation:fade-in .6s var(--ease) .35s both}
   @keyframes clip-up{from{transform:translateY(105%)}to{transform:none}}
   @keyframes fade-in{from{opacity:0}to{opacity:1}}
-  .js .will-reveal{opacity:0;transform:translateY(16px)}
-  .js .will-reveal.is-in{opacity:1;transform:none;transition:opacity .6s var(--ease),transform .6s var(--ease)}
+  .js .will-reveal{opacity:0;transform:translateY(24px)}
+  .js .will-reveal.is-in{opacity:1;transform:none;transition:opacity .9s var(--ease),transform .9s var(--ease)}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -769,4 +769,16 @@ p,li{text-wrap:pretty}
 @media (prefers-reduced-motion:no-preference){
   .js .zoom-in img{transform:scale(calc(var(--z,1) * 1.06));transform-origin:50% 0}
   .js .zoom-in.is-in img{transform:scale(var(--z,1));transition:transform 1.8s var(--ease)}
+}
+
+/* section headlines: line-by-line clip reveal, 900ms, 110ms stagger (JS splits lines, then restores the markup) */
+.h-reveal .ln{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.h-reveal .ln > span{display:inline-block;transform:translateY(105%)}
+.h-reveal.is-in .ln > span{transform:none;transition:transform .9s var(--ease);transition-delay:calc(var(--i,0) * 110ms)}
+/* home hero: the headline recedes a little as you scroll past it */
+@supports (animation-timeline:view()){
+  @media (prefers-reduced-motion:no-preference){
+    .hero.home h1{transform-origin:0 100%;animation:hero-recede linear both;animation-timeline:view();animation-range:exit 0% exit 100%}
+    @keyframes hero-recede{to{transform:scale(.96);opacity:.6}}
+  }
 }

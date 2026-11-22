@@ -156,8 +156,34 @@
     const io = new IntersectionObserver(entries => {
       for (const en of entries) if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); }
     }, { rootMargin: "0px 0px -8% 0px" });
-    for (const el of $$("main .section-head, main .section-body, main .band .wrap, main .work-row")) {
-      if (el.getBoundingClientRect().top > innerHeight) { el.classList.add("will-reveal"); io.observe(el); }
+    // content fades and rises; tools, forms and long-form articles stay still
+    const still = el => el.closest(".t-tool, .t-long, .convert-sec") || el.querySelector("form, .est");
+    for (const el of $$("main .section-head > :not(h2), main .section-body, main .band .label, main .band-copy > :not(h2), main .band .row")) {
+      if (el.getBoundingClientRect().top > innerHeight && !still(el)) { el.classList.add("will-reveal"); io.observe(el); }
+    }
+
+    // section headlines reveal line by line behind a clip mask; the markup is restored afterwards
+    const hio = new IntersectionObserver(entries => {
+      for (const en of entries) {
+        if (!en.isIntersecting) continue;
+        const h = en.target, lines = h.querySelectorAll(".ln").length;
+        h.classList.add("is-in"); hio.unobserve(h);
+        setTimeout(() => { h.innerHTML = h.dataset.html; h.classList.remove("h-reveal", "is-in"); }, 900 + 110 * (lines - 1) + 80);
+      }
+    }, { rootMargin: "0px 0px -8% 0px" });
+    for (const h of $$("main .section-head h2, main .band h2")) {
+      if (h.getBoundingClientRect().top <= innerHeight || h.children.length || still(h)) continue;
+      const words = h.textContent.trim().split(/\s+/);
+      h.dataset.html = h.innerHTML;
+      h.innerHTML = words.map(w => `<span class="w">${w.replace(/&/g, "&amp;").replace(/</g, "&lt;")}</span>`).join(" ");
+      const rows = [];
+      for (const w of h.querySelectorAll(".w")) {
+        const last = rows[rows.length - 1];
+        if (last && Math.abs(last.top - w.offsetTop) < 4) last.words.push(w.textContent); else rows.push({ top: w.offsetTop, words: [w.textContent] });
+      }
+      h.innerHTML = rows.map((r, i) => `<span class="ln"><span style="--i:${i}">${r.words.join(" ").replace(/&/g, "&amp;").replace(/</g, "&lt;")}</span></span>`).join(" ");
+      h.classList.add("h-reveal");
+      hio.observe(h);
     }
   }
 
