@@ -757,3 +757,10 @@ p,li{text-wrap:pretty}
   @keyframes hero-zoom{from{transform:scale(1)}to{transform:scale(1.08)}}
 }
 @media (prefers-reduced-motion:reduce){.hero-pause,.hero-video{display:none!important}}
+
+/* slow zoom on screenshots and plates: 1.06 → 1 over 1.8s on entry, clipped by the frame */
+.hero-case .hero-img{--z:1.05}
+@media (prefers-reduced-motion:no-preference){
+  .js .zoom-in img{transform:scale(calc(var(--z,1) * 1.06));transform-origin:50% 0}
+  .js .zoom-in.is-in img{transform:scale(var(--z,1));transition:transform 1.8s var(--ease)}
+}

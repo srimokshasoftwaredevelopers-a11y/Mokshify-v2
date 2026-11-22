@@ -120,6 +120,17 @@
     heads.forEach(h => io.observe(h));
   }
 
+  /* ── slow zoom: screenshots and plates settle from 1.06 to 1 as they enter, once ── */
+  if (!reduced && "IntersectionObserver" in window) {
+    const zio = new IntersectionObserver(entries => {
+      for (const en of entries) if (en.isIntersecting) { en.target.classList.add("is-in"); zio.unobserve(en.target); }
+    }, { rootMargin: "0px 0px -6% 0px" });
+    for (const el of $$(".work-shot .frame-view, .gallery .frame-view, .hero-case .hero-img, .plate:not(.todo)")) {
+      el.classList.add("zoom-in");
+      zio.observe(el);
+    }
+  }
+
   /* ── one short fade-and-rise as content enters, below the first screen only ── */
   if (!reduced && "IntersectionObserver" in window) {
     const io = new IntersectionObserver(entries => {
