@@ -718,3 +718,11 @@ p,li{text-wrap:pretty}
 .sres i{font:500 var(--fs-label)/1.3 var(--mono);font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-2)}
 .sres b{font:500 1.25rem/1.2 var(--sans);letter-spacing:-.015em}
 .sres span{font-size:var(--fs-small);color:var(--fg-2)}
+
+/* service delivery diagram: drawn in SVG, scrolls sideways on phones */
+.delivery{overflow-x:auto}
+.delivery svg{min-width:47.5rem}
+.diagram .dg-n{font:500 12px var(--mono);letter-spacing:.12em;fill:rgb(20 16 18/.68)}
+.diagram .dg-s{font:500 19px var(--sans);letter-spacing:-.01em;fill:var(--ink)}
+.diagram .dg-i{font:400 16px var(--sans);fill:rgb(20 16 18/.78)}
+.diagram figcaption{margin-top:1rem}
