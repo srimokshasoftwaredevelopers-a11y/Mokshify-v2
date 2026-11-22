@@ -11,7 +11,8 @@
     "typecheck": "tsc --noEmit",
     "build:film": "esbuild src/index.ts --bundle --minify --format=iife --target=es2020 --outfile=js/cinema.js",
     "optimize": "node scripts/optimize-frames.mjs",
-    "verify": "node scripts/check-site.mjs && node scripts/check-keyboard.mjs"
+    "verify": "node scripts/check-site.mjs && node scripts/check-keyboard.mjs && node scripts/check-motion.mjs",
+    "logo": "node scripts/brand-logo.mjs --preview"
   },
   "license": "UNLICENSED",
   "dependencies": {

@@ -169,3 +169,81 @@ These are HTML comments in the pages; none show as visible "TODO" text.
 - FinCalix iOS availability is unconfirmed.
 
 Everything else I decided on my own is listed with one line of reasoning in `DECISIONS.md`.
+
+---
+
+# Follow-up run: motion, logo and answers (`MOTION_SPEC.md`)
+
+Each numbered part is its own commit on `redesign/enterprise`. Layout, copy, colours, URLs and the portfolio are unchanged.
+
+## Motion
+
+Every animation uses `cubic-bezier(0.16, 1, 0.3, 1)` and moves only transform and opacity. All motion stops under `prefers-reduced-motion`, and everything is visible without JavaScript.
+
+| Part | What it does |
+|---|---|
+| 1 · Hero video | A video slot sits behind the home hero, under the oxblood grade: muted, looped, 0.6× speed, `aria-hidden`. It loads only at 900px and wider, and never on Save-Data, 2g or 3g; those visitors get the poster. The files don't exist yet (**TODO(asset)**), so the still zooms from 1 to 1.08 over 25 seconds. A keyboard-usable pause/play button sits in the corner. When `hero.webm`, `hero.mp4` and `hero-poster.webp` exist in `assets/hero/`, the build switches the video on. Tested with a throwaway clip (since deleted): 0.6× playback, pausing, and no video request at 375px. |
+| 2 · Slow zoom | Work-row screenshots, case-study plates and gallery frames settle from 1.06 to 1 over 1.8 seconds on entry, once, clipped inside their frames. |
+| 3 · Smooth scrolling | Lenis 1.3.27 (MIT), self-hosted in `js/vendor/`, loaded deferred only on fine pointers at 900px and wider, with `lerp: 0.08`. Anchors land below the fixed nav. Keyboard scrolling, menus and tabs are unaffected, and touch devices keep native scrolling. |
+| 4 · Reveals | Section headlines reveal line by line behind a clip mask (900ms, 110ms stagger); their markup is restored afterwards. Section content fades and rises 24px over 900ms, once; tools, forms and long-form articles stay still. The spine still draws at scroll speed. The home headline recedes to 0.96 and dims slightly as you scroll past. |
+| 5 · Count-up and pipeline | Metric figures count up over 1.6 seconds and finish on the exact HTML value; ranges and words are left alone. The pipeline line draws left to right over 2 seconds, and each step fades in as the line reaches it. |
+| 6 · Hover | Work-row screenshots zoom to 1.03 over 700ms; cards lift 2px over 400ms. |
+
+Screenshots are in `review/motion/`: the hero, a work row, a section headline and the pipeline, each with `-mid` (mid-animation) and `-rest` versions.
+
+## Logo
+
+- **Original** saved untouched as `assets/brand/mokshify-logo-original.png` (2172×724).
+- **Transparent copy:** `assets/brand/mokshify-logo-transparent.png`. The cream is removed against a locally estimated background, so the artwork pixels are unchanged.
+  - Edge check at 2×: `review/logo/edges-2x.png`. Clean on limestone and paper.
+  - **One caveat:** on oxblood, the lens flare under the ring breaks into small yellow-green specks. At the 28px header size that's about 2px.
+  - I kept the transparent mark rather than the cream original, because the original would show a cream box on oxblood. If you want this perfect, supply a version of the mark made for dark backgrounds.
+- **M mark:** cropped square and transparent, exported at 512, 192, 180, 32 and 16px for favicons, `apple-touch-icon` and the manifest. The 180px apple-touch icon sits on paper, because iOS turns transparency black.
+- **Light surfaces** (scrolled header, paper pages): the full-colour mark and wordmark, without the tagline, at 36px tall. The 2× WebP is **12.0 KB** (PNG fallback 20.9 KB), with width and height set.
+- **Oxblood surfaces** (hero header, mobile menu, footer): the M mark plus "Mokshify" in Switzer, in the paper colour. The footer also shows "Digital solutions. Limitless impact." in the mono label style.
+- **Metadata:** the Open Graph image (`assets/og.jpg`, same path) now shows the full logo on paper. The Organization JSON-LD logo is now `/assets/brand/mokshify-logo.png` (1200×350).
+- **`/brand/`:** five logo downloads and a usage-rules table.
+- **Regenerate** with `npm run logo` if the artwork ever changes.
+- **Screenshots** in `review/logo/`: `header-dark-hero.png`, `header-light-scrolled.png`, `header-light-mobile.png`, `mobile-menu.png`, `footer.png`.
+
+## Answers applied
+
+All six answers were blank, so nothing was applied and every TODO stays:
+
+- Somallamma Temple: live URL and screenshots
+- Qflow: release status
+- FinCalix: App Store link
+- Next Edge Realty and AJ Agritech: year built
+- The form endpoint and key
+
+## Push
+
+- **Remote:** `origin` → `https://github.com/srimokshasoftwaredevelopers-a11y/Mokshify-v2.git` (owner `srimokshasoftwaredevelopers-a11y`, repo `Mokshify-v2`).
+- **Git's credential on this machine** (Windows Credential Manager): GitHub user **`ajagritecha-hub`**. This is the account `git push` uses.
+- **`gh` CLI account:** `qflow-token`, which has read access only (`push: false`).
+- **Commit author name:** `venki0308`. That's a label on commits, not a login.
+- **One attempt each:** `git push origin film-v1` and `git push -u origin redesign/enterprise` both returned **403**, "Permission to srimokshasoftwaredevelopers-a11y/Mokshify-v2.git denied to ajagritecha-hub". I did not retry, and no film files were deleted.
+- **To fix:** give **`ajagritecha-hub`** write access to `srimokshasoftwaredevelopers-a11y/Mokshify-v2`, or sign Git Credential Manager in as an account that already has it. Then run the push and deletion commands in "Needs you", item 1 above.
+
+## Checks (this run)
+
+| Check | Result |
+|---|---|
+| Build | `npm run build` passes; `npm run check` shows 0 pages out of date. |
+| Crawl | 125 URLs (72 routes + 404 + links and assets): 0 non-200, 0 orphans, 72 JSON-LD blocks parse. |
+| Lighthouse, desktop | `/`: performance 98, accessibility 100, best practices 100, SEO 100, LCP 0.9 s, CLS 0.000. `/work/next-edge-realty/`: 100/100/100/100, LCP 0.6 s, CLS 0.000. |
+| Lighthouse, mobile `/` | Performance 97, accessibility 100, LCP 2.3 s, CLS 0.000. |
+| Reduced motion | 7 representative routes: 0 animating elements, 0 hidden, 0 video or Lenis requests, pause button hidden. |
+| JavaScript off | Same 7 routes: 0 hidden elements, all six home tab panels visible, no figure stuck at 0. |
+| 375px | 0 video or Lenis requests; 0 horizontal overflow on all 73 routes; Call/WhatsApp bar fixed and linked. |
+| Keyboard | 24 of 24 pass, including the hero pause button (Tab, Enter pauses, Space resumes). |
+| Weight | CSS 48.6 KB; JS 29.0 KB (site 10.2 KB minified + Lenis 18.8 KB) against the 30 KB budget; header logo 12.0 KB. |
+
+Re-run everything with `npm run serve`, then `npm run verify` in a second terminal. `verify` now also runs `scripts/check-motion.mjs`.
+
+## Still needs you (this run)
+
+1. **Push access** for `ajagritecha-hub` (see Push). Film files stay until the `film-v1` tag is on GitHub.
+2. **TODO(asset), hero video:** add `assets/hero/hero.webm`, `hero.mp4` and `hero-poster.webp`. The build turns the video on by itself.
+3. **Optional:** a dark-background version of the M mark, if the small flare specks on oxblood matter to you.
+4. **The six answers** from part 8, whenever you have them.
