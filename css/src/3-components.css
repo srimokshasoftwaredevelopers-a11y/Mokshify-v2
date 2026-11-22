@@ -90,7 +90,8 @@ html:not(.js) .nav-item:focus-within .nav-panel{display:block;animation:panel .2
 @media (max-width:56.25rem){
   .nav-bar{gap:.6rem}
   .nav-contact{display:none}
-  .nav-cta{margin-left:auto;padding:.5rem .9rem;font-size:.8125rem}
+  .nav-cta{order:2;margin-left:auto;padding:.5rem .9rem;font-size:.8125rem}
+  .nav-toggle{order:3}
   .nav-toggle{
     display:inline-flex;align-items:center;justify-content:center;flex:none;
     width:2.75rem;height:2.75rem;border:1px solid var(--rule);border-radius:var(--radius);background:none;color:var(--fg);

@@ -39,7 +39,7 @@ a:hover{background-size:100% 1px,100% 1px}
 a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,
 textarea:focus-visible,select:focus-visible,[tabindex]:focus-visible,label:has(input:focus-visible){
   outline:2px solid var(--brass);outline-offset:3px;
-  box-shadow:0 0 0 1px var(--bg),0 0 0 2px var(--fg-2);   /* keeps the brass ring legible on limestone */
+  box-shadow:0 0 0 3px var(--fg);   /* an ink (or paper) ring inside the brass: the indicator clears 3:1 on every surface */
   border-radius:var(--radius);
 }
 :focus:not(:focus-visible){outline:none}
