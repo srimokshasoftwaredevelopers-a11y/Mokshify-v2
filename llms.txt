@@ -32,10 +32,13 @@ Response time: within 24 hours
 
 ## Client work (live products)
 
-- FinCalix — https://fincalix.com — 30+ free financial calculators, fintech
+- FinCalix — https://fincalix.com — 47 free financial calculators in six Indian languages, fintech (our product)
 - Medico Diagnostics — https://medicodiagnostics.in — 3,291+ tests published, 4–6 hour reporting, healthcare
 - Terravion Properties — https://terravionproperties.com — HMDA-approved plots, real estate
-- SkillForceHub — https://skillforcehub.com — Salesforce training institute platform, education
+- Next Edge Realty — https://nextedgerealty.com — plotted-development sales site with a live plot map, real estate
+- AJ Agritech — https://ajagritech.com — Telugu-first brand and product catalogue for an agri-inputs company, agriculture
+- Qflow — https://qflow.in — queue and token management with business, customer and admin portals (our product)
+- Somallamma Temple — temple website, completed and handed over, community
 
 ## Key pages
 
@@ -44,10 +47,11 @@ Response time: within 24 hours
 - SaaS development: https://mokshify.io/services/saas-development/
 - Mobile app development (Flutter): https://mokshify.io/services/mobile-app-development/
 - Cloud engineering & DevOps: https://mokshify.io/services/cloud-engineering/
-- Case studies: https://mokshify.io/work/ (FinCalix, Medico Diagnostics, Terravion, SkillForceHub)
+- Case studies: https://mokshify.io/work/ (Next Edge Realty, Terravion, Medico Diagnostics, AJ Agritech, Somallamma Temple, FinCalix, Qflow)
 - Engineering process & standards: https://mokshify.io/process/
 - FAQ: https://mokshify.io/faq/
-- Industries served: https://mokshify.io/industries/
+- Industries served: https://mokshify.io/industries/ (real estate, healthcare, agriculture, fintech, education)
+- Guides: https://mokshify.io/guides/
 - Architecture gallery (diagrams): https://mokshify.io/architecture/
 - Technology stack with reasoning: https://mokshify.io/stack/
 - Free checklists and guides: https://mokshify.io/resources/
