@@ -51,7 +51,11 @@ for (const f of cssFiles) {
 const css = cssFiles.map(f => readFileSync(join(cssDir, f), "utf8").trim()).join("\n\n") + "\n";
 write(join(ROOT, "css", "site.css"), css);
 const jsSrc = readFileSync(join(ROOT, "js", "site.js"), "utf8");
-const vars = { cssv: hash(css), jsv: hash(jsSrc) };
+/* site.js is the readable source; pages load the minified copy (esbuild if installed, else verbatim) */
+let jsMin = jsSrc;
+try { jsMin = (await import("esbuild")).transformSync(jsSrc, { minify: true, target: "es2020" }).code; } catch { /* no esbuild: ship the source */ }
+write(join(ROOT, "js", "site.min.js"), jsMin);
+const vars = { cssv: hash(css), jsv: hash(jsMin) };
 
 /* 2 · partials */
 const raw = {};
@@ -124,6 +128,6 @@ for (const file of pages) {
   write(file, numbered.replace(/data-hero-video="(?:pending|ready)"/, `data-hero-video="${heroReady ? "ready" : "pending"}"`));
 }
 
-console.log(`css ${(css.length / 1024).toFixed(1)} KB (${vars.cssv}) · js ${(jsSrc.length / 1024).toFixed(1)} KB (${vars.jsv})`);
+console.log(`css ${(css.length / 1024).toFixed(1)} KB (${vars.cssv}) · js ${(jsMin.length / 1024).toFixed(1)} KB min (${vars.jsv})`);
 console.log(`${pages.length} pages · ${regions} regions · ${stale.length} ${check ? "out of date" : "written"}`);
 if (check && stale.length) { console.log(stale.join("\n")); process.exit(1); }

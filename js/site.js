@@ -47,6 +47,26 @@
     wide.addEventListener("change", () => setSheet(false));
   }
 
+  /* ── smooth scrolling: Lenis, desktop pointers at 900px+ only; touch keeps native scrolling ── */
+  if (!reduced && matchMedia("(pointer: fine) and (min-width: 56.25rem)").matches) {
+    const s = document.createElement("script");
+    s.src = "/js/vendor/lenis-1.3.27.min.js";
+    s.defer = true;
+    s.onload = () => {
+      if (typeof window.Lenis !== "function") return;
+      const navH = () => (document.getElementById("site-nav")?.offsetHeight || 64) + 24;
+      const lenis = new window.Lenis({
+        lerp: 0.08, autoRaf: true, smoothWheel: true,
+        anchors: { offset: -navH() },                                   // in-page links land below the fixed nav
+        prevent: node => !!node.closest?.(".toc, .pipeline, .tablist, .delivery, .system, pre, .nav-panel, .nav-main"),
+      });
+      window.mokshifyLenis = lenis;
+      // focus moved by Tab or a skip link scrolls natively; Lenis follows the real scroll position
+      addEventListener("focusin", () => lenis.resize(), { passive: true });
+    };
+    document.head.append(s);
+  }
+
   /* ── home hero: slow-motion video (wide screens, decent connections) or the still's slow zoom ── */
   const heroFig = document.querySelector(".hero.home .hero-img");
   const heroBtn = document.querySelector(".hero-pause");

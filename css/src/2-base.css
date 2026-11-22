@@ -1,6 +1,12 @@
 /* ─────────────── 2 · BASE ─────────────── */
 *,*::before,*::after{box-sizing:border-box}
 *{margin:0}
+/* Lenis (desktop smooth scrolling) — its required rules */
+html.lenis,html.lenis body{height:auto}
+.lenis:not(.lenis-autoToggle).lenis-stopped{overflow:clip}
+.lenis [data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-smooth iframe{pointer-events:none}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 1.5rem)}
 body{
   position:relative;min-height:100vh;
