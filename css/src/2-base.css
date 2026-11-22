@@ -95,7 +95,7 @@ button{cursor:pointer}
 .grid12{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(1rem,2vw,2rem)}
 .section{position:relative;padding-block:var(--space);background:var(--bg);color:var(--fg)}
 .section + .section:not(.dark):not(.paper){padding-top:0}
-.dark + .section:not(.dark),.hero + .section{padding-top:var(--space)}
+.section.dark + .section:not(.dark):not(.paper),.hero + .section:not(.dark):not(.paper),.dark + .section{padding-top:var(--space)}
 .section-head{position:relative;margin-bottom:clamp(2rem,5vh,4rem)}
 .section-head h2{max-width:18ch}
 .section-head .label{display:block;margin-bottom:1.25rem}
