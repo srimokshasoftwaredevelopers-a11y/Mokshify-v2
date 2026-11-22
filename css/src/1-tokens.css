@@ -46,7 +46,7 @@
   --btn-fg:var(--paper);
   --field:var(--paper);
 }
-.dark,.site-nav.over,.nav-open .site-nav,.nav-panel,.contact-bar{
+.dark,.hero.plate,.site-nav.over,.nav-open .site-nav,.nav-panel,.contact-bar{
   --bg:var(--oxblood-900);
   --fg:var(--paper);
   --fg-2:rgb(246 245 241/.7);

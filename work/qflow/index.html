@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SkillForceHub Case Study - Education Platform | Mokshify</title>
-<meta name="description" content="How Mokshify built SkillForceHub: a Salesforce training institute platform launching careers from Warangal - architecture, stack and outcomes.">
-<link rel="canonical" href="https://mokshify.io/work/skillforcehub/">
+<title>Qflow — Queue and Token Management | Mokshify</title>
+<meta name="description" content="Case study: Qflow, our queue and token product for salons, clinics, temples, banks and offices — separate portals for businesses, customers and admins.">
+<link rel="canonical" href="https://mokshify.io/work/qflow/">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<meta property="og:title" content="SkillForceHub Case Study | Mokshify">
-<meta property="og:description" content="A Salesforce training institute platform - courses, batches and enrolment online.">
+<meta property="og:title" content="Qflow — Queue and Token Management">
+<meta property="og:description" content="Case study: Qflow, our queue and token product for salons, clinics, temples, banks and offices — separate portals for businesses, customers and admins.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://mokshify.io/work/skillforcehub/">
-<meta property="og:image" content="https://mokshify.io/assets/sites/skillforce.png">
+<meta property="og:url" content="https://mokshify.io/work/qflow/">
+<meta property="og:image" content="https://mokshify.io/assets/sites/qflow-plate.webp">
 <meta name="twitter:card" content="summary_large_image">
 <!-- include:head -->
 <meta name="theme-color" content="#2A0A12">
@@ -21,15 +21,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="/css/site.css?v=7ed1b39637">
+<link rel="stylesheet" href="/css/site.css?v=4c20d93e15">
 <!-- /include:head -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[
-{"@type":"BreadcrumbList","itemListElement":[
- {"@type":"ListItem","position":1,"name":"Home","item":"https://mokshify.io/"},
- {"@type":"ListItem","position":2,"name":"Work","item":"https://mokshify.io/work/"},
- {"@type":"ListItem","position":3,"name":"SkillForceHub","item":"https://mokshify.io/work/skillforcehub/"}]},
-{"@type":"Article","@id":"https://mokshify.io/work/skillforcehub/#article","headline":"SkillForceHub - Salesforce careers, launched from Warangal","description":"Case study: a training institute platform for Salesforce skills, built by Mokshify.","image":"https://mokshify.io/assets/sites/skillforce.png","author":{"@id":"https://mokshify.io/#org"},"publisher":{"@id":"https://mokshify.io/#org"},"datePublished":"2026-07-17","mainEntityOfPage":"https://mokshify.io/work/skillforcehub/","about":{"@type":"CreativeWork","name":"SkillForceHub","url":"https://skillforcehub.com","creator":{"@id":"https://mokshify.io/#org"}}}]}
+{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mokshify.io/"},{"@type":"ListItem","position":2,"name":"Work","item":"https://mokshify.io/work/"},{"@type":"ListItem","position":3,"name":"Qflow","item":"https://mokshify.io/work/qflow/"}]},{"@type":"Article","headline":"Qflow — Queue and Token Management","description":"Case study: Qflow, our queue and token product for salons, clinics, temples, banks and offices — separate portals for businesses, customers and admins.","image":"https://mokshify.io/assets/sites/qflow-plate.webp","author":{"@id":"https://mokshify.io/#org"},"publisher":{"@id":"https://mokshify.io/#org"},"datePublished":"2026-11-23","dateModified":"2026-11-23","mainEntityOfPage":"https://mokshify.io/work/qflow/","inLanguage":"en-IN","about":{"@type":"CreativeWork","name":"Qflow","url":"https://qflow.in/"}}]}
 </script>
 </head>
 <body class="t-case">
@@ -129,7 +124,7 @@
               <div class="nav-col">
                 <p class="label">Our products</p>
                 <a href="/work/fincalix/">FinCalix</a>
-                <a href="/work/qflow/">Qflow</a>
+                <a href="/work/qflow/" aria-current="page">Qflow</a>
                 <a href="/work/mokshify-website/">This Website</a>
               </div>
               <div class="nav-col">
@@ -177,7 +172,7 @@
                 <a href="/tools/database-selector/">Database Selector</a>
                 <a href="/tools/json-formatter/">JSON Formatter</a>
               </div>
-              <a class="nav-feature" href="/work/qflow/">
+              <a class="nav-feature" href="/work/qflow/" aria-current="page">
                 <img src="/assets/sites/qflow-thumb.webp" alt="Qflow homepage" width="480" height="300" loading="lazy" decoding="async">
                 <span class="label">Product &middot; Case study</span>
                 <b>Qflow</b>
@@ -223,56 +218,26 @@
   </div>
 </header>
 <!-- /include:nav -->
-
 <main id="main">
-<header class="hero dark">
+<!-- TODO(confirm): release status · TODO(confirm): stack, for the stack table · TODO(proof): usage numbers, if any are to be published -->
+<header class="hero plate hero-case">
+  <figure class="hero-img"><img src="/assets/sites/qflow-plate.webp" alt="" width="1600" height="1000" fetchpriority="high" decoding="async"></figure>
   <div class="wrap">
-    <p class="pkicker on-spine">Case study &middot; Education &middot; <a href="https://skillforcehub.com" rel="noopener">skillforcehub.com</a></p>
-    <h1><span class="ln"><span>SkillForceHub &mdash; careers,</span></span> <span class="ln"><span>launched.</span></span></h1>
-    <p class="plede">A Salesforce training institute in Warangal with a promise bigger than its city: industry-relevant skills, taught seriously, leading to real jobs. The platform had to carry that credibility online &mdash; courses, batches, outcomes and enrolment in one place.</p>
-    <ul class="facts">
-        <li><b>Salesforce</b><i>career tracks</i></li>
-        <li><b>Warangal</b><i>tier-2 talent, global market</i></li>
-        <li><b>Online</b><i>discovery to enrolment</i></li>
-      </ul>
+    <p class="pkicker on-spine">Case study &middot; Product &middot; <a href="https://qflow.in/" rel="noopener">qflow.in</a></p>
+    <h1><span class="ln"><span>Qflow —</span></span> <span class="ln"><span>skip the wait.</span></span></h1>
+    <p class="plain">A queue and token system for any business with a queue: customers take a token on their phone, wait anywhere, and walk in when it is their turn.</p>
+    <div class="hero-actions"><a class="btn" href="https://qflow.in/" rel="noopener">Open qflow.in ↗</a></div>
   </div>
 </header>
 
-<section class="section">
+<section class="section strip">
   <div class="wrap">
-    <div class="section-body">
-      <figure>
-          <img src="/assets/sites/skillforce.png" alt="SkillForceHub homepage - Salesforce training courses and enrolment" width="1200" height="750" loading="lazy">
-          <figcaption>The live platform &mdash; <a href="https://skillforcehub.com" rel="noopener">skillforcehub.com</a>.</figcaption>
-        </figure>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <header class="section-head">
-      <p class="label on-spine">01 / 05</p>
-      <h2>The problem</h2>
-    </header>
-    <div class="section-body">
-      <p>Tier-2 cities are full of capable people and short on credible bridges into tech careers. SkillForceHub teaches Salesforce &mdash; one of the most employable enterprise skills &mdash; but a training institute without a serious web presence loses students to louder, worse options. The site had to make quality legible.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <header class="section-head">
-      <p class="label on-spine">02 / 05</p>
-      <h2>Challenges</h2>
-    </header>
-    <div class="section-body">
-      <table class="spec">
+    <div class="section-body wide">
+      <table class="spec strip-table">
         <tbody>
-          <tr><th scope="row">Credibility transfer</th><td>Curriculum, instructors and outcomes had to be presented with the same rigour the institute teaches with.</td></tr>
-          <tr><th scope="row">A mobile-first audience</th><td>Students research courses on phones between classes and shifts; the platform had to be fast and legible on modest devices.</td></tr>
-          <tr><th scope="row">Enrolment friction</th><td>From &ldquo;interested&rdquo; to &ldquo;enrolled in a batch&rdquo; in as few steps as possible, with human follow-up where it matters.</td></tr>
+          <tr><th scope="row">Industry</th><td>Product</td></tr>
+          <tr><th scope="row">Type</th><td>Our product</td></tr>
+          <tr><th scope="row">Live at</th><td><a href="https://qflow.in/" rel="noopener">qflow.in</a></td></tr>
         </tbody>
       </table>
     </div>
@@ -282,11 +247,12 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">03 / 05</p>
-      <h2>Architecture &amp; stack</h2>
+      <p class="label on-spine">01 / 04</p>
+      <h2>The problem</h2>
     </header>
     <div class="section-body">
-      <p>A fast, content-forward React platform on the standard Mokshify base: Node.js services, PostgreSQL for courses, batches and enquiries, Redis caching, Nginx at the gateway, releases through the tested, AI-reviewed GitHub Actions pipeline. Course pages are structured and crawlable &mdash; students search for exactly what this institute teaches, and the platform is built to be the answer.</p>
+      <p>Salons, clinics, hospitals, restaurants, temples, banks and government offices all share one problem: people standing in a line, unsure how long it will take.</p>
+      <p>Paper tokens tell nobody when their turn is coming.</p>
     </div>
   </div>
 </section>
@@ -294,15 +260,19 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">04 / 05</p>
-      <h2>Results</h2>
+      <p class="label on-spine">02 / 04</p>
+      <h2>What we built</h2>
     </header>
     <div class="section-body">
-      <ul>
-          <li>The institute&rsquo;s full offering &mdash; tracks, batches, enrolment &mdash; lives online at skillforcehub.com.</li>
-          <li>Course discovery and enquiry work end-to-end on mobile.</li>
-          <li>The platform scales with the institute: new tracks and batches are data, not redesigns.</li>
-        </ul>
+      <table class="spec">
+        <tbody>
+          <tr><th scope="row">For customers</th><td>Take a token from the phone, wait anywhere, and get told when it is your turn.</td></tr>
+          <tr><th scope="row">For businesses</th><td>A business portal to register the shop and run the queue.</td></tr>
+          <tr><th scope="row">For the platform</th><td>An admin portal across every business on Qflow.</td></tr>
+          <tr><th scope="row">Access</th><td>Runs in the browser at app.qflow.in — nothing to install.</td></tr>
+          <tr><th scope="row">Languages</th><td>English and Telugu.</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
@@ -310,11 +280,28 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">05 / 05</p>
-      <h2>Lessons learned</h2>
+      <p class="label on-spine">03 / 04</p>
+      <h2>The result</h2>
     </header>
     <div class="section-body">
-      <p>For education businesses, the website is the first lecture &mdash; it teaches the student what standard to expect. Treating course content as structured data with real information density beat brochure-style pages on every measure that matters. That approach now informs our <a href="/services/">platform work</a> for every credibility-driven business.</p>
+      <p>As qflow.in states on 23 November 2026: live in the browser, an Android app coming to Google Play, available in Andhra Pradesh and Telangana with Guntur first, and a 60-day free trial for businesses. <!-- TODO(confirm): release status --></p>
+      <p>Qflow is a product of Sri Moksha Software Developers.</p>
+      <ul class="facts"><li><b>3</b><i>portals: business, customer, admin</i></li></ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="label on-spine">04 / 04</p>
+      <h2>Gallery</h2>
+    </header>
+    <div class="section-body">
+      <div class="gallery">
+        <figure><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>qflow.in</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/qflow-m.webp" width="600" height="1350"><img src="/assets/sites/qflow.webp" alt="Qflow homepage, captured from the live site" width="1200" height="2000" loading="lazy" decoding="async"></picture></div></div><figcaption>Desktop, 1440 px — captured from the live site on 23 Nov 2026.</figcaption></figure>
+        <figure><div class="frame phone"><div class="frame-view"><img src="/assets/sites/qflow-m.webp" alt="Qflow on a phone" width="600" height="1350" loading="lazy" decoding="async"></div></div><figcaption>Phone, 390 px.</figcaption></figure>
+      </div>
     </div>
   </div>
 </section>
@@ -325,8 +312,8 @@
     <p class="label on-spine">Next step</p>
     <div class="band-copy">
       <!-- slot -->
-      <h2>Building an education platform?</h2>
-      <p>We&rsquo;ve shipped one. Bring your curriculum &mdash; we reply within 24 hours.</p>
+      <h2>Need something like Qflow?</h2>
+      <p>Tell us what your business needs in one paragraph. An engineer replies within 24 hours.</p>
       <!-- /slot -->
     </div>
     <div class="row">
@@ -338,13 +325,28 @@
 </section>
 <!-- /include:cta-band -->
 
-<section class="related">
+<section class="section next-case">
   <div class="wrap">
-    <p><strong>More case studies:</strong> <a href="/work/fincalix/">FinCalix</a> &middot; <a href="/work/medico-diagnostics/">Medico Diagnostics</a> &middot; <a href="/work/terravion-properties/">Terravion Properties</a> &mdash; or see <a href="/services/">all services</a>.</p>
+    <header class="section-head">
+      <p class="label on-spine">Next case study</p>
+    </header>
+    <div class="section-body wide">
+      <!-- include:work-mokshify-website -->
+      <article class="work-row">
+        <a class="work-shot" href="/work/mokshify-website/" tabindex="-1" aria-hidden="true"><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>mokshify.io</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/mokshify-website-m.webp" width="600" height="1350"><img src="/assets/sites/mokshify-website.webp" alt="This website homepage, captured from the live site" width="1200" height="2000" loading="lazy" decoding="async"></picture></div></div></a>
+        <div class="work-text">
+          <p class="label">Engineering &middot; Our product</p>
+          <h3><a href="/work/mokshify-website/">This website</a></h3>
+          <p>The site you are reading: static, framework-free, every page checked by script before it ships.</p>
+          
+          <p class="work-links"><a href="/work/mokshify-website/">Read the case study</a> <a href="https://mokshify.io/" rel="noopener">mokshify.io ↗</a></p>
+        </div>
+      </article>
+      <!-- /include:work-mokshify-website -->
+    </div>
   </div>
 </section>
 </main>
-
 <!-- include:footer -->
 <footer class="site-footer dark" id="site-footer">
   <div class="wrap">
