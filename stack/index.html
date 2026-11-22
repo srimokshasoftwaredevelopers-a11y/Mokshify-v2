@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="/css/site.css?v=5196e09770">
+<link rel="stylesheet" href="/css/site.css?v=6d8b7a691d">
 <!-- /include:head -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -235,101 +235,48 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">01 / 06</p>
-      <h2>Frontend</h2>
+      <p class="label on-spine">01 / 01 &middot; Reference</p>
+      <h2>Every technology we run</h2>
     </header>
     <div class="section-body wide">
-      <div class="tstack">
-          <section><i>Web UI</i><h3>React</h3><p>The default for product interfaces: component model, ecosystem depth, and hiring reality. Used in every web product we ship, including <a href="/work/fincalix/">FinCalix</a>.</p></section>
-          <section><i>Web framework</i><h3>Next.js</h3><p>When a product needs server rendering, SEO-critical pages or hybrid static/dynamic delivery. Content-forward platforms like <a href="/work/terravion-properties/">Terravion</a> are the typical case.</p></section>
-          <section><i>Mobile</i><h3>Flutter</h3><p>One codebase, both app stores, near-native performance. The honest trade for almost every product - reasoning on <a href="/services/mobile-app-development/">the mobile page</a>.</p></section>
-        </div>
+      <div class="filters" data-target="#stack-table" hidden>
+        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-filter="frontend" aria-pressed="false">Frontend</button>
+        <button type="button" data-filter="backend" aria-pressed="false">Backend</button>
+        <button type="button" data-filter="intelligence" aria-pressed="false">Intelligence</button>
+        <button type="button" data-filter="cloud" aria-pressed="false">Cloud</button>
+        <button type="button" data-filter="platform" aria-pressed="false">Platform</button>
+        <button type="button" data-filter="data" aria-pressed="false">Data</button>
+        <span role="status">20 of 20 shown</span>
+      </div>
+      <table class="spec ref-table stack" id="stack-table">
+  <thead><tr><th scope="col">Technology</th><th scope="col">Role</th><th scope="col">Why we use it</th></tr></thead>
+  <tbody>
+    <tr data-cat="frontend"><th scope="row">React</th><td data-th="Role">Frontend &middot; Web UI</td><td data-th="Why">The default for product interfaces: component model, ecosystem depth, and hiring reality. Used in every web product we ship, including <a href="/work/fincalix/">FinCalix</a>.</td></tr>
+    <tr data-cat="frontend"><th scope="row">Next.js</th><td data-th="Role">Frontend &middot; Web framework</td><td data-th="Why">When a product needs server rendering, SEO-critical pages or hybrid static/dynamic delivery. Content-forward platforms like <a href="/work/terravion-properties/">Terravion</a> are the typical case.</td></tr>
+    <tr data-cat="frontend"><th scope="row">Flutter</th><td data-th="Role">Frontend &middot; Mobile</td><td data-th="Why">One codebase, both app stores, near-native performance. The honest trade for almost every product - reasoning on <a href="/services/mobile-app-development/">the mobile page</a>.</td></tr>
+    <tr data-cat="backend"><th scope="row">Node.js</th><td data-th="Role">Backend &middot; Services</td><td data-th="Why">Fast to build, easy to staff, excellent for API services and real-time work. Shares a language with the front end, which keeps small teams quick.</td></tr>
+    <tr data-cat="backend"><th scope="row">Python</th><td data-th="Role">Backend &middot; Services &middot; AI</td><td data-th="Why">The language of the AI ecosystem and of data work. Every RAG pipeline and model integration we ship has Python close to the model.</td></tr>
+    <tr data-cat="backend"><th scope="row">FastAPI</th><td data-th="Role">Backend &middot; API framework</td><td data-th="Why">Typed, fast, self-documenting APIs in Python. Validation at the boundary and OpenAPI docs for free - the framework our AI services are built on.</td></tr>
+    <tr data-cat="intelligence"><th scope="row">OpenAI</th><td data-th="Role">Intelligence &middot; AI provider</td><td data-th="Why">GPT models for generation, extraction and reasoning at scale. Broad capability, strong tooling. One of three providers behind our single internal interface.</td></tr>
+    <tr data-cat="intelligence"><th scope="row">Anthropic Claude</th><td data-th="Role">Intelligence &middot; AI provider</td><td data-th="Why">Long-context reasoning and careful instruction-following - our pick for document-heavy and review workloads, including the AI review gate in our own pipeline.</td></tr>
+    <tr data-cat="intelligence"><th scope="row">Google AI (Gemini)</th><td data-th="Role">Intelligence &middot; AI provider</td><td data-th="Why">Multimodal strength and competitive economics. Provider choice is a routing decision per use case, not a religion - see <a href="/services/ai-product-development/">AI Product Development</a>.</td></tr>
+    <tr data-cat="cloud"><th scope="row">AWS</th><td data-th="Role">Cloud &middot; Cloud</td><td data-th="Why">The broadest service catalogue and region coverage. Default when clients have no prior footprint.</td></tr>
+    <tr data-cat="cloud"><th scope="row">Azure</th><td data-th="Role">Cloud &middot; Cloud</td><td data-th="Why">The natural home for organisations living in Microsoft identity and tooling; strong enterprise integration.</td></tr>
+    <tr data-cat="cloud"><th scope="row">Oracle Cloud (OCI)</th><td data-th="Role">Cloud &middot; Cloud</td><td data-th="Why">Aggressive pricing for compute-heavy workloads; a serious option we deploy when economics decide.</td></tr>
+    <tr data-cat="cloud"><th scope="row">Google Cloud (GCP)</th><td data-th="Role">Cloud &middot; Cloud</td><td data-th="Why">First-class data and AI services, clean Kubernetes story. Favoured when analytics and AI dominate the roadmap.</td></tr>
+    <tr data-cat="platform"><th scope="row">Docker</th><td data-th="Role">Platform &middot; Containers</td><td data-th="Why">Every workload ships as a container: identical from laptop to production, portable across all four clouds.</td></tr>
+    <tr data-cat="platform"><th scope="row">Kubernetes</th><td data-th="Role">Platform &middot; Orchestration</td><td data-th="Why">For products with many services and real scaling needs. We deploy it when justified and say so when it is not.</td></tr>
+    <tr data-cat="platform"><th scope="row">Terraform</th><td data-th="Role">Platform &middot; IaC</td><td data-th="Why">All infrastructure declared as reviewable code. Environments are reproducible; configuration is documentation.</td></tr>
+    <tr data-cat="platform"><th scope="row">GitHub Actions</th><td data-th="Role">Platform &middot; CI/CD</td><td data-th="Why">The pipeline behind every release: tests, static checks, AI review, staged rollout - shown on <a href="/architecture/">the architecture page</a>.</td></tr>
+    <tr data-cat="data"><th scope="row">PostgreSQL</th><td data-th="Role">Data &middot; Database</td><td data-th="Why">The source of truth in every product: relational rigour, row-level security for tenancy, pgvector for AI retrieval. One database engine, deeply known.</td></tr>
+    <tr data-cat="data"><th scope="row">Redis</th><td data-th="Role">Data &middot; Cache &middot; queues</td><td data-th="Why">Hot paths, sessions, rate limits and lightweight queues. The difference between fast and fragile under load.</td></tr>
+    <tr data-cat="data"><th scope="row">Nginx</th><td data-th="Role">Data &middot; Gateway</td><td data-th="Why">TLS termination, routing, rate limiting and static delivery at the edge of every deployment.</td></tr>
+  </tbody>
+</table>
     </div>
   </div>
 </section>
-
-<section class="section">
-  <div class="wrap">
-    <header class="section-head">
-      <p class="label on-spine">02 / 06</p>
-      <h2>Backend</h2>
-    </header>
-    <div class="section-body wide">
-      <div class="tstack">
-          <section><i>Services</i><h3>Node.js</h3><p>Fast to build, easy to staff, excellent for API services and real-time work. Shares a language with the front end, which keeps small teams quick.</p></section>
-          <section><i>Services &middot; AI</i><h3>Python</h3><p>The language of the AI ecosystem and of data work. Every RAG pipeline and model integration we ship has Python close to the model.</p></section>
-          <section><i>API framework</i><h3>FastAPI</h3><p>Typed, fast, self-documenting APIs in Python. Validation at the boundary and OpenAPI docs for free - the framework our AI services are built on.</p></section>
-        </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <header class="section-head">
-      <p class="label on-spine">03 / 06</p>
-      <h2>Intelligence</h2>
-    </header>
-    <div class="section-body wide">
-      <div class="tstack">
-          <section><i>AI provider</i><h3>OpenAI</h3><p>GPT models for generation, extraction and reasoning at scale. Broad capability, strong tooling. One of three providers behind our single internal interface.</p></section>
-          <section><i>AI provider</i><h3>Anthropic Claude</h3><p>Long-context reasoning and careful instruction-following - our pick for document-heavy and review workloads, including the AI review gate in our own pipeline.</p></section>
-          <section><i>AI provider</i><h3>Google AI (Gemini)</h3><p>Multimodal strength and competitive economics. Provider choice is a routing decision per use case, not a religion - see <a href="/services/ai-product-development/">AI Product Development</a>.</p></section>
-        </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <header class="section-head">
-      <p class="label on-spine">04 / 06</p>
-      <h2>Cloud</h2>
-    </header>
-    <div class="section-body wide">
-      <div class="tstack">
-          <section><i>Cloud</i><h3>AWS</h3><p>The broadest service catalogue and region coverage. Default when clients have no prior footprint.</p></section>
-          <section><i>Cloud</i><h3>Azure</h3><p>The natural home for organisations living in Microsoft identity and tooling; strong enterprise integration.</p></section>
-          <section><i>Cloud</i><h3>Oracle Cloud (OCI)</h3><p>Aggressive pricing for compute-heavy workloads; a serious option we deploy when economics decide.</p></section>
-          <section><i>Cloud</i><h3>Google Cloud (GCP)</h3><p>First-class data and AI services, clean Kubernetes story. Favoured when analytics and AI dominate the roadmap.</p></section>
-        </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <header class="section-head">
-      <p class="label on-spine">05 / 06</p>
-      <h2>Platform</h2>
-    </header>
-    <div class="section-body wide">
-      <div class="tstack">
-          <section><i>Containers</i><h3>Docker</h3><p>Every workload ships as a container: identical from laptop to production, portable across all four clouds.</p></section>
-          <section><i>Orchestration</i><h3>Kubernetes</h3><p>For products with many services and real scaling needs. We deploy it when justified and say so when it is not.</p></section>
-          <section><i>IaC</i><h3>Terraform</h3><p>All infrastructure declared as reviewable code. Environments are reproducible; configuration is documentation.</p></section>
-          <section><i>CI/CD</i><h3>GitHub Actions</h3><p>The pipeline behind every release: tests, static checks, AI review, staged rollout - shown on <a href="/architecture/">the architecture page</a>.</p></section>
-        </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <header class="section-head">
-      <p class="label on-spine">06 / 06</p>
-      <h2>Data</h2>
-    </header>
-    <div class="section-body wide">
-      <div class="tstack">
-          <section><i>Database</i><h3>PostgreSQL</h3><p>The source of truth in every product: relational rigour, row-level security for tenancy, pgvector for AI retrieval. One database engine, deeply known.</p></section>
-          <section><i>Cache &middot; queues</i><h3>Redis</h3><p>Hot paths, sessions, rate limits and lightweight queues. The difference between fast and fragile under load.</p></section>
-          <section><i>Gateway</i><h3>Nginx</h3><p>TLS termination, routing, rate limiting and static delivery at the edge of every deployment.</p></section>
-        </div>
-    </div>
-  </div>
-</section>
-
 <!-- include:cta-band -->
 <section class="band dark" aria-label="Start a project">
   <div class="wrap">
