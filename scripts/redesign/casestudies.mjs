@@ -16,7 +16,7 @@ const STACK = {
 };
 const META = {
   fincalix: { shot: "fincalix", host: "fincalix.com", url: "https://fincalix.com/", industry: "Finance", kind: "Our product", next: "qflow" },
-  "medico-diagnostics": { shot: "medico", host: "medicodiagnostics.in", url: "https://medicodiagnostics.in/", industry: "Healthcare", kind: "Client website", next: "aj-agritech" },
+  "medico-diagnostics": { shot: "medico-services", host: "medicodiagnostics.in", url: "https://medicodiagnostics.in/", industry: "Healthcare", kind: "Client website", next: "aj-agritech" },
   "terravion-properties": { shot: "terravion", host: "terravionproperties.com", url: "https://terravionproperties.com/", industry: "Real estate", kind: "Client website", next: "medico-diagnostics" },
   "mokshify-website": { shot: "mokshify-website", host: "mokshify.io", url: "https://mokshify.io/", industry: "Engineering", kind: "Our product", next: "next-edge-realty" },
 };
