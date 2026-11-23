@@ -315,7 +315,7 @@
       <p>AI work follows our standard <a href="/process/">eight-stage pipeline</a>, with three additions specific to machine intelligence:</p>
       <ol>
           <li><strong>Feasibility before commitment.</strong> Week one produces a working spike against your real data instead of a slide. If the model can't do the job reliably, you find out for the price of a week, not a quarter.</li>
-          <li><strong>Evaluation as a first-class artifact.</strong> Every AI feature gets a test set of real cases and a scoring harness. Releases are gated on eval results the same way code is gated on tests. Our own deploy pipeline runs an AI review step on every release. We hold our own tooling to the same bar.</li>
+          <li><strong>Evaluation as a first-class artifact.</strong> Every AI feature gets a test set of real cases and a scoring harness. Releases are gated on eval results the same way code is gated on tests. Our own deploy pipeline is gated the same way, with automated checks on every release.</li>
           <li><strong>Cost engineering.</strong> Token spend is modelled per feature before launch: caching strategy, model routing (small model first, big model on escalation), context budgets and per-tenant metering, so growth doesn't surprise your margins.</li>
         </ol>
     </div>
@@ -341,7 +341,7 @@
       <h2>Proof, not promises</h2>
     </header>
     <div class="section-body">
-      <p>We're a studio that ships: <a href="/work/medico-diagnostics/">Medico Diagnostics</a> (3,291+ tests published, 4 to 6 hour reporting), <a href="/work/fincalix/">FinCalix</a> (47 calculators) and <a href="/work/terravion-properties/">Terravion Properties</a> are live products you can open. Every AI engagement gets the same delivery discipline: staged rollouts, tests and AI-gated releases.</p>
+      <p>We're a studio that ships: <a href="/work/medico-diagnostics/">Medico Diagnostics</a> (3,291+ tests published, 4 to 6 hour reporting), <a href="/work/fincalix/">FinCalix</a> (47 calculators) and <a href="/work/terravion-properties/">Terravion Properties</a> are live products you can open. Every AI engagement gets the same delivery discipline: staged rollouts, tests and automated release checks.</p>
     </div>
   </div>
 </section>

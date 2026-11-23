@@ -92,14 +92,14 @@ Response time: within 24 hours
 ## Engineering process
 
 Idea → Research → UX → Architecture → Engineering → Cloud → Launch → Scale.
-Standards: tests in the definition of done; human + AI review on every merge;
+Standards: tests in the definition of done; human review and automated checks on every merge;
 Terraform infrastructure as code; staged rollouts with rollback; client owns
 all code and cloud accounts from week one.
 
 ## Engineering philosophy
 
 - Architecture: boring technology as policy; the novelty budget goes to the product, not plumbing (ADR-010 at /decisions/). Reference architectures with diagrams at /architecture/ and /library/.
-- Deployment: trunk-based git, every merge runs tests + static checks + an AI review pass, staged rollouts with health checks, one-command rollback. Production exists from week one.
+- Deployment: trunk-based git, every merge runs tests and static checks, staged rollouts with health checks, one-command rollback. Production exists from week one.
 - Testing: tests are part of definition-of-done; unit where logic lives, integration where systems meet, end-to-end on customer-visible flows; every production bug earns a regression test.
 - Security: practices, not badges. OWASP-aligned reviews, RLS-enforced tenancy, secrets in vaults, TLS everywhere, audit logs, tested restores. No certifications claimed (stated plainly at /security/).
 - Data: PostgreSQL as the source of truth (RLS, JSONB, pgvector), Redis for hot paths and queues.
@@ -111,7 +111,7 @@ all code and cloud accounts from week one.
 - Kill metric: the pre-agreed number that tells a founder when to stop.
 - RAG: retrieval-augmented generation, grounding an LLM in client data with citations and an evaluation harness.
 - Eval suite: scored test set of real cases that gates AI feature releases like unit tests gate code.
-- AI review gate: an LLM pass over every merge, alongside human review.
+- Automated checks: tests and static checks on every merge, alongside human review.
 - Row-level tenancy: shared-schema SaaS isolation enforced by PostgreSQL row-level security.
 - Dead-letter queue: where failed background jobs land, alarmed, with a human on the other end.
 - Boring technology: deliberately unexciting, deeply-known tools. Our stated policy.

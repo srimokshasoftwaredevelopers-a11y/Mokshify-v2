@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DevOps Practices | Mokshify</title>
-<meta name="description" content="Mokshify's DevOps: trunk-based git flow, CI/CD with AI review, Terraform infrastructure as code, Docker and Kubernetes, staged and blue-green deployments, monitoring, logging and one-command rollback.">
+<meta name="description" content="Mokshify's DevOps: trunk-based git flow, CI/CD with automated checks, Terraform infrastructure as code, Docker and Kubernetes, staged and blue-green deployments, monitoring, logging and one-command rollback.">
 <link rel="canonical" href="https://mokshify.io/devops/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta property="og:title" content="DevOps Practices | Mokshify">
-<meta property="og:description" content="Mokshify's DevOps: trunk-based git flow, CI/CD with AI review, Terraform infrastructure as code, Docker and Kubernetes, staged and blue-green deployments, monitoring, logging and one-command rollback.">
+<meta property="og:description" content="Mokshify's DevOps: trunk-based git flow, CI/CD with automated checks, Terraform infrastructure as code, Docker and Kubernetes, staged and blue-green deployments, monitoring, logging and one-command rollback.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mokshify.io/devops/">
 <meta property="og:image" content="https://mokshify.io/assets/og.jpg">
@@ -30,7 +30,7 @@
 {"@type":"BreadcrumbList","itemListElement":[
  {"@type":"ListItem","position":1,"name":"Home","item":"https://mokshify.io/"},
  {"@type":"ListItem","position":2,"name":"DevOps Practices","item":"https://mokshify.io/devops/"}]},
-{"@type":"WebPage","@id":"https://mokshify.io/devops/#page","url":"https://mokshify.io/devops/","name":"DevOps Practices","description":"Mokshify's DevOps: trunk-based git flow, CI/CD with AI review, Terraform infrastructure as code, Docker and Kubernetes, staged and blue-green deployments, monitoring, logging and one-command rollback.","isPartOf":{"@id":"https://mokshify.io/#website"},"about":{"@id":"https://mokshify.io/#org"},"inLanguage":"en-IN"}]}
+{"@type":"WebPage","@id":"https://mokshify.io/devops/#page","url":"https://mokshify.io/devops/","name":"DevOps Practices","description":"Mokshify's DevOps: trunk-based git flow, CI/CD with automated checks, Terraform infrastructure as code, Docker and Kubernetes, staged and blue-green deployments, monitoring, logging and one-command rollback.","isPartOf":{"@id":"https://mokshify.io/#website"},"about":{"@id":"https://mokshify.io/#org"},"inLanguage":"en-IN"}]}
 </script>
 </head>
 <body class="t-reference"><!-- include:nav -->
@@ -253,7 +253,7 @@
       <table class="spec">
         <tbody>
           <tr><th scope="row">Git flow</th><td>Trunk-based development, short-lived branches, small merges. Main is always releasable; anything that lives longer than a few days gets questioned in review.</td></tr>
-          <tr><th scope="row">CI/CD</th><td>GitHub Actions runs tests, static checks and the AI review pass on every merge, then ships through staged rollouts with health checks. The full sequence is diagrammed on <a href="/architecture/">the architecture page</a>.</td></tr>
+          <tr><th scope="row">CI/CD</th><td>GitHub Actions runs tests and static checks on every merge, then ships through staged rollouts with health checks. The full sequence is diagrammed on <a href="/architecture/">the architecture page</a>.</td></tr>
           <tr><th scope="row">Infrastructure as code</th><td>Terraform declares every environment, so each one is reviewable, reproducible and destroyable. Staging is production-parity by construction, not by folklore.</td></tr>
           <tr><th scope="row">Containers</th><td>Docker for every workload; Kubernetes when service count and scaling genuinely justify it, and we will tell you when it does not.</td></tr>
         </tbody>

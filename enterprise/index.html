@@ -244,7 +244,7 @@
     <div class="section-body">
       <table class="spec">
         <tbody>
-          <tr><th scope="row">Code review, twice</th><td>Every merge gets a human review and an AI review pass. Nothing lands on a main branch unreviewed, including our own founders&rsquo; code.</td></tr>
+          <tr><th scope="row">Code review, twice</th><td>Every merge gets a human review and automated checks. Nothing lands on a main branch unreviewed, including our own founders&rsquo; code.</td></tr>
           <tr><th scope="row">Branch strategy</th><td>Trunk-based with short-lived feature branches. Main is always deployable; long-running branches are treated as a smell, not a workflow.</td></tr>
           <tr><th scope="row">Testing as definition-of-done</th><td>Unit tests where logic lives, integration tests where systems meet, end-to-end coverage of customer-visible flows. Details on the <a href="/quality/">QA page</a>.</td></tr>
           <tr><th scope="row">Documentation that ships</th><td>A README a new engineer can deploy from in under an hour, an architecture doc per system, and a written decision log, so knowledge lives in the repo, not in heads.</td></tr>
@@ -261,7 +261,7 @@
       <h2>Deployment &amp; rollback</h2>
     </header>
     <div class="section-body">
-      <p>Releases go through GitHub Actions: tests, static checks, AI review, then a staged rollout behind health checks. Every release is reversible with one command; database migrations are written to be reversible by default. Full pipeline on the <a href="/devops/">DevOps page</a> and <a href="/architecture/">architecture diagrams</a>.</p>
+      <p>Releases go through GitHub Actions: tests and static checks, then a staged rollout behind health checks. Every release is reversible with one command; database migrations are written to be reversible by default. Full pipeline on the <a href="/devops/">DevOps page</a> and <a href="/architecture/">architecture diagrams</a>.</p>
     </div>
   </div>
 </section>

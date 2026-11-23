@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cloud Engineering &amp; DevOps Services | Mokshify</title>
-<meta name="description" content="Cloud engineering and DevOps by Mokshify: AWS, Azure, Oracle Cloud and Google Cloud architecture, Terraform infrastructure as code, Kubernetes, and CI/CD with tests and AI review on every release.">
+<meta name="description" content="Cloud engineering and DevOps by Mokshify: AWS, Azure, Oracle Cloud and Google Cloud architecture, Terraform infrastructure as code, Kubernetes, and CI/CD with tests and automated checks on every release.">
 <link rel="canonical" href="https://mokshify.io/services/cloud-engineering/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta property="og:title" content="Cloud Engineering &amp; DevOps Services | Mokshify">
@@ -31,11 +31,11 @@
  {"@type":"ListItem","position":1,"name":"Home","item":"https://mokshify.io/"},
  {"@type":"ListItem","position":2,"name":"Services","item":"https://mokshify.io/services/"},
  {"@type":"ListItem","position":3,"name":"Cloud Engineering & DevOps","item":"https://mokshify.io/services/cloud-engineering/"}]},
-{"@type":"Service","@id":"https://mokshify.io/services/cloud-engineering/#service","name":"Cloud Engineering & DevOps","serviceType":"Cloud architecture, AWS consulting, Azure consulting, Oracle Cloud consulting, Google Cloud consulting, DevOps, Kubernetes, Terraform","provider":{"@id":"https://mokshify.io/#org"},"areaServed":"Worldwide","url":"https://mokshify.io/services/cloud-engineering/","description":"Cloud architecture and DevOps across AWS, Azure, OCI and GCP: infrastructure as code, Kubernetes, and CI/CD with tests and AI review on every release."},
+{"@type":"Service","@id":"https://mokshify.io/services/cloud-engineering/#service","name":"Cloud Engineering & DevOps","serviceType":"Cloud architecture, AWS consulting, Azure consulting, Oracle Cloud consulting, Google Cloud consulting, DevOps, Kubernetes, Terraform","provider":{"@id":"https://mokshify.io/#org"},"areaServed":"Worldwide","url":"https://mokshify.io/services/cloud-engineering/","description":"Cloud architecture and DevOps across AWS, Azure, OCI and GCP: infrastructure as code, Kubernetes, and CI/CD with tests and automated checks on every release."},
 {"@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Which cloud should my product run on?","acceptedAnswer":{"@type":"Answer","text":"Usually the one your team, region and pricing favour. The architecture matters more than the logo. We work across AWS, Azure, Oracle Cloud and Google Cloud, and we design with portability in mind: Terraform for infrastructure, containers for workloads, managed Postgres for data."}},
 {"@type":"Question","name":"Do I need Kubernetes?","acceptedAnswer":{"@type":"Answer","text":"Not always. Kubernetes earns its complexity when you run many services, need fine-grained scaling, or operate across environments. For a single product early on, simpler container platforms are often the right call. We'll recommend the lightest thing that works and a clean migration path."}},
-{"@type":"Question","name":"What does your CI/CD pipeline look like?","acceptedAnswer":{"@type":"Answer","text":"GitHub Actions running tests, static checks and an AI review on every merge, then staged rollouts with health checks and instant rollback. No hand-deployed releases, ever."}},
+{"@type":"Question","name":"What does your CI/CD pipeline look like?","acceptedAnswer":{"@type":"Answer","text":"GitHub Actions running tests and static checks on every merge, then staged rollouts with health checks and instant rollback. No hand-deployed releases, ever."}},
 {"@type":"Question","name":"Can you take over an existing cloud setup?","acceptedAnswer":{"@type":"Answer","text":"Yes. We start with an audit of architecture, cost, security posture and deployment process, then stabilise before we change anything. Rescue work is staged so the system keeps serving users throughout."}},
 {"@type":"Question","name":"How do you control cloud costs?","acceptedAnswer":{"@type":"Answer","text":"Right-sizing from measurements, autoscaling with floors and ceilings, storage lifecycle rules, cache-first design with Redis, and cost visibility per service so spend anomalies surface in days, not billing cycles."}}]}]}
 </script>
@@ -274,7 +274,7 @@
     <tr><th scope="row">Cloud architecture: AWS, Azure, OCI, GCP</th><td>Network design, compute and storage selection, managed data services, secrets and identity, designed for the product you have and the growth you're planning. We're deliberately multi-cloud: the right provider is usually decided by your team's experience, your market's regions and your pricing, and the architecture should survive changing that decision.</td></tr>
     <tr><th scope="row">Infrastructure as code: Terraform</th><td>Every environment we build is declared in Terraform: reviewable, repeatable, destroyable. Staging is a plan-apply away from production parity, and "how is this configured?" is a file you can read, not an archaeology project.</td></tr>
     <tr><th scope="row">Containers and Kubernetes</th><td>Workloads run in Docker containers; Kubernetes enters when service count, scaling granularity or multi-environment operations justify it. We are equally comfortable telling you Kubernetes is premature. The lightest platform that works wins.</td></tr>
-    <tr><th scope="row">CI/CD: GitHub Actions with an AI review gate</th><td>Our pipeline standard on every project: tests and static checks on each merge, an AI review pass over the change, then staged rollout with health checks and instant rollback. Our release sequence runs in this order: <code>build · tests passed · ai review · cloud sync · api live</code>.</td></tr>
+    <tr><th scope="row">CI/CD: GitHub Actions with automated checks</th><td>Our pipeline standard on every project: tests and static checks on each merge, then staged rollout with health checks and instant rollback. Our release sequence runs in this order: <code>build · tests passed · automated checks · cloud sync · api live</code>.</td></tr>
     <tr><th scope="row">Observability and operations</th><td>Uptime, latency and error budgets on dashboards; alerts that mean something; logs you can query. The systems we run for clients report 99.98% uptime. We publish the number because we measure it.</td></tr>
   </tbody>
 </table>
@@ -340,7 +340,7 @@
       <h2>Proof, not promises</h2>
     </header>
     <div class="section-body">
-      <p>Every product in <a href="/work/">our portfolio</a>, including <a href="/work/fincalix/">FinCalix</a>, <a href="/work/medico-diagnostics/">Medico Diagnostics</a> and <a href="/work/terravion-properties/">Terravion Properties</a>, runs on this platform architecture: containers, IaC, pipelines with AI review, PostgreSQL and Redis, Nginx at the gateway.</p>
+      <p>Every product in <a href="/work/">our portfolio</a>, including <a href="/work/fincalix/">FinCalix</a>, <a href="/work/medico-diagnostics/">Medico Diagnostics</a> and <a href="/work/terravion-properties/">Terravion Properties</a>, runs on this platform architecture: containers, IaC, pipelines with automated checks, PostgreSQL and Redis, Nginx at the gateway.</p>
     </div>
   </div>
 </section>
@@ -421,7 +421,7 @@
       <details><summary>Do I need Kubernetes?</summary>
           <p>Not always. It earns its complexity with many services and fine-grained scaling. Early products often do better on simpler container platforms with a clean migration path, and we'll say so.</p></details>
       <details><summary>What does your CI/CD look like?</summary>
-          <p>GitHub Actions: tests + static checks + AI review per merge, staged rollouts, health checks, instant rollback. Nothing is deployed by hand.</p></details>
+          <p>GitHub Actions: tests and static checks on every merge, staged rollouts, health checks, instant rollback. Nothing is deployed by hand.</p></details>
       <details><summary>Can you take over an existing setup?</summary>
           <p>Yes. We audit first (architecture, cost, security, releases), stabilise, then improve in stages without downtime.</p></details>
       <details><summary>How do you control cloud costs?</summary>

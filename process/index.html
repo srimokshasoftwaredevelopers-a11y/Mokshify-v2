@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Our Process &amp; Engineering Standards | Mokshify</title>
-<meta name="description" content="How Mokshify builds software: the eight-stage pipeline from idea to scale, engineering standards, testing strategy, security practices and the AI-reviewed deployment pipeline behind every release.">
+<meta name="description" content="How Mokshify builds software: the eight-stage pipeline from idea to scale, engineering standards, testing strategy, security practices and the automated deployment pipeline behind every release.">
 <link rel="canonical" href="https://mokshify.io/process/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta property="og:title" content="Our Process &amp; Engineering Standards | Mokshify">
@@ -36,7 +36,7 @@
 {"@type":"HowToStep","position":3,"name":"UX","text":"Design the workflows and interface; prototype the risky interactions."},
 {"@type":"HowToStep","position":4,"name":"Architecture","text":"Design the system: data model, services, cloud platform, security boundaries."},
 {"@type":"HowToStep","position":5,"name":"Engineering","text":"Build in vertical slices with tests and code review; demo working software weekly."},
-{"@type":"HowToStep","position":6,"name":"Cloud","text":"Provision infrastructure as code; wire the CI/CD pipeline with tests and AI review."},
+{"@type":"HowToStep","position":6,"name":"Cloud","text":"Provision infrastructure as code; wire the CI/CD pipeline with tests and automated checks."},
 {"@type":"HowToStep","position":7,"name":"Launch","text":"Staged rollout with monitoring, rollback and real-user validation."},
 {"@type":"HowToStep","position":8,"name":"Scale","text":"Measure, harden and extend: performance, cost and the next workflow."}]},
 {"@type":"WebPage","@id":"https://mokshify.io/process/#page","url":"https://mokshify.io/process/","name":"Our Process & Engineering Standards","isPartOf":{"@id":"https://mokshify.io/#website"},"about":{"@id":"https://mokshify.io/#org"},"inLanguage":"en-IN"}]}
@@ -259,7 +259,7 @@
           <li><strong>UX.</strong> Workflows before screens, screens before polish. We prototype the interactions where the product wins or dies, and we design for the devices your users actually hold.</li>
           <li><strong>Architecture.</strong> The data model, service boundaries, cloud platform and security lines, decided deliberately, documented and sized for the next eighteen months rather than the next demo.</li>
           <li><strong>Engineering.</strong> Vertical slices: a working end-to-end feature every week, instead of layers that integrate someday. Code review on every change. Tests as part of the definition of done.</li>
-          <li><strong>Cloud.</strong> Infrastructure as code (Terraform) from the first environment; CI/CD through GitHub Actions where every merge runs tests, static checks and an AI review pass. See <a href="/services/cloud-engineering/">Cloud Engineering</a>.</li>
+          <li><strong>Cloud.</strong> Infrastructure as code (Terraform) from the first environment; CI/CD through GitHub Actions where every merge runs tests and static checks. See <a href="/services/cloud-engineering/">Cloud Engineering</a>.</li>
           <li><strong>Launch.</strong> Staged rollouts with health checks and instant rollback. Monitoring and alerting exist before users do.</li>
           <li><strong>Scale.</strong> Performance budgets, cost visibility, and the roadmap that turns a launched product into a compounding one.</li>
         </ol>
@@ -315,7 +315,7 @@
       <table class="spec">
         <tbody>
           <tr><th scope="row">Testing strategy</th><td>Unit tests where logic lives, integration tests where systems meet, and end-to-end coverage of the flows a customer would notice breaking. Releases are gated on green.</td></tr>
-          <tr><th scope="row">AI-reviewed releases</th><td>Alongside human code review, every merge gets an AI review pass tuned to catch what tired humans miss. Our homepage&rsquo;s deploy terminal shows the real sequence: build, tests, AI review, cloud sync, live.</td></tr>
+          <tr><th scope="row">Checked releases</th><td>Alongside human code review, every merge runs automated checks. The release sequence is: build, tests, automated checks, cloud sync, live.</td></tr>
           <tr><th scope="row">Security practices</th><td>Least-privilege access, secrets in managed vaults (never in code), dependency scanning, TLS everywhere, security headers, and role-based access with audit trails in the products we build.</td></tr>
           <tr><th scope="row">Data layer discipline</th><td>PostgreSQL schemas designed, reviewed and migrated with the same care as public APIs; Redis for hot paths; backups tested by restoring them.</td></tr>
           <tr><th scope="row">Accessibility</th><td>Semantic HTML, keyboard paths, contrast standards and reduced-motion support, the same standards this website is built to.</td></tr>
@@ -339,7 +339,7 @@
           <li><b>Research</b><span>Users, market, and feasibility spikes for anything risky. AI features get a working proof against real data in week one.</span></li>
           <li><b>Architecture</b><span>Data model, service boundaries, cloud choice and security lines, decided and documented before code accumulates opinions.</span></li>
           <li><b>Design</b><span>Workflows before screens; prototypes where the product wins or dies; interfaces designed for the devices your users actually hold.</span></li>
-          <li><b>Development</b><span>Vertical slices with a working demo every week. Tests in the definition of done, human plus AI review on every merge.</span></li>
+          <li><b>Development</b><span>Vertical slices with a working demo every week. Tests in the definition of done, human review and automated checks on every merge.</span></li>
           <li><b>Testing</b><span>Unit, integration and end-to-end coverage of the flows a customer would notice breaking. These tests gate releases.</span></li>
           <li><b>Deployment</b><span>Staged rollout with health checks and one-command rollback. Launch day is a non-event because production has existed since week one.</span></li>
           <li><b>Support</b><span>Monitoring dashboards, alert routing, and engineers who answer. The systems we operate report 99.98% uptime.</span></li>
@@ -360,7 +360,7 @@
         <tbody>
           <tr><th scope="row">Code ownership</th><td>your repos, your cloud accounts, from week one. Leaving is always possible, which is why clients stay.</td></tr>
           <tr><th scope="row">Documentation</th><td>a new engineer can deploy from the README; decisions live in a written log, not in someone&rsquo;s memory.</td></tr>
-          <tr><th scope="row">AI-assisted development</th><td>an AI review gate on every merge and AI leverage across the pipeline, holding our own tools to the standard we sell.</td></tr>
+          <tr><th scope="row">Automated pipeline</th><td>automated checks on every merge across the pipeline, holding our own tools to the standard we sell.</td></tr>
           <tr><th scope="row">Cloud-native architecture</th><td>portable by construction: Terraform, containers, managed Postgres on any of four clouds. See <a href="/architecture/">the diagrams</a>.</td></tr>
           <tr><th scope="row">Long-term support</th><td>monitoring, maintenance and a team that still answers after launch.</td></tr>
           <tr><th scope="row">Proof over promises</th><td>four live products you can open right now, in <a href="/work/">the portfolio</a>.</td></tr>

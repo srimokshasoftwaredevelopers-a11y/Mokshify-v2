@@ -157,9 +157,16 @@ if (check && stale.length) { console.log(stale.join("\n")); process.exit(1); }
 
 /* Copy rules (docs/HANDBOOK.md, "Writing guidelines"), checked on every built page except /legal/disclosure/:
    no em or en dash anywhere in the file; no spaced hyphen used as a dash in visible text (code samples
-   excepted); no label saying the content was written, generated, drafted or reviewed by AI. */
+   excepted); no wording that says Mokshify's own content, code or releases are written, generated,
+   drafted, reviewed, checked, tested or approved by AI (describe the pipeline as "automated checks"). */
 const DASH = /—|–|&mdash;|&ndash;|&#821[12];|&#x201[34];/i;
-const AI_LABEL = /\b(?:written|generated|drafted|authored|reviewed|created|produced)\s+(?:with|by|using)\s+(?:an?\s+)?(?:AI|ChatGPT|Claude|Gemini|GPT[\w.-]*|LLMs?|large language models?|artificial intelligence)\b|\bAI[- ](?:written|generated|drafted|authored)\b|"reviewedBy"\s*:/i;
+const AI_LABEL = new RegExp([
+  String.raw`\b(?:written|generated|drafted|authored|reviewed|checked|tested|approved|created|produced)\s+(?:with|by|using)\s+(?:an?\s+)?(?:AI|ChatGPT|Claude|Gemini|GPT[\w.-]*|LLMs?|large language models?|artificial intelligence)\b`,
+  String.raw`\bAI[- ](?:written|generated|drafted|authored|reviewed|checked|approved|tested|gated)\b`,
+  String.raw`\bAI[- ]reviews?\b`,
+  String.raw`\bAI[- ]assisted\s+(?:review|QA|testing|development)\b`,
+  String.raw`"reviewedBy"\s*:`,
+].join("|"), "i");
 const around = (s, i) => s.slice(Math.max(0, i - 50), i + 50).replace(/\s+/g, " ");
 const voice = [];
 for (const file of pages) {
