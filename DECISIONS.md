@@ -86,6 +86,10 @@ One line of reasoning each. Newest at the bottom of each list.
 - **The phone screenshots' declared size was corrected from 600×1350 to 600×2597** (59 occurrences in 33 files, and in both generator scripts). Image break 2 made Lighthouse notice the mismatch.
 - **The hero headline's scroll "recede" now needs JavaScript (`.js`),** so with JS off nothing moves on its own. The spine is scroll-linked, not self-moving, and stays as built.
 
+## No people in screenshots (23 Nov 2026)
+
+- **No capture of a client site may show a real person.** The terravionproperties.in captures showed a staff member; the Medico captures (hero and old PNG) a doctor, patient and lab technician; the terravionproperties.com captures a woman in a video thumbnail; the Somallamma plate and phone capture devotees in the hero slideshow; the Next Edge Sanctuary render small figures by the gate. Each was replaced by a section without people, under a new file name (terravion-in-loc, terravion-about, medico-services, somallamma-darshan, next-edge-realty-locations), and the old files deleted, because images are cached for 31 days and a new URL is the only way to stop the old ones showing. The rule is in docs/HANDBOOK.md (Images) and at the top of scripts/capture-sites.mjs.
+
 ## Unresolved
 
 - **Resolved 23 Nov 2026:** the branch and `film-v1` were pushed as `srimokshasoftwaredevelopers-a11y` (see the report, "Pushed as the repo owner"). The next two entries are kept as history.

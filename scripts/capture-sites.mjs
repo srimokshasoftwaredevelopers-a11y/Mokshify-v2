@@ -18,18 +18,25 @@ const SITES = {
   "aj-agritech": "https://ajagritech.com/",
   "qflow": "https://qflow.in/",
   "fincalix": "https://fincalix.com/",
-  "medico": "https://medicodiagnostics.in/",
+  "medico-services": "https://medicodiagnostics.in/services",        // not the homepage: its hero shows people
   "terravion": "https://terravionproperties.com/",
-  "terravion-in": "https://terravionproperties.in/",              // the second Terravion site (owner, 23 Nov 2026)
+  "terravion-in-loc": "https://terravionproperties.in/locations",  // the second Terravion site; its homepage shows a staff photo
   "terravion-in-gis": "https://terravionproperties.in/gis",        // its GIS master plan page (used at 1440)
-  "somallamma": "https://www.srisomaalammatalli.in/",   // Srisomaalammatalli Temple, Mungandapalem (address from the owner, 23 Nov 2026)
+  "somallamma-darshan": "https://www.srisomaalammatalli.in/",   // Srisomaalammatalli Temple, Mungandapalem (address from the owner, 23 Nov 2026)
   "mokshify-website": process.env.SELF_URL || "http://localhost:8123/",   // this site, from the local server
 };
 const only = process.argv.slice(2);
-const SLOW_ON_PHONE = { "terravion-in": 9000 };   // extra milliseconds before the phone screenshot
-// captures in assets/sites/ that were cropped by hand so no availability, prices or names show (23 Nov 2026):
-// a plain run skips them; name the slug to recapture, then crop again before using the result
-const REDACTED = new Set(["next-edge-realty"]);
+const SLOW_ON_PHONE = { "terravion-in-loc": 9000 };   // extra milliseconds before the phone screenshot
+// RULE: no capture may show a real person (face, portrait, staff, testimonial photo, people in a photo
+// background), nor prices, plot availability, registration numbers or staff names. Look at every capture
+// before using it; recapture a section without people, or crop.
+// Captures in assets/sites/ that were cropped or offset by hand to meet that rule (23 Nov 2026): a plain run
+// skips them; name the slug to recapture, then crop again before using the result.
+//   next-edge-realty: cropped above the availability figures
+//   somallamma-darshan: starts below the photo slideshow (devotees), 790 px down at 1440, 548 css px on phones
+//   terravion: the homepage video thumbnail shows a person; the frame is terravion-about (About page, cropped
+//              above the registration numbers), made by hand; this slug only feeds the unchanged cards
+const REDACTED = new Set(["next-edge-realty", "somallamma-darshan", "terravion"]);
 const wait = ms => new Promise(r => setTimeout(r, ms));
 
 const browser = await puppeteer.launch({ executablePath: EDGE, headless: true, args: ["--disable-gpu", "--hide-scrollbars", "--lang=en-IN"] });

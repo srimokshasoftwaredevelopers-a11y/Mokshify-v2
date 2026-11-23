@@ -52,7 +52,7 @@ export const PROJECTS = [
       },
       gallery: [
         ["/assets/sites/next-edge-realty.webp", "Next Edge Realty homepage hero: Land you can verify before you visit", "Homepage, 1440 px — nextedgerealty.com", "https://nextedgerealty.com/"],
-        ["/assets/sites/next-edge-realty-project.webp", "The Sanctuary project page on nextedgerealty.com", "Project page: Sanctuary, Julkal", "https://nextedgerealty.com/projects/sanctuary"],
+        ["/assets/sites/next-edge-realty-locations.webp", "The Next Edge Realty locations page: a satellite map of the localities west of the Ring Road", "Locations page: West of the Ring Road, mandal by mandal", "https://nextedgerealty.com/locations"],
         ["/assets/sites/next-edge-realty-map.webp", "The Sanctuary plot map in its 3D satellite view, with every plot in one colour", "Plot map, 3D satellite view (status colours and plot numbers hidden). Imagery &copy; 2026 Google", "https://nextedgerealty.com/projects/sanctuary/map"]],
       stack: [["Framework", "Next.js (visible in the live site's response headers)"], ["Delivery", "Served through Cloudflare"],
         ["Map", "Satellite imagery with a plot overlay and live availability"], ["Admin", "Lead CRM and admin dashboard"]],
@@ -62,13 +62,15 @@ export const PROJECTS = [
   {
     slug: "terravion-properties", name: "Terravion Properties", industry: "Real estate", kind: "Client website",
     url: "https://terravionproperties.com/", host: "terravionproperties.com", shot: "terravion",
+    // no capture may show a real person: the work-row frame is the About page (the homepage has a person in its video), cropped above the registration numbers
+    frameShot: "terravion-about", dims: { desk: [1200, 1000], m: [600, 2154] }, shotAlt: "Terravion Properties about page",
     also: [{ url: "https://terravionproperties.in/", host: "terravionproperties.in" }],   // the second Terravion site (23 Nov 2026)
     line: "HMDA-approved plots in the Shankarpally growth corridor, discovered and booked online.",
     facts: [["HMDA", "approved projects"], ["Online", "discovery to booking"]],
   },
   {
     slug: "medico-diagnostics", name: "Medico Diagnostics", industry: "Healthcare", kind: "Client website",
-    url: "https://medicodiagnostics.in/", host: "medicodiagnostics.in", shot: "medico",
+    url: "https://medicodiagnostics.in/", host: "medicodiagnostics.in", shot: "medico-services", shotAlt: "Medico Diagnostics services page",   // the homepage hero shows people
     line: "A diagnostics website where patients find a test, see the price, book a home collection and download reports.",
     facts: [["3,291+", "tests published"], ["4–6h", "reporting"]],
   },
@@ -99,7 +101,8 @@ export const PROJECTS = [
   {
     slug: "somallamma-temple", name: "Somallamma Temple", industry: "Community", kind: "Client website",
     // live site and what it shows: from the owner (address) and srisomaalammatalli.in itself, 23 Nov 2026
-    url: "https://www.srisomaalammatalli.in/", host: "srisomaalammatalli.in", shot: "somallamma",
+    url: "https://www.srisomaalammatalli.in/", host: "srisomaalammatalli.in", shot: "somallamma-darshan", dims: { m: [600, 2566] },
+    shotAlt: "Somallamma Temple darshan timings and temple facts", shotCap: "the darshan timings and temple facts, below the photo slideshow (which shows devotees)",
     line: "The website of Srisomaalammatalli Temple, Mungandapalem — poojas, events, gallery and donations, handed over to the temple.",
     facts: [],
     page: {
@@ -158,8 +161,9 @@ const ind = (s, n) => s.split("\n").map(l => (l ? " ".repeat(n) + l : l)).join("
 export function frame(p, { eager = false } = {}) {
   if (!p.shot) return `<div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>${p.host}</span></div><div class="frame-view plate todo"><span>Screenshot to follow</span></div></div>`;
   const lazy = eager ? 'fetchpriority="high"' : 'loading="lazy"';
-  const [dw, dh] = p.dims?.desk ?? [1200, 2000], [mw, mh] = p.dims?.m ?? [600, 2597];   // redacted captures are cropped shorter
-  return `<div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>${p.host}</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/${p.shot}-m.webp" width="${mw}" height="${mh}"><img src="/assets/sites/${p.shot}.webp" alt="${p.name} homepage, captured from the live site" width="${dw}" height="${dh}" ${lazy} decoding="async"></picture></div></div>`;
+  const [dw, dh] = p.dims?.desk ?? [1200, 2000], [mw, mh] = p.dims?.m ?? [600, 2597];
+  const base = p.frameShot ?? p.shot, alt = `${p.shotAlt ?? p.name + " homepage"}, captured from the live site`;   // redacted captures are cropped shorter
+  return `<div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>${p.host}</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/${base}-m.webp" width="${mw}" height="${mh}"><img src="/assets/sites/${base}.webp" alt="${alt}" width="${dw}" height="${dh}" ${lazy} decoding="async"></picture></div></div>`;
 }
 const factsHtml = p => p.facts.length ? `<ul class="facts">${p.facts.map(([b, i]) => `<li><b>${b}</b><i>${i}</i></li>`).join("")}</ul>` : "";
 
@@ -246,7 +250,7 @@ function page(p) {
     ["Gallery", P.gallery
       ? `<div class="gallery-three">\n${P.gallery.map(g => "  " + fig(g)).join("\n")}\n</div>`
       : p.shot
-      ? `<div class="gallery">\n  <figure>${frame(p)}<figcaption>Desktop, 1440 px — captured from the live site on 23 Nov 2026.</figcaption></figure>\n  <figure><div class="frame phone"><div class="frame-view"><img src="/assets/sites/${p.shot}-m.webp" alt="${p.name} on a phone" width="600" height="2597" loading="lazy" decoding="async"></div></div><figcaption>Phone, 390 px.</figcaption></figure>\n</div>`
+      ? `<div class="gallery">\n  <figure>${frame(p)}<figcaption>Desktop, 1440 px — ${p.shotCap ? p.shotCap + ", " : ""}captured from the live site on 23 Nov 2026.</figcaption></figure>\n  <figure><div class="frame phone"><div class="frame-view"><img src="/assets/sites/${p.shot}-m.webp" alt="${p.name} on a phone" width="${p.dims?.m?.[0] ?? 600}" height="${p.dims?.m?.[1] ?? 2597}" loading="lazy" decoding="async"></div></div><figcaption>Phone, 390 px.</figcaption></figure>\n</div>`
       : `<figure class="plate todo"><span>Screenshots to follow once the live address is confirmed</span></figure>`],
     ...(P.stack.length ? [["The stack", rows(P.stack)]] : []),
   ];
@@ -342,7 +346,7 @@ const SELF = { slug: "mokshify-website", name: "This website", industry: "Engine
    Counts are from terravionproperties.in on 23 Nov 2026. No prices, plot counts or approval numbers. */
 const EXTRA_ROWS = [
   { slug: "terravion-in", caseSlug: "terravion-properties", name: "Terravion Properties — terravionproperties.in", industry: "Real estate", kind: "Client website",
-    url: "https://terravionproperties.in/", host: "terravionproperties.in", shot: "terravion-in",
+    url: "https://terravionproperties.in/", host: "terravionproperties.in", shot: "terravion-in-loc", shotAlt: "Terravion Properties locations page at terravionproperties.in",
     line: "The second Terravion site: a GIS master plan of every plot, location pages, buyer guides, a journal, and site-visit booking.",
     facts: [["13", "location pages"], ["12", "buyer guides"], ["72", "journal articles"]] },
 ];
