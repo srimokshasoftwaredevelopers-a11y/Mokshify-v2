@@ -304,3 +304,17 @@ The home hero no longer uses a film still. It is now the "field" variant (`hero 
 | Motion | All pass (reduced motion, JS off, 375px) |
 | Lighthouse `/`, desktop | 100 / 100 / 100 / 100, LCP 0.6 s, CLS 0 |
 | Lighthouse `/`, mobile | Performance 98, accessibility 100, best practices 100, SEO 100; LCP 2.2 s, CLS 0 |
+
+## Pushed as the repo owner
+
+- **Browser sign-in:** I started `gh auth login -w` and stopped it when you sent a personal access token instead.
+- **The token itself:** gh refused to store it, because the token lacks the `read:org` scope gh requires for login. GitHub's API confirmed it belongs to **`srimokshasoftwaredevelopers-a11y`** (scopes `repo` and `workflow`; admin and push on `Mokshify-v2`).
+- **Account check:** `gh auth status`, run with the token in the environment, showed `srimokshasoftwaredevelopers-a11y` as the active account.
+- **Pushed with a one-off credential:** the token was passed only for that command. It was not saved in git config or the gh keyring.
+- **On the remote, verified with `git ls-remote` and the GitHub API:**
+  - `redesign/enterprise` at `d942504` (this note was pushed after it).
+  - Tag `film-v1`, tag object `40cb22b` → `974d9a2`.
+  - `main` untouched at `e0a4cc2`. Nothing was merged or deployed.
+- **Branch:** https://github.com/srimokshasoftwaredevelopers-a11y/Mokshify-v2/tree/redesign/enterprise
+- **Git identity for this repo only:** `user.name srimokshasoftwaredevelopers-a11y` and `user.email 278681656+srimokshasoftwaredevelopers-a11y@users.noreply.github.com` (the account's GitHub no-reply address, because it has no public email). Global Git settings are unchanged. Commits made before this point keep their original author; history was not rewritten.
+- **Not done: `gh auth setup-git`.** The token couldn't be stored in gh, so gh's signed-in account on this machine is still `qflow-token` (read-only). Pointing git at gh now would make future pushes run as `qflow-token`. Git Credential Manager is still the helper. To finish the setup later, run `gh auth login -h github.com -p https -w`, approve it as the owner, then run `gh auth setup-git`.

@@ -63,6 +63,7 @@ One line of reasoning each. Newest at the bottom of each list.
 
 ## Unresolved
 
+- **Resolved 23 Nov 2026:** the branch and `film-v1` were pushed as `srimokshasoftwaredevelopers-a11y` (see the report, "Pushed as the repo owner"). The next two entries are kept as history.
 - **`film-v1` tag not on the remote.** The tag exists locally on `974d9a2` (main), but `git push origin film-v1` returned 403: the credential on this machine (`ajagritecha-hub`) has no write access to `srimokshasoftwaredevelopers-a11y/Mokshify-v2`, and the `gh` account (`qflow-token`) has pull-only access. Following your rule, the frames, film engine, `js/main.js`, `css/styles.css`, `css/pages.css` and GSAP are **not deleted**. The new pages no longer load any of them. Morning action: push the tag, then run the deletion listed in `REDESIGN_REPORT.md`.
 - **Branch not pushed.** Same 403, on three attempts (start, mid-run, end). All work is committed locally on `redesign/enterprise` (18 commits ahead of `main`).
 - **FinCalix on iOS** is stated in the brief, but fincalix.com links only to Google Play (23 Nov 2026). The site says Android only, with a `TODO(confirm)`.
