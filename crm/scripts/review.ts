@@ -16,6 +16,8 @@ async function signIn(page: Page) {
   await page.fill('input[name="email"]', process.env.REVIEW_EMAIL ?? "owner@example.com");
   await page.fill('input[name="password"]', process.env.REVIEW_PASSWORD ?? "");
   await Promise.all([page.waitForURL(/\/today/), page.click('button:has-text("Sign in")')]);
+  // PRINT_COOKIE=1: hand the session to Lighthouse (local review database only)
+  if (process.env.PRINT_COOKIE) console.log(`COOKIE desk_session=${(await page.context().cookies()).find(c => c.name === "desk_session")?.value}`);
 }
 
 const browser = await chromium.launch({ channel: "msedge" });

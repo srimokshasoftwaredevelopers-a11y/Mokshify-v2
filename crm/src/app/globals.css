@@ -20,6 +20,7 @@
   --color-brass: #B08D57;
   --color-success: #2F6B4F;
   --color-warning: #9A6B14;
+  --color-warning-ink: #7D5710;   /* warning text: #9A6B14 is 4.28:1 on paper, under AA for small text */
   --color-danger: #A12B2B;
   --color-info: #2B5C7A;
   --font-sans: "Switzer", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -84,10 +85,11 @@
   .error-text { font-size: 13px; color: var(--color-danger); }
 
   /* status: colour + a text label (never colour alone) */
-  .badge { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.15rem 0.5rem; border-radius: 999px; font-size: 12px; font-weight: 500; line-height: 1.5; border: 1px solid currentColor; white-space: nowrap; }
-  .badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .badge { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.15rem 0.5rem; border-radius: 999px; font-size: 12px; font-weight: 500; line-height: 1.5; border: 1px solid var(--dot, currentColor); white-space: nowrap; }
+  .badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--dot, currentColor); }
   .tone-success { color: var(--color-success); }
-  .tone-warning { color: var(--color-warning); }
+  /* the spec's warning colour marks the badge; its text is a darker shade so it passes AA */
+  .tone-warning { color: var(--color-warning-ink); --dot: var(--color-warning); }
   .tone-danger { color: var(--color-danger); }
   .tone-info { color: var(--color-info); }
   .tone-muted { color: var(--color-ink-2); }

@@ -56,7 +56,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
 
         <Section title="Milestones and payments" id="payments" count={p.payments.length}
           action={<DialogButton label="Add milestone" title="New payment milestone" icon="plus" className="btn btn-ghost btn-sm"><ActionForm action={addPayment.bind(null, p.id)} submit="Add milestone"><PaymentFields /></ActionForm></DialogButton>}>
-          {scheduled !== agreed && agreed > 0 && <p className="mb-2 text-sm text-warning">Milestones add up to <Money value={scheduled} />, not the agreed <Money value={agreed} />.</p>}
+          {scheduled !== agreed && agreed > 0 && <p className="mb-2 text-sm text-warning-ink">Milestones add up to <Money value={scheduled} />, not the agreed <Money value={agreed} />.</p>}
           {p.payments.length ? (
             <ul className="card divide-y divide-rule">
               {p.payments.map(x => {

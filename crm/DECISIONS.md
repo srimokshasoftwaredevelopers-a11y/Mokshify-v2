@@ -115,6 +115,13 @@ Judgement calls, one line of reasoning each. Newest at the bottom of each phase.
   - the estimator share form;
   - the keyboard test.
 
+## Phase 7 · Polish
+
+- **Warning text is `#7D5710`; the spec's warning colour `#9A6B14` stays on the badge dot and border.** `#9A6B14` on paper is 4.28:1, under the 4.5:1 that small text needs (it was Lighthouse's only accessibility finding). The darker text is 5.9:1 on paper and 5.0:1 on limestone. Success, danger and info pass as specified.
+- **The PWA is a web app manifest (Next's `app/manifest.ts`) with the M-mark icons:** start URL `/today`, standalone, theme oxblood, with shortcuts to Today, Leads and Pipeline. There is no service worker, so Desk is installable but needs a connection; caching personal data offline on a phone would also be a privacy question.
+- **The dark theme was not built.** The spec marks it optional and last; the light theme is complete.
+- **Lighthouse ran signed in,** with a session cookie from the local review database passed as a header, because Today is behind sign-in.
+
 ## Unresolved
 
 - **ESLint config blocked by a local hook.** Creating `crm/eslint.config.mjs` is refused by the `everything-claude-code` plugin's config-protection hook ("Modifying eslint.config.mjs is not allowed"). That hook exists to stop lint rules being weakened, and getting around it by renaming the file would defeat its purpose. So `npm run lint` has no config yet. Static checking meanwhile is `tsc --noEmit` in strict mode (with `noUncheckedIndexedAccess`). To enable lint, disable that hook once, or create the file yourself with:
