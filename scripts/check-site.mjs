@@ -12,7 +12,7 @@ const fail = [];
 const ok = (cond, msg) => { if (!cond) fail.push(msg); return cond; };
 
 /* pages on disk vs sitemap */
-const SKIP = new Set(["node_modules", ".git", "frames", "assets", "assets-test", "scripts", "src", "docs", "marketing", "partials", "css", "js", "review", "shots", ".claude", ".agents", ".well-known", "crm", ".vercel"]);
+const SKIP = new Set(["node_modules", ".git", "frames", "assets", "assets-test", "scripts", "src", "docs", "marketing", "partials", "css", "js", "review", "shots", ".claude", ".agents", ".well-known", "crm", ".vercel", "dist"]);
 const disk = [];
 (function walk(d) {
   for (const e of readdirSync(d)) {

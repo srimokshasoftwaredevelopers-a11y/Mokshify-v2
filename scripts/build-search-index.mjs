@@ -5,7 +5,7 @@ const ROOT = process.cwd();
 const pages = [];
 (function walk(dir) {
   for (const e of readdirSync(dir)) {
-    if (["node_modules","frames","assets","scripts","src","marketing",".well-known","js","css","docs",".git"].includes(e)) continue;
+    if (["node_modules","frames","assets","scripts","src","marketing",".well-known","js","css","docs",".git","dist","crm","partials","review"].includes(e)) continue;
     const p = join(dir, e);
     if (statSync(p).isDirectory()) walk(p);
     else if (e === "index.html") pages.push(p);

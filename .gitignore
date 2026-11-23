@@ -1,6 +1,9 @@
 # dependencies
 node_modules/
 
+# the published site, written by npm run build (scripts/publish.mjs); Vercel serves only this folder
+dist/
+
 # local experiments / scratch
 assets-test/
 shots/

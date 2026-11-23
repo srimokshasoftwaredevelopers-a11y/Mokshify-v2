@@ -4,9 +4,9 @@
   "description": "Mokshify — static site, built from partials by scripts/build.mjs.",
   "private": true,
   "scripts": {
-    "build": "node scripts/build.mjs",
+    "build": "node scripts/build.mjs && node scripts/publish.mjs",
     "check": "node scripts/build.mjs --check",
-    "serve": "node scripts/serve.mjs 8123",
+    "serve": "node scripts/serve.mjs 8123 dist",
     "audit": "node scripts/audit-site.mjs",
     "verify": "node scripts/check-site.mjs && node scripts/check-keyboard.mjs && node scripts/check-motion.mjs",
     "logo": "node scripts/brand-logo.mjs --preview",
