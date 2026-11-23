@@ -210,4 +210,44 @@
       <image:caption>Stacked translucent layers with circuit lines, in rose light.</image:caption>
     </image:image>
   </url>
+  <url>
+    <loc>https://mokshify.io/services/ai-product-development/</loc>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/ai-product-development-hero.webp</image:loc>
+      <image:title>AI Product Development Services | Mokshify</image:title>
+      <image:caption>Network of glowing orange nodes joined by fine lines on a dark background.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/services/ai-transformation/</loc>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/ai-transformation-hero.webp</image:loc>
+      <image:title>AI Transformation for Business Workflows | Mokshify</image:title>
+      <image:caption>Glowing strands and sparks running through a dark industrial hall.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/services/api-development/</loc>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/api-development-hero.webp</image:loc>
+      <image:title>API Development and Integration Services | Mokshify</image:title>
+      <image:caption>Streaks of orange light curving across a dark red background.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/enterprise/</loc>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/enterprise-hero.webp</image:loc>
+      <image:title>Enterprise Readiness | Mokshify</image:title>
+      <image:caption>Spire built from lines of golden and blue light against a starry sky.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/services/mobile-app-development/</loc>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/mobile-app-development-hero.webp</image:loc>
+      <image:title>Mobile App Development Services | Flutter | Mokshify</image:title>
+      <image:caption>Floating glass tiles in the dark, one of them lit orange.</image:caption>
+    </image:image>
+  </url>
 </urlset>
