@@ -94,6 +94,10 @@ One line of reasoning each. Newest at the bottom of each list.
 
 - **No capture may show a price.** The terravionproperties.com showreel card, plate, thumbnail and PNG showed "Plots from ₹45L" and "Starting ₹45 Lakhs"; they were remade from the About page under new names (terravion-about-*), the old files deleted and every reference, the image sitemap and the structured data updated. The four unused terravion-in-gis captures (prices per square yard) were deleted; terravion-in-gis-map.webp, a crop of the plot tiles without prices, stays. The rule sits beside the no-people rule in docs/HANDBOOK.md and scripts/capture-sites.mjs.
 
+## No plot-level sale status in screenshots (23 Nov 2026)
+
+- **No capture may show a plot's sale status.** The Terravion GIS crop (terravion-in-gis-map.webp) showed the two project grids in the site's status colours. It is replaced by terravion-in-gis-plots.webp: the same two grids captured from the live page with every plot in one neutral colour; the caption says so, and the old file is deleted. That crop is a status grid drawn by the site, not a map: it has no imagery, roads, parks, plot numbers or imagery attribution. The rule, with the recolour method used for the Next Edge recording, sits beside the no-people and no-prices rules in docs/HANDBOOK.md and scripts/capture-sites.mjs.
+
 ## Unresolved
 
 - **Resolved 23 Nov 2026:** the branch and `film-v1` were pushed as `srimokshasoftwaredevelopers-a11y` (see the report, "Pushed as the repo owner"). The next two entries are kept as history.
