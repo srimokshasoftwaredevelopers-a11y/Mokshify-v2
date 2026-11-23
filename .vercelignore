@@ -1,3 +1,7 @@
 # The marketing site deploys this repository root as static files. The CRM in crm/ is a
 # separate Vercel project (root directory crm/) and must never be served from mokshify.io.
 crm
+
+# Agent instruction files are for people and tools working on the repo, not for the public site.
+CLAUDE.md
+AGENTS.md
