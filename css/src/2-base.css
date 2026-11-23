@@ -80,7 +80,7 @@ td.num,th.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
   table.stack thead{position:absolute;clip-path:inset(50%);width:1px;height:1px;overflow:hidden}
   table.stack tr{padding-block:1rem;border-bottom:1px solid var(--rule)}
   table.stack th,table.stack td{border:0;padding:.15rem 0}
-  table.stack td[data-th]::before{content:attr(data-th) " — ";font:500 var(--fs-label)/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--fg-2)}
+  table.stack td[data-th]::before{content:attr(data-th) ": ";font:500 var(--fs-label)/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--fg-2)}
 }
 
 /* forms */

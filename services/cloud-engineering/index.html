@@ -8,7 +8,7 @@
 <link rel="canonical" href="https://mokshify.io/services/cloud-engineering/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta property="og:title" content="Cloud Engineering &amp; DevOps Services | Mokshify">
-<meta property="og:description" content="AWS, Azure, OCI, GCP — infrastructure as code, Kubernetes, and disciplined CI/CD.">
+<meta property="og:description" content="AWS, Azure, OCI and GCP, with infrastructure as code, Kubernetes and disciplined CI/CD.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mokshify.io/services/cloud-engineering/">
 <meta property="og:image" content="https://mokshify.io/assets/og.jpg">
@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="/css/site.css?v=fa88125018">
+<link rel="stylesheet" href="/css/site.css?v=dd64a68a39">
 <!-- /include:head -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -33,10 +33,10 @@
  {"@type":"ListItem","position":3,"name":"Cloud Engineering & DevOps","item":"https://mokshify.io/services/cloud-engineering/"}]},
 {"@type":"Service","@id":"https://mokshify.io/services/cloud-engineering/#service","name":"Cloud Engineering & DevOps","serviceType":"Cloud architecture, AWS consulting, Azure consulting, Oracle Cloud consulting, Google Cloud consulting, DevOps, Kubernetes, Terraform","provider":{"@id":"https://mokshify.io/#org"},"areaServed":"Worldwide","url":"https://mokshify.io/services/cloud-engineering/","description":"Cloud architecture and DevOps across AWS, Azure, OCI and GCP: infrastructure as code, Kubernetes, and CI/CD with tests and AI review on every release."},
 {"@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Which cloud should my product run on?","acceptedAnswer":{"@type":"Answer","text":"Usually the one your team, region and pricing favour — the architecture matters more than the logo. We work across AWS, Azure, Oracle Cloud and Google Cloud, and we design with portability in mind: Terraform for infrastructure, containers for workloads, managed Postgres for data."}},
-{"@type":"Question","name":"Do I need Kubernetes?","acceptedAnswer":{"@type":"Answer","text":"Not always. Kubernetes earns its complexity when you run many services, need fine-grained scaling, or operate across environments. For a single product early on, simpler container platforms are often the right call — we'll recommend the lightest thing that works and a clean migration path."}},
+{"@type":"Question","name":"Which cloud should my product run on?","acceptedAnswer":{"@type":"Answer","text":"Usually the one your team, region and pricing favour. The architecture matters more than the logo. We work across AWS, Azure, Oracle Cloud and Google Cloud, and we design with portability in mind: Terraform for infrastructure, containers for workloads, managed Postgres for data."}},
+{"@type":"Question","name":"Do I need Kubernetes?","acceptedAnswer":{"@type":"Answer","text":"Not always. Kubernetes earns its complexity when you run many services, need fine-grained scaling, or operate across environments. For a single product early on, simpler container platforms are often the right call. We'll recommend the lightest thing that works and a clean migration path."}},
 {"@type":"Question","name":"What does your CI/CD pipeline look like?","acceptedAnswer":{"@type":"Answer","text":"GitHub Actions running tests, static checks and an AI review on every merge, then staged rollouts with health checks and instant rollback. No hand-deployed releases, ever."}},
-{"@type":"Question","name":"Can you take over an existing cloud setup?","acceptedAnswer":{"@type":"Answer","text":"Yes. We start with an audit — architecture, cost, security posture, deployment process — then stabilise before we change anything. Rescue work is staged so the system keeps serving users throughout."}},
+{"@type":"Question","name":"Can you take over an existing cloud setup?","acceptedAnswer":{"@type":"Answer","text":"Yes. We start with an audit of architecture, cost, security posture and deployment process, then stabilise before we change anything. Rescue work is staged so the system keeps serving users throughout."}},
 {"@type":"Question","name":"How do you control cloud costs?","acceptedAnswer":{"@type":"Answer","text":"Right-sizing from measurements, autoscaling with floors and ceilings, storage lifecycle rules, cache-first design with Redis, and cost visibility per service so spend anomalies surface in days, not billing cycles."}}]}]}
 </script>
 </head>
@@ -249,7 +249,7 @@
 <section class="section intro">
   <div class="wrap">
     <div class="section-body">
-      <p class="plede intro-text">Trust is an engineering discipline — and nowhere is that more literal than the platform your product runs on. Mokshify designs and operates cloud architecture across AWS, Azure, Oracle Cloud and Google Cloud, with infrastructure as code and a release pipeline that treats every deploy as a tested, reviewed, reversible event.</p>
+      <p class="plede intro-text">Trust is an engineering discipline, and nowhere more literally than in the platform your product runs on. Mokshify designs and operates cloud architecture across AWS, Azure, Oracle Cloud and Google Cloud, with infrastructure as code and a release pipeline that treats every deploy as a tested, reviewed, reversible event.</p>
     </div>
   </div>
 </section>
@@ -271,11 +271,11 @@
     <div class="section-body wide">
       <table class="spec">
   <tbody>
-    <tr><th scope="row">Cloud architecture — AWS, Azure, OCI, GCP</th><td>Network design, compute and storage selection, managed data services, secrets and identity — designed for the product you have and the growth you're planning, not a reference diagram. We're deliberately multi-cloud: the right provider is usually decided by your team's experience, your market's regions and your pricing, and the architecture should survive changing that decision.</td></tr>
-    <tr><th scope="row">Infrastructure as code — Terraform</th><td>Every environment we build is declared in Terraform: reviewable, repeatable, destroyable. Staging is a plan-apply away from production parity, and "how is this configured?" is a file you can read, not an archaeology project.</td></tr>
-    <tr><th scope="row">Containers and Kubernetes</th><td>Workloads run in Docker containers; Kubernetes enters when service count, scaling granularity or multi-environment operations justify it. We are equally comfortable telling you Kubernetes is premature — the lightest platform that works wins.</td></tr>
-    <tr><th scope="row">CI/CD — GitHub Actions with an AI review gate</th><td>Our pipeline standard on every project: tests and static checks on each merge, an AI review pass over the change, then staged rollout with health checks and instant rollback. The deploy terminal in our homepage film isn't decoration — it's our actual release sequence: <code>build ✓ · tests passed · ai review ✓ · cloud sync ✓ · api live</code>.</td></tr>
-    <tr><th scope="row">Observability and operations</th><td>Uptime, latency and error budgets on dashboards; alerts that mean something; logs you can query. The systems we run for clients report 99.98% uptime — a number we publish because we measure it.</td></tr>
+    <tr><th scope="row">Cloud architecture: AWS, Azure, OCI, GCP</th><td>Network design, compute and storage selection, managed data services, secrets and identity, designed for the product you have and the growth you're planning. We're deliberately multi-cloud: the right provider is usually decided by your team's experience, your market's regions and your pricing, and the architecture should survive changing that decision.</td></tr>
+    <tr><th scope="row">Infrastructure as code: Terraform</th><td>Every environment we build is declared in Terraform: reviewable, repeatable, destroyable. Staging is a plan-apply away from production parity, and "how is this configured?" is a file you can read, not an archaeology project.</td></tr>
+    <tr><th scope="row">Containers and Kubernetes</th><td>Workloads run in Docker containers; Kubernetes enters when service count, scaling granularity or multi-environment operations justify it. We are equally comfortable telling you Kubernetes is premature. The lightest platform that works wins.</td></tr>
+    <tr><th scope="row">CI/CD: GitHub Actions with an AI review gate</th><td>Our pipeline standard on every project: tests and static checks on each merge, an AI review pass over the change, then staged rollout with health checks and instant rollback. Our release sequence runs in this order: <code>build · tests passed · ai review · cloud sync · api live</code>.</td></tr>
+    <tr><th scope="row">Observability and operations</th><td>Uptime, latency and error budgets on dashboards; alerts that mean something; logs you can query. The systems we run for clients report 99.98% uptime. We publish the number because we measure it.</td></tr>
   </tbody>
 </table>
 </div>
@@ -309,7 +309,7 @@
     <text x="594" y="246" class="dg-i">CI/CD</text>
     <text x="594" y="272" class="dg-i">Observability and operations</text>
   </svg>
-  <figcaption>Every engagement runs the same eight stages — see <a href="/process/">the process</a>. What changes per service is what gets built at the Engineering stage.</figcaption>
+  <figcaption>Every engagement runs the same eight stages. See <a href="/process/">the process</a>. What changes per service is what gets built at the Engineering stage.</figcaption>
 </figure>
     </div>
   </div>
@@ -340,7 +340,7 @@
       <h2>Proof, not promises</h2>
     </header>
     <div class="section-body">
-      <p>Every product in <a href="/work/">our portfolio</a> — <a href="/work/fincalix/">FinCalix</a>, <a href="/work/medico-diagnostics/">Medico Diagnostics</a>, <a href="/work/terravion-properties/">Terravion Properties</a> — runs on this platform architecture: containers, IaC, pipelines with AI review, PostgreSQL and Redis, Nginx at the gateway.</p>
+      <p>Every product in <a href="/work/">our portfolio</a>, including <a href="/work/fincalix/">FinCalix</a>, <a href="/work/medico-diagnostics/">Medico Diagnostics</a> and <a href="/work/terravion-properties/">Terravion Properties</a>, runs on this platform architecture: containers, IaC, pipelines with AI review, PostgreSQL and Redis, Nginx at the gateway.</p>
     </div>
   </div>
 </section>
@@ -360,7 +360,7 @@
             <p class="label">Healthcare &middot; Client website</p>
             <h3><a href="/work/medico-diagnostics/">Medico Diagnostics</a></h3>
             <p>A diagnostics website where patients find a test, see the price, book a home collection and download reports.</p>
-            <ul class="facts"><li><b>3,291+</b><i>tests published</i></li><li><b>4–6h</b><i>reporting</i></li></ul>
+            <ul class="facts"><li><b>3,291+</b><i>tests published</i></li><li><b>4 to 6h</b><i>reporting</i></li></ul>
             <p class="work-links"><a href="/work/medico-diagnostics/">Read the case study</a> <a href="https://medicodiagnostics.in/" rel="noopener">medicodiagnostics.in ↗</a></p>
           </div>
         </article>
@@ -380,13 +380,13 @@
       <!-- include:engagements -->
       <ul class="options four">
         <li class="option">
-          <p class="when">4–6 weeks</p>
+          <p class="when">4 to 6 weeks</p>
           <h3>MVP Sprint</h3>
           <p>For founders who need a fundable product, fast.</p>
           <a class="more" href="/process/#mvp-sprint">How the sprint runs &rarr;</a>
         </li>
         <li class="option">
-          <p class="when">3–6 months</p>
+          <p class="when">3 to 6 months</p>
           <h3>Product Engineering</h3>
           <p>For teams who want a product partner, not an agency.</p>
           <a class="more" href="/process/#product-engineering">How it runs &rarr;</a>
@@ -398,7 +398,7 @@
           <a class="more" href="/process/#dedicated-team">How it runs &rarr;</a>
         </li>
         <li class="option">
-          <p class="when">6–12 weeks</p>
+          <p class="when">6 to 12 weeks</p>
           <h3>AI Transformation</h3>
           <p>For businesses turning workflows into an AI advantage.</p>
           <a class="more" href="/process/#ai-transformation">How it runs &rarr;</a>
@@ -417,13 +417,13 @@
     </header>
     <div class="section-body">
       <details><summary>Which cloud should my product run on?</summary>
-          <p>Usually the one your team, regions and pricing favour — architecture matters more than the logo. We design with portability in mind: Terraform, containers, managed Postgres.</p></details>
+          <p>Usually the one your team, regions and pricing favour. The architecture matters more than the logo. We design with portability in mind: Terraform, containers, managed Postgres.</p></details>
       <details><summary>Do I need Kubernetes?</summary>
-          <p>Not always. It earns its complexity with many services and fine-grained scaling. Early products often do better on simpler container platforms with a clean migration path — we'll say so.</p></details>
+          <p>Not always. It earns its complexity with many services and fine-grained scaling. Early products often do better on simpler container platforms with a clean migration path, and we'll say so.</p></details>
       <details><summary>What does your CI/CD look like?</summary>
           <p>GitHub Actions: tests + static checks + AI review per merge, staged rollouts, health checks, instant rollback. Nothing is deployed by hand.</p></details>
       <details><summary>Can you take over an existing setup?</summary>
-          <p>Yes — audit first (architecture, cost, security, releases), stabilise, then improve in stages without downtime.</p></details>
+          <p>Yes. We audit first (architecture, cost, security, releases), stabilise, then improve in stages without downtime.</p></details>
       <details><summary>How do you control cloud costs?</summary>
           <p>Right-sizing from measurements, bounded autoscaling, storage lifecycle rules, cache-first design, and per-service cost visibility so anomalies surface in days.</p></details>
     </div>
@@ -437,7 +437,7 @@
     <div class="band-copy">
       <!-- slot -->
       <h2>Cloud bill scary? Deploys scarier?</h2>
-      <p>Send us a description of your current setup — or the product you're about to build. We'll reply within 24 hours with an honest first step.</p>
+      <p>Send us a description of your current setup, or of the product you're about to build. We'll reply within 24 hours with an honest first step.</p>
       <!-- /slot -->
     </div>
     <div class="row">
@@ -465,7 +465,7 @@
         <a class="foot-brand on-spine" href="/" aria-label="Mokshify home"><picture><source type="image/webp" srcset="/assets/brand/mark-paper-40.webp 1x, /assets/brand/mark-paper-80.webp 2x"><img src="/assets/brand/mark-paper-80.png" alt="" width="40" height="40" loading="lazy"></picture><span>Mokshify</span></a>
         <p class="label foot-tag">Digital solutions. Limitless impact.</p>
       </div>
-      <p class="foot-pos">Mokshify builds websites, apps and software for businesses — from the first sketch to a live product your customers use.</p>
+      <p class="foot-pos">Mokshify builds websites, apps and software for businesses, from the first sketch to a live product your customers use.</p>
     </div>
     <nav class="foot-cols" aria-label="Footer">
       <div><p class="label">Services</p>
@@ -537,7 +537,7 @@
   <a href="tel:+919391248520"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h3l1.4 4-2 1.4a12 12 0 0 0 6.1 6.1l1.4-2 4 1.4v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"/></svg>Call</a>
   <a href="https://wa.me/919391248520" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/></svg>WhatsApp</a>
 </div>
-<script src="/js/site.min.js?v=c97f8f5e57" defer></script>
+<script src="/js/site.min.js?v=818116afff" defer></script>
 <!-- /include:footer -->
 </body>
 </html>

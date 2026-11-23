@@ -1,4 +1,4 @@
-# mokshify.io — welcome, crawlers.
+# mokshify.io welcomes crawlers.
 
 User-agent: *
 Allow: /

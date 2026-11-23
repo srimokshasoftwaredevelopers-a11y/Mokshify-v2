@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Caching Strategy: Browser, CDN, Redis, PostgreSQL | Mokshify</title>
-<meta name="description" content="A layered caching architecture with the rules that keep it sane: TTLs everywhere, stampede protection, never cache authorization - advantages, disadvantages and diagrams.">
+<meta name="description" content="A layered caching architecture with the rules that keep it sane: TTLs everywhere, stampede protection, never cache authorization. Advantages, disadvantages and diagrams.">
 <link rel="canonical" href="https://mokshify.io/library/caching-strategy/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta property="og:title" content="Caching Strategy: Browser, CDN, Redis, PostgreSQL | Mokshify">
-<meta property="og:description" content="A layered caching architecture with the rules that keep it sane: TTLs everywhere, stampede protection, never cache authorization - advantages, disadvantages and diagrams.">
+<meta property="og:description" content="A layered caching architecture with the rules that keep it sane: TTLs everywhere, stampede protection, never cache authorization. Advantages, disadvantages and diagrams.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://mokshify.io/library/caching-strategy/">
 <meta property="og:image" content="https://mokshify.io/assets/og.jpg">
@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="/css/site.css?v=fa88125018">
+<link rel="stylesheet" href="/css/site.css?v=dd64a68a39">
 <!-- /include:head -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -31,7 +31,7 @@
  {"@type":"ListItem","position":1,"name":"Home","item":"https://mokshify.io/"},
  {"@type":"ListItem","position":2,"name":"Library","item":"https://mokshify.io/library/"},
  {"@type":"ListItem","position":3,"name":"Caching Strategy, Layer by Layer","item":"https://mokshify.io/library/caching-strategy/"}]},
-{"@type":"TechArticle","author":{"@id":"https://mokshify.io/#org"},"publisher":{"@id":"https://mokshify.io/#org"},"datePublished":"2026-07-17","dateModified":"2026-07-17","@id":"https://mokshify.io/library/caching-strategy/#page","headline":"Caching Strategy, Layer by Layer","url":"https://mokshify.io/library/caching-strategy/","name":"Caching Strategy, Layer by Layer","description":"A layered caching architecture with the rules that keep it sane: TTLs everywhere, stampede protection, never cache authorization - advantages, disadvantages and diagrams.","isPartOf":{"@id":"https://mokshify.io/#website"},"inLanguage":"en-IN","mainEntityOfPage":"https://mokshify.io/library/caching-strategy/"}]}
+{"@type":"TechArticle","author":{"@type":"Organization","name":"Mokshify Engineering","url":"https://mokshify.io/engineering/","parentOrganization":{"@id":"https://mokshify.io/#org"}},"publisher":{"@id":"https://mokshify.io/#org"},"datePublished":"2026-07-17","dateModified":"2026-07-17","@id":"https://mokshify.io/library/caching-strategy/#page","headline":"Caching Strategy, Layer by Layer","url":"https://mokshify.io/library/caching-strategy/","name":"Caching Strategy, Layer by Layer","description":"A layered caching architecture with the rules that keep it sane: TTLs everywhere, stampede protection, never cache authorization. Advantages, disadvantages and diagrams.","isPartOf":{"@id":"https://mokshify.io/#website"},"inLanguage":"en-IN","mainEntityOfPage":"https://mokshify.io/library/caching-strategy/"}]}
 </script>
 </head>
 <body class="t-long paper"><!-- include:nav -->
@@ -250,7 +250,7 @@
   <article class="prose">
     <p class="note"><span class="label">Updated 23 Nov 2026</span> The scroll film this page describes was retired from the homepage in the November 2026 redesign. The text below is kept as the record of how it was built.</p>
     <h2 id="the-problem">The problem</h2>
-    <p>Around the two-hundredth customer, the same queries run thousands of times a minute, p95 latency climbs, and the database becomes the most expensive line on the cloud bill. Caching is how systems stay fast and affordable - and it is also the source of the industry&rsquo;s favourite joke about hard things, because a stale cache is a bug users can see.</p>
+    <p>Around the two-hundredth customer, the same queries run thousands of times a minute, p95 latency climbs, and the database becomes the most expensive line on the cloud bill. Caching is how systems stay fast and affordable. It is also the source of the industry&rsquo;s favourite joke about hard things, because a stale cache is a bug users can see.</p>
     <h2 id="the-architecture">The architecture</h2>
     <div class="diagram" role="img" aria-label="Diagram: browser cache, then CDN edge, then Redis application cache, then PostgreSQL; each layer answers what it can">
       <svg viewBox="0 0 760 120" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono,monospace" font-size="13">
@@ -264,16 +264,16 @@
         <line x1="480" y1="61" x2="516" y2="61" stroke="#B08D57" stroke-width="2" marker-end="url(#m2)"/>
       </svg>
       </div>
-    <p>Each layer answers what it can so the next never hears about it. <strong>Browser:</strong> hashed, immutable assets cached for a year (this site ships its frames and bundles exactly that way - see <a href="/benchmarks/">the numbers</a>). <strong>Edge/CDN:</strong> public, personalisation-free responses. <strong>Redis:</strong> hot application data - rendered fragments, expensive aggregates, session and rate-limit state - via cache-aside: read the cache, miss to Postgres, write back with a TTL. <strong>PostgreSQL:</strong> the truth, reached only when it must be.</p>
+    <p>Each layer answers what it can so the next never hears about it. <strong>Browser:</strong> hashed, immutable assets cached for a year (this site ships its frames and bundles exactly that way; see <a href="/benchmarks/">the numbers</a>). <strong>Edge/CDN:</strong> public, personalisation-free responses. <strong>Redis:</strong> hot application data (rendered fragments, expensive aggregates, session and rate-limit state) via cache-aside: read the cache, miss to Postgres, write back with a TTL. <strong>PostgreSQL:</strong> the truth, reached only when it must be.</p>
     <h2 id="the-rules-that-keep-it-sane">The rules that keep it sane</h2>
     <ul>
-        <li><strong>Every key has a TTL.</strong> Explicit invalidation is an optimisation on top - never the only line of defence. A forgotten key must die of old age, not live forever.</li>
-        <li><strong>Stampede protection.</strong> When a hot key expires, one request rebuilds it while others serve the stale value (stale-while-revalidate) or wait on a short lock - otherwise expiry becomes a self-inflicted outage.</li>
+        <li><strong>Every key has a TTL.</strong> Explicit invalidation is an optimisation on top, never the only line of defence. A forgotten key must die of old age, not live forever.</li>
+        <li><strong>Stampede protection.</strong> When a hot key expires, one request rebuilds it while others serve the stale value (stale-while-revalidate) or wait on a short lock. Otherwise expiry becomes a self-inflicted outage.</li>
         <li><strong>Never cache authorization.</strong> Permission checks and anything money-shaped read the source of truth. A stale product name is cosmetic; a stale permission is an incident.</li>
         <li><strong>Measure hit rates.</strong> A cache nobody measures quietly becomes a cache that serves nothing but risk.</li>
       </ul>
     <h2 id="advantages-disadvantages">Advantages &amp; disadvantages</h2>
-    <p><strong>Advantages:</strong> order-of-magnitude latency wins on hot paths; database load and cost drop; graceful degradation under spikes. <strong>Disadvantages:</strong> staleness becomes a product decision you must make explicitly per data type; invalidation logic is real complexity that must be tested; a cache can mask a slow query until the day the cache is cold - keep the underlying queries honest too.</p>
+    <p><strong>Advantages:</strong> order-of-magnitude latency wins on hot paths; database load and cost drop; graceful degradation under spikes. <strong>Disadvantages:</strong> staleness becomes a product decision you must make explicitly per data type; invalidation logic is real complexity that must be tested; a cache can mask a slow query until the day the cache is cold, so keep the underlying queries honest too.</p>
     <h2 id="technology-selection">Technology selection</h2>
     <p>Redis, for reasons in the <a href="/decisions/#redis">ADR</a>: sub-millisecond reads, data structures that match real needs (counters, sorted sets, TTLs), and one operationally boring service covering caching, sessions, rate limits and <a href="/library/background-jobs/">queues</a>.</p>
   </article>
@@ -293,7 +293,7 @@
         <a class="foot-brand on-spine" href="/" aria-label="Mokshify home"><picture><source type="image/webp" srcset="/assets/brand/mark-paper-40.webp 1x, /assets/brand/mark-paper-80.webp 2x"><img src="/assets/brand/mark-paper-80.png" alt="" width="40" height="40" loading="lazy"></picture><span>Mokshify</span></a>
         <p class="label foot-tag">Digital solutions. Limitless impact.</p>
       </div>
-      <p class="foot-pos">Mokshify builds websites, apps and software for businesses — from the first sketch to a live product your customers use.</p>
+      <p class="foot-pos">Mokshify builds websites, apps and software for businesses, from the first sketch to a live product your customers use.</p>
     </div>
     <nav class="foot-cols" aria-label="Footer">
       <div><p class="label">Services</p>
@@ -365,7 +365,7 @@
   <a href="tel:+919391248520"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h3l1.4 4-2 1.4a12 12 0 0 0 6.1 6.1l1.4-2 4 1.4v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"/></svg>Call</a>
   <a href="https://wa.me/919391248520" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/></svg>WhatsApp</a>
 </div>
-<script src="/js/site.min.js?v=c97f8f5e57" defer></script>
+<script src="/js/site.min.js?v=818116afff" defer></script>
 <!-- /include:footer -->
 </body>
 </html>

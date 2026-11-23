@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="/css/site.css?v=fa88125018">
+<link rel="stylesheet" href="/css/site.css?v=dd64a68a39">
 <!-- /include:head -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -231,7 +231,7 @@
   <div class="wrap">
     <p class="pkicker on-spine">Trust &middot; Security</p>
     <h1><span class="ln"><span>Security as a</span></span> <span class="ln"><span>floor, not a feature.</span></span></h1>
-    <p class="plede">These are the practices applied to every system we build and operate - stated as practices, not badges. We claim no certification we do not hold; we describe what we actually do, and you are welcome to test it in due diligence.</p>
+    <p class="plede">These are the practices applied to every system we build and operate, stated as practices rather than badges. We claim no certification we do not hold; we describe what we actually do, and you are welcome to test it in due diligence.</p>
   </div>
 </header>
 
@@ -253,7 +253,7 @@
       <table class="spec">
         <tbody>
           <tr><th scope="row">Authentication</th><td>Modern standards (OAuth 2.0 / OpenID Connect patterns), hashed credentials with current algorithms, MFA support where the product warrants it, and session handling that expires like it should.</td></tr>
-          <tr><th scope="row">Authorization</th><td>Role-based access enforced inside every service - never only at the gateway or the UI. Every privileged action is checked at the point of execution and written to an audit log.</td></tr>
+          <tr><th scope="row">Authorization</th><td>Role-based access enforced inside every service, never only at the gateway or the UI. Every privileged action is checked at the point of execution and written to an audit log.</td></tr>
         </tbody>
       </table>
     </div>
@@ -271,8 +271,8 @@
         <tbody>
           <tr><th scope="row">Encryption</th><td>TLS for everything in transit; encryption at rest on managed data services; no plaintext secrets or credentials, anywhere, ever.</td></tr>
           <tr><th scope="row">Secrets management</th><td>Managed vaults (cloud-native secret stores), rotation, and least-privilege access. Secrets never enter code, config files in repos, or logs.</td></tr>
-          <tr><th scope="row">Backups &amp; disaster recovery</th><td>Automated backups with retention appropriate to the domain - and restores are tested, because an untested backup is a hope, not a plan. Recovery steps are documented and rehearsed.</td></tr>
-          <tr><th scope="row">Audit logs</th><td>Who did what, when, to which record - append-only, queryable, and included in handoff.</td></tr>
+          <tr><th scope="row">Backups &amp; disaster recovery</th><td>Automated backups with retention appropriate to the domain, and restores are tested, because an untested backup is only a hope. Recovery steps are documented and rehearsed.</td></tr>
+          <tr><th scope="row">Audit logs</th><td>Who did what, when, to which record: append-only, queryable and included in handoff.</td></tr>
         </tbody>
       </table>
     </div>
@@ -290,7 +290,7 @@
         <tbody>
           <tr><th scope="row">OWASP-aligned engineering</th><td>The OWASP Top 10 is our review checklist: injection, broken auth, XSS, insecure deserialisation and friends are tested for, not assumed away.</td></tr>
           <tr><th scope="row">API security</th><td>Input validation at every boundary, typed schemas (FastAPI&rsquo;s validation is one reason it is in <a href="/stack/">the stack</a>), authenticated endpoints by default, and idempotency where retries could double-execute.</td></tr>
-          <tr><th scope="row">Rate limiting</th><td>At the gateway (Nginx) and per-identity where abuse is plausible - protecting both availability and your bill.</td></tr>
+          <tr><th scope="row">Rate limiting</th><td>At the gateway (Nginx) and per-identity where abuse is plausible, protecting both availability and your bill.</td></tr>
         </tbody>
       </table>
     </div>
@@ -304,7 +304,7 @@
       <h2>Cloud &amp; platform</h2>
     </header>
     <div class="section-body">
-      <p>Least-privilege IAM roles, private networking between services, security headers at the edge (the same set this website ships with - HSTS, CSP, frame denial), dependency scanning in CI, and infrastructure declared in Terraform so the security posture is reviewable as code. The layered model is drawn on <a href="/architecture/">the architecture page</a>.</p>
+      <p>Least-privilege IAM roles, private networking between services, security headers at the edge (the same set this website ships with: HSTS, CSP, frame denial), dependency scanning in CI, and infrastructure declared in Terraform so the security posture is reviewable as code. The layered model is drawn on <a href="/architecture/">the architecture page</a>.</p>
     </div>
   </div>
 </section>
@@ -328,7 +328,7 @@
     <div class="band-copy">
       <!-- slot -->
       <h2>Security due diligence?</h2>
-      <p>Send your questionnaire. Engineers answer it - accurately - within a few days, not weeks.</p>
+      <p>Send your questionnaire. Engineers answer it accurately within a few days, not weeks.</p>
       <p class="also">Or: <!--email_off--><a href="mailto:hello@mokshify.io?subject=Security%20due%20diligence">Email the team</a><!--/email_off--></p>
       <!-- /slot -->
     </div>
@@ -355,7 +355,7 @@
         <a class="foot-brand on-spine" href="/" aria-label="Mokshify home"><picture><source type="image/webp" srcset="/assets/brand/mark-paper-40.webp 1x, /assets/brand/mark-paper-80.webp 2x"><img src="/assets/brand/mark-paper-80.png" alt="" width="40" height="40" loading="lazy"></picture><span>Mokshify</span></a>
         <p class="label foot-tag">Digital solutions. Limitless impact.</p>
       </div>
-      <p class="foot-pos">Mokshify builds websites, apps and software for businesses — from the first sketch to a live product your customers use.</p>
+      <p class="foot-pos">Mokshify builds websites, apps and software for businesses, from the first sketch to a live product your customers use.</p>
     </div>
     <nav class="foot-cols" aria-label="Footer">
       <div><p class="label">Services</p>
@@ -427,7 +427,7 @@
   <a href="tel:+919391248520"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h3l1.4 4-2 1.4a12 12 0 0 0 6.1 6.1l1.4-2 4 1.4v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"/></svg>Call</a>
   <a href="https://wa.me/919391248520" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/></svg>WhatsApp</a>
 </div>
-<script src="/js/site.min.js?v=c97f8f5e57" defer></script>
+<script src="/js/site.min.js?v=818116afff" defer></script>
 <!-- /include:footer -->
 </body>
 </html>

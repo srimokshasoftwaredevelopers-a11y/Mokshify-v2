@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="/css/site.css?v=fa88125018">
+<link rel="stylesheet" href="/css/site.css?v=dd64a68a39">
 <!-- /include:head -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -31,7 +31,7 @@
  {"@type":"ListItem","position":1,"name":"Home","item":"https://mokshify.io/"},
  {"@type":"ListItem","position":2,"name":"Guides","item":"https://mokshify.io/resources/"},
  {"@type":"ListItem","position":3,"name":"Cloud Migration Checklist","item":"https://mokshify.io/guides/cloud-migration-checklist/"}]},
-{"@type":"Article","author":{"@id":"https://mokshify.io/#org"},"publisher":{"@id":"https://mokshify.io/#org"},"datePublished":"2026-07-17","dateModified":"2026-07-17","@id":"https://mokshify.io/guides/cloud-migration-checklist/#page","headline":"Cloud Migration Checklist","url":"https://mokshify.io/guides/cloud-migration-checklist/","name":"Cloud Migration Checklist","description":"The checklist we run before any workload moves: honest inventory, risk-based sequencing, rehearsed state migration, parallel running, rollback-guarded cutover and deliberate decommissioning.","isPartOf":{"@id":"https://mokshify.io/#website"},"inLanguage":"en-IN","mainEntityOfPage":"https://mokshify.io/guides/cloud-migration-checklist/"}]}
+{"@type":"Article","author":{"@type":"Organization","name":"Mokshify Engineering","url":"https://mokshify.io/engineering/","parentOrganization":{"@id":"https://mokshify.io/#org"}},"publisher":{"@id":"https://mokshify.io/#org"},"datePublished":"2026-07-17","dateModified":"2026-07-17","@id":"https://mokshify.io/guides/cloud-migration-checklist/#page","headline":"Cloud Migration Checklist","url":"https://mokshify.io/guides/cloud-migration-checklist/","name":"Cloud Migration Checklist","description":"The checklist we run before any workload moves: honest inventory, risk-based sequencing, rehearsed state migration, parallel running, rollback-guarded cutover and deliberate decommissioning.","isPartOf":{"@id":"https://mokshify.io/#website"},"inLanguage":"en-IN","mainEntityOfPage":"https://mokshify.io/guides/cloud-migration-checklist/"}]}
 </script>
 </head>
 <body class="t-long paper"><!-- include:nav -->
@@ -233,7 +233,7 @@
     <p class="pkicker on-spine"><a href="/resources/">Guides</a> &middot; Cloud</p>
     <h1><span class="ln"><span>Cloud migration</span></span> <span class="ln"><span>checklist.</span></span></h1>
     <p class="pmeta">By <strong>Mokshify Engineering</strong> &middot; Updated 17 Jul 2026 &middot; 5 min read</p>
-    <p class="plede">The promised guide, delivered. Whether you are leaving a data centre, a legacy host, or one cloud for another - this is the checklist we run before any workload moves. Print it; argue with it; use it without us.</p>
+    <p class="plede">The promised guide, delivered. Whether you are leaving a data centre, a legacy host, or one cloud for another, this is the checklist we run before any workload moves. Print it; argue with it; use it without us.</p>
   </div>
 </header>
 
@@ -249,18 +249,18 @@
   <article class="prose">
     <h2 id="before-deciding-anything">Before deciding anything</h2>
     <ul>
-        <li><strong>Inventory honestly.</strong> Every application, database, cron job, integration and certificate - including the forgotten ones that only surface at 2am. The migration killer is always the workload nobody listed.</li>
+        <li><strong>Inventory honestly.</strong> Every application, database, cron job, integration and certificate, including the forgotten ones that only surface at 2am. The migration killer is always the workload nobody listed.</li>
         <li><strong>Classify by risk, not size.</strong> Stateless services are luggage; databases and anything with customer state are surgery. Sequence luggage first to build confidence and tooling.</li>
-        <li><strong>Measure the baseline.</strong> Current latency, throughput, error rates and monthly cost - or you will never be able to say whether the migration worked.</li>
+        <li><strong>Measure the baseline.</strong> Current latency, throughput, error rates and monthly cost. Without them you will never be able to say whether the migration worked.</li>
         <li><strong>Choose for reasons you can write down.</strong> Team familiarity, region coverage, pricing, managed services - <a href="/services/cloud-engineering/">the logo matters least</a>.</li>
       </ul>
     <h2 id="the-migration-itself">The migration itself</h2>
     <ol>
-        <li><strong>Land infrastructure as code first.</strong> The target environment exists as Terraform before anything moves - reviewable, repeatable, destroyable.</li>
-        <li><strong>Move state with rehearsals.</strong> Database migration gets a full dress rehearsal with production-sized data and a measured cutover window - never a first-time-live event.</li>
+        <li><strong>Land infrastructure as code first.</strong> The target environment exists as Terraform before anything moves, so it is reviewable, repeatable and destroyable.</li>
+        <li><strong>Move state with rehearsals.</strong> Database migration gets a full dress rehearsal with production-sized data and a measured cutover window. It is never a first-time-live event.</li>
         <li><strong>Run parallel, compare, then cut.</strong> Old and new serve shadow traffic side by side; discrepancies are found by diffing, not by customers.</li>
         <li><strong>Cut over behind a rollback.</strong> DNS or gateway-level switch with the old environment kept warm until the new one has survived a real load cycle.</li>
-        <li><strong>Decommission deliberately.</strong> The old environment dies on a date, after backups are verified restorable - not by fading into an unmaintained liability.</li>
+        <li><strong>Decommission deliberately.</strong> The old environment dies on a date, after backups are verified restorable, instead of fading into an unmaintained liability.</li>
       </ol>
     <h2 id="after-the-move">After the move</h2>
     <p>Re-measure the baseline; set <a href="/devops/">cost visibility per service</a> so the new bill cannot drift silently; and write the runbook while memories are fresh. A migration that is not documented is half-done.</p>
@@ -274,7 +274,7 @@
     <div class="band-copy">
       <!-- slot -->
       <h2>Migration on the horizon?</h2>
-      <p>We will audit the inventory with you - the free call often finds the 2am workload.</p>
+      <p>We will audit the inventory with you. The free call often finds the 2am workload.</p>
       <!-- /slot -->
     </div>
     <div class="row">
@@ -300,7 +300,7 @@
         <a class="foot-brand on-spine" href="/" aria-label="Mokshify home"><picture><source type="image/webp" srcset="/assets/brand/mark-paper-40.webp 1x, /assets/brand/mark-paper-80.webp 2x"><img src="/assets/brand/mark-paper-80.png" alt="" width="40" height="40" loading="lazy"></picture><span>Mokshify</span></a>
         <p class="label foot-tag">Digital solutions. Limitless impact.</p>
       </div>
-      <p class="foot-pos">Mokshify builds websites, apps and software for businesses — from the first sketch to a live product your customers use.</p>
+      <p class="foot-pos">Mokshify builds websites, apps and software for businesses, from the first sketch to a live product your customers use.</p>
     </div>
     <nav class="foot-cols" aria-label="Footer">
       <div><p class="label">Services</p>
@@ -372,7 +372,7 @@
   <a href="tel:+919391248520"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h3l1.4 4-2 1.4a12 12 0 0 0 6.1 6.1l1.4-2 4 1.4v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"/></svg>Call</a>
   <a href="https://wa.me/919391248520" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/></svg>WhatsApp</a>
 </div>
-<script src="/js/site.min.js?v=c97f8f5e57" defer></script>
+<script src="/js/site.min.js?v=818116afff" defer></script>
 <!-- /include:footer -->
 </body>
 </html>

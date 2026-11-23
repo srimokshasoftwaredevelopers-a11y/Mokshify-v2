@@ -154,3 +154,23 @@ for (const file of pages) {
 console.log(`css ${(css.length / 1024).toFixed(1)} KB (${vars.cssv}) · js ${(jsMin.length / 1024).toFixed(1)} KB min (${vars.jsv}) · home js ${(homeMin.length / 1024).toFixed(1)} KB min (${homev})`);
 console.log(`${pages.length} pages · ${regions} regions · ${stale.length} ${check ? "out of date" : "written"}`);
 if (check && stale.length) { console.log(stale.join("\n")); process.exit(1); }
+
+/* Copy rules (docs/HANDBOOK.md, "Writing guidelines"), checked on every built page except /legal/disclosure/:
+   no em or en dash anywhere in the file; no spaced hyphen used as a dash in visible text (code samples
+   excepted); no label saying the content was written, generated, drafted or reviewed by AI. */
+const DASH = /—|–|&mdash;|&ndash;|&#821[12];|&#x201[34];/i;
+const AI_LABEL = /\b(?:written|generated|drafted|authored|reviewed|created|produced)\s+(?:with|by|using)\s+(?:an?\s+)?(?:AI|ChatGPT|Claude|Gemini|GPT[\w.-]*|LLMs?|large language models?|artificial intelligence)\b|\bAI[- ](?:written|generated|drafted|authored)\b|"reviewedBy"\s*:/i;
+const around = (s, i) => s.slice(Math.max(0, i - 50), i + 50).replace(/\s+/g, " ");
+const voice = [];
+for (const file of pages) {
+  const rel = relative(ROOT, file).replace(/\\/g, "/");
+  if (rel.startsWith("legal/disclosure/")) continue;
+  const html = readFileSync(file, "utf8");
+  const visible = html.replace(/<!--[\s\S]*?-->/g, " ").replace(/<(script|style|code|pre|svg)\b[\s\S]*?<\/\1>/g, " ").replace(/<[^>]+>/g, "\u0001");
+  let m;
+  if ((m = DASH.exec(html))) voice.push(`${rel}: long dash: …${around(html, m.index)}…`);
+  if ((m = /[^\s\u0001] - [^\s\u0001]/.exec(visible))) voice.push(`${rel}: spaced hyphen used as a dash: …${around(visible, m.index).replace(/\u0001/g, " ")}…`);
+  if ((m = AI_LABEL.exec(html))) voice.push(`${rel}: AI authorship label: …${around(html, m.index)}…`);
+}
+if (voice.length) { console.log(`copy rules: ${voice.length} problem(s)\n` + voice.join("\n")); process.exit(1); }
+console.log("copy rules: no long dashes, no spaced-hyphen dashes, no AI labels");
