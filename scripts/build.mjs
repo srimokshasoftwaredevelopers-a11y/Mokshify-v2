@@ -176,7 +176,7 @@ for (const file of pages) {
   const visible = html.replace(/<!--[\s\S]*?-->/g, " ").replace(/<(script|style|code|pre|svg)\b[\s\S]*?<\/\1>/g, " ").replace(/<[^>]+>/g, "\u0001");
   let m;
   if ((m = DASH.exec(html))) voice.push(`${rel}: long dash: …${around(html, m.index)}…`);
-  if ((m = /[^\s\u0001] - [^\s\u0001]/.exec(visible))) voice.push(`${rel}: spaced hyphen used as a dash: …${around(visible, m.index).replace(/\u0001/g, " ")}…`);
+  if ((m = /[^\s\u0001]\u0001* - \u0001*[^\s\u0001]/.exec(visible)))   /* a tag may sit on either side: "boring - <a>…" */ voice.push(`${rel}: spaced hyphen used as a dash: …${around(visible, m.index).replace(/\u0001/g, " ")}…`);
   if ((m = AI_LABEL.exec(html))) voice.push(`${rel}: AI authorship label: …${around(html, m.index)}…`);
 }
 if (voice.length) { console.log(`copy rules: ${voice.length} problem(s)\n` + voice.join("\n")); process.exit(1); }

@@ -267,14 +267,14 @@
     <p>One deployable, containing modules with real boundaries: separate packages, explicit interfaces, no reaching across. You get monolith operations (one pipeline, one database, transactions that just work) with service-shaped code and, crucially, <strong>a migration path</strong>: a module with clean boundaries extracts into a service in weeks; spaghetti extracts never.</p>
     <h2 id="when-services-genuinely-win">When services genuinely win</h2>
     <ul>
-        <li><strong>Independent team cadence</strong> - multiple teams whose deploys block each other; Conway&rsquo;s law is real.</li>
-        <li><strong>Divergent scaling or runtime</strong> - the AI inference workload needs GPUs and Python while the API needs neither (<a href="/architecture/">our RAG pipeline</a> is exactly this split).</li>
-        <li><strong>Genuine isolation requirements</strong> - a component whose failure or compliance profile must not share a blast radius.</li>
+        <li><strong>Independent team cadence:</strong> multiple teams whose deploys block each other; Conway&rsquo;s law is real.</li>
+        <li><strong>Divergent scaling or runtime:</strong> the AI inference workload needs GPUs and Python while the API needs neither (<a href="/architecture/">our RAG pipeline</a> is exactly this split).</li>
+        <li><strong>Genuine isolation requirements:</strong> a component whose failure or compliance profile must not share a blast radius.</li>
       </ul>
     <h2 id="advantages-disadvantages-tradeoffs">Advantages, disadvantages, tradeoffs</h2>
     <p><strong>Monolith-first advantages:</strong> operational simplicity, real transactions, refactoring across boundaries while they are still wrong (they always start wrong). <strong>Disadvantages:</strong> discipline must be cultural, since nothing stops a lazy import except review; one bad deploy touches everything (mitigated by <a href="/devops/">staged rollouts</a>). <strong>Microservices advantages:</strong> independent deploys, per-service scaling and stacks. <strong>Disadvantages:</strong> distributed transactions, network failure modes everywhere, observability as a prerequisite, and an ops bill measured in engineers. The tradeoff we accept: occasional extraction work later, in exchange for not paying distributed costs before distributed benefits.</p>
     <h2 id="technology-selection">Technology selection</h2>
-    <p>Boundaries enforced in code review (<a href="/enterprise/">dual review</a>), modules on the standard platform - <a href="/decisions/#postgresql">PostgreSQL</a>, <a href="/decisions/#docker">Docker, Kubernetes when earned</a> - and extraction, when it comes, along the <a href="/services/legacy-modernization/">strangler pattern</a> we use for modernization.</p>
+    <p>Boundaries enforced in code review (<a href="/enterprise/">dual review</a>), modules on the standard platform (<a href="/decisions/#postgresql">PostgreSQL</a>, <a href="/decisions/#docker">Docker, Kubernetes when earned</a>), and extraction, when it comes, along the <a href="/services/legacy-modernization/">strangler pattern</a> we use for modernization.</p>
   </article>
 </div>
 

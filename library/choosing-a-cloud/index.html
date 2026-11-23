@@ -254,10 +254,10 @@
     <p>Cloud comparisons are usually written by whoever profits from the answer. We deploy to all four (<a href="/decisions/#terraform">portably, via Terraform</a>), so our only stake is this: the architecture matters more than the logo, and the logo should be chosen for reasons you can write down.</p>
     <h2 id="what-actually-differs">What actually differs</h2>
     <ul>
-        <li><strong>AWS</strong> - the broadest catalogue and region coverage; the default when a client has no prior footprint and wants the largest hiring pool and community answer-base. The cost: a console and pricing model that reward dedicated attention.</li>
-        <li><strong>Azure</strong> - the natural home for organisations living in Microsoft identity (Entra/AD), Office and Teams; enterprise agreements often make it the commercially path-of-least-resistance. Integration with that world is genuinely first-class.</li>
-        <li><strong>OCI</strong> - aggressive compute and egress pricing that makes it a serious contender for compute-heavy, bandwidth-heavy workloads; a smaller catalogue, which for boring architectures (ours) is rarely the constraint people assume.</li>
-        <li><strong>GCP</strong> - the strongest data/analytics and Kubernetes story (GKE remains the reference implementation); favoured when analytics and AI dominate the roadmap.</li>
+        <li><strong>AWS:</strong> the broadest catalogue and region coverage; the default when a client has no prior footprint and wants the largest hiring pool and community answer-base. The cost: a console and pricing model that reward dedicated attention.</li>
+        <li><strong>Azure:</strong> the natural home for organisations living in Microsoft identity (Entra/AD), Office and Teams; enterprise agreements often make it the commercially path-of-least-resistance. Integration with that world is genuinely first-class.</li>
+        <li><strong>OCI:</strong> aggressive compute and egress pricing that makes it a serious contender for compute-heavy, bandwidth-heavy workloads; a smaller catalogue, which for boring architectures (ours) is rarely the constraint people assume.</li>
+        <li><strong>GCP:</strong> the strongest data/analytics and Kubernetes story (GKE remains the reference implementation); favoured when analytics and AI dominate the roadmap.</li>
       </ul>
     <h2 id="what-does-not-differ-much">What does not differ (much)</h2>
     <p>For the platform we ship, which is containers, managed PostgreSQL, Redis, object storage, a load balancer (<a href="/architecture/">the reference diagram</a>), all four are excellent. This is the quiet argument for boring architecture: it makes the cloud decision reversible, which converts a bet into a preference.</p>
