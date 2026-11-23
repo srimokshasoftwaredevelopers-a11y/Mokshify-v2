@@ -331,6 +331,7 @@ a:hover .frame,.frame:hover{border-color:var(--brass)}
 /* plate — a full-bleed picture, or a labelled slot waiting for one */
 .plate{position:relative;margin:0;background:var(--oxblood-900);overflow:hidden}
 .plate img{width:100%;height:clamp(16rem,58vh,40rem);object-fit:cover}
+.plate.lead img{height:auto;aspect-ratio:1376 / 768;max-height:min(40rem,64vh)}
 .plate.todo{display:grid;place-items:center;min-height:clamp(12rem,34vh,22rem);border:1px solid rgb(246 245 241/.16);
   background:repeating-linear-gradient(135deg,transparent 0 13px,rgb(246 245 241/.06) 13px 14px) var(--oxblood-900)}
 .plate.todo span{font:500 var(--fs-label)/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:rgb(246 245 241/.72);text-align:center;padding:1rem;max-width:36ch}
