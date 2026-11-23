@@ -173,7 +173,7 @@ for (const file of pages) {
   const rel = relative(ROOT, file).replace(/\\/g, "/");
   if (rel.startsWith("legal/disclosure/")) continue;
   const html = readFileSync(file, "utf8");
-  const visible = html.replace(/<!--[\s\S]*?-->/g, " ").replace(/<(script|style|code|pre|svg)\b[\s\S]*?<\/\1>/g, " ").replace(/<[^>]+>/g, "\u0001");
+  const visible = html.replace(/<!--[\s\S]*?-->/g, " ").replace(/<(script|style|pre|svg)\b[\s\S]*?<\/\1>/g, " ").replace(/<code\b[\s\S]*?<\/code>/g, "\u0002").replace(/<[^>]+>/g, "\u0001");   /* inline code stands in as a word, so "<code>#2A0A12</code> - the" is caught */
   let m;
   if ((m = DASH.exec(html))) voice.push(`${rel}: long dash: …${around(html, m.index)}…`);
   if ((m = /[^\s\u0001]\u0001* - \u0001*[^\s\u0001]/.exec(visible)))   /* a tag may sit on either side: "boring - <a>…" */ voice.push(`${rel}: spaced hyphen used as a dash: …${around(visible, m.index).replace(/\u0001/g, " ")}…`);
