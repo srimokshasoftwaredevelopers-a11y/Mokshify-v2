@@ -199,6 +199,13 @@ html:not(.js) .nav-item:focus-within .nav-panel{display:block;animation:panel .2
   background:linear-gradient(to top,rgb(42 10 18/.94) 4%,rgb(42 10 18/.55) 38%,rgb(42 10 18/.12) 70%,rgb(42 10 18/.4)),linear-gradient(to right,rgb(42 10 18/.7),rgb(42 10 18/0) 65%),rgb(176 141 87/.18);
   mix-blend-mode:multiply;
 }
+/* artwork heroes: the small kicker line uses full paper colour (not the 70% tint) so it stays at AA over
+   any image; on phones the heading block sits higher in the frame, where the desktop grade is lightest,
+   so the upper and middle of the image are darkened too */
+.hero.plate:not(.hero-case) .pkicker{color:var(--paper)}
+@media (max-width:40rem){
+  .hero.plate:not(.hero-case) .hero-img::after{background:linear-gradient(to top,rgb(42 10 18/.95) 8%,rgb(42 10 18/.8) 45%,rgb(42 10 18/.6) 75%,rgb(42 10 18/.55)),rgb(176 141 87/.14)}
+}
 /* case-study plates are product screenshots: grade them down hard so the type always wins */
 .hero-case .hero-img img{filter:saturate(.3) brightness(.5) blur(4px);transform:scale(1.05)}
 .hero-case .hero-img::after{background:linear-gradient(to top,rgb(42 10 18/.97) 12%,rgb(42 10 18/.8) 55%,rgb(42 10 18/.7)),rgb(74 20 34/.55)}
