@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { convertLead } from "@/actions/deals";
 import { deleteLead } from "@/actions/leads";
 import { Icon } from "@/components/icons";
 import { LogButtons } from "@/components/LogButtons";
@@ -77,7 +78,12 @@ export default async function LeadPage({ params }: { params: Promise<{ id: strin
                 <span className="min-w-0"><span className="block truncate font-medium">{d.title}</span><span className="text-xs text-ink-2">{stageLabel(d.stage)}</span></span><Money value={d.value} short /></Link></li>
             ))}</ul>
           ) : <p className="text-sm text-ink-2">No deal yet.</p>}
-          <div id="convert" />
+          {!lead.deals.some(d => !["won", "lost"].includes(d.stage)) && (
+            <form action={convertLead.bind(null, lead.id)} className="mt-3">
+              <button className="btn btn-primary w-full"><Icon name="pipeline" size={18} />Convert to deal</button>
+              <p className="mt-1 text-xs text-ink-2">One step: a deal with a discovery call for tomorrow. Adjust it after.</p>
+            </form>
+          )}
         </section>
 
         <section className="card p-4" aria-labelledby="tasks-h">

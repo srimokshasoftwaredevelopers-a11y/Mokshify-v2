@@ -24,7 +24,7 @@ export function SideNav({ isOwner }: { isOwner: boolean }) {
   return (
     <nav aria-label="Main" className="grid gap-0.5 px-3">
       {NAV.filter(i => !i.owner || isOwner).map(i => {
-        const on = active(path, i.href) || (i.href === "/leads" && path.startsWith("/deals"));
+        const on = active(path, i.href) || (i.href === "/pipeline" && path.startsWith("/deals"));
         return (
           <Link key={i.href} href={i.href} aria-current={on ? "page" : undefined}
             className={`relative flex min-h-11 items-center gap-3 rounded-[6px] px-3 text-[15px] transition-colors duration-150 ${on ? "bg-oxblood-700 text-paper" : "text-paper/75 hover:bg-white/5 hover:text-paper"}`}>

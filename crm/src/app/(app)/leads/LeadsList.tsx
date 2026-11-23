@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState, useTransition } from "react";
+import { convertLead } from "@/actions/deals";
 import { bulkAssign } from "@/actions/leads";
 import { Timer } from "@/components/Timer";
 import { fmtDate, fmtPhone } from "@/lib/format";
@@ -46,7 +47,7 @@ export function LeadsList({ leads, users }: { leads: Lead[]; users: { id: string
         <table className="table">
           <thead><tr>
             <th className="w-10"><input type="checkbox" className="h-4 w-4 accent-oxblood-700" aria-label="Select all" checked={all} onChange={() => setSel(all ? new Set() : new Set(leads.map(l => l.id)))} /></th>
-            <th>Name</th><th>Phone</th><th>Company</th><th>Source</th><th>Status</th><th>First reply</th><th>Owner</th><th>Received</th>
+            <th>Name</th><th>Phone</th><th>Company</th><th>Source</th><th>Status</th><th>First reply</th><th>Owner</th><th>Received</th><th><span className="sr-only">Actions</span></th>
           </tr></thead>
           <tbody>
             {leads.map(l => (
@@ -60,6 +61,9 @@ export function LeadsList({ leads, users }: { leads: Lead[]; users: { id: string
                 <td>{l.status === "closed" && l.firstResponseSeconds === null ? <span className="text-ink-2">—</span> : <Timer since={l.createdAt} repliedSeconds={l.firstResponseSeconds} />}</td>
                 <td className="whitespace-nowrap">{l.ownerName ?? <span className="text-ink-2">Unassigned</span>}</td>
                 <td className="mono whitespace-nowrap text-ink-2">{fmtDate(l.createdAt)}</td>
+                <td>{!["converted", "closed"].includes(l.status) && (
+                  <form action={convertLead.bind(null, l.id)}><button className="btn btn-quiet btn-sm whitespace-nowrap text-oxblood-700" aria-label={`Convert ${l.name} to a deal`}>To deal →</button></form>
+                )}</td>
               </tr>
             ))}
           </tbody>

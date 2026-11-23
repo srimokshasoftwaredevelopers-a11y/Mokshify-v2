@@ -34,12 +34,13 @@ for (const [w, h, mobile] of [[390, 844, true], [1440, 900, false]] as const) {
   for (const route of routes.filter(x => x !== "/login")) {
     errors.length = 0;
     // "/leads/@first" → the first lead on /leads (likewise for any list page)
+    // "/pipeline>/deals/" → the first /deals/ link found on /pipeline
     let r = route;
-    const m = /^(\/[\w-]+)\/@first$/.exec(route);
+    const m = /^(\/[\w-]+)(?:\/@first|>(\/[\w-]+\/))$/.exec(route);
     if (m?.[1]) {
-      const list = m[1];
+      const list = m[1], prefix = m[2] ?? `${list}/`;
       await page.goto(BASE + list, { waitUntil: "load" });
-      const href = await page.locator(`main a[href^="${list}/"]`).first().getAttribute("href");
+      const href = await page.locator(`main a[href^="${prefix}"]`).first().getAttribute("href");
       r = href ?? list;
     }
     await page.goto(BASE + r, { waitUntil: "load" });
@@ -53,7 +54,7 @@ for (const [w, h, mobile] of [[390, 844, true], [1440, 900, false]] as const) {
         .slice(0, 4).map(e => `${e.tagName.toLowerCase()}.${String(e.className).split(" ").slice(0, 4).join(".")} → ${Math.round(e.getBoundingClientRect().right)}px`), w);
       errors.push(`WIDE: ${wide.join(" ; ")}`);
     }
-    await page.screenshot({ path: `${OUT}/${name(route.replace("@first", "detail"))}-${w}.png`, fullPage: true });
+    await page.screenshot({ path: `${OUT}/${name(route.replace("@first", "detail").replace(/>.*/, "-detail"))}-${w}.png`, fullPage: true });
     report.push(`${w} ${r}: overflow ${overflow}${errors.length ? ` · console errors: ${errors.join(" | ")}` : ""}`);
   }
   await ctx.close();

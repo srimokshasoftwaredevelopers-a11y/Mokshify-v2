@@ -54,7 +54,43 @@ export const TaskInput = z.object({
   projectId: z.uuid().optional(),
 });
 
-export const BulkAssign = z.object({ ids: z.array(z.uuid()).min(1).max(500), ownerId: z.uuid() });
+const openStage = z.enum(["new", "contacted", "discovery", "proposal", "negotiation"]);
+const anyStage = z.enum(["new", "contacted", "discovery", "proposal", "negotiation", "won", "lost"]);
+const nextStep = {
+  nextAction: z.string({ error: "An open deal needs a next action." }).trim().min(1, "An open deal needs a next action.").max(200),
+  nextActionDate: z.string({ error: "An open deal needs a date for its next action." }).trim().regex(/^\d{4}-\d{2}-\d{2}$/, "An open deal needs a date for its next action."),
+};
+
+export const DealCreate = z.object({
+  title: req("Title", 160),
+  value: rupeeField,
+  stage: openStage,
+  expectedCloseDate: dayField,
+  leadId: z.uuid().optional(),
+  clientId: z.uuid().optional(),
+  ...nextStep,
+});
+
+export const DealUpdate = z.object({
+  title: req("Title", 160),
+  value: rupeeField,
+  probability: z.coerce.number().int().min(0, "0 to 100.").max(100, "0 to 100."),
+  expectedCloseDate: dayField,
+  ownerId: z.union([z.uuid(), z.literal("")]).transform(v => (v === "" ? null : v)),
+  nextAction: opt(200),
+  nextActionDate: dayField,
+});
+
+/** moving a stage asks for the next step (open), a reason (lost) or the final value (won) */
+export const StageMove = z.discriminatedUnion("to", [
+  z.object({ to: openStage, ...nextStep }),
+  z.object({ to: z.literal("lost"), lostReason: req("Lost reason", 80), note: opt(500) }),
+  z.object({ to: z.literal("won"), value: rupeeField, projectName: opt(160) }),
+]);
+export type StageMoveInput = z.input<typeof StageMove>;
+export { anyStage };
+
+export const BulkAssign =z.object({ ids: z.array(z.uuid()).min(1).max(500), ownerId: z.uuid() });
 
 /** the first problem as a sentence, for forms */
 export const firstIssue = (e: z.ZodError) => e.issues[0]?.message ?? "Check the form.";

@@ -40,6 +40,23 @@ Judgement calls, one line of reasoning each. Newest at the bottom of each phase.
 - **Vitest must run from a path with an uppercase drive letter on Windows (`D:\…`).** Otherwise it loads twice and fails before any test. CI on Linux is unaffected.
 - **End-to-end tests run against a production build with a throwaway PGlite database** (`.data/e2e`), rebuilt on every run, using the installed Edge. External WhatsApp links are stubbed: the test checks the URL Desk builds, not WhatsApp's site.
 
+## Phase 3 · Pipeline
+
+- **One move dialog serves every way of moving a deal:** drag and drop on desktop, the card's "Move" button (the keyboard route), and "Move to" on phones. It asks for exactly what the rules need:
+  - **Open stage:** the next action and its date, prefilled with the current next step and a future date.
+  - **Lost:** a reason from the editable list.
+  - **Won:** the final value.
+- **Winning creates the client and the first project in the same transaction.** That is the spec's Phase 4 rule, but it belongs in the stage move:
+  - **The client** comes from the lead's company (or name), phone, email, city and industry, with the lead as the primary contact.
+  - **The project** gets the deal's title, the won value as the agreed amount, and "Advance pending".
+  - **Winning again later** (after a re-open) reuses the existing project.
+- **Stage moves are optimistic.** The card jumps to its new column at once and stays there while the server confirms; the board then refreshes from the server.
+- **The board shows every open deal, plus deals won or lost in the last 30 days.** Older closed deals live on the client and reports pages, so the board stays a working tool.
+- **Probability follows the stage by default** (10 / 20 / 35 / 55 / 75 / 100 / 0) and can be overridden on the deal.
+- **"Convert to deal" is one click.** The title is "{company or name} — {service}", the stage is Contacted, and the next action is a discovery call tomorrow; the lead is marked converted. It is on the lead page and in the leads table.
+- **Every stage change is written to the timeline** ("Proposal sent → Won") and audited (`stage_change`, plus `deal_won` / `deal_lost`).
+- **Phones open the pipeline on the first stage that has deals,** not on the empty "New" column.
+
 ## Unresolved
 
 - **ESLint config blocked by a local hook.** Creating `crm/eslint.config.mjs` is refused by the `everything-claude-code` plugin's config-protection hook ("Modifying eslint.config.mjs is not allowed"). That hook exists to stop lint rules being weakened, and getting around it by renaming the file would defeat its purpose. So `npm run lint` has no config yet. Static checking meanwhile is `tsc --noEmit` in strict mode (with `noUncheckedIndexedAccess`). To enable lint, disable that hook once, or create the file yourself with:

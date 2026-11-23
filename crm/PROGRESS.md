@@ -5,8 +5,8 @@
 | 0 · Spec saved | done |
 | 1 · Foundation | done |
 | 2 · Leads and Today | done |
-| 3 · Pipeline | in progress |
-| 4 · Clients, projects, payments, renewals | — |
+| 3 · Pipeline | done |
+| 4 · Clients, projects, payments, renewals | in progress |
 | 5 · Reports and settings | — |
 | 6 · Connect the website | — |
 | 7 · Polish | — |
