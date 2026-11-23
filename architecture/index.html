@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Engineering Architecture Gallery | Mokshify</title>
-<meta name="description" content="How Mokshify systems are actually built: production reference architecture, CI/CD with AI review, RAG pipeline, multi-tenant data design and security layers - with diagrams and explanations.">
+<meta name="description" content="How Mokshify systems are actually built: production reference architecture, CI/CD with automated checks, RAG pipeline, multi-tenant data design and security layers, with diagrams and explanations.">
 <link rel="canonical" href="https://mokshify.io/architecture/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta property="og:title" content="Engineering Architecture Gallery | Mokshify">
-<meta property="og:description" content="Reference architectures, CI/CD, RAG, multi-tenancy and security layers - drawn and explained.">
+<meta property="og:description" content="Reference architectures, CI/CD, RAG, multi-tenancy and security layers, drawn and explained.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mokshify.io/architecture/">
 <meta property="og:image" content="https://mokshify.io/assets/og.jpg">
@@ -23,14 +23,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="/css/site.css?v=fa88125018">
+<link rel="stylesheet" href="/css/site.css?v=dd64a68a39">
 <!-- /include:head -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
 {"@type":"BreadcrumbList","itemListElement":[
  {"@type":"ListItem","position":1,"name":"Home","item":"https://mokshify.io/"},
  {"@type":"ListItem","position":2,"name":"Architecture","item":"https://mokshify.io/architecture/"}]},
-{"@type":"TechArticle","@id":"https://mokshify.io/architecture/#article","headline":"How Mokshify systems are built","description":"Reference architectures with diagrams: production platform, CI/CD with AI review, RAG, multi-tenancy, security layers.","author":{"@id":"https://mokshify.io/#org"},"publisher":{"@id":"https://mokshify.io/#org"},"datePublished":"2026-07-17","mainEntityOfPage":"https://mokshify.io/architecture/","inLanguage":"en-IN"}]}
+{"@type":"TechArticle","@id":"https://mokshify.io/architecture/#article","headline":"How Mokshify systems are built","description":"Reference architectures with diagrams: production platform, CI/CD with automated checks, RAG, multi-tenancy, security layers.","author":{"@id":"https://mokshify.io/#org"},"publisher":{"@id":"https://mokshify.io/#org"},"datePublished":"2026-07-17","mainEntityOfPage":"https://mokshify.io/architecture/","inLanguage":"en-IN"}]}
 </script>
 </head>
 <body class="t-reference">
@@ -269,7 +269,7 @@
           <text x="380" y="225" text-anchor="middle" fill="#4E4A4B" font-size="11">deployed by GitHub Actions + Terraform &middot; Docker/Kubernetes &middot; AWS / Azure / OCI / GCP</text>
         </svg>
         </div>
-      <p>Every Mokshify product starts from this shape. <strong>Nginx</strong> terminates TLS and routes; <strong>Node.js</strong> or <strong>Python/FastAPI</strong> services own bounded domains; <strong>PostgreSQL</strong> is the source of truth and <strong>Redis</strong> the hot path. Workloads are containerised and provisioned by <strong>Terraform</strong>, so any of the four clouds can run them. The trade-off is deliberate boredom: fewer moving parts, well understood, cheap to operate - novelty budget is spent on the product, not the plumbing.</p>
+      <p>Every Mokshify product starts from this shape. <strong>Nginx</strong> terminates TLS and routes; <strong>Node.js</strong> or <strong>Python/FastAPI</strong> services own bounded domains; <strong>PostgreSQL</strong> is the source of truth and <strong>Redis</strong> the hot path. Workloads are containerised and provisioned by <strong>Terraform</strong>, so any of the four clouds can run them. The trade-off is deliberate boredom: fewer moving parts, well understood, cheap to operate. The novelty budget is spent on the product, not the plumbing.</p>
     </div>
   </div>
 </section>
@@ -281,12 +281,12 @@
       <h2>2 &middot; The deployment pipeline</h2>
     </header>
     <div class="section-body wide">
-      <div class="diagram" role="img" aria-label="Diagram: commit flows through tests, AI review, staged rollout, monitoring, with rollback arrow">
+      <div class="diagram" role="img" aria-label="Diagram: commit flows through tests, automated checks, staged rollout, monitoring, with rollback arrow">
         <svg viewBox="0 0 760 130" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono,monospace" font-size="13">
           <defs><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#B08D57"/></marker></defs>
           <rect x="10" y="35" width="100" height="48" rx="10" fill="#E4E2DC" stroke="#B9B6AE"/><text x="60" y="63" text-anchor="middle" fill="#141012">commit</text>
           <rect x="150" y="35" width="100" height="48" rx="10" fill="#F6F5F1" stroke="#B9B6AE"/><text x="200" y="63" text-anchor="middle" fill="#141012">tests</text>
-          <rect x="290" y="35" width="110" height="48" rx="10" fill="#4A1422"/><text x="345" y="63" text-anchor="middle" fill="#F6F5F1">AI review</text>
+          <rect x="290" y="35" width="110" height="48" rx="10" fill="#4A1422"/><text x="345" y="63" text-anchor="middle" fill="#F6F5F1">checks</text>
           <rect x="440" y="35" width="130" height="48" rx="10" fill="#F6F5F1" stroke="#B9B6AE"/><text x="505" y="57" text-anchor="middle" fill="#141012">staged rollout</text><text x="505" y="74" text-anchor="middle" fill="#4E4A4B" font-size="11">health checks</text>
           <rect x="610" y="35" width="120" height="48" rx="10" fill="#E4E2DC" stroke="#B9B6AE"/><text x="670" y="63" text-anchor="middle" fill="#141012">monitoring</text>
           <line x1="110" y1="59" x2="146" y2="59" stroke="#B08D57" stroke-width="2" marker-end="url(#b)"/>
@@ -297,7 +297,7 @@
           <text x="585" y="118" text-anchor="middle" fill="#4E4A4B" font-size="11">instant rollback</text>
         </svg>
         </div>
-      <p>The sequence shown in our homepage film&rsquo;s terminal is this pipeline: every merge runs the test suite and static checks, then an <strong>AI review pass</strong> reads the change for what tired humans miss, then a <strong>staged rollout</strong> ships behind health checks with one-command rollback. Nothing reaches production by hand. This is why we can publish an uptime figure (99.98%) without flinching.</p>
+      <p>Every merge runs the test suite and static checks, then a <strong>staged rollout</strong> ships behind health checks with one-command rollback. Nothing reaches production by hand. This is why we can publish an uptime figure (99.98%) without flinching.</p>
     </div>
   </div>
 </section>
@@ -328,7 +328,7 @@
           <text x="540" y="182" text-anchor="middle" fill="#4E4A4B" font-size="11">evaluation suite scores answers &middot; releases gated on results</text>
         </svg>
         </div>
-      <p>Retrieval-Augmented Generation as we ship it: documents are chunked and embedded into <strong>pgvector</strong> (inside the same PostgreSQL that runs the product - one database to operate, not two), queries retrieve the relevant passages, and the model answers <em>from</em> them with citations. The unglamorous part is the <strong>evaluation suite</strong>: a scored test set of real questions that runs before every release. Details on <a href="/services/ai-product-development/">the AI service page</a>.</p>
+      <p>Retrieval-Augmented Generation as we ship it: documents are chunked and embedded into <strong>pgvector</strong> (inside the same PostgreSQL that runs the product, so there is one database to operate), queries retrieve the relevant passages, and the model answers <em>from</em> them with citations. The unglamorous part is the <strong>evaluation suite</strong>: a scored test set of real questions that runs before every release. Details on <a href="/services/ai-product-development/">the AI service page</a>.</p>
     </div>
   </div>
 </section>
@@ -340,7 +340,7 @@
       <h2>4 &middot; Multi-tenant data design</h2>
     </header>
     <div class="section-body wide">
-      <p>SaaS tenancy is decided at the data layer on day one. Our default is <strong>row-level tenancy</strong>: every table carries a tenant key, enforced by PostgreSQL row-level security and query-layer guards, with connection pooling shared across tenants. Schema-per-tenant is reserved for cases that genuinely need it (regulatory isolation, per-tenant customisation) because its migration cost compounds. Billing, quotas and metering hang off the same tenant spine - which is why pricing changes stay configuration, not surgery. The full reasoning lives on <a href="/services/saas-development/">the SaaS page</a>.</p>
+      <p>SaaS tenancy is decided at the data layer on day one. Our default is <strong>row-level tenancy</strong>: every table carries a tenant key, enforced by PostgreSQL row-level security and query-layer guards, with connection pooling shared across tenants. Schema-per-tenant is reserved for cases that genuinely need it (regulatory isolation, per-tenant customisation) because its migration cost compounds. Billing, quotas and metering hang off the same tenant spine, which is why pricing changes stay configuration rather than surgery. The full reasoning lives on <a href="/services/saas-development/">the SaaS page</a>.</p>
     </div>
   </div>
 </section>
@@ -364,7 +364,7 @@
           <line x1="540" y1="56" x2="576" y2="56" stroke="#B08D57" stroke-width="2" marker-end="url(#d)"/>
         </svg>
         </div>
-      <p>Defence in layers, each assuming the one before it failed: TLS and rate limiting at the edge; authentication, security headers and request shaping at the gateway; authorization and input validation inside every service (never trusting the gateway alone); encryption at rest, least-privilege database roles and audit trails at the data layer. Secrets live in managed vaults, never in code - the same standards listed on <a href="/process/">our process page</a>, applied to this website too.</p>
+      <p>Defence in layers, each assuming the one before it failed: TLS and rate limiting at the edge; authentication, security headers and request shaping at the gateway; authorization and input validation inside every service (never trusting the gateway alone); encryption at rest, least-privilege database roles and audit trails at the data layer. Secrets live in managed vaults, never in code. These are the same standards listed on <a href="/process/">our process page</a>, applied to this website too.</p>
     </div>
   </div>
 </section>
@@ -403,7 +403,7 @@
         <a class="foot-brand on-spine" href="/" aria-label="Mokshify home"><picture><source type="image/webp" srcset="/assets/brand/mark-paper-40.webp 1x, /assets/brand/mark-paper-80.webp 2x"><img src="/assets/brand/mark-paper-80.png" alt="" width="40" height="40" loading="lazy"></picture><span>Mokshify</span></a>
         <p class="label foot-tag">Digital solutions. Limitless impact.</p>
       </div>
-      <p class="foot-pos">Mokshify builds websites, apps and software for businesses — from the first sketch to a live product your customers use.</p>
+      <p class="foot-pos">Mokshify builds websites, apps and software for businesses, from the first sketch to a live product your customers use.</p>
     </div>
     <nav class="foot-cols" aria-label="Footer">
       <div><p class="label">Services</p>
@@ -475,7 +475,7 @@
   <a href="tel:+919391248520"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h3l1.4 4-2 1.4a12 12 0 0 0 6.1 6.1l1.4-2 4 1.4v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"/></svg>Call</a>
   <a href="https://wa.me/919391248520" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/></svg>WhatsApp</a>
 </div>
-<script src="/js/site.min.js?v=c97f8f5e57" defer></script>
+<script src="/js/site.min.js?v=818116afff" defer></script>
 <!-- /include:footer -->
 </body>
 </html>

@@ -22,10 +22,10 @@ export const PROJECTS = [
     line: "A plotted-development sales site: about 200 pages, and a live plot map on satellite imagery.",
     facts: [["~200", "pages"], ["677", "plots on the live map"]],
     page: {
-      title: "Next Edge Realty — Real Estate Website | Mokshify",
-      desc: "Case study: a ~200-page sales website for Next Edge Realty, a West Hyderabad plot developer — live plot map on satellite imagery, lead CRM and admin dashboard.",
-      h1: ["Next Edge Realty —", "every plot, on the map."],
-      plain: "A sales website for a plotted-development company in West Hyderabad, where buyers can see every project, plot and locality — and which plots are still free.",
+      title: "Next Edge Realty | Real Estate Website | Mokshify",
+      desc: "Case study: a ~200-page sales website for Next Edge Realty, a West Hyderabad plot developer, with a live plot map on satellite imagery, a lead CRM and an admin dashboard.",
+      h1: ["Next Edge Realty:", "every plot, on the map."],
+      plain: "A sales website for a plotted-development company in West Hyderabad, where buyers can see every project, plot and locality, and which plots are still free.",
       problem: ["Open plots are bought on trust. Before a buyer visits a layout they want three answers: where it is, which plots are still available, and what approvals it has.",
         "A brochure cannot answer the second question, because availability changes every week."],
       built: [["Sales website", "About 200 pages covering projects, plots, localities and guides."],
@@ -43,7 +43,7 @@ export const PROJECTS = [
         title: "The plot map",
         intro: ["Each layout has its own map page. The plot layout, drawn from the approved layout sheet, sits over satellite imagery, with the roads, parks, clubhouse and social-infrastructure sites labelled. As the live site shows on 23 Nov 2026:"],
         rows: [["Views", "Flat 2D or a tilted 3D view; the layout as a drawing, on satellite imagery, or both"],
-          ["Find a plot", "Search by plot number, filter by size (under 200, 200–300 or 300+ sq yd) or show only available plots. The filters apply to the map and the list together"],
+          ["Find a plot", "Search by plot number, filter by size (under 200, 200 to 300 or 300+ sq yd) or show only available plots. The filters apply to the map and the list together"],
           ["Plot list", "Every plot listed beside the map with its size and status: tap a plot on the map or pick it from the list"],
           ["Status", "A colour legend: available, reserved, sold out, mortgage, under review"],
           ["Controls", "Zoom, north-up, fit to the layout, and a share link"],
@@ -51,7 +51,7 @@ export const PROJECTS = [
         note: ["The recording above is the live map in its 3D satellite view. In it, every plot is drawn in one colour and the plot numbers are hidden, so no plot&rsquo;s status can be read; on the live site, colour shows each plot&rsquo;s status."],
       },
       gallery: [
-        ["/assets/sites/next-edge-realty.webp", "Next Edge Realty homepage hero: Land you can verify before you visit", "Homepage, 1440 px — nextedgerealty.com", "https://nextedgerealty.com/"],
+        ["/assets/sites/next-edge-realty.webp", "Next Edge Realty homepage hero: Land you can verify before you visit", "Homepage, 1440 px, nextedgerealty.com", "https://nextedgerealty.com/"],
         ["/assets/sites/next-edge-realty-locations.webp", "The Next Edge Realty locations page: a satellite map of the localities west of the Ring Road", "Locations page: West of the Ring Road, mandal by mandal", "https://nextedgerealty.com/locations"],
         ["/assets/sites/next-edge-realty-map.webp", "The Sanctuary plot map in its 3D satellite view, with every plot in one colour", "Plot map, 3D satellite view (status colours and plot numbers hidden). Imagery &copy; 2026 Google", "https://nextedgerealty.com/projects/sanctuary/map"]],
       stack: [["Framework", "Next.js (visible in the live site's response headers)"], ["Delivery", "Served through Cloudflare"],
@@ -73,7 +73,7 @@ export const PROJECTS = [
     slug: "medico-diagnostics", name: "Medico Diagnostics", industry: "Healthcare", kind: "Client website",
     url: "https://medicodiagnostics.in/", host: "medicodiagnostics.in", shot: "medico-services", shotAlt: "Medico Diagnostics services page",   // the homepage hero shows people
     line: "A diagnostics website where patients find a test, see the price, book a home collection and download reports.",
-    facts: [["3,291+", "tests published"], ["4–6h", "reporting"]],
+    facts: [["3,291+", "tests published"], ["4 to 6h", "reporting"]],
   },
   {
     slug: "aj-agritech", name: "AJ Agritech", industry: "Agriculture", kind: "Client website",
@@ -81,15 +81,15 @@ export const PROJECTS = [
     line: "A Telugu-first brand and product catalogue for an agri-inputs company in Andhra Pradesh and Telangana.",
     facts: [["3", "languages"], ["3", "product ranges"]],
     page: {
-      title: "AJ Agritech — Agri-Inputs Website | Mokshify",
+      title: "AJ Agritech | Agri-Inputs Website | Mokshify",
       desc: "Case study: a Telugu-first brand and product catalogue website for AJ Agritech, an agri-inputs company in Andhra Pradesh and Telangana, with an admin dashboard.",
-      h1: ["AJ Agritech —", "a catalogue farmers can read."],
+      h1: ["AJ Agritech:", "a catalogue farmers can read."],
       plain: "A brand and product website for an agri-inputs company, in Telugu first, so farmers and dealers can find the right product for their crop.",
       problem: ["An agri-inputs company sells to farmers and dealers across Andhra Pradesh and Telangana. Most of them read Telugu first, and most of them are on a phone.",
-        "They need to know which product suits which crop and stage, and how to reach the company — not a brochure in English."],
+        "They need to know which product suits which crop and stage, and how to reach the company. An English brochure does not tell them."],
       built: [["Brand and catalogue", "A brand and product catalogue site for an agri-inputs company serving Andhra Pradesh and Telangana."],
         ["Languages", "Telugu by default, with Hindi and English."],
-        ["Catalogue", "Products grouped by range — growth promoters, flowering boosters and micronutrients — and by crop."],
+        ["Catalogue", "Products grouped by crop and by range: growth promoters, flowering boosters and micronutrients."],
         ["Admin dashboard", "The company manages its own products from an admin dashboard."],
         ["Enquiries", "An enquiry form that delivers straight to the company's mailbox."],
         ["Dealers and farmers", "Pages for dealer enquiries, crop tips and a farmer helpline."]],
@@ -104,12 +104,12 @@ export const PROJECTS = [
     // live site and what it shows: from the owner (address) and srisomaalammatalli.in itself, 23 Nov 2026
     url: "https://www.srisomaalammatalli.in/", host: "srisomaalammatalli.in", shot: "somallamma-darshan", dims: { m: [600, 2566] },
     shotAlt: "Somallamma Temple darshan timings and temple facts", shotCap: "the darshan timings and temple facts, below the photo slideshow (which shows devotees)",
-    line: "The website of Srisomaalammatalli Temple, Mungandapalem — poojas, events, gallery and donations, handed over to the temple.",
+    line: "The website of Srisomaalammatalli Temple, Mungandapalem, with poojas, events, a gallery and donations. Handed over to the temple.",
     facts: [],
     page: {
       title: "Somallamma Temple Website | Mokshify",
-      desc: "Case study: the website of Srisomaalammatalli Temple in Mungandapalem, Andhra Pradesh — poojas, events, gallery, videos and donations — built by Mokshify and handed over to the temple.",
-      h1: ["Somallamma Temple —", "a website, handed over."],
+      desc: "Case study: the website of Srisomaalammatalli Temple in Mungandapalem, Andhra Pradesh, with poojas, events, a gallery, videos and donations. Built by Mokshify and handed over to the temple.",
+      h1: ["Somallamma Temple:", "a website, handed over."],
       plain: "The website of Srisomaalammatalli Temple in Mungandapalem, East Godavari, completed and handed over to the temple.",
       problem: ["Temples and trusts need a simple, dignified place online where devotees can find darshan timings, poojas and events, and give to the temple. <!-- TODO(confirm): what the temple needed, in the temple's words -->"],
       built: [
@@ -125,25 +125,25 @@ export const PROJECTS = [
   {
     slug: "fincalix", name: "FinCalix", industry: "Finance", kind: "Our product",
     url: "https://fincalix.com/", host: "fincalix.com", shot: "fincalix",
-    line: "Indian financial calculators on the web and Android — free, offline in the app, in six Indian languages.",
+    line: "Free Indian financial calculators on the web and Android, offline in the app and in six Indian languages.",
     facts: [["47", "calculators"], ["6", "Indian languages"]],
   },
   {
     slug: "qflow", name: "Qflow", industry: "Product", kind: "Our product",
     url: "https://qflow.in/", host: "qflow.in", shot: "qflow",
-    line: "Queue and token management for any business with a queue — salons, clinics, temples, banks and offices.",
+    line: "Queue and token management for salons, clinics, temples, banks, offices and any other business with a queue.",
     facts: [["3", "portals: business, customer, admin"]],
     page: {
-      title: "Qflow — Queue and Token Management | Mokshify",
-      desc: "Case study: Qflow, our queue and token product for salons, clinics, temples, banks and offices — separate portals for businesses, customers and admins.",
-      h1: ["Qflow —", "skip the wait."],
+      title: "Qflow | Queue and Token Management | Mokshify",
+      desc: "Case study: Qflow, our queue and token product for salons, clinics, temples, banks and offices, with separate portals for businesses, customers and admins.",
+      h1: ["Qflow:", "skip the wait."],
       plain: "A queue and token system for any business with a queue: customers take a token on their phone, wait anywhere, and walk in when it is their turn.",
       problem: ["Salons, clinics, hospitals, restaurants, temples, banks and government offices all share one problem: people standing in a line, unsure how long it will take.",
         "Paper tokens tell nobody when their turn is coming."],
       built: [["For customers", "Take a token from the phone, wait anywhere, and get told when it is your turn."],
         ["For businesses", "A business portal to register the shop and run the queue."],
         ["For the platform", "An admin portal across every business on Qflow."],
-        ["Access", "Runs in the browser at app.qflow.in — nothing to install."],
+        ["Access", "Runs in the browser at app.qflow.in, with nothing to install."],
         ["Languages", "English and Telugu."]],
       result: ["As qflow.in states on 23 November 2026: live in the browser, an Android app coming to Google Play, available in Andhra Pradesh and Telangana with Guntur first, and a 60-day free trial for businesses. <!-- TODO(confirm): release status -->",
         "Qflow is a product of Sri Moksha Software Developers."],
@@ -251,7 +251,7 @@ function page(p) {
     ["Gallery", P.gallery
       ? `<div class="gallery-three">\n${P.gallery.map(g => "  " + fig(g)).join("\n")}\n</div>`
       : p.shot
-      ? `<div class="gallery">\n  <figure>${frame(p)}<figcaption>Desktop, 1440 px — ${p.shotCap ? p.shotCap + ", " : ""}captured from the live site on 23 Nov 2026.</figcaption></figure>\n  <figure><div class="frame phone"><div class="frame-view"><img src="/assets/sites/${p.shot}-m.webp" alt="${p.name} on a phone" width="${p.dims?.m?.[0] ?? 600}" height="${p.dims?.m?.[1] ?? 2597}" loading="lazy" decoding="async"></div></div><figcaption>Phone, 390 px.</figcaption></figure>\n</div>`
+      ? `<div class="gallery">\n  <figure>${frame(p)}<figcaption>Desktop, 1440 px, ${p.shotCap ? p.shotCap + ", " : ""}captured from the live site on 23 Nov 2026.</figcaption></figure>\n  <figure><div class="frame phone"><div class="frame-view"><img src="/assets/sites/${p.shot}-m.webp" alt="${p.name} on a phone" width="${p.dims?.m?.[0] ?? 600}" height="${p.dims?.m?.[1] ?? 2597}" loading="lazy" decoding="async"></div></div><figcaption>Phone, 390 px.</figcaption></figure>\n</div>`
       : `<figure class="plate todo"><span>Screenshots to follow once the live address is confirmed</span></figure>`],
     ...(P.stack.length ? [["The stack", rows(P.stack)]] : []),
   ];
@@ -346,7 +346,7 @@ const SELF = { slug: "mokshify-website", name: "This website", industry: "Engine
    the "next case study" order): the second Terravion site, linking to /work/terravion-properties/.
    Counts are from terravionproperties.in on 23 Nov 2026. No prices, plot counts or approval numbers. */
 const EXTRA_ROWS = [
-  { slug: "terravion-in", caseSlug: "terravion-properties", name: "Terravion Properties — terravionproperties.in", industry: "Real estate", kind: "Client website",
+  { slug: "terravion-in", caseSlug: "terravion-properties", name: "Terravion Properties: terravionproperties.in", industry: "Real estate", kind: "Client website",
     url: "https://terravionproperties.in/", host: "terravionproperties.in", shot: "terravion-in-loc", shotAlt: "Terravion Properties locations page at terravionproperties.in",
     line: "The second Terravion site: a GIS Master Plan (a plot-by-plot status grid for each project), location pages, buyer guides, a journal, and site-visit booking.",
     facts: [["13", "location pages"], ["12", "buyer guides"], ["72", "journal articles"]] },

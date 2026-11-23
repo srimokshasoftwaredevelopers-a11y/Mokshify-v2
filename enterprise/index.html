@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="/css/site.css?v=fa88125018">
+<link rel="stylesheet" href="/css/site.css?v=dd64a68a39">
 <!-- /include:head -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -231,7 +231,7 @@
   <div class="wrap">
     <p class="pkicker on-spine">Trust &middot; Enterprise readiness</p>
     <h1><span class="ln"><span>Built like an</span></span> <span class="ln"><span>enterprise team.</span></span></h1>
-    <p class="plede">This page is our engineering operations manual, published. It exists so a CTO can audit how we work before the first call - branch strategy to incident response, in plain language.</p>
+    <p class="plede">This page is our engineering operations manual, published. It exists so a CTO can audit how we work before the first call, from branch strategy to incident response, in plain language.</p>
   </div>
 </header>
 
@@ -244,10 +244,10 @@
     <div class="section-body">
       <table class="spec">
         <tbody>
-          <tr><th scope="row">Code review, twice</th><td>Every merge gets a human review and an AI review pass. Nothing lands on a main branch unreviewed - including our own founders&rsquo; code.</td></tr>
+          <tr><th scope="row">Code review, twice</th><td>Every merge gets a human review and automated checks. Nothing lands on a main branch unreviewed, including our own founders&rsquo; code.</td></tr>
           <tr><th scope="row">Branch strategy</th><td>Trunk-based with short-lived feature branches. Main is always deployable; long-running branches are treated as a smell, not a workflow.</td></tr>
           <tr><th scope="row">Testing as definition-of-done</th><td>Unit tests where logic lives, integration tests where systems meet, end-to-end coverage of customer-visible flows. Details on the <a href="/quality/">QA page</a>.</td></tr>
-          <tr><th scope="row">Documentation that ships</th><td>A README a new engineer can deploy from in under an hour, an architecture doc per system, and a written decision log - so knowledge lives in the repo, not in heads.</td></tr>
+          <tr><th scope="row">Documentation that ships</th><td>A README a new engineer can deploy from in under an hour, an architecture doc per system, and a written decision log, so knowledge lives in the repo, not in heads.</td></tr>
         </tbody>
       </table>
     </div>
@@ -261,7 +261,7 @@
       <h2>Deployment &amp; rollback</h2>
     </header>
     <div class="section-body">
-      <p>Releases go through GitHub Actions: tests, static checks, AI review, then a staged rollout behind health checks. Every release is reversible with one command; database migrations are written to be reversible by default. Full pipeline on the <a href="/devops/">DevOps page</a> and <a href="/architecture/">architecture diagrams</a>.</p>
+      <p>Releases go through GitHub Actions: tests and static checks, then a staged rollout behind health checks. Every release is reversible with one command; database migrations are written to be reversible by default. Full pipeline on the <a href="/devops/">DevOps page</a> and <a href="/architecture/">architecture diagrams</a>.</p>
     </div>
   </div>
 </section>
@@ -291,7 +291,7 @@
       <h2>Knowledge transfer &amp; support</h2>
     </header>
     <div class="section-body">
-      <p>From week one, work happens in <strong>your repositories and your cloud accounts</strong> - handoff is a permission change, not a project. After launch: monitoring, dependency updates, bug fixes with severity-based response, performance and cost reviews, and a feature roadmap - through the Dedicated Team model, or a clean transfer to your in-house engineers with pairing sessions until they are confident.</p>
+      <p>From week one, work happens in <strong>your repositories and your cloud accounts</strong>, so handoff is a permission change, not a project. After launch: monitoring, dependency updates, bug fixes with severity-based response, performance and cost reviews, and a feature roadmap, through the Dedicated Team model, or a clean transfer to your in-house engineers with pairing sessions until they are confident.</p>
     </div>
   </div>
 </section>
@@ -303,7 +303,7 @@
       <h2>How you see progress</h2>
     </header>
     <div class="section-body">
-      <p>No black box, no client portal theatre - working software and written records: a <strong>demo of running software every week</strong>, a staging environment you can open any day, the decision log, and a shared channel with the engineers actually building your product. Invoices and scope live in writing. If a week produced nothing demonstrable, you will hear that from us first.</p>
+      <p>No black box and no client portal theatre. You get working software and written records: a <strong>demo of running software every week</strong>, a staging environment you can open any day, the decision log, and a shared channel with the engineers actually building your product. Invoices and scope live in writing. If a week produced nothing demonstrable, you will hear that from us first.</p>
     </div>
   </div>
 </section>
@@ -312,18 +312,18 @@
   <div class="wrap">
     <header class="section-head">
       <p class="label on-spine">06 / 07</p>
-      <h2>The client journey</h2>
+      <h2>How an engagement runs</h2>
     </header>
     <div class="section-body">
       <ul class="timeline">
-          <li><b>Idea</b><span>One paragraph from you - whatever shape it is in.</span></li>
+          <li><b>Idea</b><span>One paragraph from you, in whatever shape it is in.</span></li>
           <li><b>Discovery call</b><span>30 minutes with an engineer; honest feasibility and a first step. <a href="/consult/">How it works</a>.</span></li>
-          <li><b>Proposal</b><span>Written scope, timeline, engagement model and price - no surprises designed in.</span></li>
+          <li><b>Proposal</b><span>Written scope, timeline, engagement model and price, with no surprises designed in.</span></li>
           <li><b>Architecture</b><span>The data model, service boundaries and cloud plan, documented before code.</span></li>
           <li><b>Design</b><span>Workflows before screens; prototypes where the risk lives.</span></li>
           <li><b>Development</b><span>Weekly demos of working software; tests and dual review on every merge.</span></li>
           <li><b>Testing</b><span>Release-gating QA across the flows your customers would notice breaking.</span></li>
-          <li><b>Launch</b><span>Staged rollout, health checks, rollback ready - a non-event by design.</span></li>
+          <li><b>Launch</b><span>Staged rollout, health checks, rollback ready. A non-event by design.</span></li>
           <li><b>Support</b><span>Monitoring, maintenance and a team that still answers. See above.</span></li>
         </ul>
     </div>
@@ -340,9 +340,9 @@
       <table class="spec">
         <tbody>
           <tr><th scope="row">Never disappear</th><td>24-hour reply standard, before and after you pay us.</td></tr>
-          <tr><th scope="row">Never lock your source code</th><td>Your repos, your cloud, your data - from week one.</td></tr>
+          <tr><th scope="row">Never lock your source code</th><td>Your repos, your cloud and your data, from week one.</td></tr>
           <tr><th scope="row">Never hide documentation</th><td>If it isn&rsquo;t written down where you can read it, it isn&rsquo;t done.</td></tr>
-          <tr><th scope="row">Never use fake metrics</th><td>Every number we publish is verifiable - on this site or in a live product.</td></tr>
+          <tr><th scope="row">Never use fake metrics</th><td>Every number we publish is verifiable on this site or in a live product.</td></tr>
           <tr><th scope="row">Never outsource without disclosure</th><td>You know who is building your product, always.</td></tr>
           <tr><th scope="row">Never compromise security for a deadline</th><td>The <a href="/security/">security page</a> is the floor, not the aspiration.</td></tr>
         </tbody>
@@ -358,7 +358,7 @@
     <div class="band-copy">
       <!-- slot -->
       <h2>Audit us properly.</h2>
-      <p>Bring your hardest due-diligence questions to a call - the engineers answer, not a sales script.</p>
+      <p>Bring your hardest due-diligence questions to a call. Engineers answer them, not a sales script.</p>
       <!-- /slot -->
     </div>
     <div class="row">
@@ -384,7 +384,7 @@
         <a class="foot-brand on-spine" href="/" aria-label="Mokshify home"><picture><source type="image/webp" srcset="/assets/brand/mark-paper-40.webp 1x, /assets/brand/mark-paper-80.webp 2x"><img src="/assets/brand/mark-paper-80.png" alt="" width="40" height="40" loading="lazy"></picture><span>Mokshify</span></a>
         <p class="label foot-tag">Digital solutions. Limitless impact.</p>
       </div>
-      <p class="foot-pos">Mokshify builds websites, apps and software for businesses — from the first sketch to a live product your customers use.</p>
+      <p class="foot-pos">Mokshify builds websites, apps and software for businesses, from the first sketch to a live product your customers use.</p>
     </div>
     <nav class="foot-cols" aria-label="Footer">
       <div><p class="label">Services</p>
@@ -456,7 +456,7 @@
   <a href="tel:+919391248520"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h3l1.4 4-2 1.4a12 12 0 0 0 6.1 6.1l1.4-2 4 1.4v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"/></svg>Call</a>
   <a href="https://wa.me/919391248520" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/></svg>WhatsApp</a>
 </div>
-<script src="/js/site.min.js?v=c97f8f5e57" defer></script>
+<script src="/js/site.min.js?v=818116afff" defer></script>
 <!-- /include:footer -->
 </body>
 </html>

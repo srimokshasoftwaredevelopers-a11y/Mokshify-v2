@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Monolith vs Microservices - The Honest Decision | Mokshify</title>
-<meta name="description" content="When a modular monolith wins, when services earn their operational cost, the migration path between them, and the fashion trap - with diagram and defaults.">
+<title>Monolith vs Microservices: The Honest Decision | Mokshify</title>
+<meta name="description" content="When a modular monolith wins, when services earn their operational cost, the migration path between them, and the fashion trap, with a diagram and defaults.">
 <link rel="canonical" href="https://mokshify.io/library/monolith-vs-microservices/">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<meta property="og:title" content="Monolith vs Microservices - The Honest Decision | Mokshify">
-<meta property="og:description" content="When a modular monolith wins, when services earn their operational cost, the migration path between them, and the fashion trap - with diagram and defaults.">
+<meta property="og:title" content="Monolith vs Microservices: The Honest Decision | Mokshify">
+<meta property="og:description" content="When a modular monolith wins, when services earn their operational cost, the migration path between them, and the fashion trap, with a diagram and defaults.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://mokshify.io/library/monolith-vs-microservices/">
 <meta property="og:image" content="https://mokshify.io/assets/og.jpg">
@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="/css/site.css?v=fa88125018">
+<link rel="stylesheet" href="/css/site.css?v=dd64a68a39">
 <!-- /include:head -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -31,7 +31,7 @@
  {"@type":"ListItem","position":1,"name":"Home","item":"https://mokshify.io/"},
  {"@type":"ListItem","position":2,"name":"Library","item":"https://mokshify.io/library/"},
  {"@type":"ListItem","position":3,"name":"Monolith vs Microservices","item":"https://mokshify.io/library/monolith-vs-microservices/"}]},
-{"@type":"TechArticle","@id":"https://mokshify.io/library/monolith-vs-microservices/#article","headline":"Monolith vs microservices - the honest decision","description":"When a modular monolith wins, when services earn their operational cost, and the migration path between them - with a diagram and our defaults.","author":{"@id":"https://mokshify.io/#org"},"publisher":{"@id":"https://mokshify.io/#org"},"datePublished":"2026-07-17","dateModified":"2026-07-17","mainEntityOfPage":"https://mokshify.io/library/monolith-vs-microservices/"}]}
+{"@type":"TechArticle","@id":"https://mokshify.io/library/monolith-vs-microservices/#article","headline":"Monolith vs microservices: the honest decision","description":"When a modular monolith wins, when services earn their operational cost, and the migration path between them, with a diagram and our defaults.","author":{"@type":"Organization","name":"Mokshify Engineering","url":"https://mokshify.io/engineering/","parentOrganization":{"@id":"https://mokshify.io/#org"}},"publisher":{"@id":"https://mokshify.io/#org"},"datePublished":"2026-07-17","dateModified":"2026-07-17","mainEntityOfPage":"https://mokshify.io/library/monolith-vs-microservices/"}]}
 </script>
 </head>
 <body class="t-long paper"><!-- include:nav -->
@@ -249,7 +249,7 @@
   </nav>
   <article class="prose">
     <h2 id="the-problem">The problem</h2>
-    <p>Teams adopt microservices for reasons that are usually organisational (many teams shipping independently) while paying costs that are always operational (distributed everything). Startups copying Netflix&rsquo;s architecture without Netflix&rsquo;s problems buy the costs without the reasons - the most expensive fashion decision in software.</p>
+    <p>Teams adopt microservices for reasons that are usually organisational (many teams shipping independently) while paying costs that are always operational (distributed everything). Startups copying Netflix&rsquo;s architecture without Netflix&rsquo;s problems buy the costs without the reasons. It is the most expensive fashion decision in software.</p>
     <h2 id="our-default-the-modular-monolith">Our default: the modular monolith</h2>
     <div class="diagram" role="img" aria-label="Diagram: one deployable containing well-bounded modules sharing a database, with one module later extracted as a service when justified">
       <svg viewBox="0 0 760 160" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono,monospace" font-size="13">
@@ -263,7 +263,7 @@
         <line x1="430" y1="85" x2="556" y2="85" stroke="#B08D57" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#mv)"/>
       </svg>
       </div>
-    <p>One deployable, containing modules with real boundaries: separate packages, explicit interfaces, no reaching across. You get monolith operations (one pipeline, one database, transactions that just work) with service-shaped code - and, crucially, <strong>a migration path</strong>: a module with clean boundaries extracts into a service in weeks; spaghetti extracts never.</p>
+    <p>One deployable, containing modules with real boundaries: separate packages, explicit interfaces, no reaching across. You get monolith operations (one pipeline, one database, transactions that just work) with service-shaped code and, crucially, <strong>a migration path</strong>: a module with clean boundaries extracts into a service in weeks; spaghetti extracts never.</p>
     <h2 id="when-services-genuinely-win">When services genuinely win</h2>
     <ul>
         <li><strong>Independent team cadence</strong> - multiple teams whose deploys block each other; Conway&rsquo;s law is real.</li>
@@ -271,7 +271,7 @@
         <li><strong>Genuine isolation requirements</strong> - a component whose failure or compliance profile must not share a blast radius.</li>
       </ul>
     <h2 id="advantages-disadvantages-tradeoffs">Advantages, disadvantages, tradeoffs</h2>
-    <p><strong>Monolith-first advantages:</strong> operational simplicity, real transactions, refactoring across boundaries while they are still wrong (they always start wrong). <strong>Disadvantages:</strong> discipline must be cultural - nothing stops a lazy import except review; one bad deploy touches everything (mitigated by <a href="/devops/">staged rollouts</a>). <strong>Microservices advantages:</strong> independent deploys, per-service scaling and stacks. <strong>Disadvantages:</strong> distributed transactions, network failure modes everywhere, observability as a prerequisite, and an ops bill measured in engineers. The tradeoff we accept: occasional extraction work later, in exchange for not paying distributed costs before distributed benefits.</p>
+    <p><strong>Monolith-first advantages:</strong> operational simplicity, real transactions, refactoring across boundaries while they are still wrong (they always start wrong). <strong>Disadvantages:</strong> discipline must be cultural, since nothing stops a lazy import except review; one bad deploy touches everything (mitigated by <a href="/devops/">staged rollouts</a>). <strong>Microservices advantages:</strong> independent deploys, per-service scaling and stacks. <strong>Disadvantages:</strong> distributed transactions, network failure modes everywhere, observability as a prerequisite, and an ops bill measured in engineers. The tradeoff we accept: occasional extraction work later, in exchange for not paying distributed costs before distributed benefits.</p>
     <h2 id="technology-selection">Technology selection</h2>
     <p>Boundaries enforced in code review (<a href="/enterprise/">dual review</a>), modules on the standard platform - <a href="/decisions/#postgresql">PostgreSQL</a>, <a href="/decisions/#docker">Docker, Kubernetes when earned</a> - and extraction, when it comes, along the <a href="/services/legacy-modernization/">strangler pattern</a> we use for modernization.</p>
   </article>
@@ -291,7 +291,7 @@
         <a class="foot-brand on-spine" href="/" aria-label="Mokshify home"><picture><source type="image/webp" srcset="/assets/brand/mark-paper-40.webp 1x, /assets/brand/mark-paper-80.webp 2x"><img src="/assets/brand/mark-paper-80.png" alt="" width="40" height="40" loading="lazy"></picture><span>Mokshify</span></a>
         <p class="label foot-tag">Digital solutions. Limitless impact.</p>
       </div>
-      <p class="foot-pos">Mokshify builds websites, apps and software for businesses — from the first sketch to a live product your customers use.</p>
+      <p class="foot-pos">Mokshify builds websites, apps and software for businesses, from the first sketch to a live product your customers use.</p>
     </div>
     <nav class="foot-cols" aria-label="Footer">
       <div><p class="label">Services</p>
@@ -363,7 +363,7 @@
   <a href="tel:+919391248520"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h3l1.4 4-2 1.4a12 12 0 0 0 6.1 6.1l1.4-2 4 1.4v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"/></svg>Call</a>
   <a href="https://wa.me/919391248520" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/></svg>WhatsApp</a>
 </div>
-<script src="/js/site.min.js?v=c97f8f5e57" defer></script>
+<script src="/js/site.min.js?v=818116afff" defer></script>
 <!-- /include:footer -->
 </body>
 </html>

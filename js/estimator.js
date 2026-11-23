@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════════════════════════
    MOKSHIFY — project estimator
    Honest by design: outputs duration, team shape and engagement
-   model derived from our published anchors (MVP 4-6 weeks, etc.).
+   model derived from our published anchors (MVP 4 to 6 weeks, etc.).
    Cost is presented as drivers + a prefilled enquiry, never an
    invented number.
    ═══════════════════════════════════════════════════════════════ */
@@ -26,7 +26,7 @@
     const ai = pick("ai");
     const infra = pick("infra");
 
-    // duration anchors: published MVP Sprint = 4-6 weeks
+    // duration anchors: published MVP Sprint = 4 to 6 weeks
     let lo = 4, hi = 6;
     const drivers = [];
 
@@ -54,12 +54,12 @@
     if (hi > 8) model = "Product Engineering";
     if (scope === "complex" && hi > 12) model = "Product Engineering (phased)";
 
-    out.weeks.textContent = `${lo}–${hi} weeks`;
+    out.weeks.textContent = `${lo} to ${hi} weeks`;
     out.team.textContent = team;
     out.model.textContent = model;
     out.drivers.innerHTML = drivers.length
       ? "<strong>What drives this estimate:</strong> " + drivers.join("; ") + "."
-      : "<strong>Baseline:</strong> one core workflow, one platform — our published MVP Sprint anchor.";
+      : "<strong>Baseline:</strong> one core workflow on one platform, our published MVP Sprint anchor.";
 
     const summary = encodeURIComponent(
       `Estimator summary:\n- Platform: ${platform}\n- Scope: ${scope}\n- AI: ${ai}\n- Infrastructure: ${infra}\n- Suggested: ${model}, ${lo}-${hi} weeks, ${team}\n\nAbout the product: (tell us in a paragraph)`

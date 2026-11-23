@@ -285,7 +285,7 @@
         if (!res.ok) throw new Error(String(res.status));
         form.reset();
         form.classList.add("is-sent");
-        say("Thank you — your message is with us. An engineer will reply within 24 hours.", "ok");
+        say("Thank you. Your message is with us. An engineer will reply within 24 hours.", "ok");
         if (Array.isArray(window.dataLayer)) window.dataLayer.push({ event: "form_submit", form: form.id });
       } catch {
         say("That didn't go through. Please WhatsApp us or write to hello@mokshify.io.", "error");

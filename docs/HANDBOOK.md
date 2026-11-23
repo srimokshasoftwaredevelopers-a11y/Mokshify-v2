@@ -138,13 +138,30 @@ typography or colours without explicit owner approval.
 - Structures: Problem → Architecture → Advantages → Disadvantages →
   Tradeoffs → Technology selection (library); Context → Decision → Why →
   Tradeoffs accepted → Revisit when (ADRs).
-- Em-dash sparingly; sentence case headings except the film's mono labels.
+- No long dashes. Never use an em dash or an en dash in copy, titles, alt text,
+  meta, structured data, the feed, llms.txt or the search index, and never a
+  spaced hyphen (" - ") as a stand-in. Rewrite the sentence: split it, or use
+  a comma, a colon or "and". Page titles separate parts with "|". Number
+  ranges are words: "4 to 6 weeks", not "4-6". Hyphens inside words stay
+  (plot-by-plot, real-estate). The build fails on any long dash or
+  spaced-hyphen dash in a built page (scripts/build.mjs, "copy rules").
+- No AI labels. No page says it was written, generated, drafted or reviewed
+  by AI: no such byline, badge, footer, structured-data author or
+  reviewedBy, and no feed entry. Articles are by "Mokshify Engineering"
+  (an Organization author); never invent a person, title, photo or
+  credential. The build fails on these phrases too. /legal/disclosure/ is
+  the one exception and is not edited for these rules.
+- Plain and specific: no "not just X, it's Y", no filler openers or
+  closers, no rhythm-only lists of three, no emoji or decorative symbols,
+  and none of: seamless, robust, leverage, cutting-edge, elevate, unlock,
+  delve, landscape, journey, game-changing.
+- Sentence case headings.
 - FORBIDDEN, always: invented testimonials, statistics, certifications,
   awards, partnerships, client claims, team names, "most popular" without
   data. Every number verifiable on-site or in a live product.
 
 ## Publishing checklist (run for every new/changed page)
-1. Purpose stated in one sentence? (If not — don't publish.)
+1. Purpose stated in one sentence? (If not, don't publish.)
 2. Metadata block complete and unique.
 3. Schema present + parses.
 4. Opening pattern (.pkicker/h1/.plede) + .pcta + related links.
