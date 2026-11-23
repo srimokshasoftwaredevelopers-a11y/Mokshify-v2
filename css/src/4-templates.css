@@ -181,3 +181,12 @@ p,li{text-wrap:pretty}
 .foot-brand picture img{border-radius:0}
 .foot-tag{margin:0}
 @media (max-width:26rem){.nav-cta{padding:.5rem .75rem;font-size:.75rem}}
+
+/* case study with two live sites: side by side, then a wide figure, then the phones */
+.gallery-pair{display:grid;gap:clamp(1.25rem,3vw,2rem);margin-bottom:clamp(1.5rem,4vh,2.5rem)}
+@media (min-width:45rem){.gallery-pair{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.gallery-pair.phones{grid-template-columns:repeat(2,minmax(0,15rem));justify-content:start}
+.gallery-pair figcaption,.gallery-wide figcaption{margin-top:.6rem;font-size:var(--fs-small);color:var(--fg-2)}
+.gallery-wide{margin:0 0 clamp(1.5rem,4vh,2.5rem)}
+.gallery-wide .frame-view{aspect-ratio:auto}
+.gallery-wide .frame-view img{display:block;width:100%;height:auto}

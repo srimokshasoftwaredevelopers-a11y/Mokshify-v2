@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="/css/site.css?v=f1dd3b6a9c">
+<link rel="stylesheet" href="/css/site.css?v=d208e0c7eb">
 <!-- /include:head -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -31,7 +31,7 @@
  {"@type":"ListItem","position":1,"name":"Home","item":"https://mokshify.io/"},
  {"@type":"ListItem","position":2,"name":"Work","item":"https://mokshify.io/work/"},
  {"@type":"ListItem","position":3,"name":"Terravion Properties","item":"https://mokshify.io/work/terravion-properties/"}]},
-{"@type":"Article","@id":"https://mokshify.io/work/terravion-properties/#article","headline":"Terravion Properties - land, discovered online","description":"Case study: a real estate platform for HMDA-approved plots near Shankarpally, built by Mokshify.","image":"https://mokshify.io/assets/sites/terravion.png","author":{"@id":"https://mokshify.io/#org"},"publisher":{"@id":"https://mokshify.io/#org"},"datePublished":"2026-07-17","mainEntityOfPage":"https://mokshify.io/work/terravion-properties/","about":{"@type":"CreativeWork","name":"Terravion Properties","url":"https://terravionproperties.com","creator":{"@id":"https://mokshify.io/#org"}}}]}
+{"@type":"Article","@id":"https://mokshify.io/work/terravion-properties/#article","headline":"Terravion Properties - land, discovered online","description":"Case study: two real estate sites for Terravion Properties near Shankarpally, built by Mokshify — terravionproperties.com and terravionproperties.in, with a GIS master plan, location pages, guides and a journal.","image":["https://mokshify.io/assets/sites/terravion.png","https://mokshify.io/assets/sites/terravion-in.webp"],"author":{"@id":"https://mokshify.io/#org"},"publisher":{"@id":"https://mokshify.io/#org"},"datePublished":"2026-07-17","dateModified":"2026-11-23","mainEntityOfPage":"https://mokshify.io/work/terravion-properties/","about":[{"@type":"CreativeWork","name":"Terravion Properties","url":"https://terravionproperties.com","creator":{"@id":"https://mokshify.io/#org"}},{"@type":"WebSite","name":"Terravion Properties (terravionproperties.in)","url":"https://terravionproperties.in","creator":{"@id":"https://mokshify.io/#org"}}]}]}
 </script>
 </head>
 <body class="t-case">
@@ -233,10 +233,10 @@
 <header class="hero plate hero-case">
   <figure class="hero-img"><img src="/assets/sites/terravion-plate.webp" alt="" width="1600" height="1000" fetchpriority="high" decoding="async"></figure>
   <div class="wrap">
-    <p class="pkicker on-spine">Case study &middot; Real estate &middot; <a href="https://terravionproperties.com" rel="noopener">terravionproperties.com</a></p>
+    <p class="pkicker on-spine">Case study &middot; Real estate &middot; <a href="https://terravionproperties.com" rel="noopener">terravionproperties.com</a> &middot; <a href="https://terravionproperties.in" rel="noopener">terravionproperties.in</a></p>
     <h1><span class="ln"><span>Terravion Properties &mdash; land,</span></span> <span class="ln"><span>discovered online.</span></span></h1>
     <p class="plede">Plot buying near Hyderabad runs on trust: approvals, boundaries, paperwork. Terravion&rsquo;s platform puts HMDA-approved projects near Shankarpally online with the details that actually decide a purchase &mdash; location, approval status, layout &mdash; so site visits start with informed buyers.</p>
-    <div class="hero-actions"><a class="btn" href="https://terravionproperties.com/" rel="noopener">Open terravionproperties.com ↗</a></div>
+    <div class="hero-actions"><a class="btn" href="https://terravionproperties.com/" rel="noopener">Open terravionproperties.com ↗</a> <a class="btn ghost" href="https://terravionproperties.in/" rel="noopener">Open terravionproperties.in ↗</a></div>
   </div>
 </header>
 
@@ -251,7 +251,7 @@
         <tbody>
           <tr><th scope="row">Industry</th><td>Real estate</td></tr>
           <tr><th scope="row">Type</th><td>Client website</td></tr>
-          <tr><th scope="row">Live at</th><td><a href="https://terravionproperties.com/" rel="noopener">terravionproperties.com</a></td></tr>
+          <tr><th scope="row">Live at</th><td><a href="https://terravionproperties.com/" rel="noopener">terravionproperties.com</a> and <a href="https://terravionproperties.in/" rel="noopener">terravionproperties.in</a></td></tr>
         </tbody>
       </table>
       <ul class="facts">
@@ -266,7 +266,7 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">01 / 06</p>
+      <p class="label on-spine">01 / 07</p>
       <h2>The problem</h2>
     </header>
     <div class="section-body">
@@ -278,7 +278,7 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">02 / 06</p>
+      <p class="label on-spine">02 / 07</p>
       <h2>Challenges</h2>
     </header>
     <div class="section-body">
@@ -296,7 +296,7 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">03 / 06</p>
+      <p class="label on-spine">03 / 07</p>
       <h2>Architecture &amp; stack</h2>
     </header>
     <div class="section-body wide">
@@ -307,6 +307,7 @@
           <tr><th scope="row">Data</th><td>PostgreSQL for project and enquiry data, Redis for caching</td></tr>
           <tr><th scope="row">Gateway</th><td>Nginx</td></tr>
           <tr><th scope="row">Pipeline</th><td>GitHub Actions — tested and AI-reviewed</td></tr>
+          <tr><th scope="row">terravionproperties.in</th><td>Next.js and TypeScript, with PostgreSQL and PostGIS for the plot map <!-- confirmed by the owner, 23 Nov 2026 --></td></tr>
         </tbody>
       </table>
       <p>A content-forward React web platform on our standard production base: Node.js services, PostgreSQL for project and enquiry data, Redis for caching, Nginx at the gateway, deployed through the same tested, AI-reviewed GitHub Actions pipeline as everything we ship. Project pages are fully crawlable and structured, because in this market a project page that ranks is a sales channel.</p>
@@ -317,7 +318,7 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">04 / 06</p>
+      <p class="label on-spine">04 / 07</p>
       <h2>Results</h2>
     </header>
     <div class="section-body">
@@ -330,16 +331,47 @@
   </div>
 </section>
 
+<!-- the second Terravion site. Everything below is what terravionproperties.in shows publicly; counts as
+     published there on 23 Nov 2026. No prices, plot counts for sale, approval or registration numbers, or staff names. -->
+<section class="section" id="terravionproperties-in">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="label on-spine">05 / 07 &middot; Part two</p>
+      <h2>A second site: terravionproperties.in</h2>
+    </header>
+    <div class="section-body wide">
+      <p>Terravion&rsquo;s second site, <a href="https://terravionproperties.in/" rel="noopener">terravionproperties.in</a>, is built for buyers who research before they visit. As published on 23 Nov 2026, it has:</p>
+      <table class="spec">
+        <tbody>
+          <tr><th scope="row">GIS master plan</th><td>A plot map of the projects (the site calls it a GIS digital twin): walk through the township and filter plots by facing, size and budget before the site visit.</td></tr>
+          <tr><th scope="row">Location pages</th><td>13 pages on the localities around Shankarpally and west Hyderabad, from Kokapet and Tellapur to Mokila and Chevella.</td></tr>
+          <tr><th scope="row">Guides</th><td>12 buyer guides, from legal verification and the registration process to loans, construction and tax.</td></tr>
+          <tr><th scope="row">Journal</th><td>72 articles on the west Hyderabad market and on buying a plot.</td></tr>
+          <tr><th scope="row">Projects</th><td>Three project pages: Sanctuary, Raghunath County and Mansanpally.</td></tr>
+          <tr><th scope="row">Site visits and callbacks</th><td>A site-visit booking form and a callback request, with WhatsApp and call buttons on every page.</td></tr>
+          <tr><th scope="row">EMI and ROI</th><td>An EMI calculator, and an ROI calculator with scenarios.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">05 / 06 &middot; Gallery</p>
+      <p class="label on-spine">06 / 07 &middot; Gallery</p>
       <h2>Gallery</h2>
     </header>
     <div class="section-body wide">
-      <div class="gallery">
-        <figure><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>terravionproperties.com</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/terravion-m.webp" width="600" height="2597"><img src="/assets/sites/terravion.webp" alt=" homepage, captured from the live site" width="1200" height="2000" loading="lazy" decoding="async"></picture></div></div><figcaption>Desktop, 1440 px — captured from the live site on 23 Nov 2026.</figcaption></figure>
-        <figure><div class="frame phone"><div class="frame-view"><img src="/assets/sites/terravion-m.webp" alt="terravionproperties.com on a phone" width="600" height="2597" loading="lazy" decoding="async"></div></div><figcaption>Phone, 390 px.</figcaption></figure>
+      <!-- both sites side by side, each labelled with its address and linked to the live site -->
+      <div class="gallery-pair">
+        <figure><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>terravionproperties.com</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/terravion-m.webp" width="600" height="2597"><img src="/assets/sites/terravion.webp" alt="Terravion Properties homepage at terravionproperties.com, captured from the live site" width="1200" height="2000" loading="lazy" decoding="async"></picture></div></div><figcaption><a href="https://terravionproperties.com/" rel="noopener">terravionproperties.com ↗</a> — desktop, 1440 px, captured from the live site on 23 Nov 2026.</figcaption></figure>
+        <figure><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>terravionproperties.in</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/terravion-in-m.webp" width="600" height="2597"><img src="/assets/sites/terravion-in.webp" alt="Terravion Properties homepage at terravionproperties.in, captured from the live site" width="1200" height="2000" loading="lazy" decoding="async"></picture></div></div><figcaption><a href="https://terravionproperties.in/" rel="noopener">terravionproperties.in ↗</a> — desktop, 1440 px, captured from the live site on 23 Nov 2026.</figcaption></figure>
+      </div>
+      <figure class="gallery-wide"><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>terravionproperties.in/gis</span></div><div class="frame-view"><img src="/assets/sites/terravion-in-gis-map.webp" alt="The GIS master plan on terravionproperties.in: the plot map of the Sanctuary and Raghunath County projects" width="1600" height="287" loading="lazy" decoding="async"></div></div><figcaption><a href="https://terravionproperties.in/gis" rel="noopener">The GIS master plan ↗</a> — 1440 px, cropped to the plot map (prices and availability left out).</figcaption></figure>
+      <div class="gallery-pair phones">
+        <figure><div class="frame phone"><div class="frame-view"><img src="/assets/sites/terravion-m.webp" alt="terravionproperties.com on a phone" width="600" height="2597" loading="lazy" decoding="async"></div></div><figcaption>terravionproperties.com, phone, 390 px.</figcaption></figure>
+        <figure><div class="frame phone"><div class="frame-view"><img src="/assets/sites/terravion-in-m.webp" alt="terravionproperties.in on a phone" width="600" height="2597" loading="lazy" decoding="async"></div></div><figcaption>terravionproperties.in, phone, 390 px.</figcaption></figure>
       </div>
     </div>
   </div>
@@ -348,7 +380,7 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">06 / 06</p>
+      <p class="label on-spine">07 / 07</p>
       <h2>Lessons learned</h2>
     </header>
     <div class="section-body">
@@ -470,7 +502,7 @@
         <a href="/sitemap/">All pages</a></div>
       <div><p class="label">Connect</p>
         <a href="/consult/">Book a strategy call</a>
-        <a href="mailto:hello@mokshify.io">hello@mokshify.io</a>
+        <!--email_off--><a href="mailto:hello@mokshify.io">hello@mokshify.io</a><!--/email_off-->
         <a href="tel:+919391248520">+91 93912 48520</a>
         <a href="https://wa.me/919391248520" rel="noopener">WhatsApp</a>
         <a href="/contact/">Contact</a>

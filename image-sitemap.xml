@@ -25,6 +25,11 @@
       <image:caption>terravionproperties.com: HMDA-approved plots, discovered online.</image:caption>
     </image:image>
     <image:image>
+      <image:loc>https://mokshify.io/assets/sites/terravion-in.webp</image:loc>
+      <image:title>Terravion Properties — terravionproperties.in, built by Mokshify</image:title>
+      <image:caption>terravionproperties.in: a GIS master plan, location pages, guides and a journal.</image:caption>
+    </image:image>
+    <image:image>
       <image:loc>https://mokshify.io/assets/sites/next-edge-realty.webp</image:loc>
       <image:title>Next Edge Realty — plotted-development sales site built by Mokshify</image:title>
       <image:caption>nextedgerealty.com: every plot on a live satellite map.</image:caption>
@@ -43,6 +48,24 @@
       <image:loc>https://mokshify.io/assets/sites/somallamma.webp</image:loc>
       <image:title>Srisomaalammatalli Temple website, built by Mokshify</image:title>
       <image:caption>srisomaalammatalli.in: poojas, events, gallery and donations.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/stack/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/articles/stack-hero.webp</image:loc>
+      <image:title>The Mokshify technology stack</image:title>
+      <image:caption>The Mokshify production technology stack, with use cases and reasoning.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/architecture/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/articles/architecture-hero.webp</image:loc>
+      <image:title>How Mokshify systems are built</image:title>
+      <image:caption>Reference architectures behind Mokshify production systems.</image:caption>
     </image:image>
   </url>
 </urlset>
