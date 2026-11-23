@@ -24,6 +24,22 @@ Judgement calls, one line of reasoning each. Newest at the bottom of each phase.
 - **Brand assets are copied, not linked, into `crm/public/`** (Switzer and the paper mark). The CRM is its own Vercel project and can't read files outside `crm/`.
 - **JetBrains Mono is self-hosted from Fontsource** (`font-src 'self'`; no Google Fonts call from an internal tool).
 
+## Phase 2 · Leads and the Today screen
+
+- **The first reply is stamped in the database in the same transaction as the activity.** The update runs only `where first_response_at is null`, so the stored response time can never change later. Reply kinds are call, WhatsApp, email and meeting; a note is not a reply. A first reply also moves a lead from New to Contacted.
+- **"Reply now" is every lead without a first reply that isn't closed, oldest first.** The oldest is the one losing the most.
+- **"Follow up today" merges open tasks due by the end of today (Asia/Kolkata) with open deals whose next-action date is today or earlier.** Overdue items are shown in red with their date.
+- **A Reply-now card over an hour old gets a red edge.** That makes the most urgent thing the most visible, with colour backed by the timer's text label ("Over an hour").
+- **One-tap logging appears after the link is used.** Tapping Call, WhatsApp or Email opens the app and shows "Log this … ? [Log it]". The click can't confirm a call really happened, so the person confirms in one tap.
+- **The WhatsApp template is chosen on the lead page; Today's cards use the first template.** Today stays one-thumb simple; the lead page has the choice.
+- **Quick-add is a native `<dialog>`** (focus trap and Esc for free): a bottom sheet on phones, centred on desktop, from a floating button on every screen. A new lead's owner is whoever added it.
+- **Search matches phone digits whatever the formatting.** "00005" finds "+91 90000 00005", because the query strips non-digits on both sides.
+- **The lead filters fold away on phones** behind a "Filters (n)" button; search stays visible. In review, the full filter block pushed every lead below the first screen.
+- **Grids without explicit columns get one shrinkable column (`minmax(0,1fr)`), as a base CSS rule.** Implicit `auto` columns grew to their widest child and caused phone-width overflow.
+- **The review script measures overflow against the configured viewport width.** Mobile emulation widens `innerWidth` to fit overflowing content, which hid the first overflow.
+- **Vitest must run from a path with an uppercase drive letter on Windows (`D:\…`).** Otherwise it loads twice and fails before any test. CI on Linux is unaffected.
+- **End-to-end tests run against a production build with a throwaway PGlite database** (`.data/e2e`), rebuilt on every run, using the installed Edge. External WhatsApp links are stubbed: the test checks the URL Desk builds, not WhatsApp's site.
+
 ## Unresolved
 
 - **ESLint config blocked by a local hook.** Creating `crm/eslint.config.mjs` is refused by the `everything-claude-code` plugin's config-protection hook ("Modifying eslint.config.mjs is not allowed"). That hook exists to stop lint rules being weakened, and getting around it by renaming the file would defeat its purpose. So `npm run lint` has no config yet. Static checking meanwhile is `tsc --noEmit` in strict mode (with `noUncheckedIndexedAccess`). To enable lint, disable that hook once, or create the file yourself with:

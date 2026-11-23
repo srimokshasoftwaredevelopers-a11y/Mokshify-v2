@@ -51,6 +51,13 @@ export function daysBetween(from: string, to: string): number {
   return Math.round((Date.parse(`${to}T00:00:00Z`) - Date.parse(`${from}T00:00:00Z`)) / 86_400_000);
 }
 
+/** a task's due label ("Today, 4:00 pm" / "24 Nov 2026, 10:00 am") and whether it is overdue */
+export function taskDue(t: { dueAt: Date | string | null; done: boolean }, now: Date = new Date()) {
+  if (!t.dueAt) return { text: "No date", overdue: false };
+  const d = new Date(t.dueAt);
+  return { text: dayIST(d) === dayIST(now) ? `Today, ${fmtTime(d)}` : `${fmtDate(d)}, ${fmtTime(d)}`, overdue: !t.done && d.getTime() < now.getTime() };
+}
+
 /** 42s · 4m 12s · 2h 05m · 3d 4h */
 export function fmtDuration(seconds: number): string {
   const s = Math.max(0, Math.floor(seconds));

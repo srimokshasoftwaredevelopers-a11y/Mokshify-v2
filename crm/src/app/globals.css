@@ -37,6 +37,9 @@
   }
   h1, h2, h3 { letter-spacing: -0.02em; line-height: 1.15; font-weight: 600; }
   a { color: inherit; }
+  /* a grid with no explicit columns gets one column that can shrink (never auto-sized to its widest
+     child — the cause of phone-width overflow). grid-cols-* utilities, in a later layer, still win. */
+  .grid { grid-template-columns: minmax(0, 1fr); }
   /* visible focus everywhere: brass outline over an ink ring (paper ring on dark surfaces) */
   :focus-visible { outline: 2px solid var(--color-brass); outline-offset: 2px; box-shadow: 0 0 0 5px var(--focus-ring, var(--color-ink)); border-radius: var(--radius-ui); }
   .on-dark { --focus-ring: var(--color-paper); }

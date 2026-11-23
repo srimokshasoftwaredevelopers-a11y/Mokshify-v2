@@ -31,12 +31,29 @@ for (const [w, h, mobile] of [[390, 844, true], [1440, 900, false]] as const) {
     await page.screenshot({ path: `${OUT}/${name(r)}-${w}.png`, fullPage: true });
   }
   if (routes.some(r => r !== "/login")) await signIn(page);
-  for (const r of routes.filter(x => x !== "/login")) {
+  for (const route of routes.filter(x => x !== "/login")) {
     errors.length = 0;
+    // "/leads/@first" → the first lead on /leads (likewise for any list page)
+    let r = route;
+    const m = /^(\/[\w-]+)\/@first$/.exec(route);
+    if (m?.[1]) {
+      const list = m[1];
+      await page.goto(BASE + list, { waitUntil: "load" });
+      const href = await page.locator(`main a[href^="${list}/"]`).first().getAttribute("href");
+      r = href ?? list;
+    }
     await page.goto(BASE + r, { waitUntil: "load" });
     await page.waitForTimeout(900);
-    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
-    await page.screenshot({ path: `${OUT}/${name(r)}-${w}.png`, fullPage: true });
+    // against the configured width: mobile emulation widens innerWidth to fit overflowing content
+    const overflow = await page.evaluate(vw => Math.max(document.documentElement.scrollWidth, document.body.scrollWidth) - vw, w);
+    if (overflow > 0) {
+      // name the culprits: the outermost elements that end past the viewport's right edge
+      const wide = await page.evaluate(vw => [...document.querySelectorAll("body *")]
+        .filter(e => e.getBoundingClientRect().right > vw + 1 && !(e.parentElement && e.parentElement.getBoundingClientRect().right > vw + 1))
+        .slice(0, 4).map(e => `${e.tagName.toLowerCase()}.${String(e.className).split(" ").slice(0, 4).join(".")} → ${Math.round(e.getBoundingClientRect().right)}px`), w);
+      errors.push(`WIDE: ${wide.join(" ; ")}`);
+    }
+    await page.screenshot({ path: `${OUT}/${name(route.replace("@first", "detail"))}-${w}.png`, fullPage: true });
     report.push(`${w} ${r}: overflow ${overflow}${errors.length ? ` · console errors: ${errors.join(" | ")}` : ""}`);
   }
   await ctx.close();

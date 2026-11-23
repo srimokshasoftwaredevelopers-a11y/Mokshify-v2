@@ -25,7 +25,16 @@ export const PROJECT_STATUSES = [
 ] as const;
 export const projectStatusLabel = (s: string) => PROJECT_STATUSES.find(x => x.key === s)?.label ?? s;
 
-export const DEFAULT_SOURCES = ["Website form", "Estimator", "WhatsApp", "Phone call", "Referral", "Walk-in", "Other"];
+export const LEAD_STATUSES = [
+  { key: "new", label: "New", tone: "info" },
+  { key: "contacted", label: "Contacted", tone: "warning" },
+  { key: "qualified", label: "Qualified", tone: "info" },
+  { key: "converted", label: "Converted", tone: "success" },
+  { key: "closed", label: "Closed", tone: "muted" },
+] as const;
+export const leadStatus = (s: string) => LEAD_STATUSES.find(x => x.key === s) ?? LEAD_STATUSES[0];
+
+export const DEFAULT_SOURCES =["Website form", "Estimator", "WhatsApp", "Phone call", "Referral", "Walk-in", "Other"];
 export const DEFAULT_LOST_REASONS = ["Price", "Timing", "Chose another vendor", "No response", "Not a fit", "Other"];
 
 /* ── rule 1 · speed to first reply ── */
