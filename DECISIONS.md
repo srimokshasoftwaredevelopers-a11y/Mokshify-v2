@@ -90,6 +90,10 @@ One line of reasoning each. Newest at the bottom of each list.
 
 - **No capture of a client site may show a real person.** The terravionproperties.in captures showed a staff member; the Medico captures (hero and old PNG) a doctor, patient and lab technician; the terravionproperties.com captures a woman in a video thumbnail; the Somallamma plate and phone capture devotees in the hero slideshow; the Next Edge Sanctuary render small figures by the gate. Each was replaced by a section without people, under a new file name (terravion-in-loc, terravion-about, medico-services, somallamma-darshan, next-edge-realty-locations), and the old files deleted, because images are cached for 31 days and a new URL is the only way to stop the old ones showing. The rule is in docs/HANDBOOK.md (Images) and at the top of scripts/capture-sites.mjs.
 
+## No prices in screenshots (23 Nov 2026)
+
+- **No capture may show a price.** The terravionproperties.com showreel card, plate, thumbnail and PNG showed "Plots from ₹45L" and "Starting ₹45 Lakhs"; they were remade from the About page under new names (terravion-about-*), the old files deleted and every reference, the image sitemap and the structured data updated. The four unused terravion-in-gis captures (prices per square yard) were deleted; terravion-in-gis-map.webp, a crop of the plot tiles without prices, stays. The rule sits beside the no-people rule in docs/HANDBOOK.md and scripts/capture-sites.mjs.
+
 ## Unresolved
 
 - **Resolved 23 Nov 2026:** the branch and `film-v1` were pushed as `srimokshasoftwaredevelopers-a11y` (see the report, "Pushed as the repo owner"). The next two entries are kept as history.

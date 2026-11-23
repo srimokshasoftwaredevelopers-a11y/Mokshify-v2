@@ -19,24 +19,27 @@ const SITES = {
   "qflow": "https://qflow.in/",
   "fincalix": "https://fincalix.com/",
   "medico-services": "https://medicodiagnostics.in/services",        // not the homepage: its hero shows people
-  "terravion": "https://terravionproperties.com/",
+  "terravion-about": "https://terravionproperties.com/about",     // not the homepage: a person in its video, prices in its hero
   "terravion-in-loc": "https://terravionproperties.in/locations",  // the second Terravion site; its homepage shows a staff photo
-  "terravion-in-gis": "https://terravionproperties.in/gis",        // its GIS master plan page (used at 1440)
   "somallamma-darshan": "https://www.srisomaalammatalli.in/",   // Srisomaalammatalli Temple, Mungandapalem (address from the owner, 23 Nov 2026)
   "mokshify-website": process.env.SELF_URL || "http://localhost:8123/",   // this site, from the local server
 };
 const only = process.argv.slice(2);
 const SLOW_ON_PHONE = { "terravion-in-loc": 9000 };   // extra milliseconds before the phone screenshot
-// RULE: no capture may show a real person (face, portrait, staff, testimonial photo, people in a photo
-// background), nor prices, plot availability, registration numbers or staff names. Look at every capture
-// before using it; recapture a section without people, or crop.
-// Captures in assets/sites/ that were cropped or offset by hand to meet that rule (23 Nov 2026): a plain run
+// RULES for every capture (look at each one, desktop and phone, top to bottom, before using it):
+//   1. No real person: no face, portrait, staff or founder photo, testimonial photo, or people in a photo
+//      background (illustrations and icons are fine).
+//   2. No prices: no price, rate, "from ₹…", "starting at", per-square-yard or total value may be readable.
+//   3. No plot availability, registration or approval numbers, or staff names.
+// If a page breaks a rule, capture a section that does not (a list, a map, a services or locations page) or crop.
+// Captures in assets/sites/ that were cropped or offset by hand to meet these rules (23 Nov 2026): a plain run
 // skips them; name the slug to recapture, then crop again before using the result.
 //   next-edge-realty: cropped above the availability figures
 //   somallamma-darshan: starts below the photo slideshow (devotees), 790 px down at 1440, 548 css px on phones
-//   terravion: the homepage video thumbnail shows a person; the frame is terravion-about (About page, cropped
-//              above the registration numbers), made by hand; this slug only feeds the unchanged cards
-const REDACTED = new Set(["next-edge-realty", "somallamma-darshan", "terravion"]);
+//   terravion-about: the About page, cropped above the registration numbers (1440 x 1200; phone 1400 css px)
+// terravion-in-gis-map.webp (the Terravion case study) is a hand crop of the GIS page's plot tiles, without its
+// prices and counts; it has no entry here.
+const REDACTED = new Set(["next-edge-realty", "somallamma-darshan", "terravion-about"]);
 const wait = ms => new Promise(r => setTimeout(r, ms));
 
 const browser = await puppeteer.launch({ executablePath: EDGE, headless: true, args: ["--disable-gpu", "--hide-scrollbars", "--lang=en-IN"] });
