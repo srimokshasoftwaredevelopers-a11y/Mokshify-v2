@@ -3,7 +3,7 @@
 
    What goes in (an allowlist, nothing else):
      - every page: each .html outside the internal folders below
-     - assets/ and .well-known/, whole
+     - assets/, .well-known/ and licences/ (font licence texts), whole
      - the public root files: robots.txt, sitemap.xml, image-sitemap.xml, feed.xml, llms.txt,
        humans.txt, site.webmanifest, search-index.json, 404.html
      - css/site.css, and each file under js/ that a page or a published script actually loads
@@ -45,7 +45,8 @@ const pages = walk(ROOT, r => {
 }).map(rel);
 for (const p of pages) copy(p);
 // asset folders and public root files
-for (const d of ["assets", ".well-known"]) if (existsSync(join(ROOT, d))) cpSync(join(ROOT, d), join(OUT, d), { recursive: true });
+// licences/: font licence texts (SIL OFL 1.1 asks that each copy of the fonts carries its licence)
+for (const d of ["assets", ".well-known", "licences"]) if (existsSync(join(ROOT, d))) cpSync(join(ROOT, d), join(OUT, d), { recursive: true });
 for (const f of PUBLIC_ROOT) {
   if (existsSync(join(ROOT, f))) copy(f);
   else if (REQUIRED.has(f)) problems.push(`missing public file: ${f}`);
