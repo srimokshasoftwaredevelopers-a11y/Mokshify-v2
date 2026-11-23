@@ -23,7 +23,7 @@ for (const r of ROUTES) {
   await p.setViewport({ width: 1440, height: 900 });
   await p.goto(BASE + r, { waitUntil: "networkidle0" });
   await scrollAll(p); await new Promise(s => setTimeout(s, 400));
-  const anim = await p.evaluate(() => [...document.querySelectorAll("*")].filter(e => { const s = getComputedStyle(e); return (s.animationName !== "none" && s.animationDuration !== "0s") || (s.transitionDuration.split(",").some(d => parseFloat(d) > 0) && s.transitionProperty !== "none"); }).length);
+  const anim = await p.evaluate(() => [...document.querySelectorAll("*")].filter(e => { const s = getComputedStyle(e); return (s.animationName && s.animationName !== "none" && s.animationDuration !== "0s")   /* "": no computed style (e.g. <source> in <video>) */ || (s.transitionDuration.split(",").some(d => parseFloat(d) > 0) && s.transitionProperty !== "none"); }).length);
   const hidden = await p.evaluate(hiddenCount);
   const pause = await p.evaluate(() => { const b = document.querySelector(".hero-pause"); return !b || getComputedStyle(b).display === "none"; });
   check(`reduced motion ${r}: ${anim} animating, ${hidden} hidden, video/lenis requests: ${media.length}, pause button hidden: ${pause}`, anim === 0 && hidden === 0 && media.length === 0 && pause);

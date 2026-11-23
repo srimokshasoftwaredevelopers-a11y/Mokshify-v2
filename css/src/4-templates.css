@@ -128,11 +128,36 @@ p,li{text-wrap:pretty}
 .hero-pause-icon{width:10px;height:12px;border-inline:3px solid currentColor}
 .hero-pause[aria-pressed=true] .hero-pause-icon{width:0;height:0;border:0;border-left:11px solid currentColor;border-block:7px solid transparent;margin-left:3px}
 @media (prefers-reduced-motion:no-preference){
-  .hero.home .hero-img picture{display:block;height:100%;animation:hero-zoom 25s var(--ease) both}
+  .hero.home .hero-img picture{display:block;height:100%}
+  .js .hero.home .hero-img picture{animation:hero-zoom 25s var(--ease) both}   /* JS on: the pause control can stop it */
   .hero-img.is-paused picture{animation-play-state:paused}
   @keyframes hero-zoom{from{transform:scale(1)}to{transform:scale(1.08)}}
 }
 @media (prefers-reduced-motion:reduce){.hero-pause,.hero-video{display:none!important}}
+/* what the home hero shows: the standard hero caption (small mono, top right) */
+.hero-cap{text-shadow:0 1px 8px rgb(0 0 0/.6)}
+/* phones: the poster as a background (no <img> in the first paint, no video), graded like hero images */
+@media (max-width:56.25rem){
+  .hero.home .hero-img picture{display:none}
+  .hero.home .hero-img[data-hero-video=ready].has-poster{background:url(/assets/hero/hero-poster-s.webp) 50% 50%/cover no-repeat;filter:saturate(.7) contrast(1.04)}
+}
+
+/* screen recordings (the plot-map film): 16:9, a play/pause button over the corner */
+.film{margin:0}
+.film-view{position:relative;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--rule);border-radius:var(--radius);background:var(--ink)}
+.film-view video{display:block;width:100%;height:100%;object-fit:cover}
+.film-btn{position:absolute;left:clamp(.75rem,2vw,1.25rem);bottom:clamp(.75rem,2vw,1.25rem);display:inline-grid;place-items:center;width:2.75rem;height:2.75rem;padding:0;border:1px solid rgb(246 245 241/.55);border-radius:var(--radius);background:rgb(20 16 18/.6);color:var(--paper);cursor:pointer}
+.film-btn:hover{border-color:var(--paper)}
+.film-icon{width:0;height:0;border-left:12px solid currentColor;border-block:7px solid transparent;margin-left:3px}
+.is-playing .film-icon{width:10px;height:12px;border:0;border-inline:3px solid currentColor;margin:0}
+.film figcaption{max-width:70ch}
+.film-cap{color:var(--fg);font-weight:500}
+.film-sec .section-body{max-width:none}
+
+/* three captures side by side (case-study gallery) */
+.gallery-three{display:grid;gap:clamp(1.25rem,3vw,2rem)}
+@media (min-width:45rem){.gallery-three{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.gallery-three figure{margin:0}
 
 /* slow zoom on screenshots and plates: 1.06 → 1 over 1.8s on entry, clipped by the frame */
 .hero-case .hero-img{--z:1.05}

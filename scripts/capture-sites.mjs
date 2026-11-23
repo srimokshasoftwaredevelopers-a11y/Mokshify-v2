@@ -27,12 +27,16 @@ const SITES = {
 };
 const only = process.argv.slice(2);
 const SLOW_ON_PHONE = { "terravion-in": 9000 };   // extra milliseconds before the phone screenshot
+// captures in assets/sites/ that were cropped by hand so no availability, prices or names show (23 Nov 2026):
+// a plain run skips them; name the slug to recapture, then crop again before using the result
+const REDACTED = new Set(["next-edge-realty"]);
 const wait = ms => new Promise(r => setTimeout(r, ms));
 
 const browser = await puppeteer.launch({ executablePath: EDGE, headless: true, args: ["--disable-gpu", "--hide-scrollbars", "--lang=en-IN"] });
 const report = [];
 for (const [slug, url] of Object.entries(SITES)) {
   if (only.length && !only.includes(slug)) continue;
+  if (!only.length && REDACTED.has(slug)) { report.push(`${slug}: skipped (redacted crops in use)`); continue; }
   try {
     const page = await browser.newPage();
     await page.setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36");

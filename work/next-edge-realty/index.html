@@ -23,10 +23,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="/css/site.css?v=d208e0c7eb">
+<link rel="stylesheet" href="/css/site.css?v=fa88125018">
 <!-- /include:head -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mokshify.io/"},{"@type":"ListItem","position":2,"name":"Work","item":"https://mokshify.io/work/"},{"@type":"ListItem","position":3,"name":"Next Edge Realty","item":"https://mokshify.io/work/next-edge-realty/"}]},{"@type":"Article","headline":"Next Edge Realty — Real Estate Website","description":"Case study: a ~200-page sales website for Next Edge Realty, a West Hyderabad plot developer — live plot map on satellite imagery, lead CRM and admin dashboard.","image":"https://mokshify.io/assets/sites/next-edge-realty-plate.webp","author":{"@id":"https://mokshify.io/#org"},"publisher":{"@id":"https://mokshify.io/#org"},"datePublished":"2026-11-23","dateModified":"2026-11-23","mainEntityOfPage":"https://mokshify.io/work/next-edge-realty/","inLanguage":"en-IN","about":{"@type":"CreativeWork","name":"Next Edge Realty","url":"https://nextedgerealty.com/"}}]}
+{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mokshify.io/"},{"@type":"ListItem","position":2,"name":"Work","item":"https://mokshify.io/work/"},{"@type":"ListItem","position":3,"name":"Next Edge Realty","item":"https://mokshify.io/work/next-edge-realty/"}]},{"@type":"Article","headline":"Next Edge Realty — Real Estate Website","description":"Case study: a ~200-page sales website for Next Edge Realty, a West Hyderabad plot developer — live plot map on satellite imagery, lead CRM and admin dashboard.","image":"https://mokshify.io/assets/sites/next-edge-realty-plate.webp","author":{"@id":"https://mokshify.io/#org"},"publisher":{"@id":"https://mokshify.io/#org"},"datePublished":"2026-11-23","dateModified":"2026-11-23","mainEntityOfPage":"https://mokshify.io/work/next-edge-realty/","inLanguage":"en-IN","about":{"@type":"CreativeWork","name":"Next Edge Realty","url":"https://nextedgerealty.com/"}},{"@type":"VideoObject","name":"Live plot map, Next Edge Realty","description":"The live plot map Mokshify built for Next Edge Realty, in its 3D satellite view: a slow turn across the Sanctuary layout and a move in toward the plots. Plot status colours and numbers are hidden in the recording.","thumbnailUrl":"https://mokshify.io/assets/hero/hero-poster.webp","contentUrl":"https://mokshify.io/assets/hero/hero.mp4","uploadDate":"2026-11-23","duration":"PT11S","isFamilyFriendly":true}]}
 </script>
 </head>
 <body class="t-case">
@@ -249,10 +249,29 @@
   </div>
 </section>
 
+<section class="section film-sec">
+  <div class="wrap">
+    <div class="section-body wide">
+      <!-- include:film-ner -->
+      <figure class="film" data-film>
+        <div class="film-view">
+          <video muted loop playsinline preload="none" poster="/assets/hero/hero-poster.webp" width="1920" height="1080" aria-label="Screen recording of the Next Edge Realty plot map in its 3D satellite view: the camera turns slowly across the Sanctuary layout, then moves in toward the plots.">
+            <source src="/assets/hero/hero.webm" type="video/webm">
+            <source src="/assets/hero/hero.mp4" type="video/mp4">
+          </video>
+          <button class="film-btn" type="button" aria-pressed="false"><span class="film-icon" aria-hidden="true"></span><span class="sr">Play the recording</span></button>
+        </div>
+        <figcaption><span class="film-cap">Live plot map, Next Edge Realty</span> The 3D satellite view of the Sanctuary layout, recorded from nextedgerealty.com on 23 Nov 2026. Every plot is drawn in one colour and plot numbers are hidden, so no plot&rsquo;s status can be read here.</figcaption>
+      </figure>
+      <!-- /include:film-ner -->
+    </div>
+  </div>
+</section>
+
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">01 / 05</p>
+      <p class="label on-spine">01 / 06</p>
       <h2>The problem</h2>
     </header>
     <div class="section-body">
@@ -265,14 +284,14 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">02 / 05</p>
+      <p class="label on-spine">02 / 06</p>
       <h2>What we built</h2>
     </header>
     <div class="section-body">
       <table class="spec">
         <tbody>
           <tr><th scope="row">Sales website</th><td>About 200 pages covering projects, plots, localities and guides.</td></tr>
-          <tr><th scope="row">Live plot map</th><td>An interactive map on satellite imagery showing every plot, with live availability.</td></tr>
+          <tr><th scope="row">Live plot map</th><td>An interactive 2D and 3D map on satellite imagery showing every plot, with live availability.</td></tr>
           <tr><th scope="row">Lead CRM</th><td>Enquiries collected into a lead CRM, with an admin dashboard behind the site.</td></tr>
           <tr><th scope="row">Journal and guides</th><td>A journal and buyer guides, written for search.</td></tr>
           <tr><th scope="row">Search</th><td>Search-optimised pages, structure and metadata.</td></tr>
@@ -286,7 +305,30 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">03 / 05</p>
+      <p class="label on-spine">03 / 06</p>
+      <h2>The plot map</h2>
+    </header>
+    <div class="section-body">
+      <p>Each layout has its own map page. The plot layout, drawn from the approved layout sheet, sits over satellite imagery, with the roads, parks, clubhouse and social-infrastructure sites labelled. As the live site shows on 23 Nov 2026:</p>
+      <table class="spec">
+        <tbody>
+          <tr><th scope="row">Views</th><td>Flat 2D or a tilted 3D view; the layout as a drawing, on satellite imagery, or both</td></tr>
+          <tr><th scope="row">Find a plot</th><td>Search by plot number, filter by size (under 200, 200–300 or 300+ sq yd) or show only available plots. The filters apply to the map and the list together</td></tr>
+          <tr><th scope="row">Plot list</th><td>Every plot listed beside the map with its size and status: tap a plot on the map or pick it from the list</td></tr>
+          <tr><th scope="row">Status</th><td>A colour legend: available, reserved, sold out, mortgage, under review</td></tr>
+          <tr><th scope="row">Controls</th><td>Zoom, north-up, fit to the layout, and a share link</td></tr>
+          <tr><th scope="row">Layouts</th><td>Sanctuary at Julkal and Raghunath County at Shankarpally, side by side on the live-plots page</td></tr>
+        </tbody>
+      </table>
+      <p class="note">The recording above is the live map in its 3D satellite view. In it, every plot is drawn in one colour and the plot numbers are hidden, so no plot&rsquo;s status can be read; on the live site, colour shows each plot&rsquo;s status.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="label on-spine">04 / 06</p>
       <h2>The result</h2>
     </header>
     <div class="section-body">
@@ -299,13 +341,14 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">04 / 05</p>
+      <p class="label on-spine">05 / 06</p>
       <h2>Gallery</h2>
     </header>
     <div class="section-body">
-      <div class="gallery">
-        <figure><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>nextedgerealty.com</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/next-edge-realty-m.webp" width="600" height="2597"><img src="/assets/sites/next-edge-realty.webp" alt="Next Edge Realty homepage, captured from the live site" width="1200" height="2000" loading="lazy" decoding="async"></picture></div></div><figcaption>Desktop, 1440 px — captured from the live site on 23 Nov 2026.</figcaption></figure>
-        <figure><div class="frame phone"><div class="frame-view"><img src="/assets/sites/next-edge-realty-m.webp" alt="Next Edge Realty on a phone" width="600" height="2597" loading="lazy" decoding="async"></div></div><figcaption>Phone, 390 px.</figcaption></figure>
+      <div class="gallery-three">
+        <figure><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>nextedgerealty.com</span></div><div class="frame-view"><img src="/assets/sites/next-edge-realty.webp" alt="Next Edge Realty homepage hero: Land you can verify before you visit" width="1200" height="750" loading="lazy" decoding="async"></div></div><figcaption><a href="https://nextedgerealty.com/" rel="noopener">Homepage, 1440 px — nextedgerealty.com</a></figcaption></figure>
+        <figure><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>nextedgerealty.com</span></div><div class="frame-view"><img src="/assets/sites/next-edge-realty-project.webp" alt="The Sanctuary project page on nextedgerealty.com" width="1200" height="750" loading="lazy" decoding="async"></div></div><figcaption><a href="https://nextedgerealty.com/projects/sanctuary" rel="noopener">Project page: Sanctuary, Julkal</a></figcaption></figure>
+        <figure><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>nextedgerealty.com</span></div><div class="frame-view"><img src="/assets/sites/next-edge-realty-map.webp" alt="The Sanctuary plot map in its 3D satellite view, with every plot in one colour" width="1200" height="750" loading="lazy" decoding="async"></div></div><figcaption><a href="https://nextedgerealty.com/projects/sanctuary/map" rel="noopener">Plot map, 3D satellite view (status colours and plot numbers hidden)</a></figcaption></figure>
       </div>
     </div>
   </div>
@@ -314,7 +357,7 @@
 <section class="section">
   <div class="wrap">
     <header class="section-head">
-      <p class="label on-spine">05 / 05</p>
+      <p class="label on-spine">06 / 06</p>
       <h2>The stack</h2>
     </header>
     <div class="section-body">
@@ -451,7 +494,7 @@
   <a href="tel:+919391248520"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h3l1.4 4-2 1.4a12 12 0 0 0 6.1 6.1l1.4-2 4 1.4v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"/></svg>Call</a>
   <a href="https://wa.me/919391248520" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/></svg>WhatsApp</a>
 </div>
-<script src="/js/site.min.js?v=acabd6fee3" defer></script>
+<script src="/js/site.min.js?v=c97f8f5e57" defer></script>
 <!-- /include:footer -->
 </body>
 </html>
