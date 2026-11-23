@@ -293,6 +293,34 @@
     });
   }
 
+  /* ── screen recordings (figure[data-film]): a real play/pause button. The video is preload="none",
+        so nothing downloads until it plays. It starts on its own only on wide screens with a decent
+        connection, no reduced motion, once it is on screen; it pauses when it leaves the screen
+        (unless the visitor pressed play) and never restarts after the visitor paused it ── */
+  for (const fig of document.querySelectorAll("figure[data-film]")) {
+    const v = fig.querySelector("video"), btn = fig.querySelector(".film-btn"), sr = btn?.querySelector(".sr");
+    if (!v || !btn) continue;
+    let chosen = null;                                    // null: not touched; true: visitor pressed play; false: visitor paused
+    const sync = () => {
+      const on = !v.paused;
+      btn.setAttribute("aria-pressed", String(on));
+      if (sr) sr.textContent = on ? "Pause the recording" : "Play the recording";
+      fig.classList.toggle("is-playing", on);
+    };
+    v.addEventListener("play", sync); v.addEventListener("pause", sync);
+    btn.addEventListener("click", () => {
+      if (v.paused) { chosen = true; v.play().catch(() => {}); } else { chosen = false; v.pause(); }
+    });
+    const conn = navigator.connection || {};
+    const auto = !reduced && !conn.saveData && !/(^|-)(2g|3g)$/.test(conn.effectiveType || "") && matchMedia("(min-width: 56.25rem)").matches;
+    if (auto && "IntersectionObserver" in window) {
+      new IntersectionObserver(([en]) => {
+        if (en.isIntersecting && chosen === null) v.play().catch(() => {});
+        else if (!en.isIntersecting && chosen !== true && !v.paused) v.pause();
+      }, { threshold: 0.35 }).observe(fig);
+    }
+  }
+
   /* ── conversion events: inert until a tag (GTM/GA4) defines window.dataLayer ── */
   const push = (event, data) => { if (Array.isArray(window.dataLayer)) window.dataLayer.push({ event, ...data }); };
   addEventListener("click", e => {

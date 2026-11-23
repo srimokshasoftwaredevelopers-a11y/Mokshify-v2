@@ -17,6 +17,8 @@ export const PROJECTS = [
   {
     slug: "next-edge-realty", name: "Next Edge Realty", industry: "Real estate", kind: "Client website",
     url: "https://nextedgerealty.com/", host: "nextedgerealty.com", shot: "next-edge-realty",
+    // captures cropped above every availability figure (23 Nov 2026): home hero 1040×650 at 1440, phone top 500 px
+    dims: { desk: [1200, 750], m: [600, 1000] },
     line: "A plotted-development sales site: about 200 pages, and a live plot map on satellite imagery.",
     facts: [["~200", "pages"], ["677", "plots on the live map"]],
     page: {
@@ -27,12 +29,31 @@ export const PROJECTS = [
       problem: ["Open plots are bought on trust. Before a buyer visits a layout they want three answers: where it is, which plots are still available, and what approvals it has.",
         "A brochure cannot answer the second question, because availability changes every week."],
       built: [["Sales website", "About 200 pages covering projects, plots, localities and guides."],
-        ["Live plot map", "An interactive map on satellite imagery showing every plot, with live availability."],
+        ["Live plot map", "An interactive 2D and 3D map on satellite imagery showing every plot, with live availability."],
         ["Lead CRM", "Enquiries collected into a lead CRM, with an admin dashboard behind the site."],
         ["Journal and guides", "A journal and buyer guides, written for search."],
         ["Search", "Search-optimised pages, structure and metadata."],
         ["Languages", "English, Telugu and Hindi."]],
       result: ["The site is live at <a href=\"https://nextedgerealty.com/\" rel=\"noopener\">nextedgerealty.com</a>. On 23 November 2026 its plot map showed 677 plots across two layouts."],
+      // the plot-map recording near the top, a section on the map, and a three-image gallery.
+      // Everything below is what nextedgerealty.com shows publicly on 23 Nov 2026; no prices, counts of
+      // plots for sale, approval or registration numbers, or names. Captures cropped or redacted to match.
+      film: "ner",
+      map: {
+        title: "The plot map",
+        intro: ["Each layout has its own map page. The plot layout, drawn from the approved layout sheet, sits over satellite imagery, with the roads, parks, clubhouse and social-infrastructure sites labelled. As the live site shows on 23 Nov 2026:"],
+        rows: [["Views", "Flat 2D or a tilted 3D view; the layout as a drawing, on satellite imagery, or both"],
+          ["Find a plot", "Search by plot number, filter by size (under 200, 200–300 or 300+ sq yd) or show only available plots. The filters apply to the map and the list together"],
+          ["Plot list", "Every plot listed beside the map with its size and status: tap a plot on the map or pick it from the list"],
+          ["Status", "A colour legend: available, reserved, sold out, mortgage, under review"],
+          ["Controls", "Zoom, north-up, fit to the layout, and a share link"],
+          ["Layouts", "Sanctuary at Julkal and Raghunath County at Shankarpally, side by side on the live-plots page"]],
+        note: ["The recording above is the live map in its 3D satellite view. In it, every plot is drawn in one colour and the plot numbers are hidden, so no plot&rsquo;s status can be read; on the live site, colour shows each plot&rsquo;s status."],
+      },
+      gallery: [
+        ["/assets/sites/next-edge-realty.webp", "Next Edge Realty homepage hero: Land you can verify before you visit", "Homepage, 1440 px — nextedgerealty.com", "https://nextedgerealty.com/"],
+        ["/assets/sites/next-edge-realty-project.webp", "The Sanctuary project page on nextedgerealty.com", "Project page: Sanctuary, Julkal", "https://nextedgerealty.com/projects/sanctuary"],
+        ["/assets/sites/next-edge-realty-map.webp", "The Sanctuary plot map in its 3D satellite view, with every plot in one colour", "Plot map, 3D satellite view (status colours and plot numbers hidden). Imagery &copy; 2026 Google", "https://nextedgerealty.com/projects/sanctuary/map"]],
       stack: [["Framework", "Next.js (visible in the live site's response headers)"], ["Delivery", "Served through Cloudflare"],
         ["Map", "Satellite imagery with a plot overlay and live availability"], ["Admin", "Lead CRM and admin dashboard"]],
       todo: ["TODO(proof): enquiry or traffic numbers, once the client approves publishing them", "TODO(confirm): database and hosting, for the stack table", "TODO(confirm): year built"],
@@ -137,7 +158,8 @@ const ind = (s, n) => s.split("\n").map(l => (l ? " ".repeat(n) + l : l)).join("
 export function frame(p, { eager = false } = {}) {
   if (!p.shot) return `<div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>${p.host}</span></div><div class="frame-view plate todo"><span>Screenshot to follow</span></div></div>`;
   const lazy = eager ? 'fetchpriority="high"' : 'loading="lazy"';
-  return `<div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>${p.host}</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/${p.shot}-m.webp" width="600" height="2597"><img src="/assets/sites/${p.shot}.webp" alt="${p.name} homepage, captured from the live site" width="1200" height="2000" ${lazy} decoding="async"></picture></div></div>`;
+  const [dw, dh] = p.dims?.desk ?? [1200, 2000], [mw, mh] = p.dims?.m ?? [600, 2597];   // redacted captures are cropped shorter
+  return `<div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>${p.host}</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/${p.shot}-m.webp" width="${mw}" height="${mh}"><img src="/assets/sites/${p.shot}.webp" alt="${p.name} homepage, captured from the live site" width="${dw}" height="${dh}" ${lazy} decoding="async"></picture></div></div>`;
 }
 const factsHtml = p => p.facts.length ? `<ul class="facts">${p.facts.map(([b, i]) => `<li><b>${b}</b><i>${i}</i></li>`).join("")}</ul>` : "";
 
@@ -157,8 +179,44 @@ export function workRow(p) {
 </article>`;
 }
 
+/* a screen recording with its own play/pause button. preload="none": nothing is fetched until it plays,
+   and site.js only starts it on its own for wide screens, decent connections and no reduced motion */
+export function filmFigure(f) {
+  return `<figure class="film" data-film>
+  <div class="film-view">
+    <video muted loop playsinline preload="none" poster="${f.poster}" width="1920" height="1080" aria-label="${f.label}">
+      <source src="${f.webm}" type="video/webm">
+      <source src="${f.mp4}" type="video/mp4">
+    </video>
+    <button class="film-btn" type="button" aria-pressed="false"><span class="film-icon" aria-hidden="true"></span><span class="sr">Play the recording</span></button>
+  </div>
+  <figcaption><span class="film-cap">${f.caption}</span> ${f.note}</figcaption>
+</figure>`;
+}
+const filmSection = f => `<section class="section film-sec">
+  <div class="wrap">
+    <div class="section-body wide">
+      <!-- include:${f.partial} -->
+      <!-- /include:${f.partial} -->
+    </div>
+  </div>
+</section>`;
+
+/* the Next Edge plot-map recording (23 Nov 2026): used by the case study, the home hero and /industries/real-estate/ */
+export const NER_FILM = {
+  webm: "/assets/hero/hero.webm", mp4: "/assets/hero/hero.mp4", poster: "/assets/hero/hero-poster.webp",
+  caption: "Live plot map, Next Edge Realty",
+  label: "Screen recording of the Next Edge Realty plot map in its 3D satellite view: the camera turns slowly across the Sanctuary layout, then moves in toward the plots.",
+  note: "The 3D satellite view of the Sanctuary layout, recorded from nextedgerealty.com on 23 Nov 2026. Every plot is drawn in one colour and plot numbers are hidden, so no plot&rsquo;s status can be read here. Imagery &copy; 2026 Google.",
+  desc: "The live plot map Mokshify built for Next Edge Realty, in its 3D satellite view: a slow turn across the Sanctuary layout and a move in toward the plots. Plot status colours and numbers are hidden in the recording. Imagery © 2026 Google.",
+  date: "2026-11-23", duration: "PT11S",
+};
+NER_FILM.partial = "film-ner";            // written to partials/, so every page that shows it gets the same markup
+const FILMS = { ner: NER_FILM };
+
 function page(p) {
   const P = p.page, url = `https://mokshify.io/work/${p.slug}/`;
+  const F = P.film ? FILMS[P.film] : null;   // a film by name (the recordings are defined below the project list)
   const image = p.shot ? `https://mokshify.io/assets/sites/${p.shot}-plate.webp` : "https://mokshify.io/assets/og.jpg";
   const nextSlug = NEXT[(NEXT.indexOf(p.slug) + 1) % NEXT.length];
   const ld = { "@context": "https://schema.org", "@graph": [
@@ -169,18 +227,25 @@ function page(p) {
     { "@type": "Article", headline: P.title.replace(/ \| Mokshify$/, ""), description: P.desc, image,
       author: { "@id": "https://mokshify.io/#org" }, publisher: { "@id": "https://mokshify.io/#org" },
       datePublished: TODAY, dateModified: TODAY, mainEntityOfPage: url, inLanguage: "en-IN",
-      about: { "@type": "CreativeWork", name: p.name, ...(p.url ? { url: p.url } : {}) } }] };
+      about: { "@type": "CreativeWork", name: p.name, ...(p.url ? { url: p.url } : {}) } },
+    ...(F ? [{ "@type": "VideoObject", name: F.caption, description: F.desc,
+      thumbnailUrl: `https://mokshify.io${F.poster}`, contentUrl: `https://mokshify.io${F.mp4}`,
+      uploadDate: F.date, duration: F.duration, isFamilyFriendly: true }] : [])] };
   const hero = p.shot
     ? `<header class="hero plate hero-case">
   <figure class="hero-img"><img src="/assets/sites/${p.shot}-plate.webp" alt="" width="1600" height="1000" fetchpriority="high" decoding="async"></figure>`
     : `<header class="hero dark">`;
   const rows = rs => `<table class="spec">\n  <tbody>\n${rs.map(([a, b]) => `    <tr><th scope="row">${a}</th><td>${esc(b)}</td></tr>`).join("\n")}\n  </tbody>\n</table>`;
   const strip = [["Industry", p.industry], ["Type", p.kind], ["Live at", p.url ? `<a href="${p.url}" rel="noopener">${p.host}</a>` : "Address to follow <!-- TODO(confirm): live URL -->"]];
+  const fig = ([src, alt, cap, href]) => `<figure><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>${p.host}</span></div><div class="frame-view"><img src="${src}" alt="${alt}" width="1200" height="750" loading="lazy" decoding="async"></div></div><figcaption>${href ? `<a href="${href}" rel="noopener">${cap}</a>` : cap}</figcaption></figure>`;
   const sections = [
     ["The problem", P.problem.map(t => `<p>${esc(t)}</p>`).join("\n")],
     ["What we built", rows(P.built)],
+    ...(P.map ? [[P.map.title, P.map.intro.map(t => `<p>${t}</p>`).join("\n") + "\n" + rows(P.map.rows) + "\n" + P.map.note.map(t => `<p class="note">${t}</p>`).join("\n")]] : []),
     ["The result", P.result.map(t => `<p>${t}</p>`).join("\n") + (p.facts.length ? "\n" + factsHtml(p) : "")],
-    ["Gallery", p.shot
+    ["Gallery", P.gallery
+      ? `<div class="gallery-three">\n${P.gallery.map(g => "  " + fig(g)).join("\n")}\n</div>`
+      : p.shot
       ? `<div class="gallery">\n  <figure>${frame(p)}<figcaption>Desktop, 1440 px — captured from the live site on 23 Nov 2026.</figcaption></figure>\n  <figure><div class="frame phone"><div class="frame-view"><img src="/assets/sites/${p.shot}-m.webp" alt="${p.name} on a phone" width="600" height="2597" loading="lazy" decoding="async"></div></div><figcaption>Phone, 390 px.</figcaption></figure>\n</div>`
       : `<figure class="plate todo"><span>Screenshots to follow once the live address is confirmed</span></figure>`],
     ...(P.stack.length ? [["The stack", rows(P.stack)]] : []),
@@ -239,7 +304,7 @@ ${ind(rows(strip).replace('class="spec"', 'class="spec strip-table"'), 6)}
     </div>
   </div>
 </section>
-
+${F ? "\n" + filmSection(F) + "\n" : ""}
 ${body}
 
 <!-- include:cta-band -->
@@ -284,6 +349,7 @@ const EXTRA_ROWS = [
 
 mkdirSync(join(ROOT, "partials"), { recursive: true });
 for (const p of [...PROJECTS, SELF, ...EXTRA_ROWS]) writeFileSync(join(ROOT, "partials", `work-${p.slug}.html`), workRow(p) + "\n");
+for (const f of Object.values(FILMS)) writeFileSync(join(ROOT, "partials", `${f.partial}.html`), filmFigure(f) + "\n");
 let made = 0;
 for (const p of PROJECTS) {
   if (!p.page) continue;

@@ -6,6 +6,13 @@
   "use strict";
   const root = document.documentElement;
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // phones: the hero poster (a still, CSS background) comes in once the page has loaded, so it is never
+  // part of the first paint; reduced motion gets it too, since it does not move
+  const posterFig = document.querySelector('.hero.home .hero-img[data-hero-video="ready"]');
+  if (posterFig) {
+    const show = () => posterFig.classList.add("has-poster");
+    if (document.readyState === "complete") show(); else addEventListener("load", show, { once: true });
+  }
   if (reduced) return;                                   // reduced motion: the static page, as authored
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
   const wide = matchMedia("(min-width: 56.25rem)");
@@ -20,19 +27,25 @@
   if (heroFig && video && heroFig.dataset.heroVideo === "ready") {
     const conn = navigator.connection || {};
     const goodNet = !conn.saveData && !/(^|-)(2g|3g)$/.test(conn.effectiveType || "");
-    const pic = document.createElement("picture"), still = new Image();
-    still.src = video.dataset.poster; still.alt = ""; still.decoding = "async";
-    pic.append(still); heroFig.prepend(pic);
+    // the poster <picture> is in the HTML (phones get the 640 px one), so it loads early and is the still for
+    // reduced motion and no JavaScript; here only the video is added over it
     if (wide.matches && goodNet) {
-      video.poster = video.dataset.poster;
-      for (const [type, key] of [["video/webm", "webm"], ["video/mp4", "mp4"]]) {
-        const s = document.createElement("source");
-        s.src = video.dataset[key]; s.type = type; video.append(s);
-      }
-      video.addEventListener("loadedmetadata", () => { video.playbackRate = 0.6; });
-      video.addEventListener("playing", () => heroFig.classList.add("has-video"), { once: true });
-      video.load();
-      video.play().catch(() => {});
+      // the video (about 2.5 MB) waits until the page has loaded and the browser is idle, so it never
+      // competes with the fonts, CSS and poster the first screen needs
+      const start = () => {
+        video.poster = video.dataset.poster;
+        for (const [type, key] of [["video/webm", "webm"], ["video/mp4", "mp4"]]) {
+          const s = document.createElement("source");
+          s.src = video.dataset[key]; s.type = type; video.append(s);
+        }
+        video.addEventListener("loadedmetadata", () => { video.playbackRate = 0.6; });
+        video.addEventListener("playing", () => heroFig.classList.add("has-video"), { once: true });
+        video.load();
+        if (!paused()) video.play().catch(() => {});
+      };
+      const idle = window.requestIdleCallback || (f => setTimeout(f, 1));
+      const later = () => setTimeout(() => idle(start, { timeout: 2000 }), 1500);
+      if (document.readyState === "complete") later(); else addEventListener("load", later, { once: true });
     }
   }
 
@@ -44,7 +57,7 @@
       const stop = !paused();
       root.classList.toggle("motion-paused", stop);
       heroFig?.classList.toggle("is-paused", stop);
-      if (heroFig?.classList.contains("has-video")) { if (stop) video.pause(); else video.play().catch(() => {}); }
+      if (video?.querySelector("source")) { if (stop) video.pause(); else video.play().catch(() => {}); }   // once the video has been started
       pauseBtn.setAttribute("aria-pressed", String(stop));
       pauseBtn.querySelector(".sr").textContent = stop ? "Play background motion" : "Pause background motion";
     });
