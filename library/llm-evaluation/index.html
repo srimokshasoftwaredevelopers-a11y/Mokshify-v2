@@ -257,7 +257,7 @@
         <li><strong>A test set of real cases.</strong> Ten to fifty genuine inputs from the actual workflow: real documents and real questions, including the awkward ones that made someone escalate. Synthetic test cases test your imagination, not your product.</li>
         <li><strong>Expected outcomes, not expected strings.</strong> For extraction: the correct fields. For answers: the facts that must appear, the claims that must not, the citation that must ground it. Exact-match assertions break on phrasing; fact-level checks survive it.</li>
         <li><strong>Scoring you can defend.</strong> Deterministic checks first (schema validity, required fields, forbidden content, citation presence). They are free and unarguable. Model-graded scoring on top for fluency and correctness, calibrated against a sample of human judgments so the grader itself is validated before it is trusted.</li>
-        <li><strong>A gate, not a dashboard.</strong> Evals run in CI like unit tests; a release that regresses the score does not ship. This is the same principle as <a href="/quality/">the rest of our QA</a> - quality is gated, not hoped.</li>
+        <li><strong>A gate, not a dashboard.</strong> Evals run in CI like unit tests; a release that regresses the score does not ship. This is the same principle as <a href="/quality/">the rest of our QA</a>: quality is gated, not hoped.</li>
       </ol>
     <h2 id="what-to-measure-per-use-case">What to measure per use case</h2>
     <ul>
