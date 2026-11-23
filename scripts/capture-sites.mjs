@@ -30,15 +30,19 @@ const SLOW_ON_PHONE = { "terravion-in-loc": 9000 };   // extra milliseconds befo
 //   1. No real person: no face, portrait, staff or founder photo, testimonial photo, or people in a photo
 //      background (illustrations and icons are fine).
 //   2. No prices: no price, rate, "from ₹…", "starting at", per-square-yard or total value may be readable.
-//   3. No plot availability, registration or approval numbers, or staff names.
+//   3. No plot-level sale status: no plot coloured, labelled or listed as available, reserved, booked, sold,
+//      mortgaged or under review. On plot maps and grids, recolour every plot to one neutral colour and hide plot
+//      numbers before capturing (keep the layout, roads, parks, imagery and any imagery attribution real), and
+//      say so in the caption, as on the Next Edge recording and the Terravion GIS crop.
+//   4. No plot availability counts, registration or approval numbers, or staff names.
 // If a page breaks a rule, capture a section that does not (a list, a map, a services or locations page) or crop.
 // Captures in assets/sites/ that were cropped or offset by hand to meet these rules (23 Nov 2026): a plain run
 // skips them; name the slug to recapture, then crop again before using the result.
 //   next-edge-realty: cropped above the availability figures
 //   somallamma-darshan: starts below the photo slideshow (devotees), 790 px down at 1440, 548 css px on phones
 //   terravion-about: the About page, cropped above the registration numbers (1440 x 1200; phone 1400 css px)
-// terravion-in-gis-map.webp (the Terravion case study) is a hand crop of the GIS page's plot tiles, without its
-// prices and counts; it has no entry here.
+// terravion-in-gis-plots.webp (the Terravion case study) is a hand capture of the GIS page's two plot grids, every
+// tile recoloured to one neutral colour, without prices and counts; it has no entry here.
 const REDACTED = new Set(["next-edge-realty", "somallamma-darshan", "terravion-about"]);
 const wait = ms => new Promise(r => setTimeout(r, ms));
 

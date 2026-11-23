@@ -109,8 +109,14 @@ typography or colours without explicit owner approval.
   are fine).
 - No capture may show a price: no price, rate, "from ₹…", "starting at",
   per-square-yard or total value may be readable.
-- No capture may show plot availability, registration or approval numbers, or
-  staff names.
+- No capture may show plot-level sale status: no plot coloured, labelled or
+  listed as available, reserved, booked, sold, mortgaged or under review. On
+  plot maps and grids, recolour every plot to one neutral colour and hide plot
+  numbers before capturing; keep the layout, roads, parks, imagery and any
+  imagery attribution real, and say in the caption that the colours were
+  changed (as on the Next Edge recording and the Terravion GIS crop).
+- No capture may show plot availability counts, registration or approval
+  numbers, or staff names.
 - Look at every capture, desktop and phone, top to bottom, before it ships. If
   a page breaks a rule, capture a section that does not (a list, a map, a
   services or locations page) or crop. scripts/capture-sites.mjs lists the
