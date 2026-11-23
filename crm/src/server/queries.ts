@@ -98,6 +98,36 @@ export async function timeline(ids: { leadId?: string; dealId?: string; clientId
     .where(or(...conds)).orderBy(desc(t.activities.occurredAt)).limit(200);
 }
 
+/* ── one person's data (Settings: export and delete) — matched by email, or by phone digits ── */
+export async function findPerson(q: string) {
+  const db = await getDb();
+  const email = q.trim().toLowerCase(), digits = q.replace(/\D/g, "").slice(-10);
+  const byEmail = /@/.test(email);
+  if (!byEmail && digits.length < 10) return null;
+  const phoneMatch = (col: typeof t.leads.phone | typeof t.contacts.phone | typeof t.clients.phone) =>
+    sql`right(regexp_replace(coalesce(${col}, ''), '\\D', '', 'g'), 10) = ${digits}`;
+  const [leads, contacts, clients] = await Promise.all([
+    db.select().from(t.leads).where(byEmail ? sql`lower(${t.leads.email}) = ${email}` : phoneMatch(t.leads.phone)),
+    db.select().from(t.contacts).where(byEmail ? sql`lower(${t.contacts.email}) = ${email}` : phoneMatch(t.contacts.phone)),
+    db.select().from(t.clients).where(byEmail ? sql`lower(${t.clients.email}) = ${email}` : phoneMatch(t.clients.phone)),
+  ]);
+  const leadIds = leads.map(l => l.id);
+  const [activities, tasks] = leadIds.length ? await Promise.all([
+    db.select().from(t.activities).where(inArray(t.activities.leadId, leadIds)),
+    db.select().from(t.tasks).where(inArray(t.tasks.leadId, leadIds)),
+  ]) : [[], []];
+  return { leads, contacts, clients, activities, tasks };
+}
+
+/** leads older than the retention period that never became a deal: flagged for deletion */
+export async function staleLeads(retentionDays: number) {
+  const db = await getDb();
+  const cutoff = new Date(Date.now() - retentionDays * 86_400_000);
+  return db.select({ id: t.leads.id, name: t.leads.name, createdAt: t.leads.createdAt, source: t.leads.source }).from(t.leads)
+    .where(and(lt(t.leads.createdAt, cutoff), sql`not exists (select 1 from deals d where d.lead_id = ${t.leads.id})`, isNull(t.leads.clientId)))
+    .orderBy(asc(t.leads.createdAt)).limit(500);
+}
+
 /* ── Today ── */
 export async function todayData() {
   const db = await getDb();

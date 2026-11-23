@@ -12,6 +12,7 @@ export const E2E_ENV = {
   DEMO_STAFF_PASSWORD: "e2e-staff-passphrase",
   PUBLIC_FORM_ORIGINS: "https://mokshify.io,https://www.mokshify.io",
   APP_URL: `http://localhost:${PORT}`,
+  LOGIN_IP_LIMIT: "1000",            // the suite signs in ~30 times from one address; production keeps 20
 };
 
 export default defineConfig({

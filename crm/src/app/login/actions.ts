@@ -25,7 +25,9 @@ export async function login(_prev: LoginState, form: FormData): Promise<LoginSta
   if (!parsed.success) return { error: parsed.error.issues[0]?.message ?? "Check the form.", email };
 
   const ip = clientIp(await headers());
-  const limit = await hit("login-ip", ip, 20, 15 * 60);
+  // 20 attempts per IP per 15 minutes (LOGIN_IP_LIMIT raises it only for the e2e test server,
+  // which signs in dozens of times from one address)
+  const limit = await hit("login-ip", ip, Number(process.env.LOGIN_IP_LIMIT) || 20, 15 * 60);
   if (!limit.allowed) return { error: `Too many sign-in attempts from here. Try again in ${Math.ceil(limit.retryAfter / 60)} minutes.`, email };
 
   const db = await getDb();

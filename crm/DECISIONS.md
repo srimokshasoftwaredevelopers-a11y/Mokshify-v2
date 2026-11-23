@@ -77,6 +77,21 @@ Judgement calls, one line of reasoning each. Newest at the bottom of each phase.
 - **Subqueries name the outer column explicitly** (`"clients"."id"`). Drizzle renders a bare `"id"` there, which Postgres rejects as ambiguous.
 - **The 1440 px board shows five of seven columns and scrolls sideways for Won and Lost.** All seven fit from about 1600 px. Narrower columns would have squeezed every card; the spec asks for one column per stage, so the board scrolls.
 
+## Phase 5 · Reports and settings
+
+- **One set of rows per report** draws the chart, fills the table view and becomes the CSV, so the three can never disagree.
+- **The funnel counts each deal at the furthest stage it reached.** That comes from the audit log's stage moves (from and to) plus its current stage, so a deal lost at Proposal still counts as having reached Proposal. Leads at the top are those that arrived in the range.
+- **Revenue is grouped by the month the money arrived** (`receivedDate`). "Outstanding now" ignores the date range on purpose: it is what is owed today.
+- **Website pages are reported as paths** (`/services/…`), with the query string dropped so UTM tags don't split one page into many.
+- **The CSV is hardened against spreadsheet formula injection.** Every cell is quoted, and values starting with `=`, `+`, `-` or `@` are prefixed with an apostrophe.
+- **Staff can read reports but not export them.** The export routes return 403 for staff, checked on the server, and the buttons are hidden as well. Every export is audited with its row count.
+- **Owner-only paths are refused in the app layout, before the page streams.** The loading skeleton is a streaming boundary, so a page-level `forbidden()` could only send a 200 with the refusal page. The proxy passes the path in a request header; each page still calls `requireOwner()` too.
+- **Pipeline stages are shown in settings but not editable.** The next-step rule, the stale flags, won and lost, and the funnel all depend on them. Sources and lost reasons are editable lists, one per line (at most 20).
+- **You can't lock yourself out.** You can't demote or deactivate yourself, and the last active owner can't be deactivated. Deactivating or resetting a password signs that person out everywhere at once.
+- **Deleting a person's data:** matched by full email or the last 10 phone digits, it removes their leads (with timeline and tasks) and contact entries. On client records only their phone and email are cleared, because invoicing history must stay. It is audited with counts only.
+- **Retention:** leads older than the retention period (365 days by default, at least 90) that never became a deal or a client are listed in Settings, and the owner deletes them in one action. Nothing is deleted automatically.
+- **`LOGIN_IP_LIMIT`** raises the per-IP sign-in limit only for the e2e test server, which signs in about 30 times from one address. Production keeps 20 per 15 minutes.
+
 ## Unresolved
 
 - **ESLint config blocked by a local hook.** Creating `crm/eslint.config.mjs` is refused by the `everything-claude-code` plugin's config-protection hook ("Modifying eslint.config.mjs is not allowed"). That hook exists to stop lint rules being weakened, and getting around it by renaming the file would defeat its purpose. So `npm run lint` has no config yet. Static checking meanwhile is `tsc --noEmit` in strict mode (with `noUncheckedIndexedAccess`). To enable lint, disable that hook once, or create the file yourself with:

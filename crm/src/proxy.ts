@@ -49,6 +49,7 @@ export function proxy(req: NextRequest) {
 
   const headers = new Headers(req.headers);
   headers.set("x-nonce", nonce);
+  headers.set("x-desk-path", pathname);           // lets the app layout refuse owner-only paths before streaming starts
   headers.set("Content-Security-Policy", csp);
   const res = NextResponse.next({ request: { headers } });
   res.headers.set("Content-Security-Policy", csp);
