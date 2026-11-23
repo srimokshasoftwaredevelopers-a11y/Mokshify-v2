@@ -12,7 +12,7 @@ const fail = [];
 const ok = (cond, msg) => { if (!cond) fail.push(msg); return cond; };
 
 /* pages on disk vs sitemap */
-const SKIP = new Set(["node_modules", ".git", "frames", "assets", "assets-test", "scripts", "src", "docs", "marketing", "partials", "css", "js", "review", "shots", ".claude", ".agents", ".well-known"]);
+const SKIP = new Set(["node_modules", ".git", "frames", "assets", "assets-test", "scripts", "src", "docs", "marketing", "partials", "css", "js", "review", "shots", ".claude", ".agents", ".well-known", "crm", ".vercel"]);
 const disk = [];
 (function walk(d) {
   for (const e of readdirSync(d)) {
@@ -31,7 +31,8 @@ const queue = [...sitemap, "/404.html"];
 const seen = new Set(queue);
 while (queue.length) {
   const path = queue.shift();
-  const res = await fetch(BASE + path, { redirect: "manual" });
+  // VERCEL_BYPASS (optional): crawl a protected Vercel preview; the secret is sent as a header, never printed
+  const res = await fetch(BASE + path, { redirect: "manual", headers: process.env.VERCEL_BYPASS ? { "x-vercel-protection-bypass": process.env.VERCEL_BYPASS } : {} });
   status[path] = res.status;
   if (!res.headers.get("content-type")?.includes("text/html") || res.status !== 200) continue;
   const html = await res.text();
