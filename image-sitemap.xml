@@ -61,9 +61,9 @@
   <url>
     <loc>https://mokshify.io/library/monolith-vs-microservices/</loc>
     <image:image>
-      <image:loc>https://mokshify.io/assets/articles/monolith-vs-microservices-hero.webp</image:loc>
+      <image:loc>https://mokshify.io/assets/articles/monolith-vs-microservices.webp</image:loc>
       <image:title>Monolith vs Microservices: The Honest Decision | Mokshify</image:title>
-      <image:caption>Layered glass panels joined by copper circuit lines on a stone slab.</image:caption>
+      <image:caption>Polished black monolith beside an identical block broken into floating shards.</image:caption>
     </image:image>
   </url>
   <url>
@@ -85,9 +85,9 @@
   <url>
     <loc>https://mokshify.io/library/llm-evaluation/</loc>
     <image:image>
-      <image:loc>https://mokshify.io/assets/articles/llm-evaluation-hero.webp</image:loc>
+      <image:loc>https://mokshify.io/assets/articles/llm-evaluation.webp</image:loc>
       <image:title>LLM Evaluation: Tests for Non-Deterministic Software | Mokshify</image:title>
-      <image:caption>Magnifying glass, micrometer and precision tools on a stone slab.</image:caption>
+      <image:caption>Brass target with glowing rings and darts of light near the centre.</image:caption>
     </image:image>
   </url>
   <url>
@@ -109,9 +109,9 @@
   <url>
     <loc>https://mokshify.io/library/choosing-a-cloud/</loc>
     <image:image>
-      <image:loc>https://mokshify.io/assets/articles/choosing-a-cloud-hero.webp</image:loc>
+      <image:loc>https://mokshify.io/assets/articles/choosing-a-cloud.webp</image:loc>
       <image:title>AWS vs Azure vs OCI vs GCP: An Honest Comparison | Mokshify</image:title>
-      <image:caption>Building model on a glass slab over layered stone and brass foundations.</image:caption>
+      <image:caption>Four brass keys of different shapes on a stone slab, one lifted and lit.</image:caption>
     </image:image>
   </url>
   <url>
@@ -125,9 +125,9 @@
   <url>
     <loc>https://mokshify.io/guides/ai-readiness/</loc>
     <image:image>
-      <image:loc>https://mokshify.io/assets/articles/ai-readiness-hero.webp</image:loc>
+      <image:loc>https://mokshify.io/assets/articles/ai-readiness.webp</image:loc>
       <image:title>AI Readiness Assessment Guide | Mokshify</image:title>
-      <image:caption>Brass optical instrument with lenses and fibres on a stone block.</image:caption>
+      <image:caption>Brass lantern on a stone ledge, a small spark catching on its wick.</image:caption>
     </image:image>
   </url>
   <url>
@@ -141,9 +141,9 @@
   <url>
     <loc>https://mokshify.io/guides/cloud-migration-checklist/</loc>
     <image:image>
-      <image:loc>https://mokshify.io/assets/articles/cloud-migration-checklist-hero.webp</image:loc>
+      <image:loc>https://mokshify.io/assets/articles/cloud-migration-checklist.webp</image:loc>
       <image:title>Cloud Migration Checklist | Mokshify</image:title>
-      <image:caption>Black cubes joined by a copper track that carries brass balls between two stone blocks.</image:caption>
+      <image:caption>Glass spheres rising from a stone ledge in a line and fading into haze.</image:caption>
     </image:image>
   </url>
   <url>
@@ -157,17 +157,17 @@
   <url>
     <loc>https://mokshify.io/guides/validate-mvp/</loc>
     <image:image>
-      <image:loc>https://mokshify.io/assets/articles/validate-mvp-hero.webp</image:loc>
+      <image:loc>https://mokshify.io/assets/articles/validate-mvp.webp</image:loc>
       <image:title>How to Validate an MVP | Mokshify</image:title>
-      <image:caption>Brass calipers, a micrometer and glass blocks on a lit table.</image:caption>
+      <image:caption>Small glowing hot-air balloon tethered to a stone plinth.</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://mokshify.io/guides/why-software-projects-fail/</loc>
     <image:image>
-      <image:loc>https://mokshify.io/assets/articles/why-software-projects-fail-hero.webp</image:loc>
+      <image:loc>https://mokshify.io/assets/articles/why-software-projects-fail.webp</image:loc>
       <image:title>Why Software Projects Fail: Five Patterns | Mokshify</image:title>
-      <image:caption>Stone maze with lit gold paths running through it.</image:caption>
+      <image:caption>Unfinished stone arch with its keystone hovering above the gap.</image:caption>
     </image:image>
   </url>
   <url>
@@ -205,9 +205,9 @@
   <url>
     <loc>https://mokshify.io/journal/</loc>
     <image:image>
-      <image:loc>https://mokshify.io/assets/articles/journal-hero.webp</image:loc>
+      <image:loc>https://mokshify.io/assets/articles/journal.webp</image:loc>
       <image:title>Engineering Journal | Build in Public | Mokshify</image:title>
-      <image:caption>Stacked translucent layers with circuit lines, in rose light.</image:caption>
+      <image:caption>Open book of thin brass pages fanning in warm light.</image:caption>
     </image:image>
   </url>
   <url>
@@ -248,6 +248,94 @@
       <image:loc>https://mokshify.io/assets/hero/mobile-app-development-hero.webp</image:loc>
       <image:title>Mobile App Development Services | Flutter | Mokshify</image:title>
       <image:caption>Floating glass tiles in the dark, one of them lit orange.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/industries/agriculture/</loc>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/pages/agriculture.webp</image:loc>
+      <image:title>Agriculture Software &amp; Websites | Mokshify</image:title>
+      <image:caption>Seed splitting open in layered soil, a glowing root reaching down.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/industries/education/</loc>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/pages/education.webp</image:loc>
+      <image:title>Education Software Development | Mokshify</image:title>
+      <image:caption>Drop falling into a dark pool, rings of ember light spreading out.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/industries/fintech/</loc>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/pages/fintech.webp</image:loc>
+      <image:title>FinTech Software Development | Mokshify</image:title>
+      <image:caption>Amber glass bars rising in height in a row.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/industries/healthcare/</loc>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/pages/healthcare.webp</image:loc>
+      <image:title>Healthcare Software Development | Mokshify</image:title>
+      <image:caption>Laboratory flask with a spiral of glowing amber liquid inside.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/industries/real-estate/</loc>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/pages/real-estate.webp</image:loc>
+      <image:title>Real Estate Software Development | Mokshify</image:title>
+      <image:caption>Surveyor's tripod and plumb bob over dark ground beside a glowing marker stake.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/services/cloud-engineering/</loc>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/pages/cloud-engineering.webp</image:loc>
+      <image:title>Cloud Engineering &amp; DevOps Services | Mokshify</image:title>
+      <image:caption>Floating island of dark rock on a lit brass foundation, surrounded by cloud.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/services/custom-software-development/</loc>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/pages/custom-software-development.webp</image:loc>
+      <image:title>Custom Software Development Services | Mokshify</image:title>
+      <image:caption>Brass mould opening to reveal a glowing amber casting.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/services/legacy-modernization/</loc>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/pages/legacy-modernization.webp</image:loc>
+      <image:title>Legacy Modernization and Software Rescue | Mokshify</image:title>
+      <image:caption>Weathered stone column wrapped in new brass scaffolding.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/services/product-design/</loc>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/pages/product-design.webp</image:loc>
+      <image:title>Product Design and UI/UX Services | Mokshify</image:title>
+      <image:caption>Twisted bronze sculpture on a turntable under a spotlight, faint guide lines around it.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/services/saas-development/</loc>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/pages/saas-development.webp</image:loc>
+      <image:title>SaaS Development Services | Mokshify</image:title>
+      <image:caption>Branching brass coral structure with glowing tips.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/services/web-application-development/</loc>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/pages/web-application-development.webp</image:loc>
+      <image:title>Web Application Development: React and Next.js | Mokshify</image:title>
+      <image:caption>Suspension bridge of glowing brass cables between two dark cliffs.</image:caption>
     </image:image>
   </url>
 </urlset>
