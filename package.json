@@ -8,20 +8,13 @@
     "check": "node scripts/build.mjs --check",
     "serve": "node scripts/serve.mjs 8123",
     "audit": "node scripts/audit-site.mjs",
-    "typecheck": "tsc --noEmit",
-    "build:film": "esbuild src/index.ts --bundle --minify --format=iife --target=es2020 --outfile=js/cinema.js",
-    "optimize": "node scripts/optimize-frames.mjs",
     "verify": "node scripts/check-site.mjs && node scripts/check-keyboard.mjs && node scripts/check-motion.mjs",
     "logo": "node scripts/brand-logo.mjs --preview"
   },
   "license": "UNLICENSED",
-  "dependencies": {
-    "gsap": "^3.15.0"
-  },
   "devDependencies": {
     "esbuild": "^0.28.1",
     "puppeteer-core": "^25.3.0",
-    "sharp": "^0.35.3",
-    "typescript": "^7.0.2"
+    "sharp": "^0.35.3"
   }
 }

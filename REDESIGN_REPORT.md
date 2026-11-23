@@ -106,7 +106,7 @@ These are HTML comments in the pages; none show as visible "TODO" text.
 
 ## Needs you
 
-1. **Push the tag, then delete the film.** I could not push: the credential on this machine (`ajagritecha-hub`) is refused with a 403, and the `gh` account has read access only. Following your rule, nothing from the film is deleted. The new site no longer loads any of it. From an account with write access:
+1. **Done 23 Nov 2026:** the film was deleted on your instruction, without waiting for the tag (see "Film deleted" at the end). Original note: **Push the tag, then delete the film.** I could not push: the credential on this machine (`ajagritecha-hub`) is refused with a 403, and the `gh` account has read access only. Following your rule, nothing from the film is deleted. The new site no longer loads any of it. From an account with write access:
 
    ```sh
    git push origin film-v1 && git ls-remote --tags origin film-v1     # must print the tag
@@ -247,3 +247,34 @@ Re-run everything with `npm run serve`, then `npm run verify` in a second termin
 2. **TODO(asset), hero video:** add `assets/hero/hero.webm`, `hero.mp4` and `hero-poster.webp`. The build turns the video on by itself.
 3. **Optional:** a dark-background version of the M mark, if the small flare specks on oxblood matter to you.
 4. **The six answers** from part 8, whenever you have them.
+
+# Follow-up run: film deleted, type-only hero, push as owner (23 Nov 2026)
+
+## Film deleted
+
+You confirmed the film isn't needed and said not to wait for the tag. The local `film-v1` tag is unchanged on `974d9a2`, and every deleted file can be restored from it (`git checkout film-v1 -- <path>`).
+
+| Deleted | Files | Size |
+|---|---|---|
+| `frames/1/web/`: the film frames (914 WebP + `manifest.json`) | 915 | 52.56 MB |
+| Film engine: `src/FrameLoader.ts`, `FrameSequence.ts`, `ImageCache.ts`, `SceneManager.ts`, `ScrollController.ts`, `index.ts` and `tsconfig.json` (it type-checked only `src/`) | 7 | 21 KB |
+| `js/cinema.js` (bundled engine + GSAP) and `js/main.js` | 2 | 164 KB |
+| `css/styles.css` (film) and `css/pages.css` (pre-redesign stylesheet, linked from no page) | 2 | 101 KB |
+| Film-only tools: `scripts/optimize-frames.mjs`, `sync-frames.ps1`, `export-scene-assets.mjs`, `storyboard-analyzer.html`, `mobile-shots.mjs` (film freeze-frame shots), `validate-seo.mjs` (tested the film canvas) | 6 | 33 KB |
+| **Total in the repo and the deploy** | **932** | **52.87 MB** |
+
+Also removed:
+
+- **Dependencies:** `gsap`, plus `typescript`, which only type-checked the engine. They were 9.6 MB in `node_modules`. `esbuild` stays, because the build now uses it to minify `js/site.js`.
+- **npm scripts:** `build:film`, `optimize` and `typecheck`.
+- **Config:** the `/frames/` cache rules in `vercel.json` and `_headers`, and the frame lines in `.gitignore`.
+- **Docs:** the README's film documentation, rewritten for the current site. It points to `film-v1` for the history.
+
+Kept on purpose:
+
+- The `/benchmarks/` copy about the film, which already carries the dated "retired" note and is the written record.
+- `assets-test/`, a local, git-ignored scratch folder with one film test scene. It isn't in the repo, and it can't be restored from git if deleted.
+
+The files remain in git history (the tag holds them), so the local `.git` folder doesn't shrink. What shrinks is the checkout and every deploy.
+
+**Checked after the rebuild:** 125 routes crawled, 0 non-200, 0 orphans, and sitemap 72 = disk 72. All 72 JSON-LD blocks parse. Keyboard 24/24, motion all pass. Apart from the benchmarks text, no tracked file references `/frames/`, `cinema.js`, `main.js`, `styles.css`, `pages.css` or GSAP.

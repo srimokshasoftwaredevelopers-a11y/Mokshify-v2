@@ -51,6 +51,13 @@ One line of reasoning each. Newest at the bottom of each list.
 - **On phones of 416px and narrower, the header CTA is slightly smaller** (0.75rem), so the 125px logo lockup, the CTA and the menu button fit without horizontal scroll. Verified: 0 overflow at 375px.
 - **Answers (part 8): all six were blank.** Nothing applied; every TODO(confirm) stays as it was.
 
+## Film deletion, type-only hero, owner push (23 Nov 2026)
+
+- **The film was deleted without waiting for the remote tag**, on your explicit instruction. The local `film-v1` tag is kept as it was.
+- **`css/pages.css` was deleted with the film.** It is the pre-redesign editorial stylesheet, and no page links it.
+- **`typescript` was removed** because `tsconfig.json` included only `src/` (the engine). **`esbuild` was kept** because the build minifies `js/site.js` with it.
+- **`scripts/redesign/migrate-shell.mjs` was kept.** It is a one-time migration that already ran; it would refuse to run again on pages without `pages.css`, which is correct.
+
 ## Unresolved
 
 - **`film-v1` tag not on the remote.** The tag exists locally on `974d9a2` (main), but `git push origin film-v1` returned 403: the credential on this machine (`ajagritecha-hub`) has no write access to `srimokshasoftwaredevelopers-a11y/Mokshify-v2`, and the `gh` account (`qflow-token`) has pull-only access. Following your rule, the frames, film engine, `js/main.js`, `css/styles.css`, `css/pages.css` and GSAP are **not deleted**. The new pages no longer load any of them. Morning action: push the tag, then run the deletion listed in `REDESIGN_REPORT.md`.
