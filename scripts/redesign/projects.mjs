@@ -348,7 +348,7 @@ const SELF = { slug: "mokshify-website", name: "This website", industry: "Engine
 const EXTRA_ROWS = [
   { slug: "terravion-in", caseSlug: "terravion-properties", name: "Terravion Properties — terravionproperties.in", industry: "Real estate", kind: "Client website",
     url: "https://terravionproperties.in/", host: "terravionproperties.in", shot: "terravion-in-loc", shotAlt: "Terravion Properties locations page at terravionproperties.in",
-    line: "The second Terravion site: a GIS master plan of every plot, location pages, buyer guides, a journal, and site-visit booking.",
+    line: "The second Terravion site: a GIS Master Plan (a plot-by-plot status grid for each project), location pages, buyer guides, a journal, and site-visit booking.",
     facts: [["13", "location pages"], ["12", "buyer guides"], ["72", "journal articles"]] },
 ];
 
