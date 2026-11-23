@@ -14,6 +14,8 @@ test.describe("on a phone", () => {
     await sheet.getByLabel("Phone", { exact: true }).fill("+91 90000 09999");
     await sheet.getByLabel("Source").selectOption("Phone call");
     await sheet.getByLabel("Note").fill("Wants a website for a clinic");
+    await expect(sheet.getByLabel("Name", { exact: true })).toHaveValue("Phone Enquiry Test");
+    await expect(sheet.getByLabel("Phone", { exact: true })).toHaveValue("+91 90000 09999");
     await sheet.getByRole("button", { name: "Save enquiry" }).click();
     await expect(sheet.getByText("Saved.")).toBeVisible();
     await sheet.getByRole("link", { name: "Open it" }).click();

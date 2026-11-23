@@ -43,7 +43,29 @@ export function EmptyState({ icon, title, body, action }: { icon: IconName; titl
   );
 }
 
-export type Tone = "success" | "warning" | "danger" | "info" | "muted";
+/** a labelled input (server-rendered, for ActionForm) */
+export function Field({ label, name, type = "text", defaultValue, required, placeholder, mono, min, max, step, hint, className = "" }: {
+  label: string; name: string; type?: string; defaultValue?: string | number | null; required?: boolean; placeholder?: string; mono?: boolean;
+  min?: number | string; max?: number | string; step?: number; hint?: string; className?: string;
+}) {
+  return (
+    <label className={`field ${className}`}><span>{label}</span>
+      {type === "textarea"
+        ? <textarea className="input" name={name} defaultValue={defaultValue ?? ""} required={required} placeholder={placeholder} rows={3} />
+        : <input className={`input ${mono || ["number", "date", "tel"].includes(type) ? "mono" : ""}`} name={name} type={type} defaultValue={defaultValue ?? ""} required={required} placeholder={placeholder} min={min} max={max} step={step} />}
+      {hint && <span className="text-xs text-ink-2">{hint}</span>}
+    </label>
+  );
+}
+export function SelectField({ label, name, options, defaultValue, className = "" }: { label: string; name: string; options: { value: string; label: string }[]; defaultValue?: string | null; className?: string }) {
+  return (
+    <label className={`field ${className}`}><span>{label}</span>
+      <select className="input" name={name} defaultValue={defaultValue ?? undefined}>{options.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}</select>
+    </label>
+  );
+}
+
+export type Tone ="success" | "warning" | "danger" | "info" | "muted";
 export function Badge({ tone, children }: { tone: Tone; children: React.ReactNode }) {
   return <span className={`badge tone-${tone}`}>{children}</span>;
 }

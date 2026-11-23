@@ -57,6 +57,26 @@ Judgement calls, one line of reasoning each. Newest at the bottom of each phase.
 - **Every stage change is written to the timeline** ("Proposal sent → Won") and audited (`stage_change`, plus `deal_won` / `deal_lost`).
 - **Phones open the pipeline on the first stage that has deals,** not on the empty "New" column.
 
+## Phase 4 · Clients, projects, payments, renewals
+
+- **Balances are always calculated, never stored.** Balance = agreed − received; only payments marked received count. Lists compute it in SQL; detail pages use the unit-tested `balance()` rule.
+- **A part payment splits the milestone.** The received part is recorded, and the rest becomes a new due milestone, "{name} — balance", with the same due date, so the balance and the overdue flags stay honest. Every payment is written to the project timeline with amount, date, method and reference.
+- **A cancelled milestone stays visible, struck through,** so the history is honest.
+- **The project page warns when the milestones don't add up to the agreed amount.**
+- **"Mark renewed" moves the renewal date forward,** by a year by default and editable, and writes "Hosting renewed until …" to the client's timeline. Reminders then fall 30, 14 and 3 days before the new date. "Stop" sets the status to cancelled; nothing is deleted.
+- **Client tabs are links (`?tab=`),** so they work without JavaScript and can be shared. The default tab is Projects (where the money is); the order follows the spec: contacts, projects, payments, renewals, timeline.
+- **"Shown on the website" requires the live URL** (validated). It is a flag for whoever updates the website's work section; nothing is published automatically.
+- **GSTIN is optional and checked against the 15-character format** (e.g. `36AAAAA0000A1Z5`).
+- **Two small reusable pieces carry every form:**
+  - **`ActionForm`:** any server action; shows its error or success, then resets or closes.
+  - **`DialogButton`:** a native `<dialog>` around server-rendered content.
+
+  The pages stay server components.
+- **Fixed a focus race in quick-add.** A focus moved to the Name field after a 30 ms delay could steal focus back mid-typing and drop the phone number into Name. Name now uses `autofocus`, which native dialogs apply synchronously. The e2e test asserts both values before saving and passed three runs in a row.
+- **Fixed a won-flow regression.** The move dialog's open effect keyed on the deal object; the refresh after saving handed in a new object, which wiped the "Won" confirmation. It now keys on the deal's id.
+- **Subqueries name the outer column explicitly** (`"clients"."id"`). Drizzle renders a bare `"id"` there, which Postgres rejects as ambiguous.
+- **The 1440 px board shows five of seven columns and scrolls sideways for Won and Lost.** All seven fit from about 1600 px. Narrower columns would have squeezed every card; the spec asks for one column per stage, so the board scrolls.
+
 ## Unresolved
 
 - **ESLint config blocked by a local hook.** Creating `crm/eslint.config.mjs` is refused by the `everything-claude-code` plugin's config-protection hook ("Modifying eslint.config.mjs is not allowed"). That hook exists to stop lint rules being weakened, and getting around it by renaming the file would defeat its purpose. So `npm run lint` has no config yet. Static checking meanwhile is `tsc --noEmit` in strict mode (with `noUncheckedIndexedAccess`). To enable lint, disable that hook once, or create the file yourself with:

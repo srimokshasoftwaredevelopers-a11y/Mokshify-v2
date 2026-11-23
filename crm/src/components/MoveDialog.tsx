@@ -18,12 +18,17 @@ export function MoveDialog({ deal, to, lostReasons, onClose, onOptimistic }: {
   const [res, setRes] = useState<DealResult>({});
   const [pending, start] = useTransition();
 
+  // keyed on the deal's id, not the object: a refresh after saving hands in a new object for the
+  // same deal, and must not wipe the result (e.g. "Won. The client and the project are set up.")
+  const dealId = deal?.id ?? null;
+  const initialStage = deal?.stage;
   useEffect(() => {
-    if (!deal) { ref.current?.close(); return; }
+    if (!dealId) { ref.current?.close(); return; }
     setRes({});
-    setStage(to ?? (deal.stage as Stage));
+    setStage(to ?? (initialStage as Stage));
     if (!ref.current?.open) ref.current?.showModal();
-  }, [deal, to]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dealId, to]);
 
   if (!deal) return <dialog ref={ref} className="hidden" />;
   const open = isOpen(stage);

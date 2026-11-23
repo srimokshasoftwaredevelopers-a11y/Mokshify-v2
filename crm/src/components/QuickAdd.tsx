@@ -11,7 +11,9 @@ export function QuickAdd({ sources }: { sources: string[] }) {
   const form = useRef<HTMLFormElement>(null);
   const [round, setRound] = useState(0);
   const [state, action, pending] = useActionState<FormResult, FormData>(quickAddLead, {});
-  const open = () => { dialog.current?.showModal(); setTimeout(() => form.current?.querySelector<HTMLInputElement>("input[name=name]")?.focus(), 30); };
+  // the Name field has autoFocus: showModal() focuses it synchronously. (A delayed focus() here once
+  // stole focus back from the Phone field mid-typing and put the number into Name.)
+  const open = () => dialog.current?.showModal();
 
   useEffect(() => {
     const on = () => open();
@@ -35,7 +37,7 @@ export function QuickAdd({ sources }: { sources: string[] }) {
             <button type="button" className="btn btn-quiet btn-icon" onClick={() => dialog.current?.close()} aria-label="Close"><Icon name="close" /></button>
           </div>
           <form ref={form} action={action} className="grid gap-3" noValidate>
-            <label className="field"><span>Name</span><input className="input" name="name" autoComplete="off" required maxLength={120} aria-invalid={!!state.fields?.name} /></label>
+            <label className="field"><span>Name</span><input className="input" name="name" autoComplete="off" required maxLength={120} aria-invalid={!!state.fields?.name} autoFocus /></label>
             {state.fields?.name && <p className="error-text -mt-2">{state.fields.name}</p>}
             <label className="field"><span>Phone</span><input className="input mono" name="phone" type="tel" inputMode="tel" autoComplete="off" required maxLength={30} placeholder="+91 98765 43210" aria-invalid={!!state.fields?.phone} /></label>
             {state.fields?.phone && <p className="error-text -mt-2">{state.fields.phone}</p>}

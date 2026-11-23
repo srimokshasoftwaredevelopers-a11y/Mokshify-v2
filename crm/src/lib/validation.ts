@@ -90,7 +90,64 @@ export const StageMove = z.discriminatedUnion("to", [
 export type StageMoveInput = z.input<typeof StageMove>;
 export { anyStage };
 
-export const BulkAssign =z.object({ ids: z.array(z.uuid()).min(1).max(500), ownerId: z.uuid() });
+const urlField = z.string().trim().max(300)
+  .refine(v => v === "" || /^https?:\/\/[^\s]+\.[^\s]+$/i.test(v), "Use a full address starting with https://")
+  .transform(v => (v === "" ? null : v)).nullable().optional();
+
+export const ClientInput = z.object({
+  businessName: req("Business name", 160),
+  phone: phoneField,
+  email: emailField,
+  address: opt(300),
+  gstin: z.string().trim().toUpperCase().max(15)
+    .refine(v => v === "" || /^\d{2}[A-Z]{5}\d{4}[A-Z][A-Z\d]Z[A-Z\d]$/.test(v), "A GSTIN has 15 characters, like 36AAAAA0000A1Z5.")
+    .transform(v => (v === "" ? null : v)).nullable().optional(),
+  industry: opt(80),
+  notes: opt(2000),
+});
+
+export const ContactInput = z.object({ name: req("Name", 120), role: opt(80), phone: phoneField, email: emailField });
+
+export const ProjectInput = z.object({
+  name: req("Project name", 160),
+  type: opt(80),
+  status: z.enum(["advance_pending", "in_build", "client_review", "delivered", "maintenance"]),
+  agreedAmount: rupeeField,
+  startDate: dayField,
+  dueDate: dayField,
+  liveUrl: urlField,
+  repoUrl: urlField,
+  stackNotes: opt(1000),
+  showOnWebsite: z.preprocess(v => v === "on" || v === "true" || v === true, z.boolean()),
+}).refine(p => !p.showOnWebsite || !!p.liveUrl, { message: "A project shown on the website needs its live URL.", path: ["liveUrl"] });
+
+export const PaymentInput = z.object({
+  milestone: req("Milestone", 120),
+  amount: rupeeField.refine(n => n > 0, "Enter an amount above ₹0."),
+  dueDate: dayField,
+});
+
+export const PaymentReceived = z.object({
+  receivedDate: z.string().trim().regex(/^\d{4}-\d{2}-\d{2}$/, "Use the date the money arrived."),
+  method: z.enum(["UPI", "Bank transfer", "Cheque", "Cash", "Card", "Other"]),
+  reference: opt(80),
+  amount: rupeeField.refine(n => n > 0, "Enter an amount above ₹0."),
+});
+
+export const RenewalInput = z.object({
+  item: z.enum(["domain", "hosting", "ssl", "maintenance"]),
+  label: opt(160),
+  provider: opt(120),
+  amount: rupeeField,
+  renewalDate: z.string().trim().regex(/^\d{4}-\d{2}-\d{2}$/, "Use the renewal date."),
+});
+
+export const Renewed = z.object({
+  nextDate: z.string().trim().regex(/^\d{4}-\d{2}-\d{2}$/, "Use the next renewal date."),
+  amount: rupeeField,
+});
+
+export const BulkAssign = z.object({ ids: z.array(z.uuid()).min(1).max(500), ownerId: z.uuid() });
 
 /** the first problem as a sentence, for forms */
 export const firstIssue = (e: z.ZodError) => e.issues[0]?.message ?? "Check the form.";

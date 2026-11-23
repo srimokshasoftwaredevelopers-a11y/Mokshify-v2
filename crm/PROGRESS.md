@@ -6,8 +6,8 @@
 | 1 · Foundation | done |
 | 2 · Leads and Today | done |
 | 3 · Pipeline | done |
-| 4 · Clients, projects, payments, renewals | in progress |
-| 5 · Reports and settings | — |
+| 4 · Clients, projects, payments, renewals | done |
+| 5 · Reports and settings | in progress |
 | 6 · Connect the website | — |
 | 7 · Polish | — |
 
