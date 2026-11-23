@@ -1,0 +1,16 @@
+# dependencies and builds
+node_modules/
+.next/
+next-env.d.ts
+*.tsbuildinfo
+
+# local databases (PGlite data directories) and secrets
+.data/
+.env
+.env.*
+!.env.example
+
+# test output
+test-results/
+playwright-report/
+review/

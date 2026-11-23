@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+/* Mokshify Desk — the Mokshify brand, tuned for a working tool (CRM_SPEC.md, DESIGN). */
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/switzer-variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@theme {
+  --color-oxblood-900: #2A0A12;
+  --color-oxblood-700: #4A1422;
+  --color-oxblood-600: #5E1B2C;
+  --color-limestone: #E4E2DC;
+  --color-paper: #F6F5F1;
+  --color-ink: #141012;
+  --color-ink-2: rgb(20 16 18 / 0.68);
+  --color-rule: rgb(20 16 18 / 0.12);
+  --color-brass: #B08D57;
+  --color-success: #2F6B4F;
+  --color-warning: #9A6B14;
+  --color-danger: #A12B2B;
+  --color-info: #2B5C7A;
+  --font-sans: "Switzer", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  --radius-ui: 6px;
+  --ease-out-soft: cubic-bezier(.16, 1, .3, 1);
+}
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--color-limestone); color: var(--color-ink);
+    font-family: var(--font-sans); font-size: 15px; line-height: 1.5;
+    font-feature-settings: "ss01"; -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { letter-spacing: -0.02em; line-height: 1.15; font-weight: 600; }
+  a { color: inherit; }
+  /* visible focus everywhere: brass outline over an ink ring (paper ring on dark surfaces) */
+  :focus-visible { outline: 2px solid var(--color-brass); outline-offset: 2px; box-shadow: 0 0 0 5px var(--focus-ring, var(--color-ink)); border-radius: var(--radius-ui); }
+  .on-dark { --focus-ring: var(--color-paper); }
+  ::selection { background: rgb(176 141 87 / 0.35); }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  }
+}
+
+@layer components {
+  .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+  .label { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-ink-2); }
+
+  .card { background: var(--color-paper); border: 1px solid var(--color-rule); border-radius: var(--radius-ui); box-shadow: 0 1px 2px rgb(20 16 18 / 0.04); }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    min-height: 44px; padding: 0 1rem; border-radius: var(--radius-ui); border: 1px solid transparent;
+    font-weight: 500; font-size: 15px; line-height: 1; white-space: nowrap; text-decoration: none; cursor: pointer;
+    transition: background-color 150ms var(--ease-out-soft), border-color 150ms var(--ease-out-soft), color 150ms;
+  }
+  .btn:disabled { opacity: 0.55; cursor: not-allowed; }
+  .btn-primary { background: var(--color-oxblood-700); color: var(--color-paper); }
+  .btn-primary:hover:not(:disabled) { background: var(--color-oxblood-900); }
+  .btn-ghost { background: transparent; border-color: rgb(20 16 18 / 0.22); color: var(--color-ink); }
+  .btn-ghost:hover:not(:disabled) { border-color: var(--color-ink); }
+  .btn-quiet { background: transparent; color: var(--color-ink); padding: 0 0.75rem; }
+  .btn-quiet:hover:not(:disabled) { background: rgb(20 16 18 / 0.06); }
+  .btn-sm { min-height: 36px; padding: 0 0.75rem; font-size: 14px; }
+  .btn-icon { width: 44px; padding: 0; }
+
+  .field { display: grid; gap: 0.35rem; }
+  .field > span:first-child { font-size: 13px; font-weight: 500; color: var(--color-ink-2); }
+  .input {
+    width: 100%; min-height: 44px; padding: 0.55rem 0.75rem; border: 1px solid rgb(20 16 18 / 0.2); border-radius: var(--radius-ui);
+    background: #fff; color: var(--color-ink); font: inherit; font-size: 15px;
+  }
+  .input:hover { border-color: rgb(20 16 18 / 0.4); }
+  .input[aria-invalid="true"] { border-color: var(--color-danger); }
+  textarea.input { min-height: 88px; resize: vertical; }
+  select.input { appearance: none; background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%); background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 2rem; }
+  .error-text { font-size: 13px; color: var(--color-danger); }
+
+  /* status: colour + a text label (never colour alone) */
+  .badge { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.15rem 0.5rem; border-radius: 999px; font-size: 12px; font-weight: 500; line-height: 1.5; border: 1px solid currentColor; white-space: nowrap; }
+  .badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .tone-success { color: var(--color-success); }
+  .tone-warning { color: var(--color-warning); }
+  .tone-danger { color: var(--color-danger); }
+  .tone-info { color: var(--color-info); }
+  .tone-muted { color: var(--color-ink-2); }
+
+  .skeleton { background: linear-gradient(90deg, rgb(20 16 18 / 0.06), rgb(20 16 18 / 0.1), rgb(20 16 18 / 0.06)); background-size: 200% 100%; border-radius: var(--radius-ui); animation: shimmer 1.4s linear infinite; }
+  @keyframes shimmer { to { background-position: -200% 0; } }
+
+  .table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .table th { text-align: left; font-weight: 500; font-size: 12px; color: var(--color-ink-2); padding: 0.55rem 0.75rem; border-bottom: 1px solid var(--color-rule); white-space: nowrap; }
+  .table td { padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--color-rule); vertical-align: middle; }
+  .table tbody tr:hover { background: rgb(20 16 18 / 0.025); }
+
+  .link { color: var(--color-oxblood-700); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .link:hover { color: var(--color-ink); }
+}
