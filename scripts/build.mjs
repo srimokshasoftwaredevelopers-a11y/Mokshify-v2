@@ -48,14 +48,33 @@ for (const f of cssFiles) {
   }
   if (depth["("] || depth["{"]) throw new Error(`css/src/${f}: unclosed bracket at end of file`);
 }
-const css = cssFiles.map(f => readFileSync(join(cssDir, f), "utf8").trim()).join("\n\n") + "\n";
+const cssSrc = cssFiles.map(f => readFileSync(join(cssDir, f), "utf8").trim()).join("\n\n") + "\n";
+/* site.js (every page) and home.js (home only) are the readable sources; pages load the
+   minified copies (esbuild if installed, else verbatim) */
+let esbuild = null;
+try { esbuild = await import("esbuild"); } catch { /* no esbuild: ship the source */ }
+const minify = name => {
+  const src = readFileSync(join(ROOT, "js", `${name}.js`), "utf8");
+  const out = esbuild ? esbuild.transformSync(src, { minify: true, target: "es2020" }).code : src;
+  write(join(ROOT, "js", `${name}.min.js`), out);
+  return out;
+};
+/* css/site.css is the minified concatenation (css/src/ stays the readable source) */
+const css = esbuild ? esbuild.transformSync(cssSrc, { loader: "css", minify: true }).code : cssSrc;
 write(join(ROOT, "css", "site.css"), css);
-const jsSrc = readFileSync(join(ROOT, "js", "site.js"), "utf8");
-/* site.js is the readable source; pages load the minified copy (esbuild if installed, else verbatim) */
-let jsMin = jsSrc;
-try { jsMin = (await import("esbuild")).transformSync(jsSrc, { minify: true, target: "es2020" }).code; } catch { /* no esbuild: ship the source */ }
-write(join(ROOT, "js", "site.min.js"), jsMin);
+const jsMin = minify("site"), homeMin = minify("home");
 const vars = { cssv: hash(css), jsv: hash(jsMin) };
+const homev = hash(homeMin);
+
+/* home image breaks: <figure class="break-img" data-slot="/assets/home/break-1.webp" data-fallback="slug">.
+   When the slot file exists it is used; until then, the client screenshot <slug>-plate / <slug>-m. */
+const breakFigure = (_, slot, slug) => {
+  const own = existsSync(join(ROOT, slot.replace(/^\//, "")));
+  const inner = own
+    ? `<picture><img src="${slot}" alt="" width="2400" height="1350" loading="lazy" decoding="async"></picture>`
+    : `<picture><source media="(max-width: 40rem)" srcset="/assets/sites/${slug}-m.webp" width="600" height="2597"><img src="/assets/sites/${slug}-plate.webp" alt="" width="1600" height="1000" loading="lazy" decoding="async"></picture>`;
+  return `<figure class="break-img${own ? " own" : ""}" data-slot="${slot}" data-fallback="${slug}">${inner}</figure>`;
+};
 
 /* 2 · partials */
 const raw = {};
@@ -125,9 +144,12 @@ for (const file of pages) {
     (_, open) => `${open}${String(++n).padStart(2, "0")} / ${String(total).padStart(2, "0")}`);
   // home hero video: on only once all three files exist (no 404s before then)
   const heroReady = ["hero.webm", "hero.mp4", "hero-poster.webp"].every(f => existsSync(join(ROOT, "assets", "hero", f)));
-  write(file, numbered.replace(/data-hero-video="(?:pending|ready)"/, `data-hero-video="${heroReady ? "ready" : "pending"}"`));
+  write(file, numbered
+    .replace(/data-hero-video="(?:pending|ready)"/, `data-hero-video="${heroReady ? "ready" : "pending"}"`)
+    .replace(/\/js\/home\.min\.js\?v=[0-9a-f]{10}/g, `/js/home.min.js?v=${homev}`)
+    .replace(/<figure class="break-img(?: own)?" data-slot="([^"]+)" data-fallback="([\w-]+)">[\s\S]*?<\/figure>/g, breakFigure));
 }
 
-console.log(`css ${(css.length / 1024).toFixed(1)} KB (${vars.cssv}) · js ${(jsMin.length / 1024).toFixed(1)} KB min (${vars.jsv})`);
+console.log(`css ${(css.length / 1024).toFixed(1)} KB (${vars.cssv}) · js ${(jsMin.length / 1024).toFixed(1)} KB min (${vars.jsv}) · home js ${(homeMin.length / 1024).toFixed(1)} KB min (${homev})`);
 console.log(`${pages.length} pages · ${regions} regions · ${stale.length} ${check ? "out of date" : "written"}`);
 if (check && stale.length) { console.log(stale.join("\n")); process.exit(1); }

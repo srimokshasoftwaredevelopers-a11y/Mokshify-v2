@@ -67,46 +67,12 @@
     document.head.append(s);
   }
 
-  /* ── home hero: type-only oxblood field until assets/hero/* exist (the build stamps "ready").
-        Then: the poster as the still (slow zoom), and on wide screens with decent connections
-        the slow-motion video fades in over it ── */
-  const heroFig = document.querySelector(".hero.home .hero-img");
-  const heroBtn = document.querySelector(".hero-pause");
-  const video = heroFig && heroFig.querySelector(".hero-video");
-  if (heroFig && heroBtn && video && !reduced && heroFig.dataset.heroVideo === "ready") {
-    const conn = navigator.connection || {};
-    const goodNet = !conn.saveData && !/(^|-)(2g|3g)$/.test(conn.effectiveType || "");
-    const wideEnough = matchMedia("(min-width: 56.25rem)").matches;
-    let playing = true;
-    const pic = document.createElement("picture"), still = new Image();
-    still.src = video.dataset.poster; still.alt = ""; still.decoding = "async";
-    pic.append(still); heroFig.prepend(pic);
-    if (wideEnough && goodNet) {
-      video.poster = video.dataset.poster;
-      for (const [type, key] of [["video/webm", "webm"], ["video/mp4", "mp4"]]) {
-        const s = document.createElement("source");
-        s.src = video.dataset[key]; s.type = type; video.append(s);
-      }
-      video.addEventListener("loadedmetadata", () => { video.playbackRate = 0.6; });
-      video.addEventListener("playing", () => heroFig.classList.add("has-video"), { once: true });
-      video.load();
-      video.play().catch(() => {});
-    }
-    // narrow screens and Save-Data / 2g / 3g get the poster only, never the video
-    heroBtn.hidden = false;
-    heroBtn.addEventListener("click", () => {
-      playing = !playing;
-      if (heroFig.classList.contains("has-video")) { if (playing) video.play().catch(() => {}); else video.pause(); }
-      heroFig.classList.toggle("is-paused", !playing);
-      heroBtn.setAttribute("aria-pressed", String(!playing));
-      heroBtn.querySelector(".sr").textContent = playing ? "Pause background motion" : "Play background motion";
-    });
-  }
-
-  /* ── tabs (home: work by industry). All panels are in the HTML; without JS they all show ── */
+  /* ── tabs (home: work by industry). All panels are in the HTML; without JS they all show.
+        A person choosing a tab fires "tabchoose" (the home work story scrolls to it);
+        list.selectTab(i) selects without firing it (the story follows the scroll) ── */
   for (const list of $$("[role=tablist]")) {
     const tabs = $$("[role=tab]", list);
-    const select = (tab, focus) => {
+    const select = (tab, focus, chosen) => {
       tabs.forEach(t => {
         const on = t === tab;
         t.setAttribute("aria-selected", String(on));
@@ -114,14 +80,16 @@
         document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
       });
       if (focus) tab.focus();
+      if (chosen) list.dispatchEvent(new CustomEvent("tabchoose", { detail: tabs.indexOf(tab) }));
     };
+    list.selectTab = i => select(tabs[i]);
     tabs.forEach((t, i) => {
-      t.addEventListener("click", () => select(t));
+      t.addEventListener("click", () => select(t, false, true));
       t.addEventListener("keydown", e => {
-        const k = { ArrowRight: 1, ArrowLeft: -1, Home: -i, End: tabs.length - 1 - i }[e.key];
+        const k = { ArrowRight: 1, ArrowLeft: -1, ArrowDown: 1, ArrowUp: -1, Home: -i, End: tabs.length - 1 - i }[e.key];
         if (k === undefined) return;
         e.preventDefault();
-        select(tabs[(i + k + tabs.length) % tabs.length], true);
+        select(tabs[(i + k + tabs.length) % tabs.length], true, true);
       });
     });
     select(tabs.find(t => t.getAttribute("aria-selected") === "true") || tabs[0]);
@@ -160,7 +128,13 @@
     // content fades and rises; tools, forms and long-form articles stay still
     const still = el => el.closest(".t-tool, .t-long, .convert-sec") || el.querySelector("form, .est");
     for (const el of $$("main .section-head > :not(h2), main .section-body, main .band .label, main .band-copy > :not(h2), main .band .row")) {
-      if (el.getBoundingClientRect().top > innerHeight && !still(el)) { el.classList.add("will-reveal"); io.observe(el); }
+      if (el.getBoundingClientRect().top <= innerHeight || still(el)) continue;
+      // option cards rise one after another, 120ms apart, instead of as one block
+      const cards = el.matches(".section-body") ? $$(":scope > .options > .option", el) : [];
+      for (const [i, c] of (cards.length ? cards : [el]).entries()) {
+        if (cards.length) c.style.setProperty("--i", i);
+        c.classList.add("will-reveal"); io.observe(c);
+      }
     }
 
     // section headlines reveal line by line behind a clip mask; the markup is restored afterwards

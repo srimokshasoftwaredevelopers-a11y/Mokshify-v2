@@ -89,13 +89,36 @@ for (const s of [56, 72]) {
   await sharp(markSq).resize(s, s).png({ compressionLevel: 9 }).toFile(join(OUT, `mark-${s}.png`));
 }
 
+/* flat mark for dark surfaces: the mark's own silhouette in paper colour. The colour cut-out
+   breaks into specks on oxblood (lens flare, soft reflection), so the alpha is softened
+   (blur 2.5) and thresholded (0.15–0.32): the faint reflection and flare drop out, the M, ring
+   and globe stay. Shape only, from the owner's artwork; nothing is redrawn. */
+{
+  const { data: md, info: mi } = await sharp(markSq).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  const n = mi.width * mi.height, alpha = Buffer.alloc(n);
+  for (let p = 0; p < n; p++) alpha[p] = md[p * 4 + 3];
+  const soft = await sharp(alpha, { raw: { width: mi.width, height: mi.height, channels: 1 } }).blur(2.5).extractChannel(0).raw().toBuffer();
+  const flat = Buffer.alloc(n * 4);
+  for (let p = 0; p < n; p++) {
+    flat[p * 4] = PAPER.r; flat[p * 4 + 1] = PAPER.g; flat[p * 4 + 2] = PAPER.b;
+    flat[p * 4 + 3] = Math.round(255 * Math.min(1, Math.max(0, (soft[p] / 255 - 0.15) / 0.17)));
+  }
+  const flatPng = await sharp(flat, { raw: { width: mi.width, height: mi.height, channels: 4 } }).png().toBuffer();
+  await sharp(flatPng).png({ compressionLevel: 9 }).toFile(join(OUT, "mokshify-mark-paper.png"));
+  // header and footer on dark surfaces: 40px display, 2× pixels
+  for (const s of [40, 80]) {
+    await sharp(flatPng).resize(s, s).webp({ quality: 90, alphaQuality: 100 }).toFile(join(OUT, `mark-paper-${s}.webp`));
+    await sharp(flatPng).resize(s, s).png({ compressionLevel: 9 }).toFile(join(OUT, `mark-paper-${s}.png`));
+  }
+}
+
 /* the lockup without the tagline: mark + divider + wordmark, tagline rows cleared */
 const lock = { left: mark.left, top: Math.min(mark.top, word.top), width: word.left + word.width - mark.left, height: Math.max(mark.top + mark.height, word.top + word.height) - Math.min(mark.top, word.top) };
 const noTag = Buffer.from(rgba);
 for (let y = Math.max(0, tag[0] - 6); y <= Math.min(H - 1, tag[1] + 6); y++) for (let x = right0; x < W; x++) noTag[(y * W + x) * 4 + 3] = 0;
 const lockBuf = await sharp(noTag, { raw: { width: W, height: H, channels: 4 } }).extract(lock).png().toBuffer();
 const lockW = h => Math.round(lock.width * h / lock.height);
-for (const h of [36, 72]) {
+for (const h of [36, 40, 72, 80]) {
   await sharp(lockBuf).resize(lockW(h), h).webp({ quality: 88, alphaQuality: 100 }).toFile(join(OUT, `lockup-${h}.webp`));
   await sharp(lockBuf).resize(lockW(h), h).png({ compressionLevel: 9 }).toFile(join(OUT, `lockup-${h}.png`));
 }

@@ -68,6 +68,8 @@ ok(feedLinks.every(l => status[l] === 200 || disk.includes(l)), "feed.xml links 
 const kb = f => statSync(join(ROOT, f)).size / 1024;
 const css = kb("css/site.css"), js = kb("js/site.min.js") + kb("js/vendor/lenis-1.3.27.min.js");
 ok(css < 60, `css ${css.toFixed(1)} KB ≥ 60`); ok(js < 30, `js ${js.toFixed(1)} KB ≥ 30`);
+const homeJs = js + kb("js/home.min.js");                       // the home page adds its own script
+console.log(`home page js ${homeJs.toFixed(1)} KB (shared ${js.toFixed(1)} KB + home.min.js ${kb("js/home.min.js").toFixed(1)} KB)`);
 const imgs = readdirSync(join(ROOT, "assets", "sites")).filter(f => f.endsWith(".webp")).map(f => [f, kb("assets/sites/" + f)]);
 const mobileImgs = imgs.filter(([f]) => /-m\.webp$|-thumb\.webp$/.test(f));
 const heaviestMobile = mobileImgs.sort((a, b) => b[1] - a[1])[0];

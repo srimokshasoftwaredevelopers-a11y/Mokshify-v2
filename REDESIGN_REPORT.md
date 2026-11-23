@@ -318,3 +318,57 @@ The home hero no longer uses a film still. It is now the "field" variant (`hero 
 - **Branch:** https://github.com/srimokshasoftwaredevelopers-a11y/Mokshify-v2/tree/redesign/enterprise
 - **Git identity for this repo only:** `user.name srimokshasoftwaredevelopers-a11y` and `user.email 278681656+srimokshasoftwaredevelopers-a11y@users.noreply.github.com` (the account's GitHub no-reply address, because it has no public email). Global Git settings are unchanged. Commits made before this point keep their original author; history was not rewritten.
 - **Not done: `gh auth setup-git`.** The token couldn't be stored in gh, so gh's signed-in account on this machine is still `qflow-token` (read-only). Pointing git at gh now would make future pushes run as `qflow-token`. Git Credential Manager is still the helper. To finish the setup later, run `gh auth login -h github.com -p https -w`, approve it as the owner, then run `gh auth setup-git`.
+
+# Home visuals (`HOME_VISUAL_SPEC.md`, 23 Nov 2026)
+
+The home page now has images throughout. It uses only the real client screenshots in `assets/sites/` and the logo in `assets/brand/`. Copy, colours, URLs and sections are unchanged. All motion uses one easing (cubic-bezier(.16,1,.3,1)) and animates transform and opacity only. With reduced motion, or without JavaScript, the page is complete and still.
+
+| Item | What was built |
+|---|---|
+| 1 · Hero showcase | **Desktop:** the hero splits, copy on the left. On the right, three client sites (Next Edge Realty, Medico Diagnostics, AJ Agritech) stack in browser frames at slight angles with soft shadows. They float a few pixels over 8, 10 and 12 seconds and tilt up to 5° toward the cursor. Every 5 seconds the front card goes back and the next comes forward; a mono label underneath names the client and industry. Rotation holds on hover, on focus, when off screen and when the tab is hidden. **Light:** two large radial glows (oxblood-700 and a faint brass) drift over 30 seconds; the hero video slot sits behind them, unchanged. **Phones:** one card under the headline, cross-fading between projects, with no tilt or float. **Pause:** the corner button stops all background motion. |
+| 2 · Showreel | **New strip under the hero:** the six live projects in browser frames, linking to their case studies. The row drifts sideways continuously (80-second loop) and also shifts with the page scroll; it pauses on hover and focus. A duplicate set makes the loop seamless; the duplicates are `aria-hidden` and out of the tab order. Without JS or with reduced motion it is a still row you can swipe sideways. |
+| 3 · Pinned work story | **At 1024px and up**, the work section pins for seven steps, one per project; the industry list on the left advances as you scroll. The project on the right cross-fades and slides in with its name, line, figures and links. Tabs still work by click and keyboard (arrow keys, Home/End) and move the page to that project. Below 1024px, the tabs are the same as before. |
+| 4 · Image breaks | **Two full-width bands at 70vh**, with a slow zoom (1.08 → 1), a 6% parallax and an oxblood gradient. Lines: "You bring the problem — we engineer the product." and "Enterprise-grade. Cloud-native. AI-first. Built to scale from day one." **TODO(asset):** `assets/home/break-1.webp` and `break-2.webp` don't exist yet. Until they do, the bands show the Terravion and Medico screenshots, blurred and graded. Add the files (wide, about 2400×1350) and run `npm run build`; the build switches them in. |
+| 5 · Section details | **Capability rows:** a small preview of a related client site follows the cursor (desktop pointers), using each service page's own pairing; the AI row is captioned "Built by the same team". **Pipeline:** a brass dot travels the line as the section scrolls. **Four ways to begin:** the cards rise one after another, 120ms apart. **CTA band:** the hero's slow light, repeated (home only). |
+| 6 · Header logo | **Dark header, mobile menu and footer:** the M mark is now 40px, in a clean flat paper-colour version. The colour cut-out still showed the flare specks on oxblood, so `npm run logo` now also makes `mark-paper-40/80` from the artwork's own silhouette. **Light surfaces:** the colour lockup, now 40px high. |
+
+**Changed outside `index.html`:**
+- **`js/home.js`, new:** home only, 5.7 KB minified. The hero-video code moved into it from `site.js`.
+- **`css/src/5-home.css`, new.**
+- **`scripts/build.mjs`:**
+  - minifies CSS and both JS files;
+  - stamps the home script's cache hash;
+  - swaps the break images in once they exist.
+- **`scripts/home-images.mjs`, new:** makes the card-size screenshots.
+- **`scripts/brand-logo.mjs`:** adds the flat mark and the 40px lockup.
+- **`partials/nav.html`, `partials/footer.html`:** the 40px logos.
+- **`js/site.js`:**
+  - tabs fire a `tabchoose` event and accept up/down arrows;
+  - option cards reveal one by one.
+- **Checks:** `check-keyboard.mjs` and `check-motion.mjs` have new tests.
+- **Phone screenshot dimensions:** the declared size is corrected to 600×2597 in every work row.
+
+**Checks:**
+
+| Check | Result |
+|---|---|
+| Build and crawl | `npm run check` passes: 73 pages up to date. Crawl: 132 routes, 0 non-200, 0 orphans; sitemap 72 = disk 72. |
+| Keyboard | All pass, including the new tests: <ul><li>the story is pinned at 1440px;</li><li>scrolling selects Agriculture at the fourth project;</li><li>ArrowRight to Finance moves the page to FinCalix and stays pinned;</li><li>clicking Community moves to its project;</li><li>focus on a showcase card holds the rotation past 5 seconds;</li><li>Tab passes the three cards and reaches the pause button;</li><li>Enter pauses everything (reel and light confirmed paused) and Space resumes.</li></ul> |
+| Lighthouse `/`, desktop | 98 / 100 / 100 / 100, LCP 1.0 s, CLS 0.000 |
+| Lighthouse `/`, mobile | 96 / 100 / 100 / 100, LCP 2.6 s, CLS 0.000 |
+| Lazy loading | Everything below the hero is lazy-loaded. |
+| Mobile first-view images | 272 KB (budget 400 KB) |
+| Reduced motion | 0 animating, 0 hidden, no video or Lenis requests, pause button hidden (7 routes) |
+| JavaScript off | 0 hidden elements, 0 hidden tab panels, 0 zeroed figures, 0 running animations (7 routes) |
+| 375px | 0 horizontal overflow on all 72 sitemap routes; the Call/WhatsApp bar works |
+| Weight | CSS 51.6 KB (now minified). JS: 28.3 KB on every page; 34.0 KB on the home page, which adds `home.min.js`. That is 4 KB over the 30 KB shared budget on this one page (see `DECISIONS.md`). |
+
+**Screenshots:** `review/home-visual/`.
+- **Hero:** `hero-a`, `hero-b` and `hero-c`, three moments of the showcase, at 1440 and 375.
+- **Reel, work story and breaks:** `reel`, `work-1`/`work-2`/`work-3` (the pinned story at three steps; tabs at 375), `break-1`, `break-2`.
+- **Sections and CTA:** `capabilities` (with the cursor preview at 1440), `pipeline` (dot mid-line), `four-ways`, `cta`.
+
+**Still needs you:**
+1. **TODO(asset):** two wide photographs for the image breaks, `assets/home/break-1.webp` and `break-2.webp`. The blurred screenshots are a stand-in.
+2. **TODO(asset), unchanged:** the hero video files, `assets/hero/hero.webm`, `hero.mp4` and `hero-poster.webp`.
+3. **Optional:** a Somallamma Temple screenshot, which would let it join the reel.

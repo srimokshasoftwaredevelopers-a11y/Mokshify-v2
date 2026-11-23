@@ -10,7 +10,8 @@ const out = [];
 const check = (name, cond) => out.push(`${cond ? "PASS" : "FAIL"} ${name}`);
 const hiddenCount = () => [...document.querySelectorAll("main *")].filter(e => {
   const s = getComputedStyle(e);
-  return e.getClientRects().length && (parseFloat(s.opacity) < 0.99 || s.visibility === "hidden") && !e.closest(".hp, .hero-img, [aria-hidden=true]") && !e.matches("input[type=radio], input[type=checkbox]");   // native radios sit under visible labels by design
+  return e.getClientRects().length && (parseFloat(s.opacity) < 0.99 || s.visibility === "hidden") && !e.closest(".hp, .hero-img, [aria-hidden=true]") && !e.matches("input[type=radio], input[type=checkbox]")   // native radios sit under visible labels by design
+    && !e.closest('.sc-card:not([data-pos="0"])');   // the showcase's back cards are drawn at 88% / 66% for depth: visible, not hidden
 }).length;
 const scrollAll = async p => p.evaluate(async () => { for (let y = 0; y < document.documentElement.scrollHeight; y += 500) { scrollTo(0, y); await new Promise(r => setTimeout(r, 40)); } scrollTo(0, 0); });
 
@@ -39,7 +40,12 @@ for (const r of ROUTES) {
   const hidden = await p.evaluate(hiddenCount);
   const panels = await p.evaluate(() => [...document.querySelectorAll("[role=tabpanel]")].filter(x => x.hidden || getComputedStyle(x).display === "none").length);
   const facts = await p.evaluate(() => [...document.querySelectorAll(".facts b")].filter(b => /^\D*0(\.0+)?\D*$/.test(b.textContent.trim())).length);
-  check(`JS off ${r}: ${hidden} hidden elements, ${panels} hidden tab panels, ${facts} zeroed figures`, hidden === 0 && panels === 0 && facts === 0);
+  // page timers don't run with JavaScript off, so scroll synchronously, then count what still runs
+  await p.evaluate(() => { for (let y = 0; y < document.documentElement.scrollHeight; y += 500) scrollTo(0, y); });
+  await new Promise(s => setTimeout(s, 300));
+  // things that move on their own (time-based). Scroll-linked progress (the spine) only follows the reader's scroll
+  const moving = await p.evaluate(() => document.getAnimations().filter(a => a.playState === "running" && a.timeline === document.timeline).length);
+  check(`JS off ${r}: ${hidden} hidden elements, ${panels} hidden tab panels, ${facts} zeroed figures, ${moving} running animations`, hidden === 0 && panels === 0 && facts === 0 && moving === 0);
   await p.close();
 }
 
@@ -49,6 +55,11 @@ for (const r of ["/", "/work/qflow/", "/services/"]) {
   p.on("request", q => { if (/\.(webm|mp4)$|lenis/.test(q.url())) media.push(q.url().split("/").pop()); });
   await p.setViewport({ width: 375, height: 812, isMobile: true, hasTouch: true });
   await p.goto(BASE + r, { waitUntil: "networkidle0" });
+  if (r === "/") {
+    // first view on a phone: every image fetched before any scrolling, budget 400 KB
+    const kb = await p.evaluate(() => performance.getEntriesByType("resource").filter(e => /\.(webp|png|jpe?g|avif|svg)(\?|$)/.test(e.name)).reduce((s, e) => s + (e.encodedBodySize || e.transferSize || 0), 0) / 1024);
+    check(`375 /: first-view image weight ${kb.toFixed(0)} KB (budget 400 KB)`, kb < 400);
+  }
   await scrollAll(p);
   const over = await p.evaluate(() => document.documentElement.scrollWidth - innerWidth);
   const bar = await p.evaluate(() => { const c = document.querySelector(".contact-bar"); const a = [...c.querySelectorAll("a")]; return getComputedStyle(c).position === "fixed" && a.some(x => x.href.startsWith("tel:+919391248520")) && a.some(x => x.href.includes("wa.me/919391248520")); });

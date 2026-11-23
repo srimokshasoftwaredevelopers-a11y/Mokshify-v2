@@ -64,7 +64,7 @@ ${section("Fact strip", "", table([["Industry", m.industry], ["Type", m.kind], [
   s = s.replace(/<section class="section">\s*<div class="wrap">\s*<div class="section-body">\s*<\/div>\s*<\/div>\s*<\/section>\s*/g, "");
   const gallery = section("00 / 00 &middot; Gallery", "Gallery", `<div class="gallery">
   <figure>${frame(p)}<figcaption>Desktop, 1440 px — captured from the live site on 23 Nov 2026.</figcaption></figure>
-  <figure><div class="frame phone"><div class="frame-view"><img src="/assets/sites/${m.shot}-m.webp" alt="${m.host} on a phone" width="600" height="1350" loading="lazy" decoding="async"></div></div><figcaption>Phone, 390 px.</figcaption></figure>
+  <figure><div class="frame phone"><div class="frame-view"><img src="/assets/sites/${m.shot}-m.webp" alt="${m.host} on a phone" width="600" height="2597" loading="lazy" decoding="async"></div></div><figcaption>Phone, 390 px.</figcaption></figure>
 </div>`);
   const results = [...s.matchAll(/<section class="section(?: dark)?">[\s\S]*?<\/section>/g)].map(x => x[0]).find(x => /<h2>(Results|Performance &amp; deployment)<\/h2>/.test(x));
   if (results) s = s.replace(results, () => results + "\n\n" + gallery);

@@ -52,7 +52,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="/css/site.css?v=884902b080">
+<link rel="stylesheet" href="/css/site.css?v=f1dd3b6a9c">
 <!-- /include:head -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -88,8 +88,8 @@
 <header class="site-nav" id="site-nav">
   <div class="nav-bar">
     <a class="nav-brand" href="/" aria-current="page" aria-label="Mokshify home">
-      <picture class="logo-light"><source type="image/webp" srcset="/assets/brand/lockup-36.webp 1x, /assets/brand/lockup-72.webp 2x"><img src="/assets/brand/lockup-72.png" alt="" width="125" height="36"></picture>
-      <span class="logo-dark"><picture><source type="image/webp" srcset="/assets/brand/mark-56.webp"><img src="/assets/brand/mark-56.png" alt="" width="28" height="28"></picture><span class="logo-word">Mokshify</span></span>
+      <picture class="logo-light"><source type="image/webp" srcset="/assets/brand/lockup-40.webp 1x, /assets/brand/lockup-80.webp 2x"><img src="/assets/brand/lockup-80.png" alt="" width="139" height="40"></picture>
+      <span class="logo-dark"><picture><source type="image/webp" srcset="/assets/brand/mark-paper-40.webp 1x, /assets/brand/mark-paper-80.webp 2x"><img src="/assets/brand/mark-paper-80.png" alt="" width="40" height="40"></picture><span class="logo-word">Mokshify</span></span>
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-main"><span class="nav-toggle-box" aria-hidden="true"></span><span class="sr">Menu</span></button>
     <nav class="nav-main" id="nav-main" aria-label="Site">
@@ -279,17 +279,47 @@
 <header class="hero dark home hero-title">
   <!-- TODO(asset): hero video. Add assets/hero/hero.webm, hero.mp4 and hero-poster.webp, then npm run build — the build switches data-hero-video to "ready" on its own. Until then the hero is the type-only oxblood field and this slot stays hidden. -->
   <figure class="hero-img" data-hero-video="pending"><video class="hero-video" muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1" data-webm="/assets/hero/hero.webm" data-mp4="/assets/hero/hero.mp4" data-poster="/assets/hero/hero-poster.webp"></video></figure>
-  <div class="wrap">
-    <p class="pkicker on-spine">AI-first product studio &middot; Hyderabad</p>
-    <h1><span class="ln"><span>Engineering ideas into</span></span> <span class="ln"><span>scalable software.</span></span></h1>
-    <p class="plain hero-sub">Mokshify builds websites, mobile apps and business software for companies. You bring the problem — we engineer the product.</p>
-    <div class="hero-actions">
-      <a class="btn" href="/consult/">Book a strategy call</a>
-      <a class="btn ghost" href="https://wa.me/919391248520" rel="noopener">WhatsApp us</a>
+  <div class="glow" aria-hidden="true"></div>
+  <div class="wrap hero-split">
+    <div class="hero-copy">
+      <p class="pkicker on-spine">AI-first product studio &middot; Hyderabad</p>
+      <h1><span class="ln"><span>Engineering ideas into</span></span> <span class="ln"><span>scalable software.</span></span></h1>
+      <p class="plain hero-sub">Mokshify builds websites, mobile apps and business software for companies. You bring the problem — we engineer the product.</p>
+      <div class="hero-actions">
+        <a class="btn" href="/consult/">Book a strategy call</a>
+        <a class="btn ghost" href="https://wa.me/919391248520" rel="noopener">WhatsApp us</a>
+      </div>
+    </div>
+    <div class="showcase" role="group" aria-label="Client websites we built">
+      <ul class="sc-stack">
+        <li class="sc-card" data-pos="0" data-name="Next Edge Realty" data-ind="Real estate"><a class="frame sc-frame" href="/work/next-edge-realty/" aria-label="Next Edge Realty, real estate: read the case study"><span class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>nextedgerealty.com</span></span><span class="frame-view"><picture><source media="(max-width: 56.25rem)" srcset="/assets/sites/next-edge-realty-card-s.webp" width="640" height="400"><img src="/assets/sites/next-edge-realty-card.webp" alt="" width="960" height="600" fetchpriority="high" decoding="async"></picture></span></a></li>
+        <li class="sc-card" data-pos="1" data-name="Medico Diagnostics" data-ind="Healthcare"><a class="frame sc-frame" href="/work/medico-diagnostics/" aria-label="Medico Diagnostics, healthcare: read the case study"><span class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>medicodiagnostics.in</span></span><span class="frame-view"><picture><source media="(max-width: 56.25rem)" srcset="/assets/sites/medico-card-s.webp" width="640" height="400"><img src="/assets/sites/medico-card.webp" alt="" width="960" height="600" decoding="async"></picture></span></a></li>
+        <li class="sc-card" data-pos="2" data-name="AJ Agritech" data-ind="Agriculture"><a class="frame sc-frame" href="/work/aj-agritech/" aria-label="AJ Agritech, agriculture: read the case study"><span class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>ajagritech.com</span></span><span class="frame-view"><picture><source media="(max-width: 56.25rem)" srcset="/assets/sites/aj-agritech-card-s.webp" width="640" height="400"><img src="/assets/sites/aj-agritech-card.webp" alt="" width="960" height="600" decoding="async"></picture></span></a></li>
+      </ul>
+      <p class="sc-label" aria-hidden="true"><span class="sc-name">Next Edge Realty</span> <span class="sc-sep">&middot;</span> <span class="sc-ind">Real estate</span></p>
     </div>
   </div>
   <button class="hero-pause" type="button" aria-pressed="false" hidden><span class="hero-pause-icon" aria-hidden="true"></span><span class="sr">Pause background motion</span></button>
 </header>
+
+<section class="reel dark" aria-label="Recent client work">
+  <div class="reel-move">
+    <ul class="reel-track">
+      <li><a class="reel-card" href="/work/next-edge-realty/"><span class="frame"><span class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>nextedgerealty.com</span></span><span class="frame-view"><img src="/assets/sites/next-edge-realty-card-s.webp" alt="" width="640" height="400" loading="lazy" decoding="async"></span></span><span class="reel-name">Next Edge Realty</span></a></li>
+      <li><a class="reel-card" href="/work/terravion-properties/"><span class="frame"><span class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>terravionproperties.com</span></span><span class="frame-view"><img src="/assets/sites/terravion-card-s.webp" alt="" width="640" height="400" loading="lazy" decoding="async"></span></span><span class="reel-name">Terravion Properties</span></a></li>
+      <li><a class="reel-card" href="/work/medico-diagnostics/"><span class="frame"><span class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>medicodiagnostics.in</span></span><span class="frame-view"><img src="/assets/sites/medico-card-s.webp" alt="" width="640" height="400" loading="lazy" decoding="async"></span></span><span class="reel-name">Medico Diagnostics</span></a></li>
+      <li><a class="reel-card" href="/work/aj-agritech/"><span class="frame"><span class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>ajagritech.com</span></span><span class="frame-view"><img src="/assets/sites/aj-agritech-card-s.webp" alt="" width="640" height="400" loading="lazy" decoding="async"></span></span><span class="reel-name">AJ Agritech</span></a></li>
+      <li><a class="reel-card" href="/work/fincalix/"><span class="frame"><span class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>fincalix.com</span></span><span class="frame-view"><img src="/assets/sites/fincalix-card-s.webp" alt="" width="640" height="400" loading="lazy" decoding="async"></span></span><span class="reel-name">FinCalix</span></a></li>
+      <li><a class="reel-card" href="/work/qflow/"><span class="frame"><span class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>qflow.in</span></span><span class="frame-view"><img src="/assets/sites/qflow-card-s.webp" alt="" width="640" height="400" loading="lazy" decoding="async"></span></span><span class="reel-name">Qflow</span></a></li>
+      <li class="reel-dup" aria-hidden="true"><a class="reel-card" href="/work/next-edge-realty/" tabindex="-1"><span class="frame"><span class="frame-bar"><i></i><i></i><i></i><span>nextedgerealty.com</span></span><span class="frame-view"><img src="/assets/sites/next-edge-realty-card-s.webp" alt="" width="640" height="400" loading="lazy" decoding="async"></span></span><span class="reel-name">Next Edge Realty</span></a></li>
+      <li class="reel-dup" aria-hidden="true"><a class="reel-card" href="/work/terravion-properties/" tabindex="-1"><span class="frame"><span class="frame-bar"><i></i><i></i><i></i><span>terravionproperties.com</span></span><span class="frame-view"><img src="/assets/sites/terravion-card-s.webp" alt="" width="640" height="400" loading="lazy" decoding="async"></span></span><span class="reel-name">Terravion Properties</span></a></li>
+      <li class="reel-dup" aria-hidden="true"><a class="reel-card" href="/work/medico-diagnostics/" tabindex="-1"><span class="frame"><span class="frame-bar"><i></i><i></i><i></i><span>medicodiagnostics.in</span></span><span class="frame-view"><img src="/assets/sites/medico-card-s.webp" alt="" width="640" height="400" loading="lazy" decoding="async"></span></span><span class="reel-name">Medico Diagnostics</span></a></li>
+      <li class="reel-dup" aria-hidden="true"><a class="reel-card" href="/work/aj-agritech/" tabindex="-1"><span class="frame"><span class="frame-bar"><i></i><i></i><i></i><span>ajagritech.com</span></span><span class="frame-view"><img src="/assets/sites/aj-agritech-card-s.webp" alt="" width="640" height="400" loading="lazy" decoding="async"></span></span><span class="reel-name">AJ Agritech</span></a></li>
+      <li class="reel-dup" aria-hidden="true"><a class="reel-card" href="/work/fincalix/" tabindex="-1"><span class="frame"><span class="frame-bar"><i></i><i></i><i></i><span>fincalix.com</span></span><span class="frame-view"><img src="/assets/sites/fincalix-card-s.webp" alt="" width="640" height="400" loading="lazy" decoding="async"></span></span><span class="reel-name">FinCalix</span></a></li>
+      <li class="reel-dup" aria-hidden="true"><a class="reel-card" href="/work/qflow/" tabindex="-1"><span class="frame"><span class="frame-bar"><i></i><i></i><i></i><span>qflow.in</span></span><span class="frame-view"><img src="/assets/sites/qflow-card-s.webp" alt="" width="640" height="400" loading="lazy" decoding="async"></span></span><span class="reel-name">Qflow</span></a></li>
+    </ul>
+  </div>
+</section>
 
 <section class="section work-by-industry" aria-labelledby="work-h">
   <div class="wrap">
@@ -300,6 +330,7 @@
       <a class="more-link" href="/work/">All case studies &rarr;</a>
     </header>
     <div class="section-body wide tabs">
+      <div class="story-pin">
       <div class="tablist" role="tablist" aria-label="Work by industry">
         <button role="tab" id="tab-re" aria-controls="panel-re" aria-selected="true">Real estate</button>
         <button role="tab" id="tab-hc" aria-controls="panel-hc" aria-selected="false">Healthcare</button>
@@ -313,7 +344,7 @@
         <div class="work">
           <!-- include:work-next-edge-realty -->
           <article class="work-row">
-            <a class="work-shot" href="/work/next-edge-realty/" tabindex="-1" aria-hidden="true"><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>nextedgerealty.com</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/next-edge-realty-m.webp" width="600" height="1350"><img src="/assets/sites/next-edge-realty.webp" alt="Next Edge Realty homepage, captured from the live site" width="1200" height="2000" loading="lazy" decoding="async"></picture></div></div></a>
+            <a class="work-shot" href="/work/next-edge-realty/" tabindex="-1" aria-hidden="true"><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>nextedgerealty.com</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/next-edge-realty-m.webp" width="600" height="2597"><img src="/assets/sites/next-edge-realty.webp" alt="Next Edge Realty homepage, captured from the live site" width="1200" height="2000" loading="lazy" decoding="async"></picture></div></div></a>
             <div class="work-text">
               <p class="label">Real estate &middot; Client website</p>
               <h3><a href="/work/next-edge-realty/">Next Edge Realty</a></h3>
@@ -325,7 +356,7 @@
           <!-- /include:work-next-edge-realty -->
           <!-- include:work-terravion-properties -->
           <article class="work-row">
-            <a class="work-shot" href="/work/terravion-properties/" tabindex="-1" aria-hidden="true"><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>terravionproperties.com</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/terravion-m.webp" width="600" height="1350"><img src="/assets/sites/terravion.webp" alt="Terravion Properties homepage, captured from the live site" width="1200" height="2000" loading="lazy" decoding="async"></picture></div></div></a>
+            <a class="work-shot" href="/work/terravion-properties/" tabindex="-1" aria-hidden="true"><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>terravionproperties.com</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/terravion-m.webp" width="600" height="2597"><img src="/assets/sites/terravion.webp" alt="Terravion Properties homepage, captured from the live site" width="1200" height="2000" loading="lazy" decoding="async"></picture></div></div></a>
             <div class="work-text">
               <p class="label">Real estate &middot; Client website</p>
               <h3><a href="/work/terravion-properties/">Terravion Properties</a></h3>
@@ -342,7 +373,7 @@
         <div class="work">
           <!-- include:work-medico-diagnostics -->
           <article class="work-row">
-            <a class="work-shot" href="/work/medico-diagnostics/" tabindex="-1" aria-hidden="true"><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>medicodiagnostics.in</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/medico-m.webp" width="600" height="1350"><img src="/assets/sites/medico.webp" alt="Medico Diagnostics homepage, captured from the live site" width="1200" height="2000" loading="lazy" decoding="async"></picture></div></div></a>
+            <a class="work-shot" href="/work/medico-diagnostics/" tabindex="-1" aria-hidden="true"><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>medicodiagnostics.in</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/medico-m.webp" width="600" height="2597"><img src="/assets/sites/medico.webp" alt="Medico Diagnostics homepage, captured from the live site" width="1200" height="2000" loading="lazy" decoding="async"></picture></div></div></a>
             <div class="work-text">
               <p class="label">Healthcare &middot; Client website</p>
               <h3><a href="/work/medico-diagnostics/">Medico Diagnostics</a></h3>
@@ -359,7 +390,7 @@
         <div class="work">
           <!-- include:work-aj-agritech -->
           <article class="work-row">
-            <a class="work-shot" href="/work/aj-agritech/" tabindex="-1" aria-hidden="true"><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>ajagritech.com</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/aj-agritech-m.webp" width="600" height="1350"><img src="/assets/sites/aj-agritech.webp" alt="AJ Agritech homepage, captured from the live site" width="1200" height="2000" loading="lazy" decoding="async"></picture></div></div></a>
+            <a class="work-shot" href="/work/aj-agritech/" tabindex="-1" aria-hidden="true"><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>ajagritech.com</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/aj-agritech-m.webp" width="600" height="2597"><img src="/assets/sites/aj-agritech.webp" alt="AJ Agritech homepage, captured from the live site" width="1200" height="2000" loading="lazy" decoding="async"></picture></div></div></a>
             <div class="work-text">
               <p class="label">Agriculture &middot; Client website</p>
               <h3><a href="/work/aj-agritech/">AJ Agritech</a></h3>
@@ -376,7 +407,7 @@
         <div class="work">
           <!-- include:work-fincalix -->
           <article class="work-row">
-            <a class="work-shot" href="/work/fincalix/" tabindex="-1" aria-hidden="true"><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>fincalix.com</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/fincalix-m.webp" width="600" height="1350"><img src="/assets/sites/fincalix.webp" alt="FinCalix homepage, captured from the live site" width="1200" height="2000" loading="lazy" decoding="async"></picture></div></div></a>
+            <a class="work-shot" href="/work/fincalix/" tabindex="-1" aria-hidden="true"><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>fincalix.com</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/fincalix-m.webp" width="600" height="2597"><img src="/assets/sites/fincalix.webp" alt="FinCalix homepage, captured from the live site" width="1200" height="2000" loading="lazy" decoding="async"></picture></div></div></a>
             <div class="work-text">
               <p class="label">Finance &middot; Our product</p>
               <h3><a href="/work/fincalix/">FinCalix</a></h3>
@@ -410,7 +441,7 @@
         <div class="work">
           <!-- include:work-qflow -->
           <article class="work-row">
-            <a class="work-shot" href="/work/qflow/" tabindex="-1" aria-hidden="true"><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>qflow.in</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/qflow-m.webp" width="600" height="1350"><img src="/assets/sites/qflow.webp" alt="Qflow homepage, captured from the live site" width="1200" height="2000" loading="lazy" decoding="async"></picture></div></div></a>
+            <a class="work-shot" href="/work/qflow/" tabindex="-1" aria-hidden="true"><div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>qflow.in</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/qflow-m.webp" width="600" height="2597"><img src="/assets/sites/qflow.webp" alt="Qflow homepage, captured from the live site" width="1200" height="2000" loading="lazy" decoding="async"></picture></div></div></a>
             <div class="work-text">
               <p class="label">Product &middot; Our product</p>
               <h3><a href="/work/qflow/">Qflow</a></h3>
@@ -422,9 +453,16 @@
           <!-- /include:work-qflow -->
         </div>
       </div>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- TODO(asset): image break 1. Add assets/home/break-1.webp (wide, about 2400×1350) and run npm run build: the build swaps it in. Until then it shows the Terravion Properties screenshot under the oxblood grade. -->
+<div class="break">
+  <figure class="break-img" data-slot="/assets/home/break-1.webp" data-fallback="terravion"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/terravion-m.webp" width="600" height="2597"><img src="/assets/sites/terravion-plate.webp" alt="" width="1600" height="1000" loading="lazy" decoding="async"></picture></figure>
+  <div class="wrap"><p class="break-line">You bring the problem — we engineer the product.</p></div>
+</div>
 
 <section class="section capabilities">
   <div class="wrap">
@@ -436,17 +474,17 @@
     </header>
     <div class="section-body wide">
       <div class="grid">
-        <a class="card" href="/services/ai-product-development/"><b>AI Products</b><span>LLM applications, retrieval pipelines and integrations with OpenAI, Google AI and Claude, shipped as real products rather than demos.</span></a>
-        <a class="card" href="/services/saas-development/"><b>SaaS Platforms</b><span>Multi-tenant, cloud-native systems engineered to scale from the first customer.</span></a>
-        <a class="card" href="/services/mobile-app-development/"><b>Mobile Apps</b><span>Flutter and native experiences that share one production backend.</span></a>
-        <a class="card" href="/services/custom-software-development/"><b>Enterprise Software</b><span>Internal platforms, dashboards and automations that switch businesses on.</span></a>
-        <a class="card" href="/services/cloud-engineering/"><b>Cloud Solutions</b><span>Architecture and operations across AWS, Azure, Oracle Cloud and Google Cloud, with Docker, Kubernetes, Terraform and GitHub Actions underneath.</span></a>
+        <a class="card" href="/services/ai-product-development/" data-preview="/assets/sites/qflow-card-s.webp" data-caption="Built by the same team · Qflow"><b>AI Products</b><span>LLM applications, retrieval pipelines and integrations with OpenAI, Google AI and Claude, shipped as real products rather than demos.</span></a>
+        <a class="card" href="/services/saas-development/" data-preview="/assets/sites/qflow-card-s.webp" data-caption="Qflow"><b>SaaS Platforms</b><span>Multi-tenant, cloud-native systems engineered to scale from the first customer.</span></a>
+        <a class="card" href="/services/mobile-app-development/" data-preview="/assets/sites/fincalix-card-s.webp" data-caption="FinCalix"><b>Mobile Apps</b><span>Flutter and native experiences that share one production backend.</span></a>
+        <a class="card" href="/services/custom-software-development/" data-preview="/assets/sites/aj-agritech-card-s.webp" data-caption="AJ Agritech"><b>Enterprise Software</b><span>Internal platforms, dashboards and automations that switch businesses on.</span></a>
+        <a class="card" href="/services/cloud-engineering/" data-preview="/assets/sites/medico-card-s.webp" data-caption="Medico Diagnostics"><b>Cloud Solutions</b><span>Architecture and operations across AWS, Azure, Oracle Cloud and Google Cloud, with Docker, Kubernetes, Terraform and GitHub Actions underneath.</span></a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section dark">
+<section class="section dark pipe-sec">
   <div class="wrap">
     <header class="section-head split">
       <p class="label on-spine">03 / 05 &middot; How it gets built</p>
@@ -510,6 +548,12 @@
     </div>
   </div>
 </section>
+
+<!-- TODO(asset): image break 2. Add assets/home/break-2.webp (wide, about 2400×1350) and run npm run build: the build swaps it in. Until then it shows the Medico Diagnostics screenshot under the oxblood grade. -->
+<div class="break">
+  <figure class="break-img" data-slot="/assets/home/break-2.webp" data-fallback="medico"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/medico-m.webp" width="600" height="2597"><img src="/assets/sites/medico-plate.webp" alt="" width="1600" height="1000" loading="lazy" decoding="async"></picture></figure>
+  <div class="wrap"><p class="break-line">Enterprise-grade. Cloud-native. AI-first. Built to scale from day one.</p></div>
+</div>
 
 <section class="section">
   <div class="wrap">
@@ -583,7 +627,7 @@
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-id">
-        <a class="foot-brand on-spine" href="/" aria-label="Mokshify home"><picture><source type="image/webp" srcset="/assets/brand/mark-72.webp"><img src="/assets/brand/mark-72.png" alt="" width="36" height="36" loading="lazy"></picture><span>Mokshify</span></a>
+        <a class="foot-brand on-spine" href="/" aria-label="Mokshify home"><picture><source type="image/webp" srcset="/assets/brand/mark-paper-40.webp 1x, /assets/brand/mark-paper-80.webp 2x"><img src="/assets/brand/mark-paper-80.png" alt="" width="40" height="40" loading="lazy"></picture><span>Mokshify</span></a>
         <p class="label foot-tag">Digital solutions. Limitless impact.</p>
       </div>
       <p class="foot-pos">Mokshify builds websites, apps and software for businesses — from the first sketch to a live product your customers use.</p>
@@ -658,7 +702,8 @@
   <a href="tel:+919391248520"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h3l1.4 4-2 1.4a12 12 0 0 0 6.1 6.1l1.4-2 4 1.4v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"/></svg>Call</a>
   <a href="https://wa.me/919391248520" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/></svg>WhatsApp</a>
 </div>
-<script src="/js/site.min.js?v=8e93050dde" defer></script>
+<script src="/js/site.min.js?v=acabd6fee3" defer></script>
 <!-- /include:footer -->
+<script src="/js/home.min.js?v=de1d15bd7f" defer></script>
 </body>
 </html>

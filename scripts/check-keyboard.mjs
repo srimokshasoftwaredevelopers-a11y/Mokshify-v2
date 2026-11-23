@@ -50,19 +50,45 @@ await p.keyboard.press("ArrowRight");
 check("ArrowRight moves to the next industry tab", await p.evaluate(() => document.activeElement.id === "tab-hc" && document.getElementById("tab-hc").getAttribute("aria-selected") === "true" && !document.getElementById("panel-hc").hidden && document.getElementById("panel-re").hidden));
 check("all six panels are in the HTML", await p.evaluate(() => document.querySelectorAll('[role="tabpanel"] .work-row').length >= 7));
 
-/* hero pause/play: only when assets/hero/* exist; before then nothing moves, so there is no button */
-if (await p.evaluate(() => document.querySelector(".hero-img").dataset.heroVideo === "ready")) {
-  await p.focus(".hero-actions .btn.ghost");
-  check("Tab reaches the hero pause button", await tabTo(".hero-pause", 3));
-  await p.keyboard.press("Enter");
-  check("Enter pauses the hero motion", await p.evaluate(() => document.querySelector(".hero-pause").getAttribute("aria-pressed") === "true" && document.querySelector(".hero-img").classList.contains("is-paused")));
-  await p.keyboard.press("Space");
-  check("Space resumes it", await p.evaluate(() => document.querySelector(".hero-pause").getAttribute("aria-pressed") === "false" && !document.querySelector(".hero-img").classList.contains("is-paused")));
-} else {
-  await p.focus(".hero-actions .btn.ghost");
-  await p.keyboard.press("Tab");
-  check("type-only hero: no pause button, Tab moves on", await p.evaluate(() => document.querySelector(".hero-pause").hidden && !document.activeElement.matches(".hero-pause")));
-}
+/* pinned work story (1024px+): scrolling advances the industry; a tab moves the page to its project */
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const storyY = frac => p.evaluate(f => {
+  const box = document.querySelector(".tabs.story"), pin = box.querySelector(".story-pin");
+  const st = parseFloat(getComputedStyle(pin).top);
+  const top = box.getBoundingClientRect().top + scrollY - st, len = box.offsetHeight - pin.offsetHeight;
+  return Math.round(top + f * len);
+}, frac);
+const jump = y => p.evaluate(y => { if (window.mokshifyLenis) window.mokshifyLenis.scrollTo(y, { immediate: true }); else scrollTo(0, y); }, y);
+check("work story is pinned at 1440px", await p.evaluate(() => !!document.querySelector(".tabs.story") && getComputedStyle(document.querySelector(".story-pin")).position === "sticky"));
+await sleep(2000);                                               // let the previous tab's scroll settle
+await jump(await storyY(3.5 / 7)); await sleep(700);
+check("scrolling the story to its 4th project selects Agriculture", await p.evaluate(() => document.getElementById("tab-ag").getAttribute("aria-selected") === "true" && document.querySelector("#panel-ag .work-row").classList.contains("is-active")));
+await p.focus("#tab-ag");
+await p.keyboard.press("ArrowRight");
+await sleep(2200);
+const fiOk = await p.evaluate(() => {
+  const box = document.querySelector(".tabs.story"), pin = box.querySelector(".story-pin");
+  const pinTop = Math.round(pin.getBoundingClientRect().top), stickyTop = Math.round(parseFloat(getComputedStyle(pin).top));
+  return document.activeElement.id === "tab-fi" && document.getElementById("tab-fi").getAttribute("aria-selected") === "true"
+    && document.querySelector("#panel-fi .work-row").classList.contains("is-active") && Math.abs(pinTop - stickyTop) <= 2;
+});
+check("ArrowRight to Finance moves the page to the FinCalix project, still pinned", fiOk);
+await p.click("#tab-co"); await sleep(2200);
+check("clicking Community moves the page to its project", await p.evaluate(() => document.getElementById("tab-co").getAttribute("aria-selected") === "true" && document.querySelector("#panel-co .work-row").classList.contains("is-active")));
+await jump(0); await sleep(500);
+
+/* hero showcase: focus holds the rotation; one pause button stops all background motion */
+await p.focus(".sc-card:first-child .sc-frame");
+const scBefore = await p.evaluate(() => document.querySelector(".sc-name").textContent);
+await sleep(5800);
+check("focus on a showcase card holds the rotation past 5s", await p.evaluate(b => document.querySelector(".showcase").classList.contains("is-held") && document.querySelector(".sc-name").textContent === b, scBefore));
+await p.focus(".hero-actions .btn.ghost");
+check("Tab passes the three showcase cards and reaches the pause button", await tabTo(".hero-pause", 6));
+await p.keyboard.press("Enter");
+check("Enter pauses all background motion", await p.evaluate(() => document.querySelector(".hero-pause").getAttribute("aria-pressed") === "true" && document.documentElement.classList.contains("motion-paused")
+  && getComputedStyle(document.querySelector(".reel-track")).animationPlayState === "paused" && getComputedStyle(document.querySelector(".glow"), "::before").animationPlayState === "paused"));
+await p.keyboard.press("Space");
+check("Space resumes it", await p.evaluate(() => document.querySelector(".hero-pause").getAttribute("aria-pressed") === "false" && !document.documentElement.classList.contains("motion-paused")));
 
 /* FAQ accordion */
 await p.goto(BASE + "/faq/", { waitUntil: "networkidle0" });

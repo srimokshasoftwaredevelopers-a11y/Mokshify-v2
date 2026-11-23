@@ -1,0 +1,163 @@
+/* ─────────────── 10 · HOME VISUALS (HOME_VISUAL_SPEC.md) ───────────────
+   One easing (var(--ease)), transform and opacity only, every size reserved up front.
+   All motion is behind .js and prefers-reduced-motion:no-preference: without JavaScript,
+   or with reduced motion, the page is complete and still. .motion-paused (the hero's
+   pause button) stops everything that moves on its own. */
+
+/* ── 1 · hero: split, showcase, slow light ── */
+.hero.home .hero-img{z-index:0}
+.hero.home .wrap{z-index:2}
+.glow{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none}
+.glow::before,.glow::after,.t-home .band::before,.t-home .band::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+.glow::before{width:min(72rem,110vw);aspect-ratio:1;right:-24%;top:-42%;background:radial-gradient(closest-side,rgb(74 20 34/.95),rgb(74 20 34/0))}
+.glow::after{width:min(56rem,90vw);aspect-ratio:1;left:-14%;bottom:-52%;background:radial-gradient(closest-side,rgb(176 141 87/.14),rgb(176 141 87/0))}
+
+.hero-split{display:grid;gap:clamp(2.5rem,6vh,3.5rem)}
+.showcase{position:relative;margin:0}
+.sc-stack{position:relative;list-style:none;margin:0;padding:0}
+.sc-card{margin:0;max-width:none}
+.sc-frame{display:block;background:var(--paper)!important;border-color:rgb(246 245 241/.18);box-shadow:0 34px 70px -28px rgb(0 0 0/.7),0 14px 28px -14px rgb(0 0 0/.45)}
+.sc-frame .frame-bar{background:var(--paper)}
+.sc-frame .frame-view{display:block}
+.sc-frame img{display:block;width:100%;height:100%;object-fit:cover}
+.sc-label{margin:1.25rem 0 0;font:500 var(--fs-label)/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--fg-2);transition:opacity .35s var(--ease)}
+.sc-label .sc-name{color:var(--fg)}
+.sc-label .sc-sep{color:var(--brass);margin-inline:.35em}
+.sc-label.is-swap{opacity:0}
+
+/* phones and tablets: one card under the headline; the projects cross-fade, nothing tilts */
+@media (max-width:56.24rem){
+  .sc-stack{display:grid}
+  .sc-card{grid-area:1 / 1;opacity:0;visibility:hidden;transition:opacity 1.2s var(--ease),visibility 0s 1.2s}
+  .sc-card[data-pos="0"]{opacity:1;visibility:visible;transition:opacity 1.2s var(--ease),visibility 0s}
+}
+/* desktop: three cards overlap at slight angles; the front one is lowest and nearest */
+@media (min-width:56.25rem){
+  .hero-split{grid-template-columns:minmax(0,1fr) minmax(0,1.02fr);align-items:center;column-gap:clamp(2rem,5vw,5.5rem)}
+  .hero.home .hero-split h1{font-size:clamp(3.25rem,4.9vw,5.75rem);max-width:none}
+  .hero.home .hero-sub{max-width:36ch}
+  .sc-stack{aspect-ratio:16 / 11.6;transform:perspective(1400px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .9s var(--ease)}
+  .sc-card{position:absolute;left:0;bottom:0;width:84%;transform-origin:30% 100%;transition:transform 1.2s var(--ease),opacity 1.2s var(--ease)}
+  .sc-card[data-pos="0"]{z-index:3;transform:rotate(-2.5deg)}
+  .sc-card[data-pos="1"]{z-index:2;opacity:.88;transform:translate3d(10%,-13%,0) rotate(2deg) scale(.92)}
+  .sc-card[data-pos="2"]{z-index:1;opacity:.66;transform:translate3d(19%,-26%,0) rotate(5.5deg) scale(.84)}
+}
+
+@media (prefers-reduced-motion:no-preference){
+  /* the hero copy keeps its entrance; the showcase follows it in */
+  .hero.home .wrap > .hero-copy{animation:none}
+  .hero.home .hero-copy > :not(h1){animation:fade-in .6s var(--ease) .35s both}
+  .hero.home .showcase{animation:fade-in 1s var(--ease) .5s both}
+  .js .glow::before,.js .t-home .band::before{animation:glow-a 30s var(--ease) infinite alternate}
+  .js .glow::after,.js .t-home .band::after{animation:glow-b 30s var(--ease) infinite alternate}
+  @keyframes glow-a{to{transform:translate3d(-16%,12%,0) scale(1.1)}}
+  @keyframes glow-b{to{transform:translate3d(14%,-14%,0) scale(.92)}}
+}
+@media (prefers-reduced-motion:no-preference) and (min-width:56.25rem){
+  .js .sc-frame{animation:sc-float 10s var(--ease) infinite alternate}
+  .js .sc-card:nth-child(2) .sc-frame{animation-duration:8s;animation-delay:-3s}
+  .js .sc-card:nth-child(3) .sc-frame{animation-duration:12s;animation-delay:-6s}
+  @keyframes sc-float{from{transform:translate3d(0,4px,0)}to{transform:translate3d(3px,-6px,0)}}
+  .showcase.is-held .sc-frame{animation-play-state:paused}
+}
+/* (html.js.motion-paused outranks the .js … animation shorthands below, which reset the play state) */
+html.js.motion-paused .glow::before,html.js.motion-paused .glow::after,html.js.motion-paused .sc-frame,
+html.js.motion-paused .reel-track,html.js.motion-paused .t-home .band::before,html.js.motion-paused .t-home .band::after{animation-play-state:paused}
+
+/* ── 2 · showreel: a row of client sites drifting sideways ── */
+.reel{position:relative;overflow:hidden;padding-block:clamp(.5rem,2vh,1.5rem) clamp(3rem,8vh,5rem);background:var(--oxblood-900);color:var(--fg)}
+.reel-move{overflow-x:auto;scrollbar-width:none;padding-inline:var(--gutter)}
+.reel-move::-webkit-scrollbar{display:none}
+.reel-track{display:flex;width:max-content;list-style:none;margin:0;padding:0}
+.reel-track > li{flex:none;margin:0 clamp(.875rem,1.6vw,1.5rem) 0 0;max-width:none}
+.reel-dup{display:none}
+.reel-card{display:block;width:clamp(14.5rem,23vw,21rem);background:none!important;color:var(--fg)}
+.reel-card .frame{display:block;border-color:rgb(246 245 241/.16);box-shadow:0 18px 40px -20px rgb(0 0 0/.65);transition:border-color .3s}
+.reel-card .frame-view{display:block}
+.reel-card img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+.reel-card:hover .frame{border-color:var(--brass)}
+.reel-card:hover img{transform:scale(1.03)}
+.reel-name{display:block;margin-top:.8rem;font:500 var(--fs-label)/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--fg-2);transition:color .2s}
+.reel-card:hover .reel-name,.reel-card:focus-visible .reel-name{color:var(--fg)}
+@media (prefers-reduced-motion:no-preference){
+  .js .reel-move{overflow:visible;padding-inline:0}
+  .js .reel-track{margin-left:-5vw;animation:reel 80s linear infinite}
+  .js .reel-dup{display:block}
+  .js .reel:hover .reel-track,.js .reel:focus-within .reel-track{animation-play-state:paused}
+  @keyframes reel{to{transform:translate3d(-50%,0,0)}}
+}
+@supports (animation-timeline:view()){
+  @media (prefers-reduced-motion:no-preference){
+    .js .reel-move{animation:reel-scroll linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+    @keyframes reel-scroll{from{transform:translate3d(4vw,0,0)}to{transform:translate3d(-6vw,0,0)}}
+  }
+}
+
+/* ── 3 · work story: pinned at 1024px+, industries on the left, one project at a time ── */
+@media (min-width:64rem){
+  /* the pinned panel is at most 40rem tall and sits centred below the nav while pinned,
+     so it starts right under the section heading instead of after an empty screen */
+  .tabs.story{--pinh:min(40rem,calc(100svh - var(--nav-h) - 2rem));height:calc(var(--pinh) + (var(--steps,7) - 1) * 58svh)}
+  .story .story-pin{position:sticky;top:calc(var(--nav-h) + (100svh - var(--nav-h) - var(--pinh)) / 2);height:var(--pinh);display:grid;grid-template-columns:minmax(11rem,1fr) minmax(0,3.4fr);column-gap:clamp(2rem,4vw,4.5rem);align-items:center}
+  .story .tablist{grid-column:1;grid-row:1;flex-direction:column;align-self:center;gap:0;overflow:visible;border-bottom:0;border-left:1px solid var(--rule)}
+  .story .tablist [role=tab]{padding:.8rem 0 .8rem 1.25rem;text-align:left;font:500 clamp(1.0625rem,1.35vw,1.3125rem)/1.2 var(--sans);letter-spacing:-.012em;text-transform:none;color:var(--fg-2);transition:color .3s}
+  .story .tablist [role=tab]::after{left:-1px;right:auto;top:.35rem;bottom:.35rem;width:2px;height:auto;transform:scaleY(0);transform-origin:50% 0}
+  .story .tablist [role=tab][aria-selected=true]{color:var(--fg)}
+  .story .tablist [role=tab][aria-selected=true]::after{transform:scaleY(1)}
+  .story .tabpanel{grid-column:2;grid-row:1;pointer-events:none}
+  .story .tabpanel[hidden]{display:block}
+  .story .tabpanel .work{display:grid}
+  .story .work-row{grid-area:1 / 1;padding:0;border-bottom:0;opacity:0;visibility:hidden;transform:translate3d(0,2.5rem,0);
+    transition:opacity .9s var(--ease),transform .9s var(--ease),visibility 0s .9s}
+  .story .work-row.is-active{opacity:1;visibility:visible;transform:none;pointer-events:auto;transition:opacity .9s var(--ease),transform .9s var(--ease),visibility 0s}
+  .story .work-row .frame-view{aspect-ratio:16 / 10.5}
+}
+
+/* ── 4 · full-bleed image breaks: 70vh, graded, slow zoom and parallax ── */
+.break{position:relative;display:flex;align-items:flex-end;height:70vh;min-height:24rem;overflow:hidden;background:var(--oxblood-900);color:var(--paper)}
+.break-img{position:absolute;inset:-7% 0;margin:0}
+.break-img picture{display:block;height:100%}
+/* the stand-in screenshots carry their own headlines: blurred and graded down so the line over them wins */
+.break-img img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;filter:saturate(.4) brightness(.62) blur(5px);transform:scale(1.04)}
+.break-img.own img{filter:none;transform:none}
+.break-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgb(42 10 18/.97) 4%,rgb(42 10 18/.72) 45%,rgb(42 10 18/.4) 85%),rgb(74 20 34/.5);mix-blend-mode:multiply}
+.break-img.own::after{background:linear-gradient(to top,rgb(42 10 18/.95) 4%,rgb(42 10 18/.45) 40%,rgb(42 10 18/0) 72%)}
+.break .wrap{position:relative;z-index:1;width:100%;padding-bottom:clamp(2.5rem,8vh,5.5rem)}
+.break-line{margin:0;max-width:17ch;font:500 var(--fs-section)/1 var(--sans);letter-spacing:-.03em;color:var(--paper);text-wrap:balance}
+@media (max-width:40rem){.break-img img{object-position:50% 0}}
+@supports (animation-timeline:view()){
+  @media (prefers-reduced-motion:no-preference){
+    .js .break-img picture{animation:break-move linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+    @keyframes break-move{from{transform:translate3d(0,-5.5%,0) scale(1.08)}to{transform:translate3d(0,5.5%,0) scale(1)}}
+  }
+}
+
+/* ── 5 · section details ── */
+/* capability rows: a small preview of a related client site follows the cursor (desktop pointers) */
+.cap-preview{position:fixed;left:0;top:0;z-index:40;width:15rem;pointer-events:none;opacity:0;transition:opacity .35s var(--ease)}
+.cap-preview.on{opacity:1}
+.cap-preview img{display:block;width:100%;height:auto;aspect-ratio:16 / 10;object-fit:cover;border:1px solid var(--rule);border-radius:var(--radius);background:var(--paper);box-shadow:0 22px 44px -18px rgb(20 16 18/.5)}
+.cap-preview span{display:inline-block;margin-top:.5rem;padding:.35rem .5rem;background:var(--paper);border:1px solid var(--rule);border-radius:var(--radius);font:500 var(--fs-label)/1.3 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+
+/* pipeline: a brass dot travels the line as the section scrolls past */
+@supports (animation-timeline:view()){
+  @media (prefers-reduced-motion:no-preference) and (min-width:60rem){
+    .pipe-sec{view-timeline:--pipe block}
+    .js .pipe-sec .section-body{container-type:inline-size}
+    .js .pipe-sec .pipeline{position:relative}
+    .js .pipe-sec .pipeline::after{content:"";position:absolute;left:0;top:calc(.55rem - 5px);width:11px;height:11px;border-radius:50%;background:var(--brass);box-shadow:0 0 0 5px rgb(176 141 87/.22);
+      animation:pipe-dot linear both;animation-timeline:--pipe;animation-range:cover 22% cover 68%}
+    @keyframes pipe-dot{from{transform:translate3d(0,0,0)}to{transform:translate3d(calc(100cqi - 11px),0,0)}}
+  }
+}
+
+/* four ways to begin: the cards rise one after another, 120ms apart */
+@media (prefers-reduced-motion:no-preference){
+  .js .option.will-reveal.is-in{transition-delay:calc(var(--i,0) * 120ms)}
+}
+
+/* CTA band (home): the hero's slow light, repeated */
+.t-home .band{overflow:hidden;isolation:isolate}
+.t-home .band::before,.t-home .band::after{z-index:-1}
+.t-home .band::before{width:min(64rem,100vw);aspect-ratio:1;left:-20%;top:-60%;background:radial-gradient(closest-side,rgb(74 20 34/.95),rgb(74 20 34/0))}
+.t-home .band::after{width:min(48rem,80vw);aspect-ratio:1;right:-12%;bottom:-62%;background:radial-gradient(closest-side,rgb(176 141 87/.13),rgb(176 141 87/0))}

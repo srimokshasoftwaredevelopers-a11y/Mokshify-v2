@@ -9,7 +9,8 @@
     "serve": "node scripts/serve.mjs 8123",
     "audit": "node scripts/audit-site.mjs",
     "verify": "node scripts/check-site.mjs && node scripts/check-keyboard.mjs && node scripts/check-motion.mjs",
-    "logo": "node scripts/brand-logo.mjs --preview"
+    "logo": "node scripts/brand-logo.mjs --preview",
+    "images:home": "node scripts/home-images.mjs"
   },
   "license": "UNLICENSED",
   "devDependencies": {

@@ -61,6 +61,31 @@ One line of reasoning each. Newest at the bottom of each list.
 - **With the video files present, the poster is inserted by `site.js` as the still.** There is no image file to put in the HTML until then, and without JS the hero stays the type-only field, which is complete on its own.
 - **The pause button appears only once something moves.** A pause control with nothing to pause would be noise; the keyboard check now tests both states.
 
+## Home visual layer (HOME_VISUAL_SPEC.md, 23 Nov 2026)
+
+- **Showcase projects: Next Edge Realty, Medico Diagnostics and AJ Agritech.** These are three client sites in three different industries. The images are the existing live-site plates, resized to 960×600 and 640×400 by `scripts/home-images.mjs` (`npm run images:home`); nothing is retouched.
+- **The showreel shows the six live projects that have screenshots.** Somallamma has none yet. The Mokshify website is left out, because the reel is client work.
+- **One pause button for all background motion.** The hero's existing pause control now stops the showcase, the light, the reel and the video together, and appears whenever the showcase moves. Hover and focus also pause the showcase and the reel, as the brief asks. A visible control is still needed so keyboard and touch users can stop motion that runs longer than 5 seconds (WCAG 2.2.2).
+- **The marquee runs linear, not on the site easing.** An eased loop would visibly stop and restart at every seam. Everything else uses cubic-bezier(.16,1,.3,1).
+- **The showcase's back cards are drawn at 88% and 66% opacity** for depth. The motion check's hidden-content test excludes them by name.
+- **The pinned story steps through projects, not industries.** Real estate has two projects, so the story has seven steps; the industry list on the left advances as each one arrives. Every project's copy stays visible this way, with nothing cut to fit a single real-estate slot.
+- **The pinned panel is at most 40rem tall and centred under the nav.** A full-height panel left an empty screen under the section heading on entry.
+- **A tab chosen in the story scrolls the page with a short lock, so the story doesn't flicker through the projects in between.** Wheel, touch or scroll keys release the lock at once.
+- **Below 1024px, and with reduced motion, the tabs are the plain tabs as before.** Without JavaScript all panels show, as before.
+- **Image-break lines reuse existing copy:**
+  - Break 1: "You bring the problem — we engineer the product." (hero sentence)
+  - Break 2: "Enterprise-grade. Cloud-native. AI-first. Built to scale from day one." (capabilities lead)
+- **Image-break stand-ins: the Terravion and Medico plates, blurred (5px) and graded down hard.** Unblurred, the screenshots' own headlines fought the line over them. The real images switch in automatically: the build swaps `assets/home/break-1.webp` / `break-2.webp` in when they exist (`TODO(asset)`).
+- **Capability previews reuse each service page's own work pairing:** AI Products and SaaS → Qflow, Mobile Apps → FinCalix, Enterprise Software → AJ Agritech, Cloud → Medico Diagnostics. The AI Products preview is captioned "Built by the same team · Qflow", matching that page's honest label.
+- **The pipeline dot is CSS scroll-driven (60rem and up).** Where that isn't supported, there is no dot and nothing breaks.
+- **The CTA-band light is home only (`.t-home .band`).** The band is a shared partial, and the brief lists it under home details.
+- **The flat paper mark is the artwork's own silhouette:** alpha softened (blur 2.5) and thresholded (0.15–0.32), filled with paper colour. It is used on dark surfaces only (the over-hero header, the mobile sheet and the footer). The colour lockup stays on light surfaces, now 40px.
+- **`css/site.css` is now minified by the build** (esbuild, already a dependency; `css/src/` stays readable). The new layer would otherwise have put the stylesheet at 59.5 KB against its 60 KB budget; minified it is 51.6 KB.
+- **Home-only JavaScript lives in `js/home.js`**, minified to 5.7 KB. The hero-video code moved there from `site.js`, so every other page got lighter.
+- **The home page loads 34.0 KB of JS**: the shared 28.3 KB plus the home script. That is over the 30 KB shared budget by 4 KB on this one page; all other pages stay at 28.3 KB. Lighthouse performance on `/` is 98 on desktop and 96 on mobile.
+- **The phone screenshots' declared size was corrected from 600×1350 to 600×2597** (59 occurrences in 33 files, and in both generator scripts). Image break 2 made Lighthouse notice the mismatch.
+- **The hero headline's scroll "recede" now needs JavaScript (`.js`),** so with JS off nothing moves on its own. The spine is scroll-linked, not self-moving, and stays as built.
+
 ## Unresolved
 
 - **Resolved 23 Nov 2026:** the branch and `film-v1` were pushed as `srimokshasoftwaredevelopers-a11y` (see the report, "Pushed as the repo owner"). The next two entries are kept as history.

@@ -131,7 +131,7 @@ const ind = (s, n) => s.split("\n").map(l => (l ? " ".repeat(n) + l : l)).join("
 export function frame(p, { eager = false } = {}) {
   if (!p.shot) return `<div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>${p.host}</span></div><div class="frame-view plate todo"><span>Screenshot to follow</span></div></div>`;
   const lazy = eager ? 'fetchpriority="high"' : 'loading="lazy"';
-  return `<div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>${p.host}</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/${p.shot}-m.webp" width="600" height="1350"><img src="/assets/sites/${p.shot}.webp" alt="${p.name} homepage, captured from the live site" width="1200" height="2000" ${lazy} decoding="async"></picture></div></div>`;
+  return `<div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>${p.host}</span></div><div class="frame-view"><picture><source media="(max-width: 40rem)" srcset="/assets/sites/${p.shot}-m.webp" width="600" height="2597"><img src="/assets/sites/${p.shot}.webp" alt="${p.name} homepage, captured from the live site" width="1200" height="2000" ${lazy} decoding="async"></picture></div></div>`;
 }
 const factsHtml = p => p.facts.length ? `<ul class="facts">${p.facts.map(([b, i]) => `<li><b>${b}</b><i>${i}</i></li>`).join("")}</ul>` : "";
 
@@ -173,7 +173,7 @@ function page(p) {
     ["What we built", rows(P.built)],
     ["The result", P.result.map(t => `<p>${t}</p>`).join("\n") + (p.facts.length ? "\n" + factsHtml(p) : "")],
     ["Gallery", p.shot
-      ? `<div class="gallery">\n  <figure>${frame(p)}<figcaption>Desktop, 1440 px — captured from the live site on 23 Nov 2026.</figcaption></figure>\n  <figure><div class="frame phone"><div class="frame-view"><img src="/assets/sites/${p.shot}-m.webp" alt="${p.name} on a phone" width="600" height="1350" loading="lazy" decoding="async"></div></div><figcaption>Phone, 390 px.</figcaption></figure>\n</div>`
+      ? `<div class="gallery">\n  <figure>${frame(p)}<figcaption>Desktop, 1440 px — captured from the live site on 23 Nov 2026.</figcaption></figure>\n  <figure><div class="frame phone"><div class="frame-view"><img src="/assets/sites/${p.shot}-m.webp" alt="${p.name} on a phone" width="600" height="2597" loading="lazy" decoding="async"></div></div><figcaption>Phone, 390 px.</figcaption></figure>\n</div>`
       : `<figure class="plate todo"><span>Screenshots to follow once the live address is confirmed</span></figure>`],
     ...(P.stack.length ? [["The stack", rows(P.stack)]] : []),
   ];
