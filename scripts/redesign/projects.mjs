@@ -41,6 +41,7 @@ export const PROJECTS = [
   {
     slug: "terravion-properties", name: "Terravion Properties", industry: "Real estate", kind: "Client website",
     url: "https://terravionproperties.com/", host: "terravionproperties.com", shot: "terravion",
+    also: [{ url: "https://terravionproperties.in/", host: "terravionproperties.in" }],   // the second Terravion site (23 Nov 2026)
     line: "HMDA-approved plots in the Shankarpally growth corridor, discovered and booked online.",
     facts: [["HMDA", "approved projects"], ["Online", "discovery to booking"]],
   },
@@ -141,15 +142,17 @@ export function frame(p, { eager = false } = {}) {
 const factsHtml = p => p.facts.length ? `<ul class="facts">${p.facts.map(([b, i]) => `<li><b>${b}</b><i>${i}</i></li>`).join("")}</ul>` : "";
 
 export function workRow(p) {
-  const live = p.url ? `<a href="${p.url}" rel="noopener">${p.host} ↗</a>` : "";
+  // a project may have more than one live address (also), and a row may point at another project's case study (caseSlug)
+  const live = [...(p.url ? [{ url: p.url, host: p.host }] : []), ...(p.also ?? [])].map(s => `<a href="${s.url}" rel="noopener">${s.host} ↗</a>`).join(" ");
+  const cs = p.caseSlug ?? p.slug;
   return `<article class="work-row">
-  <a class="work-shot" href="/work/${p.slug}/" tabindex="-1" aria-hidden="true">${frame(p)}</a>
+  <a class="work-shot" href="/work/${cs}/" tabindex="-1" aria-hidden="true">${frame(p)}</a>
   <div class="work-text">
     <p class="label">${p.industry} &middot; ${p.kind}</p>
-    <h3><a href="/work/${p.slug}/">${p.name}</a></h3>
+    <h3><a href="/work/${cs}/">${p.name}</a></h3>
     <p>${esc(p.line)}</p>
     ${factsHtml(p)}
-    <p class="work-links"><a href="/work/${p.slug}/">Read the case study</a>${live ? " " + live : ""}</p>
+    <p class="work-links"><a href="/work/${cs}/">Read the case study</a>${live ? " " + live : ""}</p>
   </div>
 </article>`;
 }
@@ -269,8 +272,18 @@ ${body}
 const SELF = { slug: "mokshify-website", name: "This website", industry: "Engineering", kind: "Our product", url: "https://mokshify.io/", host: "mokshify.io", shot: "mokshify-website",
   line: "The site you are reading: static, framework-free, every page checked by script before it ships.", facts: [] };
 
+/* extra cards that share a case study (they are not projects of their own, so they never change
+   the "next case study" order): the second Terravion site, linking to /work/terravion-properties/.
+   Counts are from terravionproperties.in on 23 Nov 2026. No prices, plot counts or approval numbers. */
+const EXTRA_ROWS = [
+  { slug: "terravion-in", caseSlug: "terravion-properties", name: "Terravion Properties — terravionproperties.in", industry: "Real estate", kind: "Client website",
+    url: "https://terravionproperties.in/", host: "terravionproperties.in", shot: "terravion-in",
+    line: "The second Terravion site: a GIS master plan of every plot, location pages, buyer guides, a journal, and site-visit booking.",
+    facts: [["13", "location pages"], ["12", "buyer guides"], ["72", "journal articles"]] },
+];
+
 mkdirSync(join(ROOT, "partials"), { recursive: true });
-for (const p of [...PROJECTS, SELF]) writeFileSync(join(ROOT, "partials", `work-${p.slug}.html`), workRow(p) + "\n");
+for (const p of [...PROJECTS, SELF, ...EXTRA_ROWS]) writeFileSync(join(ROOT, "partials", `work-${p.slug}.html`), workRow(p) + "\n");
 let made = 0;
 for (const p of PROJECTS) {
   if (!p.page) continue;
