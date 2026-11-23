@@ -52,10 +52,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="/css/site.css?v=ababdcc136">
+<link rel="stylesheet" href="/css/site.css?v=884902b080">
 <!-- /include:head -->
-<link rel="preload" as="image" href="/assets/home-plate.webp" media="(min-width: 48.0625rem)" fetchpriority="high">
-<link rel="preload" as="image" href="/assets/home-plate-960.webp" media="(max-width: 48rem)" fetchpriority="high">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
 {"@type":"Organization","@id":"https://mokshify.io/#org","url":"https://mokshify.io/","name":"Mokshify","legalName":"Mokshify","slogan":"Build What Competitors Can't.","description":"AI-first software engineering studio transforming startup ideas into world-class digital products.","email":"hello@mokshify.io","telephone":"+91-93912-48520","logo":{"@type":"ImageObject","@id":"https://mokshify.io/#logo","url":"https://mokshify.io/assets/brand/mokshify-logo.png","width":1200,"height":350},"image":"https://mokshify.io/assets/og.jpg","address":{"@type":"PostalAddress","addressLocality":"Hyderabad","addressRegion":"Telangana","addressCountry":"IN"},"contactPoint":[{"@type":"ContactPoint","contactType":"sales","telephone":"+91-93912-48520","email":"hello@mokshify.io","availableLanguage":["English","Hindi","Telugu"],"areaServed":"Worldwide"}],"knowsAbout":["AI Products","SaaS Platforms","Mobile Apps","Enterprise Software","Healthcare Systems","Fintech Platforms","Real Estate Platforms","Cloud Infrastructure","Automation Platforms","LLM Applications","DevOps"]},
@@ -278,10 +276,9 @@
 </header>
 <!-- /include:nav -->
 <main id="main">
-<!-- TODO(asset): temporary hero plate, exported from film frame 540 (assets/home-plate.webp). Merge blocker: replace with the owner's hero still. -->
-<header class="hero plate home hero-title">
-  <!-- TODO(asset): hero video. Add assets/hero/hero.webm, hero.mp4 and hero-poster.webp, then npm run build — the build switches data-hero-video to "ready" on its own. Until then the still slowly zooms. -->
-  <figure class="hero-img" data-hero-video="pending"><picture><source media="(max-width: 48rem)" srcset="/assets/home-plate-960.webp" width="960" height="540"><img src="/assets/home-plate.webp" alt="" width="1920" height="1080" fetchpriority="high" decoding="async"></picture><video class="hero-video" muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1" data-webm="/assets/hero/hero.webm" data-mp4="/assets/hero/hero.mp4" data-poster="/assets/hero/hero-poster.webp"></video></figure>
+<header class="hero dark home hero-title">
+  <!-- TODO(asset): hero video. Add assets/hero/hero.webm, hero.mp4 and hero-poster.webp, then npm run build — the build switches data-hero-video to "ready" on its own. Until then the hero is the type-only oxblood field and this slot stays hidden. -->
+  <figure class="hero-img" data-hero-video="pending"><video class="hero-video" muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1" data-webm="/assets/hero/hero.webm" data-mp4="/assets/hero/hero.mp4" data-poster="/assets/hero/hero-poster.webp"></video></figure>
   <div class="wrap">
     <p class="pkicker on-spine">AI-first product studio &middot; Hyderabad</p>
     <h1><span class="ln"><span>Engineering ideas into</span></span> <span class="ln"><span>scalable software.</span></span></h1>
@@ -661,7 +658,7 @@
   <a href="tel:+919391248520"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h3l1.4 4-2 1.4a12 12 0 0 0 6.1 6.1l1.4-2 4 1.4v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"/></svg>Call</a>
   <a href="https://wa.me/919391248520" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/></svg>WhatsApp</a>
 </div>
-<script src="/js/site.min.js?v=a268bb0dae" defer></script>
+<script src="/js/site.min.js?v=8e93050dde" defer></script>
 <!-- /include:footer -->
 </body>
 </html>

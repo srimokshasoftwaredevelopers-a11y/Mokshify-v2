@@ -50,13 +50,19 @@ await p.keyboard.press("ArrowRight");
 check("ArrowRight moves to the next industry tab", await p.evaluate(() => document.activeElement.id === "tab-hc" && document.getElementById("tab-hc").getAttribute("aria-selected") === "true" && !document.getElementById("panel-hc").hidden && document.getElementById("panel-re").hidden));
 check("all six panels are in the HTML", await p.evaluate(() => document.querySelectorAll('[role="tabpanel"] .work-row').length >= 7));
 
-/* hero pause/play */
-await p.focus(".hero-actions .btn.ghost");
-check("Tab reaches the hero pause button", await tabTo(".hero-pause", 3));
-await p.keyboard.press("Enter");
-check("Enter pauses the hero motion", await p.evaluate(() => document.querySelector(".hero-pause").getAttribute("aria-pressed") === "true" && document.querySelector(".hero-img").classList.contains("is-paused")));
-await p.keyboard.press("Space");
-check("Space resumes it", await p.evaluate(() => document.querySelector(".hero-pause").getAttribute("aria-pressed") === "false" && !document.querySelector(".hero-img").classList.contains("is-paused")));
+/* hero pause/play: only when assets/hero/* exist; before then nothing moves, so there is no button */
+if (await p.evaluate(() => document.querySelector(".hero-img").dataset.heroVideo === "ready")) {
+  await p.focus(".hero-actions .btn.ghost");
+  check("Tab reaches the hero pause button", await tabTo(".hero-pause", 3));
+  await p.keyboard.press("Enter");
+  check("Enter pauses the hero motion", await p.evaluate(() => document.querySelector(".hero-pause").getAttribute("aria-pressed") === "true" && document.querySelector(".hero-img").classList.contains("is-paused")));
+  await p.keyboard.press("Space");
+  check("Space resumes it", await p.evaluate(() => document.querySelector(".hero-pause").getAttribute("aria-pressed") === "false" && !document.querySelector(".hero-img").classList.contains("is-paused")));
+} else {
+  await p.focus(".hero-actions .btn.ghost");
+  await p.keyboard.press("Tab");
+  check("type-only hero: no pause button, Tab moves on", await p.evaluate(() => document.querySelector(".hero-pause").hidden && !document.activeElement.matches(".hero-pause")));
+}
 
 /* FAQ accordion */
 await p.goto(BASE + "/faq/", { waitUntil: "networkidle0" });

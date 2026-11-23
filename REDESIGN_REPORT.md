@@ -121,7 +121,7 @@ These are HTML comments in the pages; none show as visible "TODO" text.
 
    This frees 55 MB of frames plus about 300 KB of engine, script and old CSS.
 
-2. **`TODO(asset)`, a merge blocker:** the hero still. `assets/home-plate.webp` (1920px) and `assets/home-plate-960.webp` are temporary exports of film frame 540. Replace both files, keeping the names.
+2. **Resolved 23 Nov 2026:** the home hero is now type-only and the plate files are deleted (see "Home hero" at the end), so this is no longer a merge blocker. Original note: **`TODO(asset)`, a merge blocker:** the hero still. `assets/home-plate.webp` (1920px) and `assets/home-plate-960.webp` are temporary exports of film frame 540. Replace both files, keeping the names.
 
 3. **`TODO(proof)`:**
    - Enquiry or traffic numbers for Next Edge Realty and AJ Agritech, if the clients approve publishing them.
@@ -278,3 +278,29 @@ Kept on purpose:
 The files remain in git history (the tag holds them), so the local `.git` folder doesn't shrink. What shrinks is the checkout and every deploy.
 
 **Checked after the rebuild:** 125 routes crawled, 0 non-200, 0 orphans, and sitemap 72 = disk 72. All 72 JSON-LD blocks parse. Keyboard 24/24, motion all pass. Apart from the benchmarks text, no tracked file references `/frames/`, `cinema.js`, `main.js`, `styles.css`, `pages.css` or GSAP.
+
+## Home hero: type-only field
+
+The home hero no longer uses a film still. It is now the "field" variant (`hero dark home`): the oxblood field with its soft radial vignette, the headline, the sentence, and the two actions (Book a strategy call, WhatsApp us). Copy is unchanged.
+
+- **Removed:** `assets/home-plate.webp` (57 KB) and `assets/home-plate-960.webp` (25 KB), their two `<link rel="preload">` tags, the `<picture>` in the hero, the `TODO(asset)` merge-blocker comment, and the plate entry in the image-weight check. Nothing in the repo references them now.
+- **Open Graph image:** unchanged. `assets/og.jpg` is the logo on paper, which `npm run logo` generates from the logo artwork; it never used the plate.
+- **The video slot is kept, with the same rules:** muted, looped, 0.6× speed; only at 900px and wider, never on Save-Data, 2g or 3g, and never with reduced motion. While `data-hero-video="pending"` the slot is hidden and the page requests nothing from `assets/hero/`. The pause button stays hidden too, because nothing moves.
+- **When you add the three files:** once `hero.webm`, `hero.mp4` and `hero-poster.webp` are in `assets/hero/`, the next build stamps `ready`.
+  - The poster becomes the still behind the type, under the same oxblood grade, with the slow 25-second zoom.
+  - On wide screens with a decent connection, the video fades in over the poster.
+  - Narrow screens and slow connections get the poster only.
+  - The pause/play button appears.
+- **Tested with a throwaway ffmpeg test pattern, since deleted:**
+  - At 375px: poster only, no video request.
+  - At 1440px: WebM playing under the grade.
+  - Pause button: reached by Tab, pauses on Enter, resumes on Space.
+- **Screenshots:** `review/hero/375.png` and `review/hero/1440.png` (type-only). Also `review/hero/ready-test-clip-375.png` and `ready-test-clip-1440.png`, from the test pattern, show where your video will sit.
+
+| Check | Result |
+|---|---|
+| Crawl | 123 routes, 0 non-200, 0 orphans; sitemap 72 = disk 72 |
+| Keyboard | All pass. The pause-button test now runs only once the video is ready; before then it checks the button is absent. |
+| Motion | All pass (reduced motion, JS off, 375px) |
+| Lighthouse `/`, desktop | 100 / 100 / 100 / 100, LCP 0.6 s, CLS 0 |
+| Lighthouse `/`, mobile | Performance 98, accessibility 100, best practices 100, SEO 100; LCP 2.2 s, CLS 0 |

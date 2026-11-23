@@ -69,7 +69,7 @@ const kb = f => statSync(join(ROOT, f)).size / 1024;
 const css = kb("css/site.css"), js = kb("js/site.min.js") + kb("js/vendor/lenis-1.3.27.min.js");
 ok(css < 60, `css ${css.toFixed(1)} KB ≥ 60`); ok(js < 30, `js ${js.toFixed(1)} KB ≥ 30`);
 const imgs = readdirSync(join(ROOT, "assets", "sites")).filter(f => f.endsWith(".webp")).map(f => [f, kb("assets/sites/" + f)]);
-const mobileImgs = imgs.filter(([f]) => /-m\.webp$|-thumb\.webp$/.test(f)).concat([["home-plate-960.webp", kb("assets/home-plate-960.webp")]]);
+const mobileImgs = imgs.filter(([f]) => /-m\.webp$|-thumb\.webp$/.test(f));
 const heaviestMobile = mobileImgs.sort((a, b) => b[1] - a[1])[0];
 ok(heaviestMobile[1] < 200, `largest mobile image ${heaviestMobile[0]} ${heaviestMobile[1].toFixed(0)} KB`);
 

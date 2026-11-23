@@ -745,7 +745,8 @@ p,li{text-wrap:pretty}
 .links li > a:first-child{font-weight:500}
 
 /* ─────────────── 9 · MOTION LAYER ─────────────── */
-/* home hero: video under the grade; until it exists, the still zooms slowly */
+/* home hero: the type-only field until assets/hero/* exist; then the poster (slow zoom) with the video over it */
+.hero-img[data-hero-video=pending]{display:none}
 .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;filter:saturate(.7) contrast(1.04);transition:opacity 1.2s var(--ease)}
 .has-video .hero-video{opacity:1}
 .has-video picture{visibility:hidden}

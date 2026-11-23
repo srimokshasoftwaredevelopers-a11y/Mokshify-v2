@@ -57,6 +57,9 @@ One line of reasoning each. Newest at the bottom of each list.
 - **`css/pages.css` was deleted with the film.** It is the pre-redesign editorial stylesheet, and no page links it.
 - **`typescript` was removed** because `tsconfig.json` included only `src/` (the engine). **`esbuild` was kept** because the build minifies `js/site.js` with it.
 - **`scripts/redesign/migrate-shell.mjs` was kept.** It is a one-time migration that already ran; it would refuse to run again on pages without `pages.css`, which is correct.
+- **The home hero is the existing field variant (`.hero.dark`), with no special height.** Its height doesn't change when the video arrives, so adding the files causes no layout shift.
+- **With the video files present, the poster is inserted by `site.js` as the still.** There is no image file to put in the HTML until then, and without JS the hero stays the type-only field, which is complete on its own.
+- **The pause button appears only once something moves.** A pause control with nothing to pause would be noise; the keyboard check now tests both states.
 
 ## Unresolved
 

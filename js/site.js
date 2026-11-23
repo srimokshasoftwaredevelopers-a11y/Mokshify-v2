@@ -67,17 +67,21 @@
     document.head.append(s);
   }
 
-  /* ── home hero: slow-motion video (wide screens, decent connections) or the still's slow zoom ── */
+  /* ── home hero: type-only oxblood field until assets/hero/* exist (the build stamps "ready").
+        Then: the poster as the still (slow zoom), and on wide screens with decent connections
+        the slow-motion video fades in over it ── */
   const heroFig = document.querySelector(".hero.home .hero-img");
   const heroBtn = document.querySelector(".hero-pause");
-  if (heroFig && heroBtn && !reduced) {
-    const video = heroFig.querySelector(".hero-video");
+  const video = heroFig && heroFig.querySelector(".hero-video");
+  if (heroFig && heroBtn && video && !reduced && heroFig.dataset.heroVideo === "ready") {
     const conn = navigator.connection || {};
     const goodNet = !conn.saveData && !/(^|-)(2g|3g)$/.test(conn.effectiveType || "");
     const wideEnough = matchMedia("(min-width: 56.25rem)").matches;
-    const ready = heroFig.dataset.heroVideo === "ready";
     let playing = true;
-    if (ready && video && wideEnough && goodNet) {
+    const pic = document.createElement("picture"), still = new Image();
+    still.src = video.dataset.poster; still.alt = ""; still.decoding = "async";
+    pic.append(still); heroFig.prepend(pic);
+    if (wideEnough && goodNet) {
       video.poster = video.dataset.poster;
       for (const [type, key] of [["video/webm", "webm"], ["video/mp4", "mp4"]]) {
         const s = document.createElement("source");
@@ -87,11 +91,8 @@
       video.addEventListener("playing", () => heroFig.classList.add("has-video"), { once: true });
       video.load();
       video.play().catch(() => {});
-    } else if (ready) {
-      // narrow screens and Save-Data / 2g / 3g: the poster, never the video
-      heroFig.querySelectorAll("source[srcset]").forEach(s => s.remove());
-      heroFig.querySelector("img").src = video.dataset.poster;
     }
+    // narrow screens and Save-Data / 2g / 3g get the poster only, never the video
     heroBtn.hidden = false;
     heroBtn.addEventListener("click", () => {
       playing = !playing;
