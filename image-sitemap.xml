@@ -3,51 +3,605 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://mokshify.io/</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <image:image>
-      <image:loc>https://mokshify.io/assets/og.jpg</image:loc>
-      <image:title>Mokshify — AI-first software engineering studio, Hyderabad</image:title>
-      <image:caption>Engineering ideas into scalable software — the Mokshify studio.</image:caption>
+      <image:loc>https://mokshify.io/assets/hero/hero-poster.webp</image:loc>
+      <image:title>Mokshify: AI-first software studio in Hyderabad</image:title>
+      <image:caption>Physical scale model and cinematic film still of the Mokshify engineering studio.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/about/</loc>
+    <lastmod>2026-11-23</lastmod>
     <image:image>
-      <image:loc>https://mokshify.io/assets/sites/fincalix.png</image:loc>
-      <image:title>FinCalix — financial calculator platform built by Mokshify</image:title>
-      <image:caption>fincalix.com: 30+ free financial calculators for real decisions.</image:caption>
+      <image:loc>https://mokshify.io/assets/hero/about-hero.webp</image:loc>
+      <image:title>The Studio Behind the Film</image:title>
+      <image:caption>The Studio Behind the Film</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/architecture/</loc>
+    <lastmod>2026-11-23</lastmod>
     <image:image>
-      <image:loc>https://mokshify.io/assets/sites/medico.png</image:loc>
-      <image:title>Medico Diagnostics — healthcare diagnostics platform built by Mokshify</image:title>
-      <image:caption>medicodiagnostics.in: 3,291+ tests published with 4–6 hour reporting.</image:caption>
+      <image:loc>https://mokshify.io/assets/articles/architecture-hero.webp</image:loc>
+      <image:title>How Our Systems Are Actually Built</image:title>
+      <image:caption>How Our Systems Are Actually Built</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/benchmarks/</loc>
+    <lastmod>2026-11-23</lastmod>
     <image:image>
-      <image:loc>https://mokshify.io/assets/sites/terravion.png</image:loc>
-      <image:title>Terravion Properties — real estate platform built by Mokshify</image:title>
-      <image:caption>terravionproperties.com: HMDA-approved plots, discovered online.</image:caption>
+      <image:loc>https://mokshify.io/assets/articles/benchmarks-hero.webp</image:loc>
+      <image:title>Numbers We Measured - Performance Benchmarks</image:title>
+      <image:caption>Numbers We Measured - Performance Benchmarks</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/brand/</loc>
+    <lastmod>2026-11-23</lastmod>
     <image:image>
-      <image:loc>https://mokshify.io/assets/sites/terravion-in.webp</image:loc>
-      <image:title>Terravion Properties — terravionproperties.in, built by Mokshify</image:title>
-      <image:caption>terravionproperties.in: a GIS master plan, location pages, guides and a journal.</image:caption>
+      <image:loc>https://mokshify.io/assets/hero/brand-hero.webp</image:loc>
+      <image:title>Mokshify Brand Assets &amp; Media Kit</image:title>
+      <image:caption>Mokshify Brand Assets &amp; Media Kit</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/careers/</loc>
+    <lastmod>2026-11-23</lastmod>
     <image:image>
-      <image:loc>https://mokshify.io/assets/sites/next-edge-realty.webp</image:loc>
-      <image:title>Next Edge Realty — plotted-development sales site built by Mokshify</image:title>
-      <image:caption>nextedgerealty.com: every plot on a live satellite map.</image:caption>
+      <image:loc>https://mokshify.io/assets/hero/careers-hero.webp</image:loc>
+      <image:title>Engineers Who Want Their Work in Production</image:title>
+      <image:caption>Engineers Who Want Their Work in Production</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/consult/</loc>
+    <lastmod>2026-11-23</lastmod>
     <image:image>
-      <image:loc>https://mokshify.io/assets/sites/aj-agritech.webp</image:loc>
-      <image:title>AJ Agritech — agri-inputs catalogue built by Mokshify</image:title>
-      <image:caption>ajagritech.com: Telugu-first product catalogue.</image:caption>
+      <image:loc>https://mokshify.io/assets/hero/consult-hero.webp</image:loc>
+      <image:title>Thirty Minutes. Zero Pitch.</image:title>
+      <image:caption>Thirty Minutes. Zero Pitch.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/contact/</loc>
+    <lastmod>2026-11-23</lastmod>
     <image:image>
-      <image:loc>https://mokshify.io/assets/sites/qflow.webp</image:loc>
-      <image:title>Qflow — queue and token management by Mokshify</image:title>
-      <image:caption>qflow.in: skip the wait.</image:caption>
+      <image:loc>https://mokshify.io/assets/hero/contact-hero.webp</image:loc>
+      <image:title>Reach a Human Engineer</image:title>
+      <image:caption>Reach a Human Engineer</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/decisions/</loc>
+    <lastmod>2026-11-23</lastmod>
     <image:image>
-      <image:loc>https://mokshify.io/assets/sites/somallamma.webp</image:loc>
-      <image:title>Srisomaalammatalli Temple website, built by Mokshify</image:title>
-      <image:caption>srisomaalammatalli.in: poojas, events, gallery and donations.</image:caption>
+      <image:loc>https://mokshify.io/assets/articles/decisions-hero.webp</image:loc>
+      <image:title>Architecture Decision Records</image:title>
+      <image:caption>Architecture Decision Records</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/devops/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/devops-hero.webp</image:loc>
+      <image:title>DevOps Practices - Releases Without Fear</image:title>
+      <image:caption>DevOps Practices - Releases Without Fear</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/engineering/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/engineering-hub-hero.webp</image:loc>
+      <image:title>The Engineering Homepage</image:title>
+      <image:caption>The Engineering Homepage</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/enterprise/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/enterprise-hero.webp</image:loc>
+      <image:title>Built Like an Enterprise Team</image:title>
+      <image:caption>Built Like an Enterprise Team</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/estimate/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/estimate-hero.webp</image:loc>
+      <image:title>Estimate It Honestly</image:title>
+      <image:caption>Estimate It Honestly</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/faq/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/faq-hero.webp</image:loc>
+      <image:title>Plain Answers to Real Questions</image:title>
+      <image:caption>Plain Answers to Real Questions</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/guides/ai-readiness/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/articles/ai-readiness-hero.webp</image:loc>
+      <image:title>AI Readiness, Honestly Assessed</image:title>
+      <image:caption>AI Readiness, Honestly Assessed</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/guides/choose-software-company/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/articles/choose-software-company-hero.webp</image:loc>
+      <image:title>How to Choose a Software Company</image:title>
+      <image:caption>How to Choose a Software Company</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/guides/cloud-migration-checklist/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/articles/cloud-migration-checklist-hero.webp</image:loc>
+      <image:title>Cloud Migration Checklist</image:title>
+      <image:caption>Cloud Migration Checklist</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/guides/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/guides-hub-hero.webp</image:loc>
+      <image:title>Plan It Before You Pay For It</image:title>
+      <image:caption>Plan It Before You Pay For It</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/guides/software-cost/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/articles/software-cost-hero.webp</image:loc>
+      <image:title>How Software Cost Actually Works</image:title>
+      <image:caption>How Software Cost Actually Works</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/guides/validate-mvp/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/articles/validate-mvp-hero.webp</image:loc>
+      <image:title>How to Validate an MVP</image:title>
+      <image:caption>How to Validate an MVP</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/guides/why-software-projects-fail/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/articles/why-software-projects-fail-hero.webp</image:loc>
+      <image:title>Why Software Projects Fail</image:title>
+      <image:caption>Why Software Projects Fail</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/industries/agriculture/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/agriculture-hero.webp</image:loc>
+      <image:title>Agri-Input Websites in the Farmer Language - AJ Agritech</image:title>
+      <image:caption>Agri-Input Websites in the Farmer Language - AJ Agritech</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/industries/education/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/education-hero.webp</image:loc>
+      <image:title>Education Software That Makes Quality Legible</image:title>
+      <image:caption>Education Software That Makes Quality Legible</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/industries/fintech/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/fintech-hero.webp</image:loc>
+      <image:title>Financial Software Where Precision Is the Brand</image:title>
+      <image:caption>Financial Software Where Precision Is the Brand</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/industries/healthcare/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/healthcare-hero.webp</image:loc>
+      <image:title>Healthcare Software with Clinical Seriousness - Medico Diagnostics</image:title>
+      <image:caption>Healthcare Software with Clinical Seriousness - Medico Diagnostics</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/industries/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/industries-hero.webp</image:loc>
+      <image:title>Who We Build For</image:title>
+      <image:caption>Who We Build For</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/industries/real-estate/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/real-estate-hero.webp</image:loc>
+      <image:title>Property Software for High-Trust Purchases</image:title>
+      <image:caption>Property Software for High-Trust Purchases</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/journal/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/articles/journal-hero.webp</image:loc>
+      <image:title>Engineering Journal - notes from production work</image:title>
+      <image:caption>Engineering Journal - notes from production work</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/library/authentication-architecture/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/articles/authentication-architecture-hero.webp</image:loc>
+      <image:title>Authentication Architecture</image:title>
+      <image:caption>Authentication Architecture</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/library/background-jobs/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/articles/background-jobs-hero.webp</image:loc>
+      <image:title>Background Jobs &amp; Queues with Redis</image:title>
+      <image:caption>Background Jobs &amp; Queues with Redis</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/library/caching-strategy/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/articles/caching-strategy-hero.webp</image:loc>
+      <image:title>Caching Strategy</image:title>
+      <image:caption>Caching Strategy</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/library/choosing-a-cloud/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/articles/choosing-a-cloud-hero.webp</image:loc>
+      <image:title>Choosing a Cloud - AWS, GCP or OCI</image:title>
+      <image:caption>Choosing a Cloud - AWS, GCP or OCI</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/library/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/library-hub-hero.webp</image:loc>
+      <image:title>The Mokshify Architecture Library</image:title>
+      <image:caption>The Mokshify Architecture Library</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/library/llm-evaluation/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/articles/llm-evaluation-hero.webp</image:loc>
+      <image:title>Evaluating LLMs in Production</image:title>
+      <image:caption>Evaluating LLMs in Production</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/library/monolith-vs-microservices/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/articles/monolith-vs-microservices-hero.webp</image:loc>
+      <image:title>Monolith vs Microservices Architecture</image:title>
+      <image:caption>Monolith vs Microservices Architecture</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/library/multi-tenant-saas/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/articles/multi-tenant-saas-hero.webp</image:loc>
+      <image:title>Multi-Tenant SaaS Architecture</image:title>
+      <image:caption>Multi-Tenant SaaS Architecture</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/library/observability/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/articles/observability-hero.webp</image:loc>
+      <image:title>Observability - Traces, Metrics and Logs</image:title>
+      <image:caption>Observability - Traces, Metrics and Logs</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/library/rag-explained/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/articles/rag-explained-hero.webp</image:loc>
+      <image:title>RAG, Explained Like We Build It</image:title>
+      <image:caption>RAG, Explained Like We Build It</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/process/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/process-hero.webp</image:loc>
+      <image:title>From Idea to Scale, One Continuous Line</image:title>
+      <image:caption>From Idea to Scale, One Continuous Line</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/quality/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/quality-hero.webp</image:loc>
+      <image:title>Quality Is Gated, Not Hoped</image:title>
+      <image:caption>Quality Is Gated, Not Hoped</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/resources/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/resources-hero.webp</image:loc>
+      <image:title>Take Our Checklists. Really.</image:title>
+      <image:caption>Take Our Checklists. Really.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/search/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/search-hero.webp</image:loc>
+      <image:title>Find It in One Field</image:title>
+      <image:caption>Find It in One Field</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/security/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/security-hero.webp</image:loc>
+      <image:title>Security as a Floor, Not a Feature</image:title>
+      <image:caption>Security as a Floor, Not a Feature</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/services/ai-product-development/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/ai-product-development-hero.webp</image:loc>
+      <image:title>AI Product Development, Engineered</image:title>
+      <image:caption>AI Product Development, Engineered</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/services/ai-transformation/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/ai-transformation-hero.webp</image:loc>
+      <image:title>Your Workflows, with the Boring Parts Removed</image:title>
+      <image:caption>Your Workflows, with the Boring Parts Removed</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/services/api-development/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/api-development-hero.webp</image:loc>
+      <image:title>APIs Other Teams Can Build On</image:title>
+      <image:caption>APIs Other Teams Can Build On</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/services/cloud-engineering/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/cloud-engineering-hero.webp</image:loc>
+      <image:title>Cloud Engineering &amp; DevOps Services</image:title>
+      <image:caption>Cloud Engineering &amp; DevOps Services</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/services/custom-software-development/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/custom-software-development-hero.webp</image:loc>
+      <image:title>Custom Software Development Services</image:title>
+      <image:caption>Custom Software Development Services</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/services/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/services-hero.webp</image:loc>
+      <image:title>Engineering That Ships to Production</image:title>
+      <image:caption>Engineering That Ships to Production</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/services/legacy-modernization/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/legacy-modernization-hero.webp</image:loc>
+      <image:title>Legacy Modernization and Software Rescue</image:title>
+      <image:caption>Legacy Modernization and Software Rescue</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/services/mobile-app-development/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/mobile-app-development-hero.webp</image:loc>
+      <image:title>Mobile Apps with a Production Backend</image:title>
+      <image:caption>Mobile Apps with a Production Backend</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/services/product-design/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/product-design-hero.webp</image:loc>
+      <image:title>Design That Survives Engineering</image:title>
+      <image:caption>Design That Survives Engineering</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/services/saas-development/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/saas-development-hero.webp</image:loc>
+      <image:title>SaaS Platforms Built to Survive Growth - Qflow case study</image:title>
+      <image:caption>SaaS Platforms Built to Survive Growth - Qflow case study</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/services/web-application-development/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/web-application-development-hero.webp</image:loc>
+      <image:title>Web Applications Built as One System</image:title>
+      <image:caption>Web Applications Built as One System</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/sitemap/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/sitemap-hub-hero.webp</image:loc>
+      <image:title>HTML Sitemap - All Pages on Mokshify</image:title>
+      <image:caption>HTML Sitemap - All Pages on Mokshify</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/stack/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/articles/stack-hero.webp</image:loc>
+      <image:title>The Stack, with Reasons</image:title>
+      <image:caption>The Stack, with Reasons</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/tools/database-selector/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/database-selector-hero.webp</image:loc>
+      <image:title>Which Database? Probably Postgres.</image:title>
+      <image:caption>Which Database? Probably Postgres.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/tools/json-formatter/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/json-formatter-hero.webp</image:loc>
+      <image:title>Format JSON. Privately.</image:title>
+      <image:caption>Format JSON. Privately.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/work/aj-agritech/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/sites/aj-agritech-plate.webp</image:loc>
+      <image:title>Mokshify Engineering Hero Plate</image:title>
+      <image:caption>Mokshify Engineering Hero Plate</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/work/fincalix/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/sites/fincalix-plate.webp</image:loc>
+      <image:title>Mokshify Engineering Hero Plate</image:title>
+      <image:caption>Mokshify Engineering Hero Plate</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/work/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/hero/work-hub-hero.webp</image:loc>
+      <image:title>Shipped &amp; Live Portfolio Works</image:title>
+      <image:caption>Shipped &amp; Live Portfolio Works</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/work/medico-diagnostics/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/sites/medico-plate.webp</image:loc>
+      <image:title>Mokshify Engineering Hero Plate</image:title>
+      <image:caption>Mokshify Engineering Hero Plate</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/work/mokshify-website/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/sites/mokshify-website-plate.webp</image:loc>
+      <image:title>Mokshify Engineering Hero Plate</image:title>
+      <image:caption>Mokshify Engineering Hero Plate</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/work/next-edge-realty/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/sites/next-edge-realty-plate.webp</image:loc>
+      <image:title>Mokshify Engineering Hero Plate</image:title>
+      <image:caption>Mokshify Engineering Hero Plate</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/work/qflow/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/sites/qflow-plate.webp</image:loc>
+      <image:title>Mokshify Engineering Hero Plate</image:title>
+      <image:caption>Mokshify Engineering Hero Plate</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/work/somallamma-temple/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/sites/somallamma-plate.webp</image:loc>
+      <image:title>Mokshify Engineering Hero Plate</image:title>
+      <image:caption>Mokshify Engineering Hero Plate</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mokshify.io/work/terravion-properties/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/sites/terravion-plate.webp</image:loc>
+      <image:title>Mokshify Engineering Hero Plate</image:title>
+      <image:caption>Mokshify Engineering Hero Plate</image:caption>
     </image:image>
   </url>
 </urlset>
