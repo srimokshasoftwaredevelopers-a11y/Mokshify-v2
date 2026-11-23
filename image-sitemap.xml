@@ -25,9 +25,19 @@
       <image:caption>terravionproperties.com: HMDA-approved plots, discovered online.</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://mokshify.io/assets/sites/skillforce.png</image:loc>
-      <image:title>SkillForceHub — Salesforce training platform built by Mokshify</image:title>
-      <image:caption>skillforcehub.com: Salesforce careers launched from Warangal.</image:caption>
+      <image:loc>https://mokshify.io/assets/sites/next-edge-realty.webp</image:loc>
+      <image:title>Next Edge Realty — plotted-development sales site built by Mokshify</image:title>
+      <image:caption>nextedgerealty.com: every plot on a live satellite map.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/sites/aj-agritech.webp</image:loc>
+      <image:title>AJ Agritech — agri-inputs catalogue built by Mokshify</image:title>
+      <image:caption>ajagritech.com: Telugu-first product catalogue.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mokshify.io/assets/sites/qflow.webp</image:loc>
+      <image:title>Qflow — queue and token management by Mokshify</image:title>
+      <image:caption>qflow.in: skip the wait.</image:caption>
     </image:image>
   </url>
 </urlset>

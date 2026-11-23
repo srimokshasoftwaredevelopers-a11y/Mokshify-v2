@@ -1,0 +1,62 @@
+/* MOKSHIFY — css/src. Concatenated by scripts/build.mjs into /css/site.css. Edit here, never in css/site.css. */
+@font-face{
+  font-family:"Switzer";
+  src:url("/assets/fonts/switzer-variable.woff2") format("woff2");
+  font-weight:100 900;font-style:normal;font-display:swap;
+}
+
+/* ─────────────── 1 · TOKENS ─────────────── */
+:root{
+  --oxblood-900:#2A0A12;   /* deepest surface: hero fields, footer */
+  --oxblood-700:#4A1422;   /* brand surface, primary buttons on light */
+  --limestone:#E4E2DC;     /* main light surface */
+  --paper:#F6F5F1;         /* reading surface for long-form pages */
+  --ink:#141012;           /* text on light */
+  --brass:#B08D57;         /* hairlines, markers, focus rings — never a fill, never body text */
+
+  --sans:"Switzer",system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;
+
+  --fs-hero:clamp(3.25rem,8vw,8.5rem);
+  --fs-title:clamp(2.5rem,6vw,6rem);       /* detail-page titles: long words must fit 375px */
+  --fs-section:clamp(2.25rem,4.5vw,4.5rem);
+  --fs-lede:clamp(1.125rem,1.5vw,1.375rem);
+  --fs-body:1.0625rem;
+  --fs-small:.9375rem;
+  --fs-label:.75rem;
+
+  --max:1440px;
+  --gutter:clamp(1.25rem,4vw,4.5rem);
+  --indent:clamp(1.25rem,3vw,3rem);        /* distance from the spine to content */
+  --space:clamp(5rem,11vh,10rem);          /* section spacing */
+  --radius:2px;
+  --nav-h:4rem;
+  --ease:cubic-bezier(.16,1,.3,1);     /* the one easing for all motion */
+  --shadow-float:0 24px 60px -24px rgb(20 16 18/.45);  /* floating UI only */
+
+  /* surface variables — light is the default; .dark / .paper re-point them */
+  --bg:var(--limestone);
+  --fg:var(--ink);
+  --fg-2:rgb(20 16 18/.68);
+  --fg-3:rgb(20 16 18/.45);                /* non-text marks only: fails AA as text */
+  --rule:rgb(20 16 18/.16);
+  --link:var(--oxblood-700);
+  --btn-bg:var(--oxblood-700);
+  --btn-fg:var(--paper);
+  --field:var(--paper);
+}
+.dark,.hero.plate,.site-nav.over,.nav-open .site-nav,.nav-panel,.contact-bar{
+  --bg:var(--oxblood-900);
+  --fg:var(--paper);
+  --fg-2:rgb(246 245 241/.7);
+  --fg-3:rgb(246 245 241/.45);
+  --rule:rgb(246 245 241/.18);
+  --link:var(--paper);
+  --btn-bg:var(--paper);
+  --btn-fg:var(--oxblood-900);
+  --field:rgb(246 245 241/.06);
+}
+.dark.brand{--bg:var(--oxblood-700)}
+.paper{--bg:var(--paper);--field:#fff0}
+.dark,.paper,.stone{background:var(--bg);color:var(--fg)}
