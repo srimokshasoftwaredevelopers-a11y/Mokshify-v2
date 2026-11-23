@@ -103,10 +103,13 @@ await p.keyboard.press("Enter");
 await p.click('#enquiry button[type="submit"]');
 check("empty submit flags fields and focuses the first", await p.evaluate(() => document.getElementById("f-name").getAttribute("aria-invalid") === "true" && document.getElementById("f-name-err").textContent.length > 0 && document.activeElement.id === "f-name"));
 await p.type("#f-name", "Test Owner"); await p.type("#f-email", "owner@example.com"); await p.type("#f-message", "A website for my shop.");
-await p.evaluate(() => { window.__mail = null; const d = Object.getOwnPropertyDescriptor(Location.prototype, "href"); });
 await p.click('#enquiry button[type="submit"]');
-await new Promise(r => setTimeout(r, 400));
-check("valid submit falls back to mail (no endpoint set) and says so", await p.evaluate(() => /mail app/i.test(document.querySelector("#enquiry .form-status").textContent)));
+check("the consent box is required and says so", await p.evaluate(() => document.getElementById("f-consent").getAttribute("aria-invalid") === "true" && /tick/i.test(document.getElementById("f-consent-err").textContent)));
+await p.focus("#f-consent"); await p.keyboard.press("Space");
+// the CRM (crm.mokshify.io) isn't live yet, so the send fails and the form falls back to the mail app
+await p.click('#enquiry button[type="submit"]');
+const fellBack = await p.waitForFunction(() => /mail app/i.test(document.querySelector("#enquiry .form-status").textContent), { timeout: 15000 }).then(() => true, () => false);
+check("valid submit, CRM unreachable: falls back to the mail app and says so", fellBack);
 check("honeypot is out of the tab order", await p.evaluate(() => document.getElementById("f-website").tabIndex === -1));
 
 /* estimator by keyboard */

@@ -8,8 +8,8 @@
 | 3 · Pipeline | done |
 | 4 · Clients, projects, payments, renewals | done |
 | 5 · Reports and settings | done |
-| 6 · Connect the website | in progress |
-| 7 · Polish | — |
+| 6 · Connect the website | done |
+| 7 · Polish | in progress |
 
 ## Phase 1 · Foundation
 

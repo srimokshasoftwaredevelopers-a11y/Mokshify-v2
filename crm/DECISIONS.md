@@ -92,6 +92,29 @@ Judgement calls, one line of reasoning each. Newest at the bottom of each phase.
 - **Retention:** leads older than the retention period (365 days by default, at least 90) that never became a deal or a client are listed in Settings, and the owner deletes them in one action. Nothing is deleted automatically.
 - **`LOGIN_IP_LIMIT`** raises the per-IP sign-in limit only for the e2e test server, which signs in about 30 times from one address. Production keeps 20 per 15 minutes.
 
+## Phase 6 · Connect the website
+
+- **`POST /api/public/leads` checks, in order:**
+  - the Origin header against `PUBLIC_FORM_ORIGINS` (403 otherwise; preflight answered only for those origins);
+  - JSON only (415) and at most 16 KB (413);
+  - 5 per IP per 10 minutes (429 with `Retry-After`);
+  - the honeypot (400);
+  - Zod validation (422, with the first problem as a sentence).
+
+  It returns `{ ok: true }` (201).
+- **Consent is required and stored with its time.** The website forms have a required checkbox, "Mokshify may use these details to reply to this enquiry", linking to the privacy notice. The endpoint refuses a lead without it.
+- **Page URL, referrer and UTM tags travel with each lead.** The site keeps the visit's first-touch UTM tags and outside referrer in `sessionStorage` (wrapped in try/catch), and sends them with whichever form the visitor finally uses.
+- **The per-IP limit trusts `X-Forwarded-For`,** which Vercel sets to the real client address. A self-hosted deployment behind another proxy must make sure that proxy overwrites it.
+- **The notification email is sent after the response (`after()`),** so the visitor never waits on SMTP. Without `SMTP_HOST`, or without a recipient (`NOTIFY_EMAIL`, or the notification email in Settings), it is skipped. A failure logs one line with no personal data, and the lead is already saved.
+- **Website `FORM_ENDPOINT` is `https://crm.mokshify.io/api/public/leads`.** Until that address is live, the fetch fails and the form opens the visitor's mail app with everything filled in, as it did before. A 4xx refusal (validation, rate limit) is shown as a message instead, so a person never loses what they typed.
+- **The estimator has its own small share form** (name, phone or email, optional note, consent), because its results box sits inside the estimator's form and forms can't nest. It sends the estimate summary as the message, with source "Estimator". The old "Send this estimate" mail link stays as the no-JavaScript path.
+- **Website changes are kept to the spec:**
+  - `FORM_ENDPOINT` and the shared send helper in `js/site.js`;
+  - the consent line in `partials/enquiry.html` and on the estimator;
+  - `connect-src https://crm.mokshify.io` in `vercel.json` and `_headers`;
+  - the estimator share form;
+  - the keyboard test.
+
 ## Unresolved
 
 - **ESLint config blocked by a local hook.** Creating `crm/eslint.config.mjs` is refused by the `everything-claude-code` plugin's config-protection hook ("Modifying eslint.config.mjs is not allowed"). That hook exists to stop lint rules being weakened, and getting around it by renaming the file would defeat its purpose. So `npm run lint` has no config yet. Static checking meanwhile is `tsc --noEmit` in strict mode (with `noUncheckedIndexedAccess`). To enable lint, disable that hook once, or create the file yourself with:

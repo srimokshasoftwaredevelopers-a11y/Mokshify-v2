@@ -72,4 +72,30 @@
 
   form.addEventListener("change", estimate);
   estimate();
+
+  /* share the estimate with Mokshify Desk (window.mokshifySendLead, from site.js); if the CRM can't be
+     reached, the visitor's mail app opens with the estimate filled in, as before */
+  const share = document.getElementById("est-share");
+  if (share) {
+    share.hidden = false;
+    const status = share.querySelector(".form-status");
+    share.addEventListener("submit", async e => {
+      e.preventDefault();
+      const f = new FormData(share);
+      const name = String(f.get("name") || "").trim(), contact = String(f.get("contact") || "").trim();
+      if (f.get("website")) return;                                       // honeypot
+      if (!name || !contact) { status.textContent = "Please add your name and a phone number or email."; return; }
+      if (!f.get("consent")) { status.textContent = "Please tick the consent box to send."; return; }
+      const isEmail = /@/.test(contact);
+      const summary = decodeURIComponent(out.mail.href.split("&body=")[1] || "").replace("About the product: (tell us in a paragraph)", `About the product: ${String(f.get("about") || "").trim() || "(not given)"}`);
+      const btn = share.querySelector("button[type=submit]");
+      btn.disabled = true; status.textContent = "Sending…";
+      const send = window.mokshifySendLead || (async () => "unreachable");
+      const result = await send({ name, ...(isEmail ? { email: contact } : { phone: contact }), message: summary, consent: true, source: "Estimator", service: out.model.textContent });
+      btn.disabled = false;
+      if (result === "sent") { share.reset(); status.textContent = "Sent. An engineer will reply within 24 hours with a real range."; }
+      else if (result.startsWith("refused:")) status.textContent = `${result.slice(8)} You can also WhatsApp us.`;
+      else { location.href = out.mail.href; status.textContent = "We couldn't reach our inbox just now, so your mail app should open with the estimate filled in."; }
+    });
+  }
 })();

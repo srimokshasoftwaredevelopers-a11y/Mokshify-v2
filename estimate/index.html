@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="/css/site.css?v=f1dd3b6a9c">
+<link rel="stylesheet" href="/css/site.css?v=115c19895e">
 <!-- /include:head -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -284,6 +284,19 @@
             <p><a class="btn" id="est-mail" href="mailto:hello@mokshify.io?subject=Project%20estimate%20request">Send this estimate to Mokshify</a></p>
           </div>
         </form>
+        <!-- shown when JavaScript runs: send the estimate straight to Mokshify (the mail link above is the fallback) -->
+        <form class="est-share" id="est-share" hidden novalidate aria-labelledby="est-share-h">
+          <h3 id="est-share-h">Share this estimate with Mokshify</h3>
+          <div class="field-row">
+            <p class="field"><label for="s-name">Name</label><input id="s-name" name="name" type="text" autocomplete="name" required></p>
+            <p class="field"><label for="s-contact">Phone or email</label><input id="s-contact" name="contact" type="text" autocomplete="email" required></p>
+          </div>
+          <p class="field"><label for="s-about">About the product (optional)</label><textarea id="s-about" name="about" rows="3"></textarea></p>
+          <p class="field consent"><label for="s-consent"><input id="s-consent" name="consent" type="checkbox" required> Mokshify may use these details to reply about this estimate. <a href="/legal/privacy/">Privacy notice</a></label></p>
+          <p class="hp" aria-hidden="true"><label for="s-website">Leave this empty</label><input id="s-website" name="website" type="text" tabindex="-1" autocomplete="off"></p>
+          <p><button class="btn" type="submit">Send this estimate</button></p>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
     </div>
   </div>
 </section>
@@ -386,7 +399,7 @@
   <a href="tel:+919391248520"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h3l1.4 4-2 1.4a12 12 0 0 0 6.1 6.1l1.4-2 4 1.4v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"/></svg>Call</a>
   <a href="https://wa.me/919391248520" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/></svg>WhatsApp</a>
 </div>
-<script src="/js/site.min.js?v=acabd6fee3" defer></script>
+<script src="/js/site.min.js?v=3a925bbedf" defer></script>
 <!-- /include:footer -->
 <script src="/js/estimator.js" defer></script>
 </body>

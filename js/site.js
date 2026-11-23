@@ -246,11 +246,34 @@
     pre.append(b);
   }
 
-  /* ── the enquiry form (/consult/, /contact/) ──
-     FORM_ENDPOINT is the one setting: a Web3Forms / Formspree style URL that accepts a JSON POST.
-     Empty → the form opens the visitor's mail app with everything filled in (the mailto fallback). */
-  const FORM_ENDPOINT = "";
-  const FORM_KEY = "";          // Web3Forms access key, if that service is used; leave empty for Formspree
+  /* ── leads to Mokshify Desk (the CRM) ──
+     FORM_ENDPOINT is the one setting. It is the CRM's public endpoint; until crm.mokshify.io is live
+     it is unreachable, and every form falls back to the visitor's mail app with everything filled in.
+     Empty → always the mail app. */
+  const FORM_ENDPOINT = "https://crm.mokshify.io/api/public/leads";   // TODO(deploy): confirm once the CRM is live
+  // first touch in this visit: the campaign tags and the outside referrer, kept until the visitor sends a form
+  const store = (() => { try { return window.sessionStorage; } catch { return null; } })();
+  const params = new URLSearchParams(location.search);
+  const UTM = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
+  if (store && UTM.some(k => params.get(k)) && !store.getItem("mk_utm")) {
+    store.setItem("mk_utm", JSON.stringify(Object.fromEntries(UTM.filter(k => params.get(k)).map(k => [k, params.get(k).slice(0, 150)]))));
+  }
+  if (store && document.referrer && !document.referrer.startsWith(location.origin) && !store.getItem("mk_ref")) store.setItem("mk_ref", document.referrer.slice(0, 500));
+  /** send a lead: resolves "sent", "refused:<message>" or "unreachable" (then the caller offers the mail app) */
+  window.mokshifySendLead = async payload => {
+    if (!FORM_ENDPOINT) return "unreachable";
+    let utm = {}; try { utm = JSON.parse(store?.getItem("mk_utm") || "{}"); } catch { /* ignore */ }
+    const body = { ...utm, referrer: store?.getItem("mk_ref") || document.referrer || undefined, page_url: location.href.slice(0, 500), ...payload };
+    try {
+      const res = await fetch(FORM_ENDPOINT, { method: "POST", mode: "cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+      if (res.ok) return "sent";
+      if (res.status >= 500) return "unreachable";
+      const j = await res.json().catch(() => ({}));
+      return `refused:${j.error || "Please check the form."}`;
+    } catch { return "unreachable"; }
+  };
+
+  /* ── the enquiry form (/consult/, /contact/) ── */
   for (const form of $$("form.enquiry")) {
     const status = form.querySelector(".form-status");
     const say = (msg, kind) => { status.textContent = msg; status.dataset.kind = kind || ""; };
@@ -263,33 +286,35 @@
         const err = form.querySelector(`#${f.id}-err`);
         const bad = !f.checkValidity();
         f.setAttribute("aria-invalid", String(bad));
-        if (err) err.textContent = bad ? (f.validity.valueMissing ? "Please fill this in." : "Please check this.") : "";
+        if (err) err.textContent = bad ? (f.validity.valueMissing ? (f.type === "checkbox" ? "Please tick this to send." : "Please fill this in.") : "Please check this.") : "";
         if (bad && !first) first = f;
       }
       if (first) { first.focus(); say("A field needs attention.", "error"); return; }
       const data = Object.fromEntries(new FormData(form));
       if (data.website) return;                                  // honeypot: bots fill it, people never see it
-      delete data.website;
       const subject = `Project enquiry from ${data.name}${data.company ? " (" + data.company + ")" : ""}`;
-      if (!FORM_ENDPOINT) {
+      const mailApp = note => {
         const body = `Name: ${data.name}\nWork email: ${data.email}\nCompany: ${data.company || "-"}\n\n${data.message}`;
         location.href = `mailto:hello@mokshify.io?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        say("Your mail app should open with the message ready to send. If it doesn't, write to hello@mokshify.io or use WhatsApp.", "info");
-        return;
-      }
+        say(`${note} Your mail app should open with the message ready to send. If it doesn't, write to hello@mokshify.io or use WhatsApp.`, "info");
+      };
       const btn = form.querySelector("button[type=submit]");
       btn.disabled = true; say("Sending…", "info");
-      try {
-        const payload = { ...data, subject, from_name: "mokshify.io", ...(FORM_KEY ? { access_key: FORM_KEY } : {}) };
-        const res = await fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) });
-        if (!res.ok) throw new Error(String(res.status));
+      const result = await window.mokshifySendLead({
+        name: data.name, email: data.email, company: data.company || undefined, message: data.message,
+        consent: data.consent === "on", source: "Website form", website: data.website || undefined,
+      });
+      btn.disabled = false;
+      if (result === "sent") {
         form.reset();
         form.classList.add("is-sent");
         say("Thank you — your message is with us. An engineer will reply within 24 hours.", "ok");
         if (Array.isArray(window.dataLayer)) window.dataLayer.push({ event: "form_submit", form: form.id });
-      } catch {
-        say("That didn't go through. Please WhatsApp us or write to hello@mokshify.io.", "error");
-      } finally { btn.disabled = false; }
+      } else if (result.startsWith("refused:")) {
+        say(`${result.slice(8)} You can also WhatsApp us.`, "error");
+      } else {
+        mailApp("We couldn't reach our inbox just now.");
+      }
     });
   }
 
