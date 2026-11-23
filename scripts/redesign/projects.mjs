@@ -76,19 +76,24 @@ export const PROJECTS = [
   },
   {
     slug: "somallamma-temple", name: "Somallamma Temple", industry: "Community", kind: "Client website",
-    url: null, host: "Address to follow", shot: null,
-    line: "A temple website, completed and handed over to the temple.",
+    // live site and what it shows: from the owner (address) and srisomaalammatalli.in itself, 23 Nov 2026
+    url: "https://www.srisomaalammatalli.in/", host: "srisomaalammatalli.in", shot: "somallamma",
+    line: "The website of Srisomaalammatalli Temple, Mungandapalem — poojas, events, gallery and donations, handed over to the temple.",
     facts: [],
     page: {
       title: "Somallamma Temple Website | Mokshify",
-      desc: "Case study: the Somallamma Temple website, built by Mokshify and handed over to the temple when complete. Screenshots and the live address will be added here.",
+      desc: "Case study: the website of Srisomaalammatalli Temple in Mungandapalem, Andhra Pradesh — poojas, events, gallery, videos and donations — built by Mokshify and handed over to the temple.",
       h1: ["Somallamma Temple —", "a website, handed over."],
-      plain: "A website for Somallamma Temple, completed and handed over to the temple.",
-      problem: ["Temples and trusts need a simple, dignified place online where devotees can find what they need. <!-- TODO(confirm): what the temple needed, in the temple's words -->"],
-      built: [["Temple website", "Designed, built and handed over to the temple. <!-- TODO(confirm): pages and features -->"]],
-      result: ["The website is complete and has been handed over to the temple. <!-- TODO(confirm): live URL -->"],
+      plain: "The website of Srisomaalammatalli Temple in Mungandapalem, East Godavari, completed and handed over to the temple.",
+      problem: ["Temples and trusts need a simple, dignified place online where devotees can find darshan timings, poojas and events, and give to the temple. <!-- TODO(confirm): what the temple needed, in the temple's words -->"],
+      built: [
+        ["Temple website", "Home, poojas, events, gallery, videos and contact, in English with Telugu, as published at srisomaalammatalli.in."],
+        ["Donations", "A donate page, reachable from every screen."],
+        ["Temple's own updates", "An admin login so the temple keeps its own timings, events and gallery current."],
+      ],
+      result: ['The website is live at <a href="https://www.srisomaalammatalli.in/" rel="noopener">srisomaalammatalli.in</a> and has been handed over to the temple.'],
       stack: [],
-      todo: ["TODO(confirm): live URL", "TODO(confirm): screenshots (capture once the URL is known: node scripts/capture-sites.mjs)", "TODO(confirm): pages, features and year"],
+      todo: ["TODO(confirm): what the temple needed, in its own words, and the year it launched"],
     },
   },
   {

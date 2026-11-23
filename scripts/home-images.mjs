@@ -10,7 +10,7 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const DIR = join(fileURLToPath(new URL(".", import.meta.url)), "..", "assets", "sites");
-const SLUGS = ["next-edge-realty", "terravion", "medico", "aj-agritech", "fincalix", "qflow"];
+const SLUGS = ["next-edge-realty", "terravion", "medico", "aj-agritech", "fincalix", "qflow", "somallamma"];
 const kb = f => (statSync(join(DIR, f)).size / 1024).toFixed(0);
 for (const slug of SLUGS) {
   const src = join(DIR, `${slug}-plate.webp`);

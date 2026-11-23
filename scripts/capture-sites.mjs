@@ -20,6 +20,7 @@ const SITES = {
   "fincalix": "https://fincalix.com/",
   "medico": "https://medicodiagnostics.in/",
   "terravion": "https://terravionproperties.com/",
+  "somallamma": "https://www.srisomaalammatalli.in/",   // Srisomaalammatalli Temple, Mungandapalem (address from the owner, 23 Nov 2026)
   "mokshify-website": process.env.SELF_URL || "http://localhost:8123/",   // this site, from the local server
 };
 const only = process.argv.slice(2);
