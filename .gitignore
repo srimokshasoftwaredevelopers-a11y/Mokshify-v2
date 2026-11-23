@@ -11,3 +11,6 @@ Thumbs.db
 
 # self-review screenshots (local only; see REDESIGN_REPORT.md)
 review/
+
+# Vercel CLI link (local only)
+.vercel
