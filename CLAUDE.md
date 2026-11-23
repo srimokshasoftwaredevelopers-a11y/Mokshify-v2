@@ -8,13 +8,15 @@ These rules come first. They apply to every person and every AI session working 
 4. **Every change goes through a branch, the build checks, and a merge to `main`.** No direct uploads.
 5. **Image rules:** no real people, no prices, no plot-level sale status. Images also carry no readable text, logos or brand names unless they are a labelled client screenshot.
 6. **Copy rules:** no long dashes (em or en dash, and no " - " used as a dash), and no wording that says AI writes, reviews, checks, tests or approves our work. Describe the pipeline as "automated checks". `/legal/disclosure/` is the only exception.
+7. **Only `dist/` is published** (`vercel.json` `"outputDirectory": "dist"`). `scripts/publish.mjs` copies pages and the files they load into it, and nothing else. Never point the output directory back at the repo root; notes, scripts, partials and config must never be served.
 
 ## Checks before any merge
 
 ```sh
-npm run build     # stamps partials, minifies, runs the copy rules (fails on a long dash or an AI label)
+npm run build     # stamps partials, minifies, runs the copy rules, then writes dist/ (the only folder
+                  # Vercel publishes); fails if an internal file gets into dist/ or a page points at a missing file
 npm run check     # fails if any page is out of date
-npm run serve     # local server on :8123, then:
+npm run serve     # serves dist/ on :8123, exactly what goes live, then:
 npm run verify    # crawl, orphans, JSON-LD, contrast, keyboard, reduced motion
 ```
 

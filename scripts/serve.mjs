@@ -1,17 +1,19 @@
 /* MOKSHIFY — local static server for QA (Python isn't required).
    Serves the repo root like the host does: /x/ → x/index.html, unknown → 404.html (status 404),
-   and the plain-path redirects listed in vercel.json.   node scripts/serve.mjs [port] */
+   and the plain-path redirects listed in vercel.json.   node scripts/serve.mjs [port] [folder]
+   With a folder (npm run serve passes dist), it serves that folder, exactly what Vercel publishes. */
 import { createServer } from "node:http";
 import { readFileSync, existsSync, statSync } from "node:fs";
 import { join, extname, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const ROOT = join(fileURLToPath(new URL(".", import.meta.url)), "..");
+const REPO = join(fileURLToPath(new URL(".", import.meta.url)), "..");
+const ROOT = process.argv[3] ? join(REPO, process.argv[3]) : REPO;
 const PORT = Number(process.argv[2] || process.env.PORT || 8123);
 const TYPES = { ".html": "text/html; charset=utf-8", ".css": "text/css", ".js": "text/javascript", ".json": "application/json",
   ".xml": "application/xml", ".txt": "text/plain; charset=utf-8", ".png": "image/png", ".jpg": "image/jpeg", ".webp": "image/webp",
   ".svg": "image/svg+xml", ".woff2": "font/woff2", ".ico": "image/x-icon", ".webmanifest": "application/manifest+json" };
-const redirects = (JSON.parse(readFileSync(join(ROOT, "vercel.json"), "utf8")).redirects || []).filter(r => !r.has && !r.source.includes(":"));
+const redirects = (JSON.parse(readFileSync(join(REPO, "vercel.json"), "utf8")).redirects || []).filter(r => !r.has && !r.source.includes(":"));
 
 createServer((req, res) => {
   const url = new URL(req.url, "http://x");

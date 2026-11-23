@@ -21,7 +21,8 @@ import { createHash } from "node:crypto";
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SKIP = new Set(["node_modules", ".git", "frames", "assets", "assets-test", "scripts", "src",
   "docs", "marketing", "partials", "css", "js", ".well-known", ".claude", ".agents", "shots", "review",
-  "crm"]);                                   // the CRM is a separate Next.js app (its own Vercel project)
+  "crm",                                     // the CRM is a separate Next.js app (its own Vercel project)
+  "dist"]);                                  // the published copy, written afterwards by scripts/publish.mjs
 const check = process.argv.includes("--check");
 const stale = [];
 const write = (file, body) => {

@@ -98,6 +98,11 @@ One line of reasoning each. Newest at the bottom of each list.
 
 - **No capture may show a plot's sale status.** The Terravion GIS crop (terravion-in-gis-map.webp) showed the two project grids in the site's status colours. It is replaced by terravion-in-gis-plots.webp: the same two grids captured from the live page with every plot in one neutral colour; the caption says so, and the old file is deleted. That crop is a status grid drawn by the site, not a map: it has no imagery, roads, parks, plot numbers or imagery attribution. The rule, with the recolour method used for the Next Edge recording, sits beside the no-people and no-prices rules in docs/HANDBOOK.md and scripts/capture-sites.mjs.
 
+## Only built pages are published (23 Nov 2026)
+
+- **Vercel serves `dist/`, not the repo root.** With output directory `.`, every tracked file was public: 64 internal files returned 200 on mokshify.io, including these notes, the redesign reports, docs/, marketing/, every script, the partials, the CSS and JS sources, `.claude/settings.json`, `.gitignore` and `vercel.json`. Now `npm run build` ends with `scripts/publish.mjs`, which copies an allowlist into `dist/`: every page, `assets/`, `.well-known/`, the public root files (robots, sitemaps, feed, llms, humans, manifest, search index, 404) and only the scripts and stylesheet pages load. `vercel.json` sets `"outputDirectory": "dist"`.
+- **The build fails** if any .md file, dotfile, script source, config file or internal folder reaches `dist/`, or if a page or the stylesheet refers to a local file that is not in `dist/`. `npm run serve` serves `dist/`, so local checks test exactly what goes live.
+
 ## Unresolved
 
 - **Resolved 23 Nov 2026:** the branch and `film-v1` were pushed as `srimokshasoftwaredevelopers-a11y` (see the report, "Pushed as the repo owner"). The next two entries are kept as history.
