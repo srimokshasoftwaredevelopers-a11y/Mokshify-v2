@@ -2,7 +2,11 @@
 
 Internal file. It is not published: `scripts/publish.mjs` copies only pages and their assets into `dist/`.
 
-Goal: every page and every article on mokshify.io has its own hero image. No image may repeat or resemble another one, including the 18 images already in use (listed at the end). 54 pages need an image. Two optional rows cover the homepage image bands.
+Goal: each page below gets its own hero image. No image may repeat or resemble another one in this list, or any of the 18 images already in use (listed at the end).
+
+**39 images in two batches:** Batch 1 has 21 (19 pages plus the 2 homepage bands). Batch 2 has 18 pages.
+
+Not in this brief, by decision: the homepage hero (it keeps the Next Edge Realty plot-map video), the 7 client case studies (they keep their real client screenshots), the 5 legal pages, /search/, /sitemap/, the 404 page and the 2 tools.
 
 ## Style block (use with every row)
 
@@ -14,73 +18,56 @@ Goal: every page and every article on mokshify.io has its own hero image. No ima
 - Main subject on the **right two-thirds**. Keep the left third dark and quiet: the page heading sits there.
 - Save under the exact file name in the row. Do not reuse a name, and do not overwrite any existing file.
 
-## Images needed (54)
+## Batch 1 (21 images)
+
+The 8 pages whose current image repeats another, the 5 industry pages, the 6 service pages without an image, and the 2 homepage bands.
 
 | # | Page | Save as | Subject (one sentence, specific to the page) |
 |---|---|---|---|
-| 1 | /404 | assets/pages/not-found.webp | An empty brass picture frame hanging on a dark wall, holding nothing but drifting haze. |
-| 2 | /about/ | assets/pages/about.webp | A studio workbench in near darkness with brass tools laid out in neat order and one ember lamp glowing over an unfinished object. |
-| 3 | /brand/ | assets/pages/brand.webp | A brass seal stamp pressed into a pool of deep oxblood wax, its face a plain abstract emblem with no letters. |
-| 4 | /careers/ | assets/pages/careers.webp | An open doorway cut into a dark stone wall, warm light spilling out across the floor. |
-| 5 | /consult/ | assets/pages/consult.webp | Two plain ceramic cups facing each other on a dark stone table, steam curling up in ember light. |
-| 6 | /contact/ | assets/pages/contact.webp | A brass desk bell on a stone counter with a single soft ring of light rippling out from it. |
-| 7 | /devops/ | assets/pages/devops.webp | A long brass pipeline looping gently through the dark, with glowing junction valves at even intervals and light pulsing along it. |
-| 8 | /engineering/ | assets/pages/engineering.webp | One flawless machined brass sphere resting in a precise stone cradle, a thin ember highlight along its curve. |
-| 9 | /estimate/ | assets/pages/estimate.webp | A brass hourglass with glowing ember sand, half run through, on a dark stone slab. |
-| 10 | /faq/ | assets/pages/faq.webp | A tight knot of dark cord loosening into one straight glowing line. |
-| 11 | /guides/ | assets/pages/guides.webp | A brass compass rose lying on dark stone, its needle glowing, with no letters or marks. |
-| 12 | /guides/ai-readiness/ | assets/articles/ai-readiness.webp | A round brass gauge whose blank needle sweeps from cold blue toward warm amber, with no numbers or markings. |
-| 13 | /guides/cloud-migration-checklist/ | assets/articles/cloud-migration-checklist.webp | A small flock of glowing glass spheres lifting off a heavy stone ledge and moving into open haze in an orderly line. |
-| 14 | /guides/validate-mvp/ | assets/articles/validate-mvp.webp | A small brass sailboat model on a still dark pool, its sail just catching the first breath of wind. |
-| 15 | /guides/why-software-projects-fail/ | assets/articles/why-software-projects-fail.webp | A half-built stone arch whose keystone hovers just out of place above the gap, lit from below. |
-| 16 | /industries/ | assets/pages/industries.webp | A brass armillary sphere with six thin rings, each glowing a slightly different warmth. |
-| 17 | /industries/agriculture/ | assets/pages/agriculture.webp | A macro cross-section of dark soil strata where one seed splits open and a pale glowing root reaches down. |
-| 18 | /industries/education/ | assets/pages/education.webp | Concentric rings of ember light spreading across a still dark pool from a single falling drop. |
-| 19 | /industries/fintech/ | assets/pages/fintech.webp | Translucent amber glass bars of rising height standing in a row, with no axes, labels or numbers. |
-| 20 | /industries/healthcare/ | assets/pages/healthcare.webp | A slowly turning molecular lattice of glass spheres joined by fine brass bonds, edged in cool blue. |
-| 21 | /industries/real-estate/ | assets/pages/real-estate.webp | A brass surveyor's tripod and plumb bob standing over dark open ground, one marker stake glowing. |
-| 22 | /journal/ | assets/articles/journal.webp | An open notebook of thin brass leaves fanning in a slow draft, the pages blank with only their edges glowing. |
-| 23 | /legal/accessibility/ | assets/pages/accessibility.webp | A wide, gentle ramp of polished stone rising into warm light, with a smooth brass handrail. |
-| 24 | /legal/cookies/ | assets/pages/cookies.webp | An empty porcelain dish under a glass cloche on a stone table, nothing inside, softly lit. |
-| 25 | /legal/disclosure/ | assets/pages/disclosure.webp | A thin crack of ember light across a dark stone wall, held closed by a single brass clamp. |
-| 26 | /legal/privacy/ | assets/pages/privacy.webp | A heavy dark curtain drawn almost shut, one narrow ember beam falling onto an empty stone floor. |
-| 27 | /legal/terms/ | assets/pages/terms.webp | A scroll of thin brass sheet tied with dark cord, slightly unrolled to show a blank surface. |
-| 28 | /library/ | assets/pages/library.webp | A spiral staircase of dark stone seen from below, lined with small glowing niches. |
-| 29 | /library/choosing-a-cloud/ | assets/articles/choosing-a-cloud.webp | Four brass keys of clearly different shapes on a stone slab, one lifted slightly and lit. |
-| 30 | /library/llm-evaluation/ | assets/articles/llm-evaluation.webp | A brass target of concentric glowing rings with fine darts of light clustered close to, but not all on, the centre. |
-| 31 | /library/monolith-vs-microservices/ | assets/articles/monolith-vs-microservices.webp | A single polished obsidian monolith beside an identical block broken into a constellation of small floating fragments. |
-| 32 | /process/ | assets/pages/process.webp | Five stepping stones across dark water, each lit a little warmer than the one before. |
-| 33 | /quality/ | assets/pages/quality.webp | A brass tuning fork resonating above a stone block, a clean standing wave of light around its tines. |
-| 34 | /resources/ | assets/pages/resources.webp | A brass plate with a column of plain square indents, three of them filled with glowing amber. |
-| 35 | /search/ | assets/pages/search.webp | A brass pendulum hanging still over a dark surface, one point directly beneath it glowing. |
-| 36 | /security/ | assets/pages/security.webp | Interlocking brass rings forming a closed chain around a small glowing core. |
-| 37 | /services/ | assets/pages/services.webp | Eight different finely machined brass components arranged in a precise radial pattern on a dark stone disc. |
-| 38 | /services/cloud-engineering/ | assets/pages/cloud-engineering.webp | A floating island of dark stone with a lit brass foundation beneath it, held aloft in soft cloud haze. |
-| 39 | /services/custom-software-development/ | assets/pages/custom-software-development.webp | A two-part brass mould opening to reveal a uniquely shaped glowing amber casting. |
-| 40 | /services/legacy-modernization/ | assets/pages/legacy-modernization.webp | An old weathered stone column wrapped in fine new brass scaffolding, fresh joints glowing. |
-| 41 | /services/product-design/ | assets/pages/product-design.webp | A single sculpted abstract form on a turntable under a warm spotlight, faint construction lines hanging in the air around it. |
-| 42 | /services/saas-development/ | assets/pages/saas-development.webp | A heavy brass flywheel spinning inside a stone frame, trailing a ring of ember light. |
-| 43 | /services/web-application-development/ | assets/pages/web-application-development.webp | A suspension bridge of fine brass cables spanning two dark cliffs, every cable glowing. |
-| 44 | /sitemap/ | assets/pages/sitemap.webp | A relief model of rolling hills in dark stone traced with thin glowing contour lines, with no labels. |
-| 45 | /tools/database-selector/ | assets/pages/database-selector.webp | Three different vessels on one plinth (a stone urn, a glass jar and a brass cylinder), the brass cylinder lit warmest. |
-| 46 | /tools/json-formatter/ | assets/pages/json-formatter.webp | A crumpled sheet of thin brass on one side smoothing into a perfectly flat polished plate on the other. |
-| 47 | /work/ | assets/pages/work.webp | An open kiln with finished glowing pieces cooling on a rack in front of it. |
-| 48 | /work/aj-agritech/ | assets/pages/aj-agritech.webp | A macro of a single green-gold leaf with glowing veins and one drop of water resting on it. |
-| 49 | /work/fincalix/ | assets/pages/fincalix.webp | A macro of a brass mechanical calculator's gear train, gears turning in ember light, with no digits anywhere. |
-| 50 | /work/medico-diagnostics/ | assets/pages/medico-diagnostics.webp | A rack of glass test tubes glowing in graded amber tones, one tube lit brightest. |
-| 51 | /work/next-edge-realty/ | assets/pages/next-edge-realty.webp | An abstract plot grid laid into a dark stone landscape at an angle, low walls outlining empty parcels that glow faintly, all one colour. |
-| 52 | /work/qflow/ | assets/pages/qflow.webp | Small glowing beads waiting in an orderly line in a smooth stone channel before a single brass gate. |
-| 53 | /work/somallamma-temple/ | assets/pages/somallamma-temple.webp | A small brass oil lamp with a steady flame on a plain dark stone step. |
-| 54 | /work/terravion-properties/ | assets/pages/terravion-properties.webp | Pale stone survey markers set into dark open land at dusk, a single glowing boundary line running between them. |
+| 1 | /guides/ai-readiness/ | assets/articles/ai-readiness.webp | An unlit brass lantern on a stone ledge, a single spark just catching on its wick. |
+| 2 | /guides/cloud-migration-checklist/ | assets/articles/cloud-migration-checklist.webp | A small flock of glowing glass spheres lifting off a heavy stone ledge and moving into open haze in an orderly line. |
+| 3 | /guides/validate-mvp/ | assets/articles/validate-mvp.webp | A small glowing hot-air balloon model tethered just above a stone plinth, its rope taut as it tests the lift. |
+| 4 | /guides/why-software-projects-fail/ | assets/articles/why-software-projects-fail.webp | A half-built stone arch whose keystone hovers just out of place above the gap, lit from below. |
+| 5 | /library/choosing-a-cloud/ | assets/articles/choosing-a-cloud.webp | Four brass keys of clearly different shapes on a stone slab, one lifted slightly and lit. |
+| 6 | /library/llm-evaluation/ | assets/articles/llm-evaluation.webp | A flat brass target of concentric glowing rings with fine darts of light clustered close to, but not all on, the centre. |
+| 7 | /library/monolith-vs-microservices/ | assets/articles/monolith-vs-microservices.webp | A single polished obsidian monolith beside an identical block broken into a constellation of small floating shards. |
+| 8 | /journal/ | assets/articles/journal.webp | An open notebook of thin brass leaves fanning in a slow draft, the pages blank with only their edges glowing. |
+| 9 | /industries/agriculture/ | assets/pages/agriculture.webp | A macro cross-section of dark soil strata where one seed splits open and a pale glowing root reaches down. |
+| 10 | /industries/education/ | assets/pages/education.webp | Concentric rings of ember light spreading across a still dark pool from a single falling drop. |
+| 11 | /industries/fintech/ | assets/pages/fintech.webp | Translucent amber glass bars of rising height standing in a row, with no axes, labels or numbers. |
+| 12 | /industries/healthcare/ | assets/pages/healthcare.webp | A tall laboratory glass vessel with a slow spiral of glowing amber liquid inside, edged in cool blue. |
+| 13 | /industries/real-estate/ | assets/pages/real-estate.webp | A brass surveyor's tripod with a plumb bob standing over dark open ground, one marker stake glowing. |
+| 14 | /services/cloud-engineering/ | assets/pages/cloud-engineering.webp | A floating island of dark stone with a lit brass foundation beneath it, held aloft in soft cloud haze. |
+| 15 | /services/custom-software-development/ | assets/pages/custom-software-development.webp | A two-part brass mould opening to reveal a uniquely shaped glowing amber casting. |
+| 16 | /services/legacy-modernization/ | assets/pages/legacy-modernization.webp | An old weathered stone column wrapped in fine new brass scaffolding, its fresh joints glowing. |
+| 17 | /services/product-design/ | assets/pages/product-design.webp | A single sculpted abstract form on a turntable under a warm spotlight, faint construction lines hanging in the air around it. |
+| 18 | /services/saas-development/ | assets/pages/saas-development.webp | A coral-like brass structure branching outward in even, repeating layers, its newest tips glowing. |
+| 19 | /services/web-application-development/ | assets/pages/web-application-development.webp | A suspension bridge of fine brass cables spanning two dark cliffs, every cable glowing. |
+| 20 | Homepage band 1: "You bring the problem. We engineer the product." | assets/pages/home-band-1.webp | A scattered pile of raw ore lumps on the left and a single finished brass ingot glowing on the right. |
+| 21 | Homepage band 2: "Enterprise-grade. Cloud-native. AI-first. Built to scale from day one." | assets/pages/home-band-2.webp | A honeycomb of brass hexagonal cells expanding outward from a glowing centre. |
 
-### Optional: homepage image bands (2)
+## Batch 2 (18 images)
 
-These are the two wide bands on the homepage. Today they repeat images used elsewhere (band 1 is the software-cost image; band 2 is near-identical to the journal image).
-
-| # | Band | Save as | Subject |
+| # | Page | Save as | Subject (one sentence, specific to the page) |
 |---|---|---|---|
-| B1 | "You bring the problem. We engineer the product." | assets/pages/home-band-1.webp | A rough block of raw stone on the left turning into a precise brass mechanism on the right. |
-| B2 | "Enterprise-grade. Cloud-native. AI-first. Built to scale from day one." | assets/pages/home-band-2.webp | A vaulted stone-and-brass ceiling seen from directly below, its ribs converging into warm light. |
+| 22 | /about/ | assets/pages/about.webp | Five different stones balanced in a calm cairn, warm light resting on the top stone. |
+| 23 | /brand/ | assets/pages/brand.webp | A brass seal stamp pressed into a pool of deep oxblood wax, its face a plain abstract emblem with no letters. |
+| 24 | /careers/ | assets/pages/careers.webp | An open doorway cut into a dark stone wall, warm light spilling out across the floor. |
+| 25 | /consult/ | assets/pages/consult.webp | Two plain ceramic cups facing each other on a dark stone table, steam curling up in ember light. |
+| 26 | /contact/ | assets/pages/contact.webp | A small paper plane folded from thin brass, gliding through haze and leaving a faint trail of light. |
+| 27 | /devops/ | assets/pages/devops.webp | A row of brass pistons firing in sequence, each one lighting the next. |
+| 28 | /engineering/ | assets/pages/engineering.webp | A perfectly flat polished brass surface reflecting a single line of ember light like a horizon. |
+| 29 | /estimate/ | assets/pages/estimate.webp | A brass hourglass with glowing ember sand, half run through, on a dark stone slab. |
+| 30 | /faq/ | assets/pages/faq.webp | A tight knot of dark cord loosening into one straight glowing line. |
+| 31 | /guides/ | assets/pages/guides.webp | A flat brass compass rose lying on dark stone, its needle glowing, with no letters or marks. |
+| 32 | /industries/ | assets/pages/industries.webp | A smooth sphere fused from five different materials (glass, brass, stone, amber and porcelain), each band catching the light differently. |
+| 33 | /library/ | assets/pages/library.webp | A spiral staircase of dark stone seen from below, lined with small glowing niches. |
+| 34 | /process/ | assets/pages/process.webp | Five flat stepping stones on dark sand, each lit a little warmer than the one before. |
+| 35 | /quality/ | assets/pages/quality.webp | A brass tuning fork resonating above a stone block, a clean standing wave of light around its tines. |
+| 36 | /resources/ | assets/pages/resources.webp | A brass plate with a column of plain square indents, three of them filled with glowing amber. |
+| 37 | /security/ | assets/pages/security.webp | A glowing core held inside three nested brass shells, each rotated to close a different gap. |
+| 38 | /services/ | assets/pages/services.webp | Eight small brass objects of different shapes arranged in a precise circle on a dark stone disc. |
+| 39 | /work/ | assets/pages/work.webp | An open kiln with finished glowing pieces cooling on a rack in front of it. |
 
 ## Rejection checklist (any one fails the image)
 
@@ -89,7 +76,7 @@ These are the two wide bands on the homepage. Today they repeat images used else
 - A logo, brand name, emblem that reads as a mark, or a watermark.
 - A client screenshot, or anything that looks like a real company's product, packaging or website.
 - A price, currency symbol or sale-status colour.
-- It resembles another image in this set or one of the 18 images already in use (below).
+- It resembles another image in this brief or one of the 18 images already in use (below).
 - The main subject sits in the left third, where it would fight the heading.
 - Not 2400 x 1350, not WebP, or over 200 KB.
 
@@ -115,8 +102,6 @@ These are the two wide bands on the homepage. Today they repeat images used else
 | /services/mobile-app-development/ | assets/hero/mobile-app-development-hero.webp | Floating glass tiles, one lit orange |
 | /enterprise/ | assets/hero/enterprise-hero.webp | Spire of golden and blue light against stars |
 | /work/mokshify-website/ | assets/hero/mokshify-website-hero.webp | Glowing cube inside a circuit grid |
-
-The homepage keeps its hero video (the Next Edge Realty plot-map recording) and is not part of this brief.
 
 ## When the images arrive
 
