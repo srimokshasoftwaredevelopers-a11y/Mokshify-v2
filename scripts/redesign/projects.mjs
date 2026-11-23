@@ -53,7 +53,7 @@ export const PROJECTS = [
       gallery: [
         ["/assets/sites/next-edge-realty.webp", "Next Edge Realty homepage hero: Land you can verify before you visit", "Homepage, 1440 px — nextedgerealty.com", "https://nextedgerealty.com/"],
         ["/assets/sites/next-edge-realty-project.webp", "The Sanctuary project page on nextedgerealty.com", "Project page: Sanctuary, Julkal", "https://nextedgerealty.com/projects/sanctuary"],
-        ["/assets/sites/next-edge-realty-map.webp", "The Sanctuary plot map in its 3D satellite view, with every plot in one colour", "Plot map, 3D satellite view (status colours and plot numbers hidden)", "https://nextedgerealty.com/projects/sanctuary/map"]],
+        ["/assets/sites/next-edge-realty-map.webp", "The Sanctuary plot map in its 3D satellite view, with every plot in one colour", "Plot map, 3D satellite view (status colours and plot numbers hidden). Imagery &copy; 2026 Google", "https://nextedgerealty.com/projects/sanctuary/map"]],
       stack: [["Framework", "Next.js (visible in the live site's response headers)"], ["Delivery", "Served through Cloudflare"],
         ["Map", "Satellite imagery with a plot overlay and live availability"], ["Admin", "Lead CRM and admin dashboard"]],
       todo: ["TODO(proof): enquiry or traffic numbers, once the client approves publishing them", "TODO(confirm): database and hosting, for the stack table", "TODO(confirm): year built"],
@@ -207,8 +207,8 @@ export const NER_FILM = {
   webm: "/assets/hero/hero.webm", mp4: "/assets/hero/hero.mp4", poster: "/assets/hero/hero-poster.webp",
   caption: "Live plot map, Next Edge Realty",
   label: "Screen recording of the Next Edge Realty plot map in its 3D satellite view: the camera turns slowly across the Sanctuary layout, then moves in toward the plots.",
-  note: "The 3D satellite view of the Sanctuary layout, recorded from nextedgerealty.com on 23 Nov 2026. Every plot is drawn in one colour and plot numbers are hidden, so no plot&rsquo;s status can be read here.",
-  desc: "The live plot map Mokshify built for Next Edge Realty, in its 3D satellite view: a slow turn across the Sanctuary layout and a move in toward the plots. Plot status colours and numbers are hidden in the recording.",
+  note: "The 3D satellite view of the Sanctuary layout, recorded from nextedgerealty.com on 23 Nov 2026. Every plot is drawn in one colour and plot numbers are hidden, so no plot&rsquo;s status can be read here. Imagery &copy; 2026 Google.",
+  desc: "The live plot map Mokshify built for Next Edge Realty, in its 3D satellite view: a slow turn across the Sanctuary layout and a move in toward the plots. Plot status colours and numbers are hidden in the recording. Imagery © 2026 Google.",
   date: "2026-11-23", duration: "PT11S",
 };
 NER_FILM.partial = "film-ner";            // written to partials/, so every page that shows it gets the same markup
