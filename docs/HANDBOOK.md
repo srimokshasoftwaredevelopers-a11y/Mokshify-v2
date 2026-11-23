@@ -106,11 +106,15 @@ typography or colours without explicit owner approval.
   client sites: recapture via headless when clients redesign.
 - No capture may show a real person: no face, portrait, staff or founder photo,
   testimonial photo, or people in a photo background (illustrations and icons
-  are fine). Look at every capture, desktop and phone, top to bottom, before it
-  ships; if a page shows people, capture a section that does not (a list, a
-  map, a services or locations page) or crop. The same goes for prices, plot
-  availability, registration numbers and staff names. scripts/capture-sites.mjs
-  lists the hand-cropped captures it must not overwrite.
+  are fine).
+- No capture may show a price: no price, rate, "from ₹…", "starting at",
+  per-square-yard or total value may be readable.
+- No capture may show plot availability, registration or approval numbers, or
+  staff names.
+- Look at every capture, desktop and phone, top to bottom, before it ships. If
+  a page breaks a rule, capture a section that does not (a list, a map, a
+  services or locations page) or crop. scripts/capture-sites.mjs lists the
+  hand-cropped captures it must not overwrite.
 - Every <img> has width/height attributes (CLS) and loading="lazy" below the
   fold. Alt text: describe what the image SHOWS ("FinCalix homepage — Built
   for Real People"), never keyword-stuff, empty alt for decorative marks.

@@ -61,9 +61,10 @@ export const PROJECTS = [
   },
   {
     slug: "terravion-properties", name: "Terravion Properties", industry: "Real estate", kind: "Client website",
-    url: "https://terravionproperties.com/", host: "terravionproperties.com", shot: "terravion",
-    // no capture may show a real person: the work-row frame is the About page (the homepage has a person in its video), cropped above the registration numbers
-    frameShot: "terravion-about", dims: { desk: [1200, 1000], m: [600, 2154] }, shotAlt: "Terravion Properties about page",
+    url: "https://terravionproperties.com/", host: "terravionproperties.com", shot: "terravion-about",
+    // no capture may show a real person or a price: every image is the About page (the homepage has a person in its video
+    // and prices in its hero), cropped above the registration numbers
+    dims: { desk: [1200, 1000], m: [600, 2154] }, shotAlt: "Terravion Properties about page",
     also: [{ url: "https://terravionproperties.in/", host: "terravionproperties.in" }],   // the second Terravion site (23 Nov 2026)
     line: "HMDA-approved plots in the Shankarpally growth corridor, discovered and booked online.",
     facts: [["HMDA", "approved projects"], ["Online", "discovery to booking"]],
